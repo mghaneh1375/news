@@ -1,0 +1,2461 @@
+/*1st box of styles*/
+.relative-position{
+    position: relative;
+}
+
+.textTitle {
+    font-size: 1.3em;
+    font-weight: 900;
+    color: #92321b;
+    margin: 5px 0;
+}
+
+.class_passengerPane {
+    text-align: center !important;
+    background-color: white;
+    position: absolute;
+    padding: 10px;
+    top: 25px;
+    left: 0;
+    border-radius: 5px;
+}
+
+.class_passengerOldPane {
+    text-align: center !important;
+    position: absolute;
+    background-color: #ebebeb;
+    padding: 10px;
+    top: 45px;
+    left: 0;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.labelEdit {
+    position: absolute;
+    right: 20px;
+    top: 7px;
+    font-size: 0.8em;
+    font-weight: 100;
+}
+
+.numBetweenMinusPlusBtn {
+    float: right;
+    margin-top: -2px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.minusPlusBtn {
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    background-image: url('../../images/icons.jpg');
+    background-size: 72px;
+}
+
+@media screen and (max-width: 600px) {
+    .minusPlusBtn {
+        width: 44px;
+        height: 44px;
+        background-size: 185px;
+    }
+}
+
+/*start styling*/
+
+body {
+    background-color: #eeeeee;
+}
+
+.ppr_priv_hr_atf_north_star_nostalgic {
+    margin-bottom: 0 !important;
+}
+
+.atf_meta_and_photos_wrapper {
+    background-color: #dedede;
+}
+
+.easyClear::after {
+    display: none;
+}
+
+DIV.ppr_rup.ppr_priv_hr_atf_north_star_nostalgic .atf_meta_and_photos_wrapper::before {
+    display: none;
+}
+
+.circleBase {
+    border-radius: 50%;
+    /*behavior: url(PIE.htc); !* remove if you don't care about IE8 *!*/
+}
+
+.type2 {
+    width: 45px;
+    height: 45px;
+    background: #ccc;
+    /*border: 3px solid #000;*/
+    /*position: absolute;*/
+}
+
+.darkGreyBox {
+    direction: rtl;
+    display: inline-block;
+    margin: 15px 0;
+    width: 100%;
+}
+
+.lightGreyBox {
+    background-color: #eeeeee;
+    padding: 30px 0;
+}
+
+.whiteBox {
+    background-color: white;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
+    direction: rtl;
+    padding: 25px 20px;
+    padding-top: 10px;
+    border-bottom: solid 1px lightgray;
+}
+
+/*tour creation 1st page styles*/
+
+#termsAndConditionMainBox {
+
+}
+
+.tourCreationMainTitle {
+    font-size: 17px;
+    color: black;
+    width: 100%;
+    display: inline-block;
+    margin-top: 30px;
+}
+
+.tourAgencyLogo {
+    margin-top: 15px;
+    width: 65px;
+    height: 65px;
+    display: inline-block;
+}
+
+.tourAgencyName {
+    display: inline-block;
+    color: black;
+    font-size: 14px;
+    position: absolute;
+    top: 70px;
+    right: 90px;
+}
+
+#StartCreationTourBox {
+    text-align: justify;
+    line-height: 1.8;
+}
+
+#preStartText {
+    line-height: 3;
+    font-weight: 700;
+    font-size: 18px;
+    display: inline-block;
+}
+
+#termsAndConditionAcceptBox {
+    text-align: center;
+}
+
+#termsAndConditionText {
+    display: inline-block;
+    width: 70%;
+    float: right;
+}
+
+#termsAndConditionText > span , #supportingInfos > div > span {
+    width: 100%;
+    display: inline-block;
+    text-align: justify;
+    direction: rtl;
+}
+
+#termsAndConditionText > span:nth-child(1) {
+    font-weight: 700;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+#supportingInfos > div > span:nth-child(1) {
+    margin-bottom: 50px;
+}
+
+#termsAndConditionText > span:not(:nth-child(1)) {
+    color: darkred;
+    font-size: 13px;
+}
+
+#supportingInfos > div > span:nth-child(2) {
+    margin-bottom: 10px;
+    color: darkblue;
+    font-weight: 700;
+}
+
+#supportingInfos > div > span:last-child{
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+#termsAndConditionBtn , #goToProfile{
+    display: inline-block;
+    background-color: var(--koochita-light-green);
+    /*width: 150px;*/
+    color: white;
+    line-height: 2;
+    font-size: 18px;
+    margin-top: 3px;
+    margin-right: auto;
+}
+
+footer {
+    margin-top: 0 !important;
+}
+
+/*tour creation general infos styles*/
+
+@font-face {
+    font-weight: normal;
+    font-style: normal;
+    font-family: 'shazdemosafer-tour';
+    src: url('../../fonts/shazdemosafer-tour.otf');
+    src: url('../../fonts/shazdemosafer-tour.otf') format('embedded-opentype'),
+    url('../../fonts/shazdemosafer-tour.woff2?v003.200') format('woff2'),
+    url('../../fonts/shazdemosafer-tour.woff?v003.200') format('woff'),
+    url('../../fonts/shazdemosafer/Shazdemosafer.ttf?v003.200') format('truetype');
+}
+
+input[type="checkbox"], input[type="radio"] {
+    display: none !important;
+}
+
+input[type="checkbox"] + label, input[type="radio"] + label {
+    font-weight: normal;
+    color: black;
+    cursor: pointer;
+}
+
+input[type="checkbox"] + label span, input[type="radio"] + label span {
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    margin: -2px 0 0 0;
+    vertical-align: middle;
+    background: url('../../images/check_radio_sheet.png') 1px top no-repeat;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked + label span, input[type="radio"]:checked + label span {
+    background: url('../../images/check_radio_sheet.png') -18px top no-repeat;
+}
+
+.formName {
+    display: inline-block;
+    width: 50%;
+    font-weight: 700;
+    float: right;
+    font-size: 18px;
+    line-height: 2.5;
+}
+
+.tourCreationStepInfo {
+    display: inline-block;
+    width: 50%;
+    text-align: left;
+}
+
+.tourCreationStepInfo > span {
+    display: inline-block;
+    width: 100%;
+}
+
+.tourCreationStepInfo > span:last-child {
+    font-size: 12px;
+    color: darkblue;
+}
+
+#tourNameInputBoxMainDiv {
+    width: 100%;
+}
+
+.inputBoxGeneralInfo {
+    width: 270px;
+}
+
+.inputBoxTextGeneralInfo {
+    width: 25%;
+}
+
+.inputBoxText {
+    font-weight: 700;
+}
+
+.inputBoxText > div > span {
+    color: darkred;
+}
+
+.inboxHelpSubtitle {
+    display: inline-block;
+    color: darkred;
+    font-size: 13px;
+}
+.inboxHelpSubtitle.big{
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+
+.InlineTourInputBoxesMainDiv {
+    display: inline-block;
+    width: 49%;
+}
+
+.tourDestinationInputBox {
+    position: relative;
+}
+
+.hidden-div {
+    display: none;
+}
+
+#destinationListTourCreation {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #E5E5E5;
+    padding: 20px 15px;
+    z-index: 1;
+    width: 190px;
+    left: 5px;
+    top: 30px;
+}
+
+#destinationListTourCreation > div {
+    display: inline-block;
+    width: 100%;
+}
+
+#destinationListTourCreation > div:nth-child(1) {
+    color: darkblue;
+    cursor: pointer;
+}
+
+#destinationListTourCreation > div:nth-child(3) {
+    color: var(--koochita-light-green);
+}
+
+.addNewDestinationBoxTourCreation , .popUpsSpecificInfoTourCreation {
+    background-color: white;
+    z-index: 1;
+    direction: rtl;
+    position: fixed;
+    width: 35%;
+    left: 35%;
+    right: auto;
+    top: 40%;
+    bottom: auto;
+    overflow: hidden;
+    padding: 10px;
+}
+
+#addNewDestinationTitleTourCreation {
+    width: 100%;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.addNewDestinationBoxTourCreation > div {
+    display: inline-block;
+}
+
+.addNewDestinationBoxTourCreation input {
+    width: auto;
+}
+
+#tourOriginStateInputBox , .tourOriginStateInputBox {
+    width: auto;
+}
+
+#tourOriginStateInputBox > div , .tourOriginStateInputBox > div {
+    width: auto;
+}
+
+.tourOriginStateInputBox > input {
+    width: 70px;
+}
+
+.addNewDestinationBoxTourCreation .btn-group-toggle {
+    margin: 0 8px;
+}
+
+.verifyNewDestinationTourCreation {
+    background-color: var(--koochita-light-green);
+    /*background-image: url("../../images/tourCreation/approve.png");*/
+    padding: 2px;
+    font-size: 15px;
+    width: 30px;
+    border: 0;
+    border-radius: 4px;
+}
+
+.verifyNewDestinationTourCreation > img {
+    width: 20px;
+    margin-top: 4px;
+}
+
+.closeNewDestinationTourCreation {
+    background-color: darkred;
+    /*background-image: url("../../images/tourCreation/close.png");*/
+    padding: 2px;
+    font-size: 15px;
+    width: 30px;
+    border: 0;
+    border-radius: 4px;
+}
+
+.closeNewDestinationTourCreation > img {
+      width: 18px;
+      margin-top: 3px;
+}
+
+.addNewDestinationBtn {
+    /*padding: 0 5px;*/
+    display: inline-block;
+}
+
+#cityTourCheckBoxLabel {
+    font-size: 13px;
+    font-weight: 500;
+    color: black;
+}
+
+#tourKindChoseTitleTourCreation {
+    display: inline-block;
+    width: 100%;
+}
+
+#tourKindChoseTitleTourCreation > span {
+    display: inline-block;
+}
+
+#tourKindChoseTitleTourCreation > span:first-child , #tourLevelChoseTitleTourCreation  > span:first-child,
+#concentrationChoseTitleTourCreation , #tourTypeChoseTitleTourCreation > span:first-child ,
+.nonGovernmentalTitleTourCreation > span:first-child {
+    font-weight: 700;
+}
+
+#tourKindChoseTitleTourCreation > span:last-child , #tourLevelChoseTitleTourCreation  > span:last-child {
+    font-size: 12px;
+    color: darkblue;
+    margin-right: 5px;
+}
+
+.tourKindIconsTourCreation , .tourLevelIconsTourCreation{
+    margin: 10px 0;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tourKindIconsTourCreation > div {
+    position: relative;
+    margin: 5px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    background: #e5e5e5;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.tourLevelIconsTourCreation > div{
+    position: relative;
+    margin: 5px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    flex-direction: column;
+}
+
+.tourKindIcons {
+    margin: 0;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 36px !important;
+    font-weight: normal;
+}
+
+.tourKindNames {
+    color: black;
+    font-weight: bold;
+    font-size: 11px !important;
+    text-align: center;
+    position: relative;
+    margin: 0;
+}
+
+#hikingKindTourName {
+    top: 9px;
+}
+
+#cityKindTour::before {
+    content: '\E0E0';
+    font-family: shazdemosafer-tour;
+    right: 13px;
+}
+
+#hikingKindTour::before {
+    content: '\E0E1';
+    font-family: shazdemosafer-tour;
+}
+
+#villageKindTour::before {
+    content: '\E0E2';
+    font-family: shazdemosafer-tour;
+}
+
+#adventureKindTour::before {
+    content: '\E0E3';
+    font-family: shazdemosafer-tour;
+}
+
+#healthKindTour::before {
+    content: '\E0E4';
+    font-family: shazdemosafer-tour;
+}
+
+#recreationalKindTour::before {
+    content: '\E0E5';
+    font-family: shazdemosafer-tour;
+}
+
+#artisticKindTour::before {
+    content: '\E0E6';
+    font-family: shazdemosafer-tour;
+}
+
+#sportsKindTour::before {
+    content: '\E0E7';
+    font-family: shazdemosafer-tour;
+}
+
+#scientificKindTour::before {
+    content: '\E0E8';
+    font-family: shazdemosafer-tour;
+}
+
+#culturalKindTour::before {
+    content: '\E0E9';
+    font-family: shazdemosafer-tour;
+}
+
+#ProfessionalKindTour::before {
+    content: '\E0EA';
+    font-family: shazdemosafer-tour;
+}
+
+.tourLevelGradeDiv {
+    margin: 0 10px;
+    width: 40px;
+}
+
+.tourLevelIcons {
+    background: #e5e5e5;
+    width: 100%;
+    font-size: 55px;
+    height: 60px;
+    position: relative;
+    color: black;
+    margin-bottom: 0;
+}
+
+.tourLevelIconsTourCreation > label > sub {
+    bottom: 0;
+}
+
+.tourLevelIcons::before {
+    position: absolute;
+}
+
+#easyLevelTour::before {
+    content: '\E0EC';
+    font-family: shazdemosafer-tour;
+    top: -10px;
+    left: 8px;
+}
+
+#lightLevelTour::before {
+    content: '\E0ED';
+    font-family: shazdemosafer-tour;
+    top: -9px;
+    left: 5px;
+}
+
+#activeLevelTour::before {
+    content: '\E0F4';
+    font-family: shazdemosafer-tour;
+    top: -9px;
+    right: 7px;
+}
+
+#hardLevelTour::before {
+    content: '\E0F5';
+    font-family: shazdemosafer-tour;
+    top: -8px;
+    left: 5px;
+}
+
+#professionalLevelTour::before {
+    content: '\E0EB';
+    font-family: shazdemosafer-tour;
+    top: -9px;
+    left: 6px;
+}
+
+#blindLevelTour::before {
+    content: '\E0F6';
+    font-family: shazdemosafer-tour;
+    top: -8px;
+    left: 2px;
+}
+
+#disabledLevelTour::before {
+    content: '\E0F8';
+    font-family: shazdemosafer-tour;
+    top: -8px;
+    left: 6px;
+}
+
+#studentLevelTour::before {
+    content: '\E0EC';
+    font-family: shazdemosafer-tour;
+    top: -9px;
+    left: 9px;
+}
+
+.concentrationChoseTourCreation , .tourTypeChoseChoseTourCreation{
+    direction: rtl;
+    margin: 15px 0 10px;
+    display: inline-block;
+}
+
+.concentrationChoseTourCreation > div , .tourTypeChose > div , .tourTypeChoseChoseTourCreation > div ,
+#tourBestSeasonTitleTourCreation , #tourBestSeasonChoseTourCreation , #tourBestSeasonChoseTourCreation > div {
+    float: right;
+}
+
+#specialWeatherTourCreation {
+    padding-left: 0 !important;
+}
+
+.btn-group-toggle {
+    background-color: #E5E5E5;
+    border-radius: 7px;
+    direction: rtl;
+    border: 1px solid #b4b4b4;
+    margin-right: 8px;
+}
+
+.btn.active, .btn:active {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    background-color: var(--koochita-light-green);
+    border-radius: 7px;
+    color: white;
+}
+
+.btn-group > label {
+    padding: 1px 8px;
+    font-size: 13px;
+}
+
+.fullwidthDiv {
+    width: 100%;
+    display: inline-block;
+}
+
+.halfWidthDiv {
+    width: 50%;
+    display: inline-block;
+}
+
+#tourBestSeasonTitleTourCreation , #tourBestSeasonChoseTourCreation {
+    margin-top: 15px;
+}
+
+.nextStepBtnTourCreation {
+    float: left;
+    background-color: var(--koochita-green);
+    color: white;
+    line-height: 1.8;
+    font-size: 15px;
+    margin: 0px;
+}
+
+/*tour creation specific infos styles*/
+
+.whiteBoxSpecificInfo {
+    padding: 30px 35px;
+}
+
+.mainTransportationTitleTourCreation {
+    font-weight: 700;
+    font-size: 18px;
+    width: 100%;
+}
+
+.mainTransportationHelpTourCreation {
+    width: 100%;
+    color: darkred;
+    font-size: 13px;
+}
+
+#tourTransportationResponsibility {
+    margin-top: 15px;
+}
+
+.transportationDetailsMainBoxes {
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.transportationDetailsMainBoxes > div {
+    float: right;
+    display: inline-block;
+    margin: 10px;
+}
+
+.transportationTitleBoxes {
+    position: absolute;
+    right: -73px;
+    width: 90px;
+    color: white;
+    font-size: 13px;
+    transform: rotate(90deg);
+    border-radius: 4px;
+    font-weight: 700;
+    top: calc(50% - 25px);
+    text-align: center;
+}
+
+.transportationTitleBoxesLocal{
+    position: absolute;
+    right: -155px;
+    width: 250px;
+    color: white;
+    font-size: 13px;
+    transform: rotate(90deg);
+    border-radius: 4px;
+    font-weight: 700;
+    top: 120px;
+    text-align: center;
+}
+
+#toTheDestinationTitleBox{
+    background-color: var(--koochita-light-green);
+}
+
+#fromTheDestinationTitleBox{
+    background-color: darkred;
+}
+
+.transportationStartTimeTourCreation , .transportationKindTourCreation {
+    margin-right: 0 !important;
+}
+
+.transportationStartTimeTourCreation > input {
+    display: inline-block;
+    width: 32%;
+}
+
+.transportationStartTimeTourCreation > input:nth-child(2) {
+    border-right: 1px solid #d8d8d8 ;
+}
+
+.transportationMapPinningTourCreation {
+    background-color: var(--koochita-light-green);
+    color: white;
+    float: right;
+    border-radius: 4px;
+    border: none;
+    font-size: 14px;
+    margin: 10px 0;
+    line-height: 30px;
+    padding: 2px 6px;
+    width: 15.7%;
+    cursor: pointer;
+}
+
+@media (max-width: 1187px) {
+    .transportationMapPinningTourCreation {
+        font-size: 13px;
+        width: 15.5%;
+    }
+}
+
+.boxTitlesTourCreation {
+    width: 100%;
+    font-weight: 700;
+    /*margin-bottom: 15px;*/
+    font-size: 25px;
+}
+
+#mainClassificationOfTransportationLabel {
+    width: 130px;
+}
+
+#mainClassificationOfTransportationInputDiv select , .mainClassificationOfPlaceInputDiv select , .mainClassificationOfPlaceInputDiv select {
+    width: 85%;
+}
+
+.transportationKindChosenOnes {
+    background-color: #ffffff;
+    border-radius: 30px;
+    margin: 5px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.transportationKindChosenOnes > span {
+    float: left;
+    color: red;
+}
+
+.transportationKindChosenMainDiv {
+    position: relative;
+    width: 84%;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 30px;
+    align-items: center;
+}
+
+.tourFoodOfferQuestions {
+    margin-top: 15px;
+}
+
+.tourFoodMealTitleTourCreation , .tourFoodMealChoseTourCreation {
+    margin-top: 15px;
+    float: right;
+}
+
+.tourFoodMealTitleTourCreation {
+    width: 300px;
+}
+
+.tourFoodMealChoseTourCreation {
+    width: 500px;
+}
+
+.addTourPlacesTourCreation {
+    float: right;
+    margin-top: 15px;
+    display: inline-block;
+}
+
+.addTourPlacesTourCreation > div {
+    display: inline-block;
+    float: right;
+}
+
+.addTourPlacesPicTourCreation {
+    width: 90px;
+    height: 90px;
+}
+
+.addTourPlacesNameTourCreation {
+    margin-top: 10px;
+}
+
+.addTourPlacesRateTourCreation {
+    float: right;
+    width: 100%;
+}
+
+.addTourPlacesNameTourCreation > div , .addTourPlacesNameTourCreation > b {
+    width: 100%;
+    line-height: 1.8;
+}
+
+.addTourPlacesNameTourCreation > div {
+    font-size: 13px;
+}
+
+.addTourPlacesNameTourCreation > div:last-child {
+    color: #8b8b8b;
+}
+
+.addTourPlacesNameTourCreation > b {
+    font-size: 15px;
+}
+
+.addTourPlacesBtnDivTourCreation {
+    margin-top: 15px;
+    float: inherit;
+    padding-right: 30px;
+    display: inline-block;
+}
+
+.addTourPlacesBtnCreation {
+    width: 90px;
+    height: 90px;
+    background: white;
+    border: 2px solid #d5d3d3;
+    float: right;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.addTourPlacesBtnCreation > img {
+    margin: 15px 0 5px;
+    width: 35px;
+}
+
+.addTourPlacesBtnCreation > div {
+    color: #d5d3d3;
+    font-size: 14px;
+}
+
+.popUpsSpecificInfoTourCreation {
+    width: 70%;
+    left: 15%;
+    top: 25%;
+}
+
+.addPlaceGeneralInfoTitleTourCreation {
+    width: 80%;
+    font-size: 15px;
+    font-weight: 700;
+    float: right;
+}
+
+.popUpsSpecificInfoTourCreation .closePopUpBtn.glyphicon-remove {
+    color: var(--koochita-light-green);
+    float: left;
+}
+
+@media (max-width: 1071px) {
+    .transportationKindChosenOnes {
+        padding: 0 5px;
+    }
+}
+
+.placeNameAddingPlaceInputDiv > div.inputBoxText , .mainClassificationOfPlaceInputDiv > div.inputBoxText{
+    width: 15%;
+}
+
+.placeNameAddingPlaceInputDiv > input.inputBoxInput {
+    width: 84%;
+}
+
+.removeSelectedCity {
+    position: absolute;
+    top: 9px;
+    left: 5px;
+    padding: 3px;
+    color: white;
+    background-color: darkred;
+    font-size: 10px;
+    border-radius: 3px;
+    width: 16px;
+}
+
+/*financial information tour creation */
+
+.tourBasicPriceTourCreation,
+.tourTicketKindTourCreation,
+#tourInsuranceConfirmation {
+    display: inline-block;
+}
+
+.tourBasicPriceTourCreation {
+    float: right;
+    padding-right: 0;
+}
+.tourBasicPriceTourCreation .inputBoxTour {
+    float: right;
+}
+
+.tourBasicPriceTourCreation .inputBoxText,
+.tourTicketKindTourCreation .inputBoxText {
+    width: 20%;
+}
+
+.tourTicketKindTourCreation .inputBoxTour , .tourTicketKindTourCreation .inboxHelpSubtitleBlue{
+    float: left;
+}
+
+.inboxHelpSubtitleBlue {
+    display: inline-block;
+    width: 100%;
+    color: darkblue;
+    font-size: 13px;
+}
+
+#tourInsuranceConfirmation {
+    float: right;
+}
+
+#tourInsuranceConfirmation > div {
+    float: left;
+}
+
+.tourOccupationDetailsTourCreation {
+    background-color: rgb(213 , 238 , 235);
+    padding: 5px 10px;
+    position: relative;
+}
+
+.tourOccupationDetailsTourCreation > div {
+    display: inline-block;
+    float: right;
+}
+
+.tourOccupationDetailsTourCreation > div:nth-child(1) img {
+    height: 100px;
+}
+
+.tourOccupationGradeTitle {
+    color: var(--koochita-light-green);
+}
+
+.copyBtnTourCreation {
+    background-color: rgb(251 , 193 , 86);
+}
+
+.copyBtnTourCreation > img {
+    margin-top: 2px;
+}
+
+.deleteBtnTourCreation {
+    background-color: rgb(148 , 52 , 30);
+    left: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.deleteBtnTourCreation > img {
+    height: 22px;
+}
+
+.moreFacilityInputs {
+    width: 100%;
+    text-align: right;
+}
+
+#subtitleMoreFacility {
+    position: absolute;
+    right: 0;
+    top: 40px;
+}
+
+.tourMoreFacilityDetailsBtn {
+    position: absolute;
+    bottom: 85px;
+    border: 0;
+    border-radius: 8px;
+    padding: 3px 17px;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.verifyBtnTourCreation {
+    left: 80px;
+    background-color: var(--koochita-light-green);
+}
+
+.verifyBtnTourCreation > img {
+    width: 20px;
+    margin-top: 5px;
+}
+
+.tourCapacityNGOTours .inputBoxText , .specialDiscountBoxes .inputBoxText {
+    width: 45%;
+}
+
+.tourCapacityNGOTours .inputBoxInput  , .specialDiscountBoxes .inputBoxInput {
+    width: 50%;
+}
+
+#tourCapacityCheckbox {
+    font-size: 13px;
+    font-weight: 500;
+    color:black;
+}
+
+.discountLimitationWholesale > div , .discountLimitationWholesale > input {
+    width: auto;
+    float: right;
+}
+
+.discountLimitationWholesale .inputBoxInput {
+    border-left: 1px solid #d8d8d8;
+}
+
+.discountLimitationWholesale .inputBoxText {
+    padding: 0 10px;
+}
+
+.wholesaleDiscountLimitationBtn {
+    border: 0;
+    border-radius: 5px;
+    padding: 3px 17px;
+    font-size: 11px;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/*language and schedule infos styles*/
+
+.tourBasicKindsCheckboxLabel {
+    font-size: 13px;
+    font-weight: 500;
+    color:black;
+    width: 85%;
+    display: inline-block;
+    line-height: 1.45;
+    padding-left: 10px;
+}
+
+.tourBasicKindsCheckbox {
+    float: right;
+    padding: 31px 30px;
+    box-shadow: 0 4px 16px 0
+    rgba(0, 0, 0, 0.2);
+    margin: 15px 0 0 20px;
+    border-radius: 5px;
+    width: 30%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.tourBasicKindsCheckbox > div{
+    width: 80%;
+    display: inline-block;
+    color: black;
+    font-size: 13px;
+    padding-left: 10px;
+    margin-bottom: 0;
+    float: right;
+}
+
+input[type="checkbox"]:checked + label.tourBasicKindsCheckbox , input[type="radio"]:checked + label.tourBasicKindsCheckbox{
+    border: 2px solid var(--koochita-light-green);
+}
+
+.tourBasicKindsCheckboxSpan {
+    float: left;
+}
+
+.tourBasicKindTourCreationBiggerOne {
+    padding: 18px 30px;
+}
+
+.tourBasicKindTourCreationBiggerOne > label > span {
+    margin-bottom: 15px !important;
+}
+
+.calendarIconTourCreation {
+    top: 3px !important;
+}
+
+.calendarIconTourCreation > i {
+    color: var(--koochita-light-green) !important;
+    font-size: 20px !important;
+}
+
+.tourNthOccurrence {
+    background-color: rgb(251 , 193 , 86);
+    color: white;
+    padding: 2px 15px;
+    float: right;
+    border-radius: 5px;
+    margin: 10px;
+    font-weight: 700;
+    font-size: 22px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+textarea {
+    resize: none;
+}
+
+.panel-group {
+    display: inline-block;
+    width: 50%;
+}
+
+.panel-default {
+    border: 0;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.panel.panel-default {
+    display: inline-block;
+    width: 100%;
+}
+
+.panel-default > .panel-heading + .panel-collapse > .panel-body , .panel-body {
+    border-top: none;
+    padding: 0;
+}
+
+.panel-default > .panel-heading {
+    display: inline-block;
+    float: right;
+    padding: 5px;
+}
+
+.panel-title > a {
+    padding: 9px 5px;
+    width: 100%;
+    display: inline-block;
+}
+
+.panel-title > a:hover  {
+    background-color: #ddd;
+    text-decoration: none;
+    text-transform: none;
+}
+
+.panel-title > a:focus {
+    text-decoration: none;
+    text-transform: none;
+    background-color: #ddd;
+}
+
+.collapse.in , .collapsing {
+    display: inline-block;
+}
+
+#accordion {
+    margin-top: 15px;
+    width: 45%;
+    float: right;
+}
+
+.panel-collapse.collapse.in , .panel-collapse.collapsing {
+    background-color: #f5f5f5;
+    padding: 25px 10px;
+    width: 65%;
+    margin-right: 10px;
+}
+
+.panel-collapse.collapse.in > .panel-body > div , .panel-collapse.collapsing > .panel-body > div ,
+.essentialItemsTourCreation > div , .suggestionItemsTourCreation > div {
+    background-color: white;
+    display: inline-block;
+    text-align: center;
+    width: 49%;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    font-size: 13px;
+    padding: 5px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.tourEquipmentItemsTourCreation {
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    /*float: right;*/
+    width: 25%;
+    margin: 15px 10px;
+    padding: 10px;
+    height: 340px;
+    overflow-y: auto;
+}
+
+.tourEquipmentItemsTourCreation > div {
+    color: white;
+    font-size: 10px !important;
+    width: 48% !important;
+}
+
+.essentialItemsTourCreation > div {
+    background-color: darkred;
+}
+
+.suggestionItemsTourCreation > div {
+    background-color: var(--koochita-light-green);
+}
+
+.imgUploadsTourCreation {
+    border: 1px solid #ddd;
+    height: 150px;
+    float: right;
+    width: 23%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+.imgUploadsTourCreation .addPicText{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.deleteBtnImgTourCreation {
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+    background: none;
+    border: none;
+}
+
+.imgAddDivTourCreation {
+    color: #d5d3d3;
+}
+
+.cancellingSituationTourCreation {
+    display: inline-block;
+    width: 47%;
+    margin: 10px 0 0 25px;
+    float: right;
+}
+
+.optionalCancellingTourCreation > span , .optionalCancellingTourCreation > div {
+    float: right;
+    display: inline-block;
+}
+
+.deadlineText {
+    margin: 0;
+    width: 40px;
+    text-align: right;
+    padding: 0;
+    height: 25px;
+    line-height: 1.8;
+}
+
+.deadlineText .inputBoxInput {
+    width: 100%;
+}
+
+.addingCancellingOption {
+    font-size: 12px;
+    color: darkred;
+}
+
+.addOrRemoveCancellingOption {
+    position: absolute;
+    right: -17px;
+    font-size: 10px;
+}
+
+.addOrRemoveCancellingOption.glyphicon-plus {
+    color: var(--koochita-light-green);
+    top: 30px;
+}
+
+.addOrRemoveCancellingOption.glyphicon-minus {
+    color: darkred;
+    top: 40px;
+}
+
+.line-height-3 {
+    line-height: 3;
+}
+
+.height-250 {
+    height: 250px;
+}
+
+.height-50 {
+    height: 50px;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.width-130 {
+    width: 130px;
+}
+
+.width-50 {
+    width: 50px;
+}
+
+.width-45per {
+    width: 45%;
+}
+
+.width-50per {
+    width: 50%;
+}
+
+.width-84per {
+    width: 84%;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.font-size-14 {
+    font-size: 14px;
+}
+
+.font-size-20 {
+    font-size: 20px;
+}
+
+.pd-0 {
+    padding: 0;
+}
+
+.pd-lt-3 {
+    padding-left: 3px;
+}
+
+.pd-rt-0 {
+    padding-right: 0;
+}
+
+.pd-tp-5 {
+    padding-top: 5px;
+}
+
+.pd-40-30 {
+    padding: 40px 30px;
+}
+
+.mg-tp-5imp {
+    margin-top: 5px !important;
+}
+
+.mg-5-0 {
+    margin: 5px 0;
+}
+
+.mg-bt-10 {
+    margin-bottom: 10px;
+}
+
+.mg-bt-5 {
+    margin-bottom: 5px;
+}
+
+.mg-rt-10 {
+    margin-right: 10px;
+}
+
+.mg-rt-50 {
+    margin-right: 50px;
+}
+
+.mg-rt-6 {
+    margin-right: 6px;
+}
+
+.mg-lt-10 {
+    margin-left: 10px;
+}
+
+.mg-lt-6 {
+    margin-left: 6px;
+}
+
+.mg-tp-5 {
+    margin-top: 5px;
+}
+
+.mg-tp-12 {
+    margin-top: 12px;
+}
+
+.mg-tp-15 {
+    margin-top: 15px;
+}
+
+.mg-tp-20 {
+    margin-top: 20px;
+}
+
+.mg-tp-30 {
+    margin-top: 30px;
+}
+
+.mg-30-10 {
+    margin: 30px 10px;
+}
+
+.green-border , .green-border-onclick {
+    border: 2px solid var(--koochita-light-green);
+}
+
+.no-border-imp {
+    border: 0 !important;
+}
+
+.no-border {
+    border: 0;
+}
+
+.styled-select {
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    height: 30px;
+    padding-right: 5px;
+}
+
+.select-side {
+    width: auto;
+    display: inline-block;
+    pointer-events: none;
+    position: absolute;
+    left: 10px;
+    top: 12px;
+}
+
+.select-side > i {
+    float: left;
+    color: gray;
+    font-size: 10px;
+}
+
+.modalBack{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background: #000000ad;
+    display: none;
+    z-index: 9;
+}
+
+.multiselect{
+    background: white;
+    position: absolute;
+    width: 84%;
+    top: 100%;
+    left: 30px;
+    border: solid;
+    z-index: 9;
+    border-radius: 10px;
+    padding: 10px;
+    display: none;
+}
+.optionMultiSelect{
+    cursor: pointer;
+}
+.optionMultiSelect:hover{
+    background: red;
+}
+.searchResult{
+    width: 85%;
+    padding-right: 9px;
+    float: left;
+    border-right: 1px solid #d8d8d8;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    background: white;
+    box-shadow: 1px 3px 3px 0px black;
+    border-radius: 0px 0px 10px 10px;
+    max-height: 400px;
+    overflow: auto;
+}
+
+.searchHover{
+    cursor: pointer;
+}
+.searchHover:hover{
+    background-color: white;
+    padding-right: 10px;
+    border-radius: 5px;
+}
+.searchHover.blue:hover{
+    background: var(--koochita-light-green);
+}
+.errorDiv{
+    position: fixed;
+    z-index: 99999;
+    top: 50px;
+    width: 100%;
+    padding: 0 20%;
+    direction: rtl;
+    display: none;
+}
+.errorClass{
+    background-color: #ff9191 !important;
+}
+
+.featuresRow{
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+}
+.featuresRow > div{
+    margin-left: 10px;
+}
+
+.selectTag{
+    background-color: #DDD;
+    text-decoration: none;
+    text-transform: none;
+    color: #16174f;
+    outline: none;
+}
+.draghere{
+    cursor: pointer;
+}
+.draghere:hover{
+    background-color: var(--koochita-light-green) !important;
+    color: white;
+}
+
+.inputBoxTour{
+    padding: 2px 7px;
+    font-size: 0.8em;
+    display: flex !important;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    background-color: #ebebeb;
+    line-height: 30px;
+    margin: 10px 0;
+}
+.inputBoxTour .inputBoxInput{
+    border: none;
+    background: none;
+   width: 100%;
+    text-align: right;
+    padding-right: 10px;
+}
+.inputBoxTour .inputBoxInput.center{
+    text-align: center;
+    padding: 0px;
+}
+.inputBoxTour .inputBoxText{
+    border-left: 1px solid #d8d8d8;
+    padding-left: 10px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.hotelCardButtons{
+    position: absolute;
+    left: 10px;
+    display: flex !important;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    top: 0px;
+}
+.hotelCardButtons > button{
+    border: 0;
+    border-radius: 8px;
+    padding: 3px 17px;
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
+    margin: 5px 0px;
+}
+
+
+.dateRow{
+    border: solid 1px #afafaf;
+    padding: 10px 5px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 3px #0000001f;
+    background: #f0f0f0;
+}
+.dateRow .headerSec{
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 15px;
+}
+.dateRow .headerSec .title{
+    font-size: 24px;
+}
+.dateRow .headerSec .icon{
+
+}
+
+.dateRow .bodySec{
+    max-height: 0px;
+    width: 100%;
+    overflow: hidden;
+    transition: .3s;
+}
+.dateRow .bodySec.open{
+    max-height: 30000px;
+    padding: 20px;
+    padding-top: 5px;
+    border-top: solid 1px #80808066;
+    background: white;
+    border-radius: 10px;
+}
+.dateRow .title{
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0px 0px;
+    padding: 5px 0px;
+    margin-top: 5px;
+}
+.dateRow .hotelSec{
+
+}
+.dateRow .hotelSec .hotelInfo{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.dateRow .hotelSec .hotelInfo .hotelPic{
+    height: 70px;
+    width: 70px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: 10px;
+}
+.dateRow .hotelSec .hotelInfo .name{
+    font-weight: bold;
+}
+.dateRow .hotelSec .hotelInfo .normText{
+    font-size: .7em;
+}
+.dateRow .hotelSec .addNewHotel{
+    font-size: 11px;
+    border-radius: 11px;
+    border: solid 1px gray;
+    background: var(--koochita-blue);
+    color: white;
+    cursor: pointer;
+    font-weight: normal;
+}
+.dateRow .planSec{
+    border-top: solid 1px #8080802e;
+}
+.dateRow .planSec .bod{
+    position: relative;
+    width: 100%;
+}
+.dateRow .planSec .bod .mainRule{
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background:  var(--koochita-light-green);
+    top: 50%;
+}
+.dateRow .planSec .bod .sections{
+    width: 100%;
+    height: 100px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dateRow .planSec .bod .sections .sec{
+    width: calc(100% / 24);
+    height: 20px;
+}
+.dateRow .planSec .bod .sections .lineSec{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    margin-top: 12px;
+    width: 1px;
+}
+.dateRow .planSec .bod .sections .planDetSec{
+    position: absolute;
+    width: 100%;
+    top: calc(50% - 10px);
+}
+.dateRow .planSec .bod .sections .planDetSec .detail{
+    position: absolute;
+    height: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8px;
+    transition: .3s;
+    overflow: hidden;
+}
+.dateRow .planSec .bod .sections .planDetSec .detail:hover{
+    opacity: .8;
+}
+.dateRow .planSec .bod .sections .line{
+    height: 40px;
+    width: 1px;
+    background: var(--koochita-light-green);
+}
+.dateRow .planSec .iconsPlus{
+    font-size: 30px;
+    border: none;
+    background: no-repeat;
+    color: green;
+    cursor: pointer;
+    margin-right: auto;
+}
+.dateRow .summerySec{
+    border-top: solid 1px #8080802e;
+}
+
+.clockpicker-popover{
+    z-index: 99999;
+}
+
+
+.eventModal{
+
+}
+.eventModal .title{
+    font-weight: bold;
+}
+.eventModal .timeSec{
+    margin-top: 20px;
+    /*border-top: solid 1px lightgray;*/
+    /*padding-top: 20px;*/
+    padding-top: 5px;
+}
+.eventModal .timeSec .inp{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+.eventModal .timeSec .inp .clockTitle{
+    width: 40%;
+}
+.eventModal .timeSec .inp .clockTitle .clockP{
+
+}
+.eventModal .timeSec .inp .clockTitle .name{
+    font-size: 10px;
+}
+.eventModal .options{
+    /*margin-top: 15px;*/
+    border-bottom: solid 1px lightgray;
+    /*padding-top: 10px;*/
+}
+.eventModal .options .bod{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.eventModal .options .bod .eventItem{
+    padding: 10px;
+    margin: 5px;
+    border: solid 1px gray;
+    border-radius: 25px;
+    font-size: 11px;
+    cursor: pointer;
+}
+.eventModal .options .bod .eventItem:hover{
+    background: var(--koochita-yellow);
+}
+.eventModal .options .bod .eventItem.select{
+    background: var(--koochita-yellow);
+}
+.eventModal .options .bod .eventItem .text{
+
+}
+.eventModal .options .bod .eventItem .icon{
+
+}
+.eventModal .optBody{
+    margin-top: 15px;
+}
+.eventModal .optBody .choosedPlace{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    position: relative;
+}
+.eventModal .optBody .choosedPlace .placeCar{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    position: relative;
+}
+.eventModal .optBody .choosedPlace .placeCar .imgSec{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+.eventModal .optBody .choosedPlace .placeCar .name{
+    font-weight: bold;
+    font-size: 13px;
+}
+.eventModal .optBody .choosedPlace .placeCar .text{
+    font-weight: normal;
+    font-size: 11px;
+}
+.eventModal .optBody .choosedPlace .placeCar .cancelPlace{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    cursor: pointer;
+    font-size: 50px;
+    background: #0000004d;
+    border-radius: 50px;
+}
+.eventModal .optBody .choosedPlace .placeCar:hover .cancelPlace{
+    display: flex;
+}
+
+.eventModal .optBody .searchBox{
+    position: relative;
+}
+.eventModal .optBody .searchBox .searchResult{
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    max-height: 300px;
+    overflow: auto;
+    z-index: 1;
+}
+.eventModal .optBody .searchBox .searchResult .res{
+    padding: 10px;
+    cursor: pointer;
+    font-size: 13px;
+}
+.eventModal .optBody .searchBox .searchResult .res:hover{
+    background: var(--koochita-light-green);
+}
+
+.errorList{
+    list-style-type: none;
+}
+.errorList li{
+    margin: 10px 0px;
+}
+
+.seperatorInWhiteSec{
+    border-top: solid 1px #e0e0e06b;
+    margin-top: 15px;
+    padding-top: 15px;
+}
+
+
+.float-right{
+    float: right !important;
+}
+.importantFieldLabel:after{
+    content: '*';
+    color: red;
+    margin-right: 5px;
+}
+.btn.btn-secondary{
+    background: lightgray;
+    border: none;
+    color: black;
+    opacity: .4;
+}
+.btn.btn-secondary.active{
+    color: white !important;
+    opacity: 1 !important;
+    background: #4dc7bcf0 !important;
+    border: solid 1px var(--koochita-light-green) !important;
+}
+
+.goToPrevStep{
+    margin-left: 10px;
+    background: none;
+    color: var(--koochita-red);
+}
+
+.mainDiv {
+    width: 90%;
+    margin: 5% auto;
+    direction: rtl;
+}
+.inputBox {
+    padding: 2px 7px;
+    font-size: 0.8em;
+    display: inline-block;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    background-color: #ebebeb;
+    line-height: 30px;
+    margin: 10px 0;
+}
+.inputBoxText {
+    width: 35%;
+    border-left: 1px solid #d8d8d8;
+    display: inline-block;
+}
+.inputBoxInput {
+    width: 65%;
+    text-align: center;
+    border: none;
+    float: left;
+    background-color: transparent;
+}
+.inputBoxSelect {
+    width: 20%;
+    border: none;
+    background-color: transparent;
+}
+/*input[type="checkbox"] {*/
+/*background-color: var(--koochita-light-green);*/
+/*}*/
+
+.uploadHover{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+    background: #00000069;
+}
+.uploadHover .tickIcon{
+    color: lime;
+    font-size: 85px;
+    border: solid 10px;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.uploadHover .warningIcon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--koochita-yellow);
+}
+.uploadHover .warningIcon:before{
+    font-size: 60px;
+    font-weight: normal;
+}
+.uploadHover .process{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.uploadHover .process .processCounter{
+    position: absolute;
+    font-size: 22px;
+    color: white;
+}
+
+
+.uploadHover .hoverInfos{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background: #000000b0;
+    color: red;
+    cursor: pointer;
+}
+.uploadHover .hoverInfos .cancelButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 22px;
+}
+.uploadHover .hoverInfos .cancelButton:before{
+    font-size: 55px;
+}
+.uploadHover:hover .hoverInfos{
+    display: flex;
+}
+
+.equipmentSection{
+
+}
+.equipmentSection .panel-title{
+
+}
+.equipmentSection .panel-title > div{
+    padding: 3px 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 3px 0px;
+}
+.equipmentSection .panel-title > div:hover, .equipmentSection .panel-title > div.selectTag{
+    color: white;
+    background: var(--koochita-light-green);
+}
+
+
+.textareaInForDescription{
+    width: 100%;
+    text-align: right;
+}
+.chooseTourKind{
+    background: rgb(77, 199, 188) !important;
+    color: white !important;
+}
+.tourLevelIcons::before{
+    width: 100%;
+    display: flex;
+    font-weight: normal;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+.tourLevelIcons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+.tourKindIcons:hover{
+    background: var(--koochita-light-green);
+}
+
+.goToPrevStep{
+    margin-left: 10px;
+    background: none;
+    color: var(--koochita-red);
+}
+
+.tourKind:hover{
+    background: var(--koochita-light-green);
+}
+
+.tourLevelIcons::before{
+    width: 100%;
+    display: flex;
+    font-weight: normal;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+.tourLevelIcons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+.tourLevelIcons:hover{
+    background: var(--koochita-light-green);
+    color: white;
+}
+.tourKindIcons:hover{
+    background: var(--koochita-light-green);
+}
+
+.afterBuyBtn {
+    color: white;
+    line-height: 15px;
+    display: inline-block;
+    border-radius: 7px;
+    text-align: center;
+    margin: 5px 0;
+    font-size: 1.1em;
+}
+
+.afterBuyIcon {
+    font-family: shazde_regular2 !important;
+    display: inline-block;
+}
+
+.redStar:before {
+    content: '\E00B';
+    font-size: 0.5em;
+    color: #92321b;
+    position: absolute;
+    top: -5px;
+    left: -10px;
+}
+.bottomArrowIcon:before {
+    content: '\E04A';
+    color: black;
+}
+
+.check-box__item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.inlineBorder {
+    border-bottom: 1.8px solid #aeaeae;
+    margin: 10px 0;
+}
+
+.searchResultBoxSection{
+    position: absolute;
+    left: 0px;
+    top: 100%;
+    background: lightgray;
+    width: calc(100% - 110px);
+    z-index: 2;
+    padding: 10px;
+    border-radius: 0px 0px 10px 10px;
+    border: solid 1px #cccccc;
+}
+.searchResultBoxSection .res{
+    margin: 0px 2px;
+    padding: 5px 2px;
+    border-bottom: solid 1px gray;
+    font-size: 18px;
+    transition: .3s;
+    cursor: pointer;
+}
+.searchResultBoxSection .res:hover{
+    background: var(--koochita-light-green);
+    color: white;
+}
+.searchResultBoxSection .res .light{
+    font-size: 11px;
+}
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    margin: 4px;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+.submitBTNCircleIcon{
+    border: none;
+    background: green;
+    /* width: 30px; */
+    /* height: 30px; */
+    border-radius: 5px;
+    color: white;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 15px;
+}
+.personInfosLabel{
+    display: inline-flex;
+    align-items: center;
+    margin: 7px 20px;
+    font-size: 14px;
+}
+.transportInfoSec{
+    display: flex !important;
+    align-items: center;
+    flex-wrap: wrap;
+    direction: rtl;
+    float: unset;
+}
+.transportInfoSec > div{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.dayActionButton{
+    margin: 0px 10px;
+    padding: 4px 10px;
+    background: var(--koochita-blue);
+    color: white;
+    border-radius: 7px;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px 2px #bbbbbb;
+}
+
+.icon-circle-arrow-right{
+    width: 10px;
+    height: 10px;
+    display: flex;
+    border-right: solid 2px black;
+    border-top: solid 2px black;
+    transform: rotate(45deg);
+}
+.icon-circle-arrow-left{
+    width: 10px;
+    height: 10px;
+    display: flex;
+    border-left: solid 2px black;
+    border-bottom: solid 2px black;
+    transform: rotate(45deg);
+}
+.calendarIcon{
+    font-style: normal;
+}
+.addNewDateRow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.calendarRow{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.youCantSelect{
+    opacity: 1 !important;
+}
+.youCantSelect > span{
+    background: var(--koochita-blue) !important;
+    color: white !important;
+}
+
+
+.dayToDiscountRow{
+    display: flex;
+    align-items: center;
+}
+.dayToDiscountRow .textSec{
+    align-items: center;
+    display: flex;
+    margin: 0px 10px;
+}
+.dayToDiscountRow .dayInput{
+    width: 100px;
+    background: #ebebeb;
+    padding: 3px 0px;
+    margin: 0px 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    text-align: center;
+}
+.onlyInputBackGray{
+    width: 45px;
+    background: #ebebeb;
+    border: 1px solid #cccccc !important;
+    margin: 0px 10px;
+    border-radius: 5px;
+}
+.textareaInForDescription{
+    width: 100%;
+    text-align: right;
+}
+
+.dateModal .topBorder{
+    border-top: solid 1px gray;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+.dateModal .secTitle{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.otherDateSection{
+    margin-top: 14px;
+}
+.tableButton{
+    font-size: 11px;
+    padding: 4px 10px;
+}
+
+.submitAndPrevButton{
+    padding: 15px;
+    direction: ltr;
+}

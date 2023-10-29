@@ -1,0 +1,84 @@
+
+.row {
+    direction: rtl;
+    text-align: right;
+}
+
+.f_r {
+    float: right;
+}
+
+.inputDescription {
+    color: #a5a5a5;
+    font-size: 12px
+}
+
+input, select {
+    border-radius: 10px !important;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.switch {
+    width: 30px;
+    height: 17px;
+    float: left;
+}
+
+input:checked + .slider:before {
+    transform: translateX(13px);
+}
+
+.slider:before {
+    height: 13px;
+    width: 13px;
+    left: 2px;
+    bottom: 2px;
+}
+
+.error {
+    background-color: #ffb6b6;
+}
+
+.citySearch {
+    background-color: #eaeaea;
+    position: absolute;
+    width: 100%;
+    z-index: 9;
+    /*border: solid gray 1px;*/
+    border-radius: 5px;
+}
+
+.liSearch {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.liSearch:hover {
+    background-color: #d4ebff;
+}
+
+.errorDiv {
+    position: fixed;
+    z-index: 99999;
+    top: 50px;
+    width: 100%;
+    padding: 0 20%;
+    direction: rtl;
+}
+
+.eleman {
+    margin-left: 30px;
+    width: 160px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+.marTop {
+    margin-top: 10px;
+}
