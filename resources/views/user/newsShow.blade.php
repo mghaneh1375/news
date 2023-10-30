@@ -2,73 +2,65 @@
 
 
 @section('head')
+    <meta content="article" property="og:type" />
+    <meta property="og:title" content="{{ $news->seoTitle }}" />
+    <meta property="title" content="{{ $news->seoTitle }}" />
+    <meta name="twitter:title" content="{{ $news->seoTitle }}" />
+    <meta name="twitter:card" content="{{ $news->meta }}" />
+    <meta name="description" content="{{ $news->meta }}" />
+    <meta name="twitter:description" content="{{ $news->meta }}" />
+    <meta property="og:description" content="{{ $news->meta }}" />
+    <meta property="article:section" content="{{ $news->category->name }}" />
+    <meta property="article:author " content="{{ $news->username }}" />
+    <meta name="keywords" content="{{ $news->keyword }}">
+    <meta property="og:url" content="{{ Request::url() }}" />
 
-    <meta content="article" property="og:type"/>
-    <meta property="og:title" content="{{$news->seoTitle}}"/>
-    <meta property="title" content="{{$news->seoTitle}}"/>
-    <meta name="twitter:title" content="{{$news->seoTitle}}"/>
-    <meta name="twitter:card" content="{{$news->meta}}"/>
-    <meta name="description" content="{{$news->meta}}"/>
-    <meta name="twitter:description" content="{{$news->meta}}"/>
-    <meta property="og:description" content="{{$news->meta}}"/>
-    <meta property="article:section" content="{{$news->category->name}}"/>
-    <meta property="article:author " content="{{$news->username}}"/>
-    <meta name="keywords" content="{{$news->keyword}}">
-    <meta property="og:url" content="{{Request::url()}}"/>
+    <meta property="og:image" content="{{ $news->pic }}" />
+    <meta property="og:image:secure_url" content="{{ $news->pic }}" />
+    <meta name="twitter:image" content="{{ $news->pic }}" />
+    <meta property="og:image:width" content="550" />
+    <meta property="og:image:height" content="367" />
 
-    <meta property="og:image" content="{{$news->pic}}"/>
-    <meta property="og:image:secure_url" content="{{$news->pic}}"/>
-    <meta name="twitter:image" content="{{$news->pic}}"/>
-    <meta property="og:image:width" content="550"/>
-    <meta property="og:image:height" content="367"/>
-
-    @foreach($news->tags as $item)
-        <meta property="article:tag" content="{{$item}}"/>
+    @foreach ($news->tags as $item)
+        <meta property="article:tag" content="{{ $item }}" />
     @endforeach
 
-    <title>{{isset($news->seoTitle) ? $news->seoTitle : $news->title}} </title>
+    <title>{{ isset($news->seoTitle) ? $news->seoTitle : $news->title }} </title>
 
     <style>
-        .eddsSec{
+        .eddsSec {}
 
-        }
-        .eddsSec.fixedL{
+        .eddsSec.fixedL {
             position: fixed;
             bottom: 0px;
         }
-        .newsVideo{
 
+        .newsVideo {}
+
+        .sideSec .tagSection {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 10px;
+            row-gap: 5px;
         }
-
-.sideSec .tagSection {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 10px;
-    row-gap: 5px;
-}
-
     </style>
 
-	@if(!$news->rtl)
-		<style>
-			.newsContainer > .body *:not(.title) {
-				direction: ltr !important;
-			}
+    @if (!$news->rtl)
+        <style>
+            .newsContainer>.body *:not(.title) {
+                direction: ltr !important;
+            }
 
-			.newsContainer > .title > h1 {
-				direction: ltr !important;
-			}
-
-
-		</style>
-	@endif
-
+            .newsContainer>.title>h1 {
+                direction: ltr !important;
+            }
+        </style>
+    @endif
 @endsection
 
 
 @section('body')
-
     <div class="row" style="margin-top: 20px">
         <div id="pcSideAdSection" class="col-md-2 hideOnPhone">
             <div id="dsfjk" class="eddsSec">
@@ -77,13 +69,14 @@
                     <div class="otherNewsInShowSec">
                         <div id="otherNewsSlider" class="swiper-container otherNewsInShow">
                             <div class="swiper-wrapper">
-                                @foreach($otherNews as $item)
+                                @foreach ($otherNews as $item)
                                     <div class="swiper-slide">
-                                        <a href="{{$item->url}}" class="picSec">
-                                            <img data-src="{{$item->pic}}" alt="{{$item->keyword}}" loading="lazy" class="lazyload resizeImgClass" onload="fitThisImg(this)">
+                                        <a href="{{ $item->url }}" class="picSec">
+                                            <img data-src="{{ $item->pic }}" alt="{{ $item->keyword }}" loading="lazy"
+                                                class="lazyload resizeImgClass" onload="fitThisImg(this)">
                                         </a>
-                                        <a href="{{$item->url}}" class="content">
-                                            <h3 class="title">{{$item->title}}</h3>
+                                        <a href="{{ $item->url }}" class="content">
+                                            <h3 class="title">{{ $item->title }}</h3>
                                         </a>
                                     </div>
                                 @endforeach
@@ -103,17 +96,19 @@
         <div class="col-md-8 newsContainer">
 
             <div class="newsTitleShow hideOnScreen">
-                <h1 style="font-weight: bold">{{$news->title}}</h1>
+                <h1 style="font-weight: bold">{{ $news->title }}</h1>
             </div>
             <div class="mainPic" style="max-width: 100%; width: 100%; max-height: 500px; overflow: hidden; display: flex">
-                @if($news->video == null)
-                    <img src="{{$news->pic}}" alt="{{$news->keyword}}" class="resizeImgClass" onload="fitThisImg(this)">
+                @if ($news->video == null)
+                    <img src="{{ $news->pic }}" alt="{{ $news->keyword }}" class="resizeImgClass"
+                        onload="fitThisImg(this)">
                 @else
-                    <video src="{{$news->video}}" poster="{{$news->pic}}" class="newsVideo" controls style="width: 100%; max-height: 100%;"></video>
+                    <video src="{{ $news->video }}" poster="{{ $news->pic }}" class="newsVideo" controls
+                        style="width: 100%; max-height: 100%;"></video>
                 @endif
             </div>
             <div class="title hideOnPhone">
-                <h1 style="font-weight: bold">{{$news->title}}</h1>
+                <h1 style="font-weight: bold">{{ $news->title }}</h1>
             </div>
 
             <div class="body">
@@ -122,16 +117,17 @@
                 </div>
                 <div id="bottomOfText"></div>
 
-		<div class="row sideSec" style="border-bottom: 0">
-                	<div class="title">برچسب ها</div>
-	                <div class="tagSection">
-        	            @foreach($news->tags as $item)
-                	        <div class="tag">
-                        	    <a href="{{route('site.news.list', ['kind' => 'tag', 'content' => $item])}}">{{$item}}</a>
-	                        </div>
-        	            @endforeach
-                	</div>
-	        </div>
+                <div class="row sideSec" style="border-bottom: 0">
+                    <div class="title">برچسب ها</div>
+                    <div class="tagSection">
+                        @foreach ($news->tags as $item)
+                            <div class="tag">
+                                <a
+                                    href="{{ route('site.news.list', ['kind' => 'tag', 'content' => $item]) }}">{{ $item }}</a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
 
 
             </div>
@@ -139,7 +135,7 @@
 
         <div class="col-md-2">
             <div class="row sideSec">
-                <div> {{$news->showTime}}</div>
+                <div> {{ $news->showTime }}</div>
             </div>
 
 
@@ -176,8 +172,8 @@
                             <div class="text">کپی کردن لینک</div>
                         </div>
                     </div>
-		</div>
-	    </div>
+                </div>
+            </div>
 
         </div>
 
@@ -187,13 +183,14 @@
                 <div class="otherNewsInShowSec">
                     <div id="otherNewsSlider" class="swiper-container otherNewsInShow">
                         <div class="swiper-wrapper">
-                            @foreach($otherNews as $item)
+                            @foreach ($otherNews as $item)
                                 <div class="swiper-slide">
-                                    <a href="{{$item->url}}" class="picSec">
-                                        <img data-src="{{$item->pic}}" alt="{{$item->keyword}}" loading="lazy" class="lazyload resizeImgClass" onload="fitThisImg(this)">
+                                    <a href="{{ $item->url }}" class="picSec">
+                                        <img data-src="{{ $item->pic }}" alt="{{ $item->keyword }}" loading="lazy"
+                                            class="lazyload resizeImgClass" onload="fitThisImg(this)">
                                     </a>
-                                    <a href="{{$item->url}}" class="content">
-                                        <h3 class="title">{{$item->title}}</h3>
+                                    <a href="{{ $item->url }}" class="content">
+                                        <h3 class="title">{{ $item->title }}</h3>
                                     </a>
                                 </div>
                             @endforeach
@@ -207,12 +204,10 @@
             <div data-kind="ver_s" class="edSections edBetween onED"></div>
         </div>
     </div>
-
 @endsection
 
 
 @section('script')
-
     <script>
         var swiper = new Swiper('.otherNewsInShow', {
             spaceBetween: 10,
@@ -229,7 +224,7 @@
         });
 
         $(window).ready(() => {
-            let encodeurlShareBox = encodeURIComponent('{{Request::url()}}');
+            let encodeurlShareBox = encodeURIComponent('{{ Request::url() }}');
             let textShareBox = 'whatsapp://send?text=';
             textShareBox += 'در کوچیتا ببینید:' + ' %0a ' + encodeurlShareBox;
             $('.whatsappLink').attr('href', textShareBox);
@@ -241,11 +236,11 @@
         var lastScrollPosition = 0;
         var fixingId = 'dsfjk';
 
-        function fitSideSizes(){
+        function fitSideSizes() {
             var width = $(`#${fixingId}`).width();
             var leftOfAd = document.getElementById('dsfjk').getBoundingClientRect().left;
 
-            if(!sideIsFixed) {
+            if (!sideIsFixed) {
                 $(`#${fixingId}`).css('left', leftOfAd);
                 $(`#${fixingId}`).css('width', width);
             }
@@ -256,21 +251,23 @@
 
         $(window).on('scroll', function() {
 
-            if(!startFixing)
-                 return;
+            if (!startFixing)
+                return;
 
             var scrollPosition = $(window).scrollTop();
-            var positionOfFooter = document.getElementById('bottomOfText').getBoundingClientRect().top - $(window).height();
-            var bottomOfAd = document.getElementById('dsfjk').getBoundingClientRect().top + $(`#${fixingId}`).height() - $(window).height();
+            var positionOfFooter = document.getElementById('bottomOfText').getBoundingClientRect().top - $(window)
+                .height();
+            var bottomOfAd = document.getElementById('dsfjk').getBoundingClientRect().top + $(`#${fixingId}`)
+                .height() - $(window).height();
             var scrollMovement = scrollPosition - lastScrollPosition > 0 ? 'down' : 'up';
 
-            if(bottomOfAd <= 0 && !sideIsFixed){
+            if (bottomOfAd <= 0 && !sideIsFixed) {
                 sideIsFixed = true;
                 $(`#${fixingId}`).addClass('fixedL');
                 $(`#${fixingId}`).css('bottom', 0)
             }
 
-            if(sideIsFixed) {
+            if (sideIsFixed) {
 
                 if (positionOfFooter <= 0)
                     $(`#${fixingId}`).css('bottom', Math.abs(positionOfFooter));
@@ -278,7 +275,7 @@
                     var absoluteTop = document.getElementById('dsfjk').getBoundingClientRect().top;
 
                     if (scrollMovement == 'up') {
-                        if(absoluteTop < 10){
+                        if (absoluteTop < 10) {
                             var bot = parseInt($(`#${fixingId}`).css('bottom'));
                             $(`#${fixingId}`).css('bottom', bot - Math.abs(scrollPosition - lastScrollPosition))
                         }
@@ -288,9 +285,8 @@
                             sideIsFixed = false;
                             $(`#${fixingId}`).removeClass('fixedL');
                         }
-                    }
-                    else {
-                        if(bottomOfAd > 0){
+                    } else {
+                        if (bottomOfAd > 0) {
                             var bot = parseInt($(`#${fixingId}`).css('bottom'));
                             $(`#${fixingId}`).css('bottom', bot + Math.abs(scrollPosition - lastScrollPosition))
                         }
@@ -301,11 +297,11 @@
             lastScrollPosition = scrollPosition;
         });
 
-	var url = $(location).attr('href')
+        var url = $(location).attr('href')
         var decodedUri = decodeURIComponent(url);
         $("#telegram").attr("href", "https://telegram.me/share/url?url=" + decodedUri)
-        $("#whatsApp").attr("href", "https://telegram.me/share/url?url=" + decodedUri)
-        $("#telegram").attr("href", "https://twitter.com/home?status=" + decodedUri)
+        $("#whatsApp").attr("href", "whatsapp://send?text=" + decodedUri)
+        $("#twitter").attr("href", "https://twitter.com/home?status=" + decodedUri)
         $("#facebook").attr("href", "https://www.facebook.com/sharer/sharer.php?u=" + decodedUri)
 
         $(document).ready(function() {
@@ -319,7 +315,5 @@
                 $('#copy-button').attr('data-original-title', 'لینک کپی شد').tooltip('show');
             });
         });
-
     </script>
-
 @endsection

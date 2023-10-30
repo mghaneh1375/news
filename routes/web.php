@@ -37,6 +37,7 @@ Route::middleware(['setLocale'])->group(function() {
 
 
     Route::middleware(['shareNews'])->group(function (){
+        Route::get('', [UserNewsController::class, 'newsMainPage'])->name('site.news.main');
 
         Route::get('/main/{lang?}', [UserNewsController::class, 'newsMainPage'])->name('site.news.main');
 

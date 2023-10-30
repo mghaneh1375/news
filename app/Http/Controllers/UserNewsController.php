@@ -19,14 +19,28 @@ class UserNewsController extends Controller
         \App::setLocale($lang);
         $selectCol = ['id', 'title', 'meta', 'slug', 'keyword', 'pic', 'video', 'server'];
         $sliderNews = News::youCanSee()->orderByDesc('dateAndTime')->select($selectCol)->take(5)->get();
-        $sideSliderNews = News::youCanSee()->orderByDesc('dateAndTime')->select($selectCol)->skip(5)->take(4)->get();
+        $sideSliderNews = News::youCanSee()->orderByDesc('dateAndTime')->select($selectCol)->skip(5)->take(2)->get();
         if(count($sideSliderNews) < 4){
             $remaining = 4 - count($sideSliderNews);
             $skip = 5 - $remaining;
-            $sideSliderNews = News::youCanSee()->select($selectCol)->orderBy('created_at')->skip($skip)->take(4)->get();
+            $sideSliderNews = News::youCanSee()->select($selectCol)->orderBy('created_at')->skip($skip)->take(2)->get();
         }
 
         foreach ([$sliderNews, $sideSliderNews] as $section){
+            foreach ($section as $item)
+                $item = getNewsMinimal($item);
+        }
+
+
+
+        $mostViewNews = News::youCanSee()->orderBy('seen','desc')->select($selectCol)->take(6)->get();
+        if(count($mostViewNews) < 4){
+            $remaining = 4 - count($mostViewNews);
+            $skip = 5 - $remaining;
+            $mostViewNews = News::youCanSee()->select($selectCol)->orderBy('created_at')->skip($skip)->take(4)->get();
+        }
+
+        foreach ([$sliderNews, $mostViewNews] as $section){
             foreach ($section as $item)
                 $item = getNewsMinimal($item);
         }
@@ -50,11 +64,12 @@ class UserNewsController extends Controller
         foreach ($topNews as $item)
             $item = getNewsMinimal($item);
 
-        $lastVideos = News::youCanSee()->where('video', '!=', null)->orderByDesc('dateAndTime')->select($selectCol)->take(5)->get();
+        $lastVideos = News::youCanSee()->whereNotNull('video')->orderByDesc('dateAndTime')->select($selectCol)->take(5)->get();
+        
         foreach ($lastVideos as $item)
             $item = getNewsMinimal($item);
 
-        return view('user.newsMainPage', compact(['sliderNews', 'sideSliderNews', 'allCategories', 'topNews', 'lastVideos']));
+        return view('user.newsMainPage', compact(['sliderNews', 'sideSliderNews','mostViewNews', 'allCategories', 'topNews', 'lastVideos']));
     }
 
     public function newsShow($slug, $lang="fa")
