@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\URL;
 
 function trueShowForTextArea($text){
     $breaks = array("<br />","<br>","<br/>");

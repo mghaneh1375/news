@@ -17,7 +17,7 @@ class UserNewsController extends Controller
     public function newsMainPage($lang="fa")
     {
         \App::setLocale($lang);
-        $selectCol = ['id', 'title', 'meta', 'slug', 'keyword', 'pic', 'video', 'server'];
+        $selectCol = ['id', 'title', 'meta', 'slug', 'keyword', 'pic', 'video', 'server','dateAndTime'];
         $sliderNews = News::youCanSee()->orderByDesc('dateAndTime')->select($selectCol)->take(5)->get();
         $sideSliderNews = News::youCanSee()->orderByDesc('dateAndTime')->select($selectCol)->skip(5)->take(2)->get();
         if(count($sideSliderNews) < 4){
@@ -31,20 +31,12 @@ class UserNewsController extends Controller
                 $item = getNewsMinimal($item);
         }
 
-
-
         $mostViewNews = News::youCanSee()->orderBy('seen','desc')->select($selectCol)->take(6)->get();
         if(count($mostViewNews) < 4){
             $remaining = 4 - count($mostViewNews);
             $skip = 5 - $remaining;
             $mostViewNews = News::youCanSee()->select($selectCol)->orderBy('created_at')->skip($skip)->take(4)->get();
         }
-
-        foreach ([$sliderNews, $mostViewNews] as $section){
-            foreach ($section as $item)
-                $item = getNewsMinimal($item);
-        }
-
 
         $allCategories = NewsCategory::where('parentId', 0)->get();
         foreach ($allCategories as $category){
@@ -69,7 +61,11 @@ class UserNewsController extends Controller
         foreach ($lastVideos as $item)
             $item = getNewsMinimal($item);
 
-        return view('user.newsMainPage', compact(['sliderNews', 'sideSliderNews','mostViewNews', 'allCategories', 'topNews', 'lastVideos']));
+        $lastNews = News::youCanSee()->whereNull('video')->orderBy('dateAndTime')->select($selectCol)->take(6)->get();
+        foreach ($lastNews as $item)
+            $item = getNewsMinimal($item);
+
+        return view('user.newsMainPage', compact(['sliderNews', 'sideSliderNews','mostViewNews', 'allCategories', 'topNews', 'lastVideos','lastNews']));
     }
 
     public function newsShow($slug, $lang="fa")
@@ -171,7 +167,7 @@ class UserNewsController extends Controller
                                     ->take($take)
                                     ->get();
         }
-
+        
         foreach($news as $item)
             $item = getNewsMinimal($item);
 

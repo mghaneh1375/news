@@ -1,22 +1,62 @@
-*{
+* {
     direction: rtl;
 }
 
-
-.swiper-slide{
+.swiper-slide {
     overflow: hidden;
 }
 
-.secHeadMain{
+.d-flex {
+    display: flex !important;
+}
+.heightUnset {
+    height: unset !important;
+}
+.flexDirColumn {
+    display: flex;
+    flex-direction: column;
+}
+.mgt10 {
+    margin-top: 10px;
+}
+.newbgColor {
+    background-color: #ebebeb;
+}
+.justifyContentUnset {
+    display: flex;
+    justify-content: unset !important;
+}
+.pd10 {
+    padding: 10px !important;
+}
+.pdr15 {
+    padding-right: 15px !important;
+}
+.pdl10 {
+    padding-left: 10px !important;
+}
+.alignItemStart {
+    align-items: flex-start;
+}
+.borderRadiusUnset {
+    border-radius: unset !important;
+    -webkit-border-radius: unset !important;
+    -moz-border-radius: unset !important;
+    -ms-border-radius: unset !important;
+    -o-border-radius: unset !important;
+}
+.flexDirRow {
+    flex-direction: row !important;
+}
+.secHeadMain {
     direction: rtl;
     text-align: right;
     position: relative;
     padding: 0px 20px;
-    background-color: var(--koochita-yellow);
+    background-color: #000;
 }
 
 .secHeadTabs:not(:first-child) {
-
     margin-right: 20px;
 }
 
@@ -25,18 +65,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #16174f;
+    color: white;
     font-weight: bold;
     position: relative;
     cursor: pointer;
     height: 40px;
 }
 
-.secHeadNavs{
+.secHeadNavs {
     display: flex;
 }
-
-.secHeadTabsSubList{
+.floatRight {
+    float: right !important;
+}
+.secHeadTabsSubList {
     position: absolute;
     top: 40px;
     z-index: 10;
@@ -47,28 +89,28 @@
     border-radius: 0px 0px 10px 10px;
 }
 
-.secHeadTabs:hover .secHeadTabsSubList{
+.secHeadTabs:hover .secHeadTabsSubList {
     display: flex;
 }
 
-.secHeadTabsSubList > a{
+.secHeadTabsSubList > a {
     color: black;
     padding: 10px 5px;
     font-size: 12px;
     text-align: center;
 }
 
-.secHeadTabsSubList > a:hover{
-    background-color: #88070B;
+.secHeadTabsSubList > a:hover {
+    background-color: #88070b;
     color: white;
 }
 
-.linkRoute{
+.linkRoute {
     color: #16174f !important;
     font-size: 15px;
 }
 
-.spanMarginSecHead{
+.spanMarginSecHead {
     flex-wrap: wrap;
 }
 
@@ -82,50 +124,51 @@
 }
 
 .secHeadTabsSubList > a:last-child {
-    border-radius:  0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
 }
 
-.secHeaderPathDiv{
+.secHeaderPathDiv {
     margin-right: 10px;
     /*min-width: 90px;*/
 }
 
-.yelCol{
+.yelCol {
     color: var(--koochita-yellow);
 }
-.listSecHeadContainer{
+.listSecHeadContainer {
     font-size: 20px;
     flex-wrap: nowrap;
 }
-.fluidPlacePath{
+.fluidPlacePath {
     background-color: white;
     padding-top: 10px;
     overflow-y: hidden;
     overflow-x: auto;
 }
-.linkRoute{
+.linkRoute {
     min-width: 60px;
 }
 
-
-.mainPageSlider{
+.mainPageSlider {
     width: 100%;
     position: relative;
     border-radius: 10px;
 }
 
-.mainPageSlider .content{
+.mainPageSlider .content {
     position: absolute;
     bottom: 0px;
+    right: 0;
+    width: 100%;
     padding: 10px;
     background: linear-gradient(0deg, black, transparent);
 }
-.mainPageSlider .content .title{
+.mainPageSlider .content .title {
     color: white;
     font-size: 20px;
     font-weight: bold;
 }
-.mainPageSlider .content .summery{
+.mainPageSlider .content .summery {
     color: gainsboro;
     line-height: 18px;
     font-size: 12px !important;
@@ -133,36 +176,35 @@
     margin-top: 10px;
 }
 
-
-.topSectionMainPageNews{
+.topSectionMainPageNews {
     margin: 10px 0px;
 }
-.topSectionMainPageNews > div{
+.topSectionMainPageNews > div {
     height: 450px;
 }
 
-.sideCardSec{
+.sideCardSec {
     padding: 0;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
 
-.sideNewsCard{
+.sideNewsCard {
     width: 48%;
     height: 210px;
     overflow: hidden;
     margin-top: 10px;
     border-radius: 10px;
 }
-.sideNewsCard .picSec{
+.sideNewsCard .picSec {
     width: 100%;
     height: 200px;
     overflow: hidden;
     position: relative;
     border-radius: 10px;
 }
-.sideNewsCard .picSec .title{
+.sideNewsCard .picSec .title {
     position: absolute;
     padding: 5px;
     background: linear-gradient(0deg, black, transparent);
@@ -175,37 +217,36 @@
     line-height: 21px;
 }
 
-.inOneRows{
-
+.inOneRows {
 }
 
-.inOneRows .title{
+.inOneRows .title {
     color: var(--koochita-dark-green);
     font-weight: bold;
     font-size: 23px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     margin-top: 30px;
 }
-.inOneRows .body{
+.inOneRows .body {
     display: flex;
     justify-content: space-around;
 }
-.inOneRows .cardDownTitle{
+.inOneRows .cardDownTitle {
     min-width: 200px;
     flex-direction: column;
-    width: 20%;
+    width: 30%;
 }
-.inOneRows .cardDownTitle .picSec{
+.inOneRows .cardDownTitle .picSec {
     height: 160px;
     overflow: hidden;
     border-radius: 10px;
-    width: 100%;
+    width: 50%;
     position: relative;
 }
-.picSec.playIcon{
+.picSec.playIcon {
     position: relative;
 }
-.picSec.playIcon:before{
+.picSec.playIcon:before {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -218,58 +259,58 @@
     justify-content: center;
     align-items: center;
 }
-.inOneRows .cardDownTitle .content{
+.inOneRows .cardDownTitle .content {
     padding: 10px;
     text-align: center;
     font-weight: bold;
     padding-top: 3px;
-    color: black;
+    color: white;
     display: flex;
 }
 
-.oneBig4SmallRows{
+.oneBig4SmallRows {
     padding: 10px 0px;
     margin: 10px 0px;
     border-radius: 10px;
 }
-.oneBig4SmallRows .sideDown{
+.oneBig4SmallRows .sideDown {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
-.oneBig4SmallRows .title{
+.oneBig4SmallRows .title {
     font-size: 24px;
     margin-bottom: 10px;
     color: black;
     font-weight: bold;
 }
 
-.colCard{
+.colCard {
     padding: 10px;
     width: 100%;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
 }
-.colCard .picSec{
+.colCard .picSec {
     width: 100%;
     overflow: hidden;
     border-radius: 10px;
     height: 250px;
 }
-.colCard .content{
+.colCard .content {
     color: white;
 }
-.colCard .content .title{
+.colCard .content .title {
     color: white;
     font-weight: normal;
 }
-.colCard .content .summery{
+.colCard .content .summery {
     line-height: 20px;
     font-size: 13px !important;
 }
 
-.rowCard{
+.rowCard {
     display: flex;
     height: 120px;
     margin-bottom: 10px;
@@ -278,231 +319,230 @@
     border-radius: 10px;
     width: 48%;
 }
-.rowCard .picSec{
+.rowCard .picSec {
     width: 40%;
     height: 90%;
     overflow: hidden;
     border-radius: 10px;
 }
-.rowCard .content{
+.rowCard .content {
     width: 50%;
     font-size: 14px !important;
     color: white;
     line-height: 18px;
 }
 
-.oneBig4SmallRows.green{
+.oneBig4SmallRows.green {
     /*background: var(--koochita-green);*/
     background: #0d665052;
 }
-.oneBig4SmallRows.green .rowCard, .oneBig4SmallRows.green .colCard{
+.oneBig4SmallRows.green .rowCard,
+.oneBig4SmallRows.green .colCard {
     background: var(--koochita-green);
 }
 
-.oneBig4SmallRows.yellow{
+.oneBig4SmallRows.yellow {
     /*background: var(--koochita-yellow);*/
     background: #fcc1564a;
 }
-.oneBig4SmallRows.yellow .rowCard, .oneBig4SmallRows.yellow .colCard{
+.oneBig4SmallRows.yellow .rowCard,
+.oneBig4SmallRows.yellow .colCard {
     background: var(--koochita-yellow);
 }
 
-.oneBig4SmallRows.blue{
+.oneBig4SmallRows.blue {
     background: var(--koochita-blue);
     background: #0076a340;
 }
-.oneBig4SmallRows.blue .rowCard, .oneBig4SmallRows.blue .colCard{
+.oneBig4SmallRows.blue .rowCard,
+.oneBig4SmallRows.blue .colCard {
     background: var(--koochita-blue);
 }
 
-.oneBig4SmallRows.lightGreen{
+.oneBig4SmallRows.lightGreen {
     background: var(--koochita-light-green);
     background: #4dc7bc45;
 }
-.oneBig4SmallRows.lightGreen .rowCard, .oneBig4SmallRows.lightGreen .colCard{
+.oneBig4SmallRows.lightGreen .rowCard,
+.oneBig4SmallRows.lightGreen .colCard {
     background: var(--koochita-light-green);
 }
 
-.oneBig4SmallRows.red{
+.oneBig4SmallRows.red {
     background: var(--koochita-red);
     background: #720d1954;
 }
-.oneBig4SmallRows.red .rowCard, .oneBig4SmallRows.red .colCard{
+.oneBig4SmallRows.red .rowCard,
+.oneBig4SmallRows.red .colCard {
     background: var(--koochita-red);
 }
 
-
-.edBetween{
+.edBetween {
     margin: 10px 0px;
     width: 100%;
     height: 200px;
     display: flex;
     justify-content: space-between;
 }
-.edBetween.onED{
-
+.edBetween.onED {
 }
-.edBetween.onED > a{
+.edBetween.onED > a {
     overflow: hidden;
     height: 100%;
     width: 100%;
 }
 
-.edBetween.twoED{
-
+.edBetween.twoED {
 }
-.edBetween.twoED > a{
+.edBetween.twoED > a {
     width: 49%;
     overflow: hidden;
 }
 
-.descriptionText{
-
+.descriptionText {
 }
-.descriptionText h2, .descriptionText h2 span{
+.descriptionText h2,
+.descriptionText h2 span {
     font-size: 22px !important;
     line-height: 29px !important;
     font-weight: bold !important;
 }
-.descriptionText span, .descriptionText p{
+.descriptionText span,
+.descriptionText p {
     font-size: 14px !important;
     line-height: 30px !important;
     font-weight: 400 !important;
     text-align: justify;
 }
-.descriptionText figure{
+.descriptionText figure {
     margin: 20px auto;
     display: flex;
     width: 100% !important;
 }
-.descriptionText img{
+.descriptionText img {
     margin: 0px auto;
     max-width: 100% !important;
 }
 
-.sideSec .title{
+.sideSec .title {
     font-size: 18px;
     font-weight: bold;
     color: black;
 }
-.sideSec .tagSection{
+.sideSec .tagSection {
     display: flex;
     flex-direction: column;
 }
-.sideSec .tagSection .tag{
+.sideSec .tagSection .tag {
     margin-top: 10px;
     font-size: 16px;
 }
-.sideSec .tagSection .tag > a{
+.sideSec .tagSection .tag > a {
     padding: 0px 5px;
     background: #0076a3a3;
     color: #ffffff;
-    transition: .3s;
+    transition: 0.3s;
 }
-.sideSec .tagSection .tag > a:hover{
+.sideSec .tagSection .tag > a:hover {
     background: var(--koochita-blue);
 }
 
-
-.sideEdInShow{
+.sideEdInShow {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 16px;
 }
-.sideEdInShow .edvPic{
+.sideEdInShow .edvPic {
     width: 100%;
 }
-.sideEdInShow .edvPic > img{
+.sideEdInShow .edvPic > img {
     width: 100%;
 }
 
-.sideSec .otherNewsInShow{
+.sideSec .otherNewsInShow {
     width: 100%;
     position: relative;
 }
-.sideSec .otherNewsInShow .swiper-slide{
+.sideSec .otherNewsInShow .swiper-slide {
     display: flex;
     flex-direction: column;
 }
-.sideSec .otherNewsInShow .swiper-slide .picSec{
+.sideSec .otherNewsInShow .swiper-slide .picSec {
     height: 200px;
 }
-.sideSec .otherNewsInShow .swiper-slide .content{
+.sideSec .otherNewsInShow .swiper-slide .content {
     position: relative;
     background: none;
 }
-.sideSec .otherNewsInShow .swiper-slide .content .title{
+.sideSec .otherNewsInShow .swiper-slide .content .title {
     color: black;
     text-align: center;
     margin-bottom: 20px;
 }
 
-.sideSec{
+.sideSec {
     padding-bottom: 10px;
     border-bottom: solid 1px;
     margin-bottom: 10px;
 }
 
-.shareSec{
-
+.shareSec {
 }
-.shareSec .bu{
-
+.shareSec .bu {
 }
-.shareSec .bu a{
+.shareSec .bu a {
     display: flex;
     margin-bottom: 10px;
 }
-.shareSec .bu .text{
+.shareSec .bu .text {
     color: var(--koochita-dark-green);
     margin-right: 5px;
 }
-.shareSec .bu .pic{
+.shareSec .bu .pic {
     width: 20px;
     height: 20px;
     border-radius: 50%;
 }
 
-.listBody{
-
+.listBody {
 }
-.listBody .newsRow{
+.listBody .newsRow {
     display: flex;
     margin: 15px 0px;
     border-bottom: solid 1px lightgray;
     padding: 10px;
 }
-.listBody .newsRow .picSec{
+.listBody .newsRow .picSec {
     width: 200px;
     height: 100px;
     overflow: hidden;
 }
-.listBody .newsRow .content{
+.listBody .newsRow .content {
     margin-right: 15px;
     width: calc(100% - 200px);
     position: relative;
 }
-.listBody .newsRow .content .title{
+.listBody .newsRow .content .title {
     color: black;
     font-weight: bold;
     font-size: 18px;
 }
-.listBody .newsRow .content .summery{
+.listBody .newsRow .content .summery {
     font-size: 11px;
     margin-top: 10px;
 }
-.listBody .newsRow .content .time{
+.listBody .newsRow .content .time {
     position: absolute;
     color: gray;
     bottom: 0;
     left: 0;
 }
 
-.listHeaderRow{
+.listHeaderRow {
     border-bottom: solid 1px var(--koochita-blue);
 }
-.listHeaderRow h2{
+.listHeaderRow h2 {
     font-weight: bold;
     font-size: 25px !important;
     margin-right: 11px;
@@ -511,50 +551,48 @@
     color: var(--koochita-blue);
 }
 
-
 @media (max-width: 889px) {
-    .secHeadTabs{
+    .secHeadTabs {
         margin-right: 13px;
         font-size: 10px;
         font-weight: 800;
     }
 }
 
-@media (max-width: 650px){
-
-    .listSecHeadContainer{
+@media (max-width: 650px) {
+    .listSecHeadContainer {
         width: fit-content;
     }
     .linkRoute {
         font-size: 12px;
     }
-    .spanMarginSecHead{
+    .spanMarginSecHead {
         padding: 0px;
         padding-left: 10px;
     }
 }
 
 @media (max-width: 767px) {
-    .oneBigSec{
+    .oneBigSec {
         width: 100%;
     }
-    .colCard{
+    .colCard {
         margin-bottom: 10px;
     }
-    .rowCard{
+    .rowCard {
         flex-direction: column;
         height: 200px;
     }
-    .rowCard .picSec{
+    .rowCard .picSec {
         width: 90%;
         height: 50%;
     }
-    .rowCard .content{
+    .rowCard .content {
         width: 90%;
         text-align: center;
     }
 
-    .sideSec{
+    .sideSec {
         width: 100%;
         margin: 0;
         padding: 0;
@@ -563,17 +601,17 @@
         margin-bottom: 10px;
     }
 
-    .listBody .newsRow .content .summery{
+    .listBody .newsRow .content .summery {
         display: none;
     }
-    .listBody .newsRow .picSec{
+    .listBody .newsRow .picSec {
         width: 150px;
     }
-    .listBody .newsRow .content{
+    .listBody .newsRow .content {
         width: calc(100% - 150px);
     }
 
-    .newsTitleShow h1{
+    .newsTitleShow h1 {
         font-weight: bold;
         margin-top: 0;
         line-height: 32px;
@@ -582,20 +620,20 @@
         margin-bottom: 14px;
     }
 
-    .sideSec .tagSection{
+    .sideSec .tagSection {
         flex-direction: row;
         flex-wrap: wrap;
     }
-    .sideSec .tagSection .tag{
+    .sideSec .tagSection .tag {
         margin-top: 10px;
         font-size: 13px;
         margin-left: 10px;
     }
-    .descriptionText figure{
+    .descriptionText figure {
         max-width: 100% !important;
     }
 
-    .newsCategoryListMFooter{
+    .newsCategoryListMFooter {
         overflow-y: auto;
         background: white;
         position: relative;
@@ -603,14 +641,14 @@
         border-top: 0px;
         height: 100%;
     }
-    .newsCategoryListMFooter .list{
+    .newsCategoryListMFooter .list {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         padding-top: 30px;
     }
-    .newsCategoryListMFooter .categ{
+    .newsCategoryListMFooter .categ {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -622,33 +660,32 @@
         height: 70px;
         width: 70px;
     }
-    .newsCategoryListMFooter .categ .categIcon{
+    .newsCategoryListMFooter .categ .categIcon {
         margin: 5px 0px;
     }
-    .newsCategoryListMFooter .categ .categIcon img{
+    .newsCategoryListMFooter .categ .categIcon img {
         height: 40px;
     }
-    .newsCategoryListMFooter .categ .title{
+    .newsCategoryListMFooter .categ .title {
         font-size: 11px;
         margin-bottom: 5px;
         text-align: center;
     }
 
-
-    .searchInMobileNewsBody .title{
+    .searchInMobileNewsBody .title {
         text-align: center;
         font-size: 22px;
         font-weight: bold;
         margin-bottom: 15px;
     }
-    .searchInMobileNewsBody .searchInput{
+    .searchInMobileNewsBody .searchInput {
         font-size: 23px;
         width: 95%;
         padding: 5px;
         border: none;
         border-bottom: solid 2px #868686;
     }
-    .searchInMobileNewsBody .searchButton{
+    .searchInMobileNewsBody .searchButton {
         font-size: 22px;
         background: var(--koochita-yellow);
         color: white;
@@ -658,10 +695,10 @@
         box-shadow: 1px 1px 5px 1px #6f6f6f;
     }
 
-    .listBody .newsRow .content .time{
+    .listBody .newsRow .content .time {
         font-size: 9px;
     }
-    .listBody .newsRow .content .title{
+    .listBody .newsRow .content .title {
         font-size: 14px;
     }
 }

@@ -5206,3 +5206,6 @@ div#sparklinedask1 {
     /* Firefox 18- */
     color: #fff;
 }
+.bold{
+    font-weight: 900;
+}

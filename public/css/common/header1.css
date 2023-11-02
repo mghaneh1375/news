@@ -1,11 +1,12 @@
 /*header1 styles*/
 
-.mainHeader{
+.mainHeader {
     padding-top: 5px;
+    background-color: #ed1e24;
 }
 
 .glyphicon {
-    font-family: 'Glyphicons Halflings' !important;
+    font-family: "Glyphicons Halflings" !important;
 }
 
 .headerMainList {
@@ -21,7 +22,7 @@
 }
 
 #notificationBox {
-    min-height: 60px
+    min-height: 60px;
 }
 
 #notificationBox > div > div:nth-child(1) {
@@ -39,21 +40,21 @@
 }
 
 #notificationBox > div > div:nth-child(2) {
-    margin-right: 70px
+    margin-right: 70px;
 }
 
 .ui_jewel.marked_for_attention:before {
     display: block;
     position: absolute;
     top: -1.05em;
-    left: .025em;
+    left: 0.025em;
     width: 100%;
     height: 100%;
     font-size: 2em;
     line-height: 1;
     font-family: sans-serif;
     color: #fff;
-    content: '\00b7';
+    content: "\00b7";
 }
 
 DIV.ppr_rup.ppr_priv_global_nav_action_inbox .ui_jewel {
@@ -78,7 +79,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_inbox .ui_jewel {
     padding: 3px 5px;
     border-radius: 100%;
     box-sizing: border-box;
-    background-color: #EF6945;
+    background-color: #ef6945;
     font-weight: bold;
     font-size: 10px;
     line-height: 1;
@@ -100,7 +101,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_inbox .ui_jewel {
 }
 
 .masthead_notifctr_dropdown:before {
-    content: '';
+    content: "";
     position: absolute;
     left: 24px;
     top: -10px;
@@ -116,7 +117,6 @@ DIV.ppr_rup.ppr_priv_global_nav_action_inbox .ui_jewel {
     -webkit-filter: drop-shadow(0 0 0 #999);
     filter: drop-shadow(0 0 0 #999);
 }
-
 
 DIV.ppr_rup.ppr_priv_global_nav .global-nav-bar-container {
     height: 50px;
@@ -156,7 +156,6 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .global-nav-utility-activator {
     flex-direction: row;
 }
 
-
 DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     display: inline-block;
     font-style: normal;
@@ -166,7 +165,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     -ms-transform: rotate(-0.001deg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    content: '\e04a';
+    content: "\e04a";
     font-size: 16px;
 }
 
@@ -190,7 +189,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
 
 .collapseBtnActions::before {
     font-family: Shazde_Regular2 !important;
-    content: '\E035';
+    content: "\E035";
     font-size: 30px;
     z-index: 10;
     background-color: #ffe3b1;
@@ -200,7 +199,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     display: none;
 }
 
-.languageButton{
+.languageButton {
     border-radius: 0px 10px 10px 0px !important;
     background: var(--koochita-yellow) !important;
     margin-left: -16px !important;
@@ -208,8 +207,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     padding-left: 24px !important;
 }
 
-.languagePopUp{
-
+.languagePopUp {
 }
 
 .ui_tab {
@@ -234,7 +232,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     z-index: 9;
 }
 
-.languagePopUp{
+.languagePopUp {
     position: absolute;
     background: var(--koochita-yellow) !important;
     width: 100%;
@@ -248,22 +246,22 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     height: 0px;
 }
 
-.languageButton:hover .languagePopUp{
+.languageButton:hover .languagePopUp {
     padding-top: 12px;
     padding-bottom: 8px;
     height: auto;
 }
 
-.languageSelect{
+.languageSelect {
     color: white;
     border-radius: 10px;
 }
 
-.languageSelect:hover{
+.languageSelect:hover {
     color: var(--koochita-dark-green);
 }
 
-.headerContainer{
+.headerContainer {
     padding: 0px 24px;
     display: flex;
     align-items: center;
@@ -271,26 +269,26 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     direction: rtl;
 }
 
-.headerPcLogoDiv{
+.headerPcLogoDiv {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 50px;
 }
 
-.headerPcLogo{
+.headerPcLogo {
     height: 70%;
     width: auto;
 }
 
-.headerSearchBar{
+.headerSearchBar {
     width: 250px;
     height: 35px;
     background-color: lightgrey;
-    border-radius: 4px
+    border-radius: 4px;
 }
 
-.headerSearchIcon{
+.headerSearchIcon {
     -webkit-transform: scale(-1, 1);
     transform: scale(-1, 1);
     font-size: 25px;
@@ -302,11 +300,11 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     color: black;
 }
 
-.headerSearchIcon:hover{
+.headerSearchIcon:hover {
     color: var(--koochita-light-green);
 }
 
-.headerButtonsSection{
+.headerButtonsSection {
     display: flex;
     align-items: center;
     padding: 0;
@@ -314,16 +312,16 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     left: 0;
 }
 
-.headerSecondSection{
+.headerSecondSection {
     border-top: solid 1px lightgrey;
 }
 
-.headerSecondContainer{
+.headerSecondContainer {
     height: auto;
     direction: rtl;
 }
 
-.headerSecondContentDiv{
+.headerSecondContentDiv {
     overflow: hidden;
     overflow-x: auto;
     white-space: nowrap;
@@ -335,11 +333,11 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     line-height: 18px;
 }
 
-.headerSecondTabs{
+.headerSecondTabs {
     display: flex;
 }
 
-.headerSecondLi{
+.headerSecondLi {
     padding: 0 12px;
     text-align: center;
     cursor: pointer;
@@ -351,26 +349,26 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     font-weight: bold;
 }
 
-.headerIconCommon{
+.headerIconCommon {
     display: flex;
     font-size: 28px;
 }
 
-.headerIconCommon:before{
+.headerIconCommon:before {
     display: inline-block;
     font-style: normal;
     font-weight: 400;
     font-variant: normal;
     font-size: inherit;
     line-height: 1;
-    -ms-transform: rotate(-.001deg);
+    -ms-transform: rotate(-0.001deg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     speak: none;
     color: black;
 }
 
-.headerAuthButton{
+.headerAuthButton {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -380,15 +378,15 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     margin-right: 10px;
 }
 
-.headerAuthButton:hover .nameOfIconHeaders{
+.headerAuthButton:hover .nameOfIconHeaders {
     color: var(--koochita-light-green);
 }
 
-.headerAuthButton:hover .headerIconCommon:before{
+.headerAuthButton:hover .headerIconCommon:before {
     color: var(--koochita-light-green);
 }
 
-.headerAlertNumber{
+.headerAlertNumber {
     min-height: 16px;
     position: absolute;
     z-index: 1;
@@ -401,7 +399,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     padding: 3px 5px;
     border-radius: 100%;
     box-sizing: border-box;
-    background-color: #EF6945;
+    background-color: #ef6945;
     font-weight: bold;
     font-size: 10px;
     line-height: 1;
@@ -410,21 +408,21 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     vertical-align: middle;
 }
 
-.headerSubMenu{
+.headerSubMenu {
     display: none;
     direction: rtl;
     text-align: right;
     bottom: auto;
     left: -20px;
     position: absolute;
-    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, .2);
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
     top: 55px;
     padding: 0 !important;
     line-height: initial;
     z-index: 999;
 }
 
-.mainHeaderSearch{
+.mainHeaderSearch {
     margin-right: 30px;
     background-color: white;
     padding: 7px 10px;
@@ -434,7 +432,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     cursor: pointer;
 }
 
-.authLanguageMenu{
+.authLanguageMenu {
     display: flex;
     flex-direction: column;
     min-height: auto !important;
@@ -443,7 +441,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     text-align: center;
 }
 
-.authLang{
+.authLang {
     white-space: nowrap;
     font-size: 16px;
     color: #333;
@@ -453,8 +451,8 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     text-align: center;
 }
 
-.arrowTopDiv:before{
-    content: '';
+.arrowTopDiv:before {
+    content: "";
     position: absolute;
     left: 45px;
     top: -8px;
@@ -472,7 +470,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     z-index: 10;
 }
 
-.headerBookMarkBody{
+.headerBookMarkBody {
     box-sizing: border-box;
     font-size: 1rem;
     color: #2c2c2c;
@@ -493,13 +491,13 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     border-radius: 11px;
 }
 
-.headerBookMarkHeader{
+.headerBookMarkHeader {
     text-align: right;
     padding-right: 24px;
     border-bottom: 1px solid #e5e5e5;
 }
 
-.headerBookMarkHeaderName{
+.headerBookMarkHeaderName {
     white-space: nowrap;
     font-size: 16px;
     color: #333;
@@ -509,7 +507,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     display: inline-block;
 }
 
-.headerBookMarkContentDiv{
+.headerBookMarkContentDiv {
     min-height: 120px;
     max-height: 343px;
     width: 290px;
@@ -519,7 +517,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     flex-grow: 1;
     border-bottom: 1px solid #e5e5e5;
 }
-.headerBookMarkContentDiv .bookMarkSSec{
+.headerBookMarkContentDiv .bookMarkSSec {
     display: flex;
     width: 100%;
     margin-bottom: 15px;
@@ -527,16 +525,16 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     border-bottom: solid 1px #ececec;
     padding-bottom: 10px;
 }
-.headerBookMarkContentDiv .bookMarkSSec .BookMarkIcon{
+.headerBookMarkContentDiv .bookMarkSSec .BookMarkIcon {
     display: none;
 }
-.headerBookMarkContentDiv .bookMarkSSec .imgSec{
+.headerBookMarkContentDiv .bookMarkSSec .imgSec {
     width: 40%;
     border-radius: 10px;
     overflow: hidden;
     height: 80px;
 }
-.headerBookMarkContentDiv .bookMarkSSec .infoSec{
+.headerBookMarkContentDiv .bookMarkSSec .infoSec {
     width: 60%;
     display: flex;
     flex-direction: column;
@@ -544,10 +542,10 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     padding: 0px 5px;
     text-align: right;
 }
-.headerBookMarkContentDiv .bookMarkSSec .infoSec .type{
+.headerBookMarkContentDiv .bookMarkSSec .infoSec .type {
     color: gray;
 }
-.headerBookMarkContentDiv .bookMarkSSec .infoSec .name{
+.headerBookMarkContentDiv .bookMarkSSec .infoSec .name {
     font-size: 14px;
     margin: 5px 0px;
     vertical-align: middle;
@@ -555,11 +553,11 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.headerBookMarkContentDiv .bookMarkSSec .infoSec .state{
+.headerBookMarkContentDiv .bookMarkSSec .infoSec .state {
     font-size: 8px;
 }
 
-.headerBookMarkLink{
+.headerBookMarkLink {
     display: flex;
     align-items: center;
     margin: 5px 20px;
@@ -567,7 +565,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     padding-bottom: 5px;
 }
 
-.headerBookMarContentImgDiv{
+.headerBookMarContentImgDiv {
     width: 85px;
     height: 85px;
     overflow: hidden;
@@ -577,25 +575,25 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     border-radius: 10px;
 }
 
-.headerBookMarkPlaceholder{
+.headerBookMarkPlaceholder {
     width: 100%;
     height: 100%;
     border-radius: 10px;
 }
 
-.headerBookMarContentImg{
+.headerBookMarContentImg {
     height: 100%;
     border-radius: 10px;
 }
 
-.bookMarkContent{
+.bookMarkContent {
     color: #b7b7b7;
     font-size: 12px;
     text-align: right;
     margin-right: 15px;
 }
 
-.bookMarkContentTitle{
+.bookMarkContentTitle {
     display: inline-block;
     font-size: 14px;
     color: #4a4a4a;
@@ -606,26 +604,26 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     overflow: hidden;
 }
 
-.bookMarkContentCity{
+.bookMarkContentCity {
     white-space: nowrap;
     text-overflow: ellipsis;
     max-width: 170px;
     overflow: hidden;
 }
 
-.notifdd_empty{
+.notifdd_empty {
     margin: 24px;
     font-size: 13px;
     line-height: 17px;
     color: #b7b7b7;
 }
 
-.headerAuthMenu{
+.headerAuthMenu {
     list-style-type: none;
     text-align: center;
 }
 
-.mobileHeader{
+.mobileHeader {
     direction: rtl;
     background-color: #30b4a6;
     height: 8vh !important;
@@ -635,7 +633,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     align-items: center;
 }
 
-.alertMsgHeaderContent{
+.alertMsgHeaderContent {
     display: flex;
     padding: 5px;
     border-bottom: 1px solid #e5e5e5;
@@ -643,7 +641,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     font-size: 13px;
 }
 
-.alertMsgHeaderContentImgDiv{
+.alertMsgHeaderContentImgDiv {
     width: 30%;
     overflow: hidden;
     padding: 0px;
@@ -654,7 +652,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     border-radius: 5px;
 }
 
-.alertMsgHeaderContentTextDiv{
+.alertMsgHeaderContentTextDiv {
     text-align: right;
     padding-right: 10px;
     display: flex;
@@ -663,26 +661,25 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     border-radius: 3px;
     width: 240px;
 }
-.alertUrl{
+.alertUrl {
     margin-left: 3px;
 }
 
-.alertMsgHeaderContentText{
-
+.alertMsgHeaderContentText {
 }
 
-.alertMsgHeaderContentTime{
+.alertMsgHeaderContentTime {
     color: gray;
     font-size: 10px;
 }
 
-.headerCampaignModalBody{
+.headerCampaignModalBody {
     width: 60%;
     height: 90vh;
     position: relative;
 }
 
-.headerCampingTop{
+.headerCampingTop {
     width: 100%;
     height: 60%;
     display: flex;
@@ -693,7 +690,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     border-radius: 10px;
 }
 
-.headerCampingBottom{
+.headerCampingBottom {
     width: 100%;
     height: 40%;
     display: flex;
@@ -701,7 +698,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     align-items: center;
 }
 
-.headerCampingBottom > div{
+.headerCampingBottom > div {
     width: calc(50% - 4px);
     height: 100%;
     display: flex;
@@ -712,11 +709,11 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     cursor: pointer;
 }
 
-.headerCampingBottom > div > img{
+.headerCampingBottom > div > img {
     width: 100%;
 }
 
-.closeLanding{
+.closeLanding {
     font-size: 40px;
     position: absolute;
     top: 15px;
@@ -733,7 +730,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     cursor: pointer;
 }
 
-.searchPangResultSection .stateName{
+.searchPangResultSection .stateName {
     font-size: 12px !important;
     height: 15px;
     display: flex;
@@ -741,8 +738,8 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     color: gray;
 }
 
-@media (max-width: 1000px){
-    .headerCampaignModalBody{
+@media (max-width: 1000px) {
+    .headerCampaignModalBody {
         width: 92%;
         height: calc(100vh - 90px);
         margin-top: 8px;
@@ -750,12 +747,13 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
 }
 
 @media (max-width: 992px) {
-
     DIV.ppr_rup.ppr_priv_global_nav .global-nav-green .global-nav-link {
         font-size: 13px;
     }
 
-    DIV.ppr_rup.ppr_priv_global_nav .global-nav-links-container .global-nav-links-menu {
+    DIV.ppr_rup.ppr_priv_global_nav
+        .global-nav-links-container
+        .global-nav-links-menu {
         font-size: 0;
     }
 
@@ -767,7 +765,9 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
         width: 40px;
     }
 
-    DIV.ppr_rup.ppr_priv_global_nav .global-nav-bar-container .global-nav-actions {
+    DIV.ppr_rup.ppr_priv_global_nav
+        .global-nav-bar-container
+        .global-nav-actions {
         display: none;
         position: absolute;
         background: #ffe3b1;
