@@ -46,7 +46,7 @@
     </div>
 
 
-    <div class="container">
+    <div class="container pdL0">
         @yield('body')
     </div>
 

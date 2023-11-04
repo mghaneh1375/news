@@ -9,22 +9,42 @@
 .d-flex {
     display: flex !important;
 }
+.alignItemCen {
+    display: flex;
+    align-items: center;
+}
 .heightUnset {
     height: unset !important;
+}
+.height {
+    height: 100% !important;
 }
 .flexDirColumn {
     display: flex;
     flex-direction: column;
 }
-.mgt10 {
-    margin-top: 10px;
-}
+
 .newbgColor {
-    background-color: #ebebeb;
+    background-color: #ebebeb !important;
+}
+.bgColorWhite {
+    background-color: #fff !important;
+}
+.bgColorRed {
+    background-color: #c90015;
 }
 .justifyContentUnset {
     display: flex;
     justify-content: unset !important;
+}
+.padUnset {
+    padding: unset !important;
+}
+.pdR0 {
+    padding-right: 0px !important;
+}
+.pd5 {
+    padding: 5px;
 }
 .pd10 {
     padding: 10px !important;
@@ -32,8 +52,25 @@
 .pdr15 {
     padding-right: 15px !important;
 }
+.pdL0 {
+    padding-left: 0px !important;
+}
+
 .pdl10 {
     padding-left: 10px !important;
+}
+
+.mrLeft5 {
+    margin-left: 5px;
+}
+.mgt10 {
+    margin-top: 10px;
+}
+.Point {
+    cursor: pointer;
+}
+.boxShadow {
+    box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.2);
 }
 .alignItemStart {
     align-items: flex-start;
@@ -195,14 +232,12 @@
     height: 210px;
     overflow: hidden;
     margin-top: 10px;
-    border-radius: 10px;
 }
 .sideNewsCard .picSec {
     width: 100%;
     height: 200px;
     overflow: hidden;
     position: relative;
-    border-radius: 10px;
 }
 .sideNewsCard .picSec .title {
     position: absolute;
