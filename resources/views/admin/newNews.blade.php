@@ -82,9 +82,7 @@
                 <div class="main-sparkline8-hd">
                     <h5>برچسب ها</h5>
                 </div>
-                @foreach ($sites as $site)
-                    <p>{{ $site['name'] }}</p>
-                @endforeach
+
             </div>
             <div class="sparkline8-graph dashone-comment  dashtwo-messages" style="height: auto">
                 <div class="row">
@@ -101,6 +99,23 @@
                         <div id="selectedTags" class="col-md-12"></div>
                     </div>
 
+                </div>
+            </div>
+        </div>
+        <div class="sparkline8-list shadow-reset mg-tb10">
+            <div class="sparkline8-hd" style="padding: 5px 10px;">
+                <div class="main-sparkline8-hd">
+                    <h5>سایت مورد نظر</h5>
+                </div>
+            </div>
+            <div class="sparkline8-graph dashone-comment  dashtwo-messages">
+                <div class="form-group">
+                    <select class="form-control botBorderInput" id="siteName" name="siteName">
+                        @foreach ($sites as $site)
+                            <option value="{{ $site['id'] }}">{{ $site['name'] }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
         </div>
@@ -283,7 +298,8 @@
                                 </label>
                                 <input type="text" class="form-control botBorderInput" id="seoTitle" name="seoTitle"
                                     placeholder="عنوان سئو را اینجا بنویسید (عنوان سئو باید بین 60 حرف تا 85 حرف باشد)"
-                                    onkeyup="changeSeoTitle(this.value)" value="{{ isset($news) ? $news->seoTitle : '' }}">
+                                    onkeyup="changeSeoTitle(this.value)"
+                                    value="{{ isset($news) ? $news->seoTitle : '' }}">
                             </div>
                         </div>
                         <div class="col-md-12 floR mg-tb-10">
@@ -419,7 +435,7 @@
                 console.error('Oops, something went wrong!');
                 console.error(
                     'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:'
-                    );
+                );
                 console.warn('Build id: wgqoghm20ep6-7otme29let2s');
                 console.error(error);
             });
@@ -449,6 +465,7 @@
             var seoTitle = document.getElementById('seoTitle').value;
             var slug = document.getElementById('slug').value;
             var meta = document.getElementById('meta').value;
+            var site = document.getElementById('siteName').value;
 
             var hasVideo = $('input[name="videoQuestion"]:checked').val();
             var direction = $('input[name="direction"]:checked').val();
@@ -518,6 +535,7 @@
             mainDataForm.append('slug', slug);
             mainDataForm.append('direction', direction);
             mainDataForm.append('meta', meta);
+            mainDataForm.append('site', site);
             mainDataForm.append('description', window.editor.getData());
             mainDataForm.append('limboPicIds', window.limboIds);
             mainDataForm.append('releaseType', release);
@@ -811,7 +829,7 @@
                             if (response.value == value) {
                                 response.result.map(item => text +=
                                     `<div class="row searchTagResult" onclick="chooseTag(this.innerText)">${item}</div>`
-                                    );
+                                );
                                 $('#searchTagResultDiv').html(text);
                             }
                         }

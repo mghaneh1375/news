@@ -18,14 +18,14 @@ class News extends Model
         'textEn', 'metaEn', 'keywordEn', 'seoTitleEn', 'site_id'
     ];
 
-    public function scopeYouCanSee($query){
+    public function scopeYouCanSee($query, $site=4){
         date_default_timezone_set('Asia/Tehran');
 
         $time = verta()->format('Y/m/d H:i');
 
         return $query->where('dateAndTime', '<=', $time)
                      ->where('release', '!=', 'draft')
-                     ->where('confirm', 1);
+                     ->where('confirm', 1)->where('site_id', $site);
     }
 
     public function getTags()

@@ -302,7 +302,7 @@ class NewsController extends Controller
         $news->seoTitle = $request->seoTitle;
         $news->slug = makeSlug($request->slug);
         $news->release = $request->releaseType;
-        $news->site = $request->site;
+        $news->site_id = $request->site;
 
 	    $news->rtl = ($request->has('direction') && $request->direction == 'ltr') ? 0 : 1;
 
