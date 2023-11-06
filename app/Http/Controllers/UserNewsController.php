@@ -68,12 +68,11 @@ class UserNewsController extends Controller
         return view('user.newsMainPage', compact(['sliderNews', 'sideSliderNews','mostViewNews', 'allCategories', 'topNews', 'lastVideos','lastNews']));
     }
 
-    public function newsShow($slug, $lang="fa")
+    public function newsShow($lang, $slug)
     {
-        \App::setLocale($lang);
         $news = News::youCanSee()->where('slug', $slug)->first();
         if($news == null)
-            return redirect(route('site.news.main'));
+            return redirect(route('site.news.main', ['lang' => $lang]));
 
         $news->tags = $news->getTags->pluck('tag')->toArray();
 
@@ -108,7 +107,7 @@ class UserNewsController extends Controller
         return view('user.newsShow', compact(['news', 'otherNews']));
     }
 
-    public function newsListPage($kind, $content = ''){
+    public function newsListPage($lang, $kind, $content = ''){
 
         $header = '';
         if($kind == 'all')

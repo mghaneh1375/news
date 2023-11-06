@@ -1,6 +1,7 @@
 <div class="hideOnPhone screenFooterStyle">
     <div class="footerLogoSocialBox">
-        <a href="{{ route('site.news.main') }}" class="footerLogo" style="display: flex; align-items: center;">
+        <a href="{{ route('site.news.main', ['lang' => \App::getLocale()]) }}" class="footerLogo"
+            style="display: flex; align-items: center;">
             <img alt="کوچیتا، سامانه جامع گردشگری ایران" src="{{ URL::asset('images/camping/undp.svg') }}"
                 style="height: 60px">
             <img alt="کوچیتا، سامانه جامع گردشگری ایران" src="{{ URL::asset('images/icons/mainLogo.png') }}"

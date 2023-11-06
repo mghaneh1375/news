@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
 
 function trueShowForTextArea($text){
@@ -162,8 +163,9 @@ function convertDateToString($date, $between = '') {
 }
 
 function getNewsMinimal($news){
+    $locale = App::getLocale();
     $news->pic = URL::asset("assets/news/{$news->id}/{$news->pic}", null, $news->server);
-    $news->url = route('site.news.show', ['slug' => $news->slug]);
+    $news->url = route('site.news.show', ['slug' => getData($locale, $news->slug, $news->slugEn), 'lang' => $locale]);
 
     return $news;
 }
@@ -197,6 +199,20 @@ function findImagesFromText($text){
     }
 
     return $serversFiles;
+}
+
+function getData($lang, $faData, $enData) {
+    
+    if($lang == 'fa' && $faData != null)
+        return $faData;
+
+    if($lang == 'en' && $enData != null)
+        return $enData;
+
+    if($enData != null)
+        return $enData;
+
+    return $faData;
 }
 
 ?>

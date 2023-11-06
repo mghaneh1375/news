@@ -9,6 +9,15 @@ class News extends Model
     protected $guarded = [];
     protected $table = 'news';
 
+
+    protected $fillable = [
+        'userId', 'title', 'slug', 'pic', 'video', 'videoServer',
+        'text', 'release', 'dateAndTime', 'meta', 'keyword',
+        'seoTitle', 'seen', 'topNews', 'confirm', 'updated_at',
+        'rtl', 'server', 'isVideoLink', 'titleEn', 'slugEn',
+        'textEn', 'metaEn', 'keywordEn', 'seoTitleEn', 'site_id'
+    ];
+
     public function scopeYouCanSee($query){
         date_default_timezone_set('Asia/Tehran');
 

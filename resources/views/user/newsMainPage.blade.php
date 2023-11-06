@@ -33,7 +33,7 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                padding-left: unset !important; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    padding-left: unset !important; */
             margin-right: unset !important;
             margin-left: unset !important;
             width: 95% !important;
@@ -151,7 +151,7 @@
             </div>
             <div class="flexDirColumn">
                 <div class="mostViewHeader ">
-                    <div style="font-size: 18px !important">ویدئو پیشنهادی</div>
+                    <div style="font-size: 18px !important">{{ __('main.suggestedVideos') }}</div>
                 </div>
                 <div style="padding: 10px 10px;background-color: #ebebeb;">
                     @foreach ($lastVideos as $item)
@@ -341,7 +341,7 @@
         @if ($loop->index == 0)
             @if (count($category->news) > 0)
                 <div data-index="{{ $takenColor }}" class="row oneBig4SmallRows bgColorRed">
-                    <a href="{{ route('site.news.list', ['kind' => 'category', 'content' => $category->name]) }}"
+                    <a href="{{ route('site.news.list', ['kind' => 'category', 'content' => $category->name, 'lang' => \App::getLocale()]) }}"
                         class="col-md-12 title colorWhite"> {{ $category->name }} </a>
 
                     <div class="col-md-4 oneBigSec floatRight">
