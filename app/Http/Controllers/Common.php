@@ -166,7 +166,7 @@ function getNewsMinimal($news){
     $locale = App::getLocale();
     $news->pic = URL::asset("assets/news/{$news->id}/{$news->pic}", null, $news->server);
     $news->url = route('site.news.show', ['slug' => getData($locale, $news->slug, $news->slugEn), 'lang' => $locale]);
-
+    
     return $news;
 }
 
