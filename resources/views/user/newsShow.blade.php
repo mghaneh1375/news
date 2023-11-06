@@ -123,7 +123,7 @@
                         @foreach ($news->tags as $item)
                             <div class="tag">
                                 <a
-                                    href="{{ route('site.news.list', ['kind' => 'tag', 'content' => $item]) }}">{{ $item }}</a>
+                                    href="{{ route('site.news.list', ['lang' => \App::getLocale(), 'kind' => 'tag', 'content' => $item]) }}">{{ $item }}</a>
                             </div>
                         @endforeach
                     </div>

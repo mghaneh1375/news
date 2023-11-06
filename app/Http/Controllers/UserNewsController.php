@@ -16,7 +16,6 @@ class UserNewsController extends Controller
 {
     public function newsMainPage($lang="fa")
     {
-        \App::setLocale($lang);
         $selectCol = ['id', 'title', 'meta', 'slug', 'keyword', 'pic', 'video', 'server','dateAndTime'];
         $sliderNews = News::youCanSee()->orderByDesc('dateAndTime')->select($selectCol)->take(5)->get();
         $sideSliderNews = News::youCanSee()->orderByDesc('dateAndTime')->select($selectCol)->skip(5)->take(2)->get();
@@ -70,7 +69,7 @@ class UserNewsController extends Controller
 
     public function newsShow($lang, $slug)
     {
-        $news = News::youCanSee()->where('slug', $slug)->first();
+        $news = News::youCanSee()->where('slug', $slug)->orWhere('slugEn', $slug)->first();
         if($news == null)
             return redirect(route('site.news.main', ['lang' => $lang]));
 
