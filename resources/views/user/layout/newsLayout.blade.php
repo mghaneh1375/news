@@ -26,21 +26,19 @@
         <div class="container secHeadNavs">
 
             <div class="secHeadTabs">
-                <a href="{{ route('site.news.main') }}" style="color: white">صفحه اصلی</a>
+                <a href="{{ route('site.news.main', ['lang' => \App::getLocale()]) }}" style="color: white">صفحه اصلی</a>
             </div>
 
             @foreach ($newsCategories as $category)
-                @if (trim($category->name) != 'استان ها' && $category->name != 'اکوسیستم استارتاپی')
-                    <div class="secHeadTabs {{ count($category->sub) > 0 ? 'arrowAfter' : '' }}">
-                        <a href="{{ route('site.news.list', ['kind' => 'category', 'content' => $category->name]) }}"
-                            style="color: white">{{ $category->name }}</a>
-                        <div class="secHeadTabsSubList">
-                            @foreach ($category->sub as $sub)
-                                <a href="#">{{ $sub->name }}</a>
-                            @endforeach
-                        </div>
+                <div class="secHeadTabs {{ count($category['sub']) > 0 ? 'arrowAfter' : '' }}">
+                    <a href="{{ route('site.news.list', ['kind' => 'category', 'content' => $category['name'], 'lang' => \App::getLocale()]) }}"
+                        style="color: white">{{ $category['name'] }}</a>
+                    <div class="secHeadTabsSubList">
+                        @foreach ($category['sub'] as $sub)
+                            <a href="#">{{ $sub['name'] }}</a>
+                        @endforeach
                     </div>
-                @endif
+                </div>
             @endforeach
         </div>
     </div>
@@ -68,13 +66,14 @@
             <div class="newsCategoryListMFooter">
                 <div class="list">
                     @foreach ($newsCategories as $cat)
-                        <a href="{{ route('site.news.list', ['kind' => 'category', 'content' => $cat->name]) }}"
+                        <a href="{{ route('site.news.list', ['kind' => 'category', 'content' => $cat['name'], 'lang' => \App::getLocale()]) }}"
                             class="categ">
-                            <div class="categIcon" style="{{ $cat->icon == 'sogatsanaie.svg' ? 'margin: 0px;' : '' }}">
-                                <img src="{{ URL::asset('images/mainPics/news/icons/' . $cat->icon) }}"
-                                    alt="{{ $cat->name }}">
+                            <div class="categIcon"
+                                style="{{ $cat['icon'] == 'sogatsanaie.svg' ? 'margin: 0px;' : '' }}">
+                                <img src="{{ URL::asset('images/mainPics/news/icons/' . $cat['icon']) }}"
+                                    alt="{{ $cat['name'] }}">
                             </div>
-                            <div class="title">{{ $cat->name }}</div>
+                            <div class="title">{{ $cat['name'] }}</div>
                         </a>
                     @endforeach
                 </div>

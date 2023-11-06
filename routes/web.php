@@ -36,12 +36,11 @@ Route::middleware(['setLocale'])->group(function() {
     });
 
 
-    Route::middleware(['shareNews'])->group(function (){
-        Route::get('', [UserNewsController::class, 'newsMainPage'])->name('site.news.main');
+    Route::prefix('{lang}')->middleware(['shareNews'])->group(function (){
 
-        Route::get('/main/{lang?}', [UserNewsController::class, 'newsMainPage'])->name('site.news.main');
+        Route::get('/', [UserNewsController::class, 'newsMainPage'])->name('site.news.main');
 
-        Route::get('/main/en', [UserNewsController::class, 'newsMainPageEn'])->name('site.news.mainEn');
+        Route::get('/main', [UserNewsController::class, 'newsMainPage'])->name('site.news.main');
 
         Route::get('/list/{kind}/{content?}', [UserNewsController::class, 'newsListPage'])->name('site.news.list');
 
