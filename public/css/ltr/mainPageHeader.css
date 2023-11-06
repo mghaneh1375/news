@@ -1,29 +1,53 @@
-.headerContainer{
+.col-md-1,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9 {
+    float: right;
+}
+.headerContainer {
     direction: ltr;
 }
-.headerButtonsSection{
+.headerButtonsSection {
     right: 0;
     left: auto;
 }
-.headerSearchIcon{
+.headerSearchIcon {
     transform: scale(1, 1);
     margin-left: 2px;
     justify-content: flex-start;
 }
-.headerBookMarkHeader{
+.headerBookMarkHeader {
     text-align: left;
     padding-left: 24px;
     padding-right: 0px;
 }
-.bookMarkContent{
+.bookMarkContent {
     text-align: left;
     margin-left: 15px;
     margin-right: 0px;
 }
-.mainLoginButton{
+.secHeadNavs {
+    direction: ltr;
+}
+.mostViewHeader {
+    border-right: unset !important;
+    border-left: 4px solid #6d0606;
+}
+.cardDownTitle {
+    flex-direction: row-reverse !important;
+}
+.mainLoginButton {
     border-radius: 30px 10px 10px 30px;
 }
-.languageButton{
+.languageButton {
     border-radius: 10px 0px 0px 10px !important;
     margin-right: -16px !important;
     margin-left: 0px !important;

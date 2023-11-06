@@ -33,7 +33,7 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        padding-left: unset !important; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            padding-left: unset !important; */
             margin-right: unset !important;
             margin-left: unset !important;
             width: 95% !important;
@@ -43,7 +43,7 @@
             color: white !important;
             background-color: #232323;
             padding: 6px 20px;
-            border-right: 4px solid #6d0606;
+            border-right: 2px solid #6d0606;
         }
 
         .selectionNews {
@@ -196,10 +196,10 @@
         @if (count($lastVideos) > 0)
             <div class="row inOneRows swiper mySwiper swiper-container"
                 style="background-color: black;float:right !important;margin:  20px 15px 0px 0px;width: 73%;height: 250px;overflow: hidden;">
-                <div class="title">گفت‌وگوی ویدئویی</div>
+                <div class="title" style="color: white;margin-top: 10px;margin-right: 10px">گفت‌وگوی ویدئویی</div>
                 <div class="body swiper-wrapper heightUnset justifyContentUnset" style="position: relative;">
                     @foreach ($lastVideos as $item)
-                        <div class="cardDownTitle swiper-slide">
+                        <div class="cardDownTitle d-flex flexDirRow swiper-slide alignItemStart">
                             <a href="{{ $item->url }}" class="picSec fullyCenterContent  borderRadiusUnset">
                                 <img src="{{ $item->pic }}" alt="{{ $item->keyword }}" class="resizeImgClass"
                                     onload="fitThisImg(this)">
@@ -289,7 +289,7 @@
                     </div>
                     <div class="body swiper-wrapper heightUnset justifyContentUnset" style="position: relative;">
                         @foreach ($lastVideos as $item)
-                            <div class="cardDownTitle swiper-slide">
+                            <div class="cardDownTitle d-flex flexDirRow swiper-slide alignItemStart">
                                 <a href="{{ $item->url }}" class="picSec fullyCenterContent  borderRadiusUnset">
                                     <img src="{{ $item->pic }}" alt="{{ $item->keyword }}" class="resizeImgClass"
                                         onload="fitThisImg(this)">

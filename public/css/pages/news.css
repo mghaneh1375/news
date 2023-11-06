@@ -27,11 +27,17 @@
 .newbgColor {
     background-color: #ebebeb !important;
 }
+.bgColorBlack {
+    background-color: black;
+}
 .bgColorWhite {
     background-color: #fff !important;
 }
 .bgColorRed {
-    background-color: #c90015;
+    background-color: #6d0606;
+}
+.colorWhite {
+    color: white !important;
 }
 .justifyContentUnset {
     display: flex;
@@ -63,8 +69,17 @@
 .mrLeft5 {
     margin-left: 5px;
 }
+.mgR10 {
+    margin-right: 10px;
+}
 .mgt10 {
     margin-top: 10px;
+}
+.mg17 {
+    margin: 17px;
+}
+.w100 {
+    width: 100% !important;
 }
 .Point {
     cursor: pointer;
@@ -90,7 +105,7 @@
     text-align: right;
     position: relative;
     padding: 0px 20px;
-    background-color: #000;
+    background-color: #232323;
 }
 
 .secHeadTabs:not(:first-child) {
@@ -103,7 +118,6 @@
     justify-content: center;
     align-items: center;
     color: white;
-    font-weight: bold;
     position: relative;
     cursor: pointer;
     height: 40px;
@@ -256,20 +270,21 @@
 }
 
 .inOneRows .title {
-    color: var(--koochita-dark-green);
-    font-weight: bold;
+    color: white;
     font-size: 23px;
-    margin-bottom: 20px;
-    margin-top: 30px;
+    margin: 10px 10px 20px 10px;
 }
 .inOneRows .body {
     display: flex;
     justify-content: space-around;
 }
 .inOneRows .cardDownTitle {
+    align-items: flex-start;
+    display: flex;
     min-width: 200px;
-    flex-direction: column;
-    width: 30%;
+    flex-direction: row;
+    width: 291px;
+    margin-left: 30px;
 }
 .inOneRows .cardDownTitle .picSec {
     height: 160px;
@@ -305,7 +320,7 @@
 
 .oneBig4SmallRows {
     padding: 10px 0px;
-    margin: 10px 0px;
+    margin: 10px 20px 10px 0px;
     border-radius: 10px;
 }
 .oneBig4SmallRows .sideDown {
@@ -317,10 +332,10 @@
     font-size: 24px;
     margin-bottom: 10px;
     color: black;
-    font-weight: bold;
 }
 
 .colCard {
+    box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.2);
     padding: 10px;
     width: 100%;
     border-radius: 10px;
@@ -346,6 +361,8 @@
 }
 
 .rowCard {
+    background-color: black;
+    box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.2);
     display: flex;
     height: 120px;
     margin-bottom: 10px;
