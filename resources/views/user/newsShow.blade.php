@@ -69,7 +69,7 @@
                     <div class="otherNewsInShowSec">
                         <div id="otherNewsSlider" class="swiper-container otherNewsInShow">
                             <div class="swiper-wrapper">
-                                @foreach ($otherNews as $item)
+                                @foreach ($news->otherNews as $item)
                                     <div class="swiper-slide">
                                         <a href="{{ $item->url }}" class="picSec">
                                             <img data-src="{{ $item->pic }}" alt="{{ $item->keyword }}" loading="lazy"
@@ -180,7 +180,7 @@
                 <div class="otherNewsInShowSec">
                     <div id="otherNewsSlider" class="swiper-container otherNewsInShow">
                         <div class="swiper-wrapper">
-                            @foreach ($otherNews as $item)
+                            @foreach ($news->otherNews as $item)
                                 <div class="swiper-slide">
                                     <a href="{{ $item->url }}" class="picSec">
                                         <img data-src="{{ $item->pic }}" alt="{{ $item->keyword }}" loading="lazy"

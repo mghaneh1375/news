@@ -20,7 +20,7 @@ class NewsDigest extends JsonResource
     {
 
         $slug = getData(self::$locale, $this->slug, $this->slugEn);
-        
+                
         return [
             'id' => $this->id,
             'title' => getData(self::$locale, $this->title, $this->titleEn),

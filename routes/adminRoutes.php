@@ -1,12 +1,27 @@
 <?php
 
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\NewsTagController;
 use App\Http\Controllers\SeoController;
 use Illuminate\Support\Facades\Route;
 
 
 //news.list
 Route::post('seoTesterContent', [SeoController::class, 'seoTesterContent'])->name('seoTesterContent');
+
+Route::prefix('tags')->group(function() {
+    
+    Route::get('/list', [NewsTagController::class, 'list'])->name('tags.list');
+
+    Route::get('/new', [NewsTagController::class, 'new'])->name('tags.new');
+
+    Route::get('/{newsTags}', [NewsTagController::class, 'edit'])->name('tags.edit');
+
+    Route::post('/store', [NewsTagController::class, 'store'])->name('tags.store');
+    
+    Route::post('/update/{newsTags}', [NewsTagController::class, 'update'])->name('tags.update');
+
+});
 
 Route::prefix('news')->group(function(){
     Route::get('/list', [NewsController::class, 'newsList'])->name('news.list');

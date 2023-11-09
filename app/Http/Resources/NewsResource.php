@@ -3,6 +3,10 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\URL;
+use Hekmatinasser\Verta\Facades\Verta;
+use App\Models\NewsCategory;
+use App\Models\NewsCategoryRelations;
 
 class NewsResource extends JsonResource
 {
@@ -16,11 +20,45 @@ class NewsResource extends JsonResource
      */
     public function toArray($request)
     {
-        $slug = self::$locale == 'fa' ? $this->slug : $this->slugEn;
+        $slug = getData(self::$locale, $this->slug, $this->slugEn);
         
+        $dateAndTime = explode(' ', $this->dateAndTime);
+        
+        $date = explode('-', $dateAndTime[0]);
+        $times = explode(':', $dateAndTime[1]);
+
+        $video = null;
+        
+        if($this->video != null)
+            $video = URL::asset("assets/news/{$this->id}/{$this->video}", null, $this->videoServer);
+
+        $category = NewsCategory::join('news_category_relations', 'news_category_relations.categoryId', 'news_categories.id')
+                        ->where('news_category_relations.isMain', 1)
+                        ->where('news_category_relations.newsId', $this->id)
+                        ->select(['news_categories.id', 'news_categories.name'])
+                        ->first();
+        
+        $otherNews = NewsCategoryRelations::join('news', 'news.id', 'news_category_relations.newsId')
+                        ->where('news_category_relations.categoryId', $category->id)
+                        ->where('news_category_relations.newsId', '!=', $this->id)
+                        ->where('news_category_relations.isMain', 1)
+                        ->select([
+                            'news.id', 'news.pic', 'news.server',
+                            'news.title', 'news.meta', 'news.slug', 'news.keyword',
+                            'news.titleEn', 'news.metaEn', 'news.slugEn', 'news.keywordEn',
+                        ])
+                        ->get();
+        
+        $otherNewsArr = [];
+
+        foreach ($otherNews as $item)
+            array_push($otherNewsArr, getNewsMinimal($item));
+
         return [
             'id' => $this->id,
             'title' => getData(self::$locale, $this->title, $this->titleEn),
+            'slug' => $slug,
+            'seen' => $this->seen,
             'text' => getData(self::$locale, $this->text, $this->textEn),
             'meta' => getData(self::$locale, $this->meta, $this->metaEn),
             'pic' => URL::asset("assets/news/{$this->id}/{$this->pic}", null, $this->server),
@@ -28,7 +66,16 @@ class NewsResource extends JsonResource
             'dateAndTime' => $this->dateAndTime,
             'keyword' => getData(self::$locale, $this->keyword, $this->keywordEn),
             'seoTitle' => getData(self::$locale, $this->seoTitle, $this->seoTitleEn),
-            'video' => $this->video
+            'video' => $video,
+            'showTime' => Verta::createJalali($date[0], $date[1], $date[2], $times[0], $times[1], 0)->format('%d %B %Y  H:i'),
+            'author' => 'کوچیتا',
+            'username' => 'کوچیتا',
+            'rtl' => $this->rtl,
+            'tags' => array_filter($this->getTags->pluck(self::$locale == 'fa' ? 'tag' : 'tagEn')->toArray(), function($var) {
+                return !empty($var);
+            }),
+            'category' => $category,
+            'otherNews' => (object)$otherNewsArr
         ];
     }
     

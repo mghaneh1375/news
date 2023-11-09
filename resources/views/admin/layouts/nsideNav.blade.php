@@ -20,6 +20,7 @@
                     <span class="text">اخبار</span>
                 </div>
                 <div class="subMenu">
+                    <a href="{{ route('tags.list') }}" class="subNavs">لیست تگ ها</a>
                     <a href="{{ route('news.list') }}" class="subNavs">لیست اخبار</a>
                 </div>
             </div>

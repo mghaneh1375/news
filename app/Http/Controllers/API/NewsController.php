@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\NewsResource;
 
 class NewsController extends Controller
 {
@@ -69,11 +70,11 @@ class NewsController extends Controller
         foreach($news as $item)
             array_push($output, getNewsMinimal($item));
 
-        return response()->json(['status' => 'ok', 'result' => $output]);
+        return response()->json(['status' => 'ok', 'data' => $output]);
     }
 
-    public function find(Request $request, $lang="fa") {
-
+    public function find(Request $request, $lang="fa", $id) {
+        return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(News::find($id), $lang)]);
     }
 
 

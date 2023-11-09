@@ -11,12 +11,18 @@ use App\Models\User;
 use Hekmatinasser\Verta\Facades\Verta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
+use App\Http\Resources\NewsResource;
 
 class UserNewsController extends Controller
 {
     public function newsMainPage($lang="fa")
     {
-        $selectCol = ['id', 'title', 'meta', 'slug', 'keyword', 'pic', 'video', 'server','dateAndTime'];
+        $selectCol = [
+            'id', 'pic', 'video', 'server','dateAndTime',
+            'title', 'meta', 'slug', 'keyword',
+            'titleEn', 'metaEn', 'slugEn', 'keywordEn',
+        ];
+
         $sliderNews = News::youCanSee()->orderByDesc('dateAndTime')->select($selectCol)->take(5)->get();
         $sideSliderNews = News::youCanSee()->orderByDesc('dateAndTime')->select($selectCol)->skip(5)->take(2)->get();
         if(count($sideSliderNews) < 4){
@@ -81,37 +87,8 @@ class UserNewsController extends Controller
         if($news == null)
             return redirect(route('site.news.main', ['lang' => $lang]));
 
-        $news->tags = $news->getTags->pluck('tag')->toArray();
-
-        $news->pic = URL::asset("assets/news/{$news->id}/{$news->pic}", null, $news->server);
-        
-        $news->category = NewsCategory::join('news_category_relations', 'news_category_relations.categoryId', 'news_categories.id')
-                                    ->where('news_category_relations.isMain', 1)
-                                    ->where('news_category_relations.newsId', $news->id)
-                                    ->select(['news_categories.id', 'news_categories.name'])
-                                    ->first();
-        
-        $otherNews = NewsCategoryRelations::join('news', 'news.id', 'news_category_relations.newsId')
-                            ->where('news_category_relations.categoryId', $news->category->id)
-                            ->where('news_category_relations.newsId', '!=', $news->id)
-                            ->where('news_category_relations.isMain', 1)
-                            ->select(['news.id', 'news.title', 'news.meta', 'news.slug', 'news.keyword', 'news.pic', 'news.server'])
-                            ->get();
-        foreach ($otherNews as $item)
-            $item = getNewsMinimal($item);
-
-        $dateAndTime = explode(' ', $news->dateAndTime);
-        
-        $date = explode('-', $dateAndTime[0]);
-        $times = explode(':', $dateAndTime[1]);
-
-        $news->showTime = Verta::createJalali($date[0], $date[1], $date[2], $times[0], $times[1], 0)->format('%d %B %Y  H:i');
-        $news->author = 'کوچیتا';
-
-        if($news->video != null)
-            $news->video = URL::asset("assets/news/{$news->id}/{$news->video}", null, $news->videoServer);
-
-        return view('user.newsShow', compact(['news', 'otherNews']));
+        $news = NewsResource::customMake($news, $lang);
+        return view('user.newsShow', compact(['news']));
     }
 
     public function newsListPage($lang, $kind, $content = ''){

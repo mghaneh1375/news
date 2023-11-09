@@ -164,8 +164,7 @@ function convertDateToString($date, $between = '') {
 }
 
 function getNewsMinimal($news){
-    $locale = App::getLocale();
-    return NewsDigest::customMake($news, $locale);
+    return NewsDigest::customMake($news, App::getLocale());
 }
 
 function findImagesFromText($text){
@@ -209,7 +208,7 @@ function getData($lang, $faData, $enData) {
 
     if($enData != null)
         return $enData;
-    
+
     return $faData;
 }
 
