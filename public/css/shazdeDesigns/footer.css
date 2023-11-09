@@ -1,7 +1,15 @@
 /*footer styles*/
 
-textarea:focus, input:focus, select:focus, button:focus, a:focus,
-textarea, input, select, button, a {
+textarea:focus,
+input:focus,
+select:focus,
+button:focus,
+a:focus,
+textarea,
+input,
+select,
+button,
+a {
     outline: none;
 }
 
@@ -13,7 +21,7 @@ footer ul {
     list-style: none;
 }
 .screenFooterStyle {
-    background-color: var(--koochita-yellow);
+    background-color: #232323;
     direction: rtl;
     padding: 20px;
     text-align: right;
@@ -62,7 +70,8 @@ footer a:hover {
     color: #16174f;
 }
 
-footer li > img, .small-ico {
+footer li > img,
+.small-ico {
     width: 22px;
     float: right;
     margin-left: 7px;
@@ -73,14 +82,14 @@ footer li > img, .small-ico {
     font-size: 14px;
     color: #16174f;
 }
-.socialLink .koochiatTvIcon{
-    background-image: url('../../images/icons/social/kooTvBIcon.svg');
+.socialLink .koochiatTvIcon {
+    background-image: url("../../images/icons/social/kooTvBIcon.svg");
     background-repeat: no-repeat;
     display: inline-block;
 }
 
 .footerIcon {
-    background-image: url('../../images/footer.png');
+    background-image: url("../../images/footer.png");
     background-repeat: no-repeat;
     display: inline-block;
 }
@@ -93,73 +102,72 @@ footer li > img, .small-ico {
 }
 
 .linkedin {
-    background-image: url('../../images/icons/social/linkedin.webp');
+    background-image: url("../../images/icons/social/linkedin.webp");
     background-repeat: no-repeat;
     display: inline-block;
 }
 .facebook {
-    background-image: url('../../images/icons/social/facebook.webp');
+    background-image: url("../../images/icons/social/facebook.webp");
     background-repeat: no-repeat;
     display: inline-block;
 }
 .pinterest {
-    background-image: url('../../images/icons/social/pintrest.webp');
+    background-image: url("../../images/icons/social/pintrest.webp");
     background-repeat: no-repeat;
     display: inline-block;
 }
 .instagram {
-    background-image: url('../../images/icons/social/instagram.webp');
+    background-image: url("../../images/icons/social/instagram.webp");
     background-repeat: no-repeat;
     display: inline-block;
 }
 .telegram {
-    background-image: url('../../images/icons/social/telegram.webp');
+    background-image: url("../../images/icons/social/telegram.webp");
     background-repeat: no-repeat;
     display: inline-block;
 }
 .aparat {
-    background-image: url('../../images/icons/social/aparat.webp');
+    background-image: url("../../images/icons/social/aparat.webp");
     background-repeat: no-repeat;
     display: inline-block;
 }
 .twitter {
-    background-image: url('../../images/icons/social/twitter.webp');
+    background-image: url("../../images/icons/social/twitter.webp");
     background-repeat: no-repeat;
     display: inline-block;
 }
 .youtubeBackground {
-    background-image: url('../../images/icons/social/youtube.webp');
+    background-image: url("../../images/icons/social/youtube.webp");
     background-repeat: no-repeat;
     display: inline-block;
 }
 .bogenBackground {
-    background-image: url('../../images/icons/social/bogen.webp');
+    background-image: url("../../images/icons/social/bogen.webp");
     background-repeat: no-repeat;
     display: inline-block;
 }
 .sisootechBackground {
-    background-image: url('../../images/icons/social/sisootech.webp');
+    background-image: url("../../images/icons/social/sisootech.webp");
     background-repeat: no-repeat;
     display: inline-block;
 }
 .newsBackground {
-    background-image: url('../../images/icons/social/news.webp');
+    background-image: url("../../images/icons/social/news.webp");
     background-repeat: no-repeat;
     display: inline-block;
 }
 .whatsappBackground {
-    background-image: url('../../images/icons/social/whatapp.webp');
+    background-image: url("../../images/icons/social/whatapp.webp");
     background-repeat: no-repeat;
     display: inline-block;
 }
-.gapForMobileFooter{
+.gapForMobileFooter {
     width: 100%;
     height: 100px;
 }
 
-
 .selectLanguage {
-    background: #FFF;
+    background: #fff;
     border: 2px solid;
     font-size: 12px;
 }
@@ -183,6 +191,7 @@ footer li > img, .small-ico {
 }
 
 .footerRside {
+    color: white;
     float: right;
     width: 75%;
     font-size: 14px !important;
@@ -225,7 +234,7 @@ footer li > img, .small-ico {
 }
 
 #socialMedias > ul > li:last-child > a {
-    margin-right: 4px
+    margin-right: 4px;
 }
 
 .footMoreLessBtn {
@@ -240,7 +249,6 @@ footer li > img, .small-ico {
 .aboutShazdeMoreLess {
     height: auto !important;
 }
-
 
 /*phone style*/
 
@@ -314,10 +322,10 @@ footer li > img, .small-ico {
     direction: ltr;
 }
 
-.footerPhoneMenuBar > div.profileBtn{
+.footerPhoneMenuBar > div.profileBtn {
     direction: rtl;
 }
-.footerPhoneMenuBar > div.profileBtn .profilePicFooter.type2{
+.footerPhoneMenuBar > div.profileBtn .profilePicFooter.type2 {
     position: absolute;
     top: -18px;
     right: 10px;
@@ -331,12 +339,12 @@ footer li > img, .small-ico {
     text-align: right;
 }
 
-.profileBtnText > span:nth-child(1){
+.profileBtnText > span:nth-child(1) {
     font-size: 14px;
     font-weight: normal;
 }
 
-.profileBtnText > span:nth-child(2){
+.profileBtnText > span:nth-child(2) {
     color: var(--koochita-blue);
 }
 
@@ -356,7 +364,7 @@ footer li > img, .small-ico {
     overflow: hidden;
     border-radius: 50%;
 }
-.newMsgMainFooterCount{
+.newMsgMainFooterCount {
     position: absolute;
     background: var(--koochita-red);
     color: white;
@@ -397,13 +405,11 @@ footer li > img, .small-ico {
 }
 
 .ui_icon.memberPossibilities::before {
-    content: '\E0C7';
+    content: "\E0C7";
     font-family: Shazde_Regular2 !important;
-
 }
 
 /*pop up on phone( phone popUp : pp)*/
-
 
 footer .userInfoMobileFooterBody {
     display: flex;
@@ -415,7 +421,7 @@ footer .userInfoMobileFooterBody {
     /*height: calc(100% - 145px);*/
     padding: 0px;
 }
-footer .userInfoMobileFooterBody .threeDotIconVertical{
+footer .userInfoMobileFooterBody .threeDotIconVertical {
     position: absolute;
     left: 5px;
     font-size: 32px;
@@ -434,54 +440,59 @@ footer .mainPopUp {
     background-color: white;
 }
 
-footer .profileFooterPopUp.mainPopUp{
+footer .profileFooterPopUp.mainPopUp {
     width: 100%;
 }
-footer .profileFooterPopUp .profileScoreMainDiv{
+footer .profileFooterPopUp .profileScoreMainDiv {
     width: calc(100% - 50px);
 }
-footer .profileFooterPopUp .lp_phoneMenuBar{
+footer .profileFooterPopUp .lp_phoneMenuBar {
     width: 100%;
 }
-footer .profileFooterPopUp .tabBut{
+footer .profileFooterPopUp .tabBut {
     margin: 0px 5px;
     border: solid 1px !important;
 }
-footer .profileFooterPopUp .tabBut .name{
+footer .profileFooterPopUp .tabBut .name {
     font-size: 16px !important;
     font-weight: bold;
     color: gray;
 }
 
-footer .profileFooterPopUp .tabBut.selected{
+footer .profileFooterPopUp .tabBut.selected {
     background: #fcc15647;
 }
-footer .profileFooterPopUp .tabBut.selected .name{
-    color: var(--koochita-blue)
+footer .profileFooterPopUp .tabBut.selected .name {
+    color: var(--koochita-blue);
 }
-footer .profileFooterPopUp .exploreReviewInFooterSection{
-
+footer .profileFooterPopUp .exploreReviewInFooterSection {
 }
-footer .profileFooterPopUp .exploreReviewInFooterSection .reviewSec{
+footer .profileFooterPopUp .exploreReviewInFooterSection .reviewSec {
     display: flex;
     flex-direction: column;
 }
-footer .profileFooterPopUp .exploreReviewInFooterSection .reviewSec.allReviewSec{
+footer
+    .profileFooterPopUp
+    .exploreReviewInFooterSection
+    .reviewSec.allReviewSec {
     flex-direction: row !important;
     flex-wrap: wrap;
 }
-footer .profileFooterPopUp .exploreReviewInFooterSection .indicatorForNewReview{
+footer
+    .profileFooterPopUp
+    .exploreReviewInFooterSection
+    .indicatorForNewReview {
     width: 100%;
     height: 20px;
 }
 
-footer .reviewExploreSquare{
+footer .reviewExploreSquare {
     width: 33.3333%;
     padding: 15%;
     /*margin: 1px;*/
     position: relative;
 }
-footer .reviewExploreSquare .picSec{
+footer .reviewExploreSquare .picSec {
     width: 100%;
     position: absolute;
     height: 100%;
@@ -493,11 +504,11 @@ footer .reviewExploreSquare .picSec{
     right: 0px;
     border: solid 1px lightgray;
 }
-footer .reviewExploreSquare .text{
+footer .reviewExploreSquare .text {
     font-size: 10px;
     padding: 8px;
 }
-footer .reviewExploreSquare .picSec.isText{
+footer .reviewExploreSquare .picSec.isText {
     align-items: flex-start;
 }
 
@@ -566,13 +577,12 @@ footer .reviewExploreSquare .picSec.isText{
     font-variant: normal;
     font-size: inherit;
     line-height: 1;
-    font-family: 'Shazde_Regular' !important;
-    -ms-transform: rotate(-.001deg);
+    font-family: "Shazde_Regular" !important;
+    -ms-transform: rotate(-0.001deg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     speak: none;
 }
-
 
 /*the others style*/
 
@@ -586,7 +596,7 @@ footer .reviewExploreSquare .picSec.isText{
     font-weight: 500;
     padding: 0 0 25px;
     margin: 0;
-    border-bottom: 1px solid #CCCCCC;
+    border-bottom: 1px solid #cccccc;
 }
 
 .lp_others_titles .trips-header {
@@ -618,7 +628,7 @@ footer .reviewExploreSquare .picSec.isText{
     font-weight: 600;
 }
 
-.lp_others_recentView{
+.lp_others_recentView {
     padding: 18px 24px;
     border-bottom: 1px solid #f5f5f5;
     display: flex;
@@ -638,7 +648,7 @@ footer .reviewExploreSquare .picSec.isText{
 }
 
 .lp_ar_filters {
-    border-bottom: 3px solid rgba(0, 0, 0, .075);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.075);
     display: flex;
     margin: 5px 0;
 }
@@ -654,7 +664,7 @@ footer .reviewExploreSquare .picSec.isText{
 }
 
 .lp_ar_rightFilters {
-    border-left: 2px solid rgba(0, 0, 0, .075);
+    border-left: 2px solid rgba(0, 0, 0, 0.075);
 }
 
 .lp_ar_borderBottom {
@@ -662,7 +672,7 @@ footer .reviewExploreSquare .picSec.isText{
     margin: 10px -7px;
 }
 
-.lp_ar_contentOfFilters{
+.lp_ar_contentOfFilters {
     height: calc(100vh - 145px) !important;
     overflow-y: auto;
     overflow-x: hidden;
@@ -714,7 +724,8 @@ footer .editInfoBtn {
     cursor: pointer;
 }
 
-footer .aboutMeDesc .glyphicon.glyphicon-chevron-down, footer .aboutMeDesc .glyphicon.glyphicon-chevron-up {
+footer .aboutMeDesc .glyphicon.glyphicon-chevron-down,
+footer .aboutMeDesc .glyphicon.glyphicon-chevron-up {
     line-height: 20px;
     margin: 0 5px;
 }
@@ -758,17 +769,17 @@ footer .profileScoreMainDiv {
 }
 
 footer #myHonorsText .class > div {
-    background-image: url('../../images/help_share.png')
+    background-image: url("../../images/help_share.png");
 }
 
 footer .modules-membercenter-progress-header {
     width: 100%;
     height: 25px;
     position: relative;
-    font-family: Helvetica, Arial, 'Sans-Serif';
+    font-family: Helvetica, Arial, "Sans-Serif";
     font-size: 18px;
     font-weight: bold;
-    color: #2C2C2C;
+    color: #2c2c2c;
 }
 
 footer #myHonorsText {
@@ -853,7 +864,7 @@ footer .mainDivTotalPoint a {
     font-size: 0.797em;
 }
 
-footer .modules-membercenter-total-points .points_to_go > span  {
+footer .modules-membercenter-total-points .points_to_go > span {
     display: flex;
     align-items: center;
     padding: 0 10px 0 0;
@@ -918,7 +929,7 @@ footer .modules-membercenter-level-progress .myBadge {
     height: 40px;
     line-height: 40px;
     text-align: center;
-    background: url('../../images/profile.png') no-repeat -13px -344px !important;
+    background: url("../../images/profile.png") no-repeat -13px -344px !important;
     background-size: 56px;
     font-weight: bold;
     font-size: 18px;
@@ -933,7 +944,7 @@ footer .modules-membercenter-level-progress .current_badge {
 
 footer .modules-membercenter-level-progress .meter {
     height: 5px;
-    background: #E1DED6;
+    background: #e1ded6;
     -moz-border-radius: 25px;
     -webkit-border-radius: 25px;
     border-radius: 25px;
@@ -973,8 +984,7 @@ footer .userProfileActivitiesMainDiv {
 
 footer .mainDivHeaderText {
     padding: 10px 0;
-    border-bottom: 1px solid
-    #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
     margin: 20px 0;
     position: relative;
 }
@@ -1001,8 +1011,7 @@ footer .activitiesLinesDiv:first-child {
 }
 
 footer .activitiesLinesDiv {
-    border-bottom: 1px solid
-    #E5E5E5;
+    border-bottom: 1px solid #e5e5e5;
     padding: 15px 0;
     position: relative;
 }
@@ -1056,7 +1065,7 @@ footer .activityNumbers {
     border-color: darkred;
     border-radius: 7px;
     padding: 5px 20px;
-    font-size: 12px
+    font-size: 12px;
 }
 
 .pSC_cityTilte {
@@ -1117,7 +1126,7 @@ footer .activityNumbers {
     /*border-bottom: solid #a1a1a1 1px;*/
 }
 
-.newCityInPhoneFooter{
+.newCityInPhoneFooter {
     background: darkred;
     border: none;
     font-size: 13px;
@@ -1136,14 +1145,14 @@ footer .activityNumbers {
     color: #2d2d2d;
 }
 
-.pSC_cityDetails:before{
+.pSC_cityDetails:before {
     font-size: 21px;
     line-height: 10px;
     margin-left: 8px;
     color: var(--koochita-green);
 }
 
-.mobileFooterCategoryBottom{
+.mobileFooterCategoryBottom {
     width: 100%;
     margin-top: 15px;
 }
@@ -1156,10 +1165,10 @@ footer .activityNumbers {
     border-bottom: solid #f0ad4e;
 }
 
-.pSC_cityDetails:nth-of-type(even){
+.pSC_cityDetails:nth-of-type(even) {
     /*border-right: solid #a1a1a1 1px;*/
 }
-.koochitaTvRowPhoneFooter{
+.koochitaTvRowPhoneFooter {
     width: 100%;
     display: flex;
     align-items: center;
@@ -1168,7 +1177,7 @@ footer .activityNumbers {
     flex-direction: column-reverse;
 }
 
-.pSC_boxOfCityDetails:last-child  {
+.pSC_boxOfCityDetails:last-child {
     /*border-bottom: 2px solid #a1a1a1;*/
 }
 
@@ -1230,8 +1239,8 @@ footer a.single-tile.is-create-trip {
     background-color: #fff;
     border: 1px solid #f5f5f5;
     justify-content: space-around;
-    -webkit-transition: background-color .2s ease, corder-color .2s ease;
-    transition: background-color .2s ease, corder-color .2s ease;
+    -webkit-transition: background-color 0.2s ease, corder-color 0.2s ease;
+    transition: background-color 0.2s ease, corder-color 0.2s ease;
     background-blend-mode: overlay;
     width: 150px;
     height: 150px;
@@ -1254,12 +1263,12 @@ footer a.single-tile > .tile-content {
 }
 
 footer a.single-tile .ui_icon.plus {
-    color: #00AF87;
+    color: #00af87;
     font-size: 28px;
 }
 
 footer a.single-tile .create-trip-text {
-    color: #00AF87;
+    color: #00af87;
     font-size: 14px;
 }
 
@@ -1337,11 +1346,11 @@ footer .profileMenuResponsive {
 }
 
 footer .profileMenuResponsive > div:nth-child(odd) {
-    border-left: 2px solid #E5E5E5;
+    border-left: 2px solid #e5e5e5;
 }
 
 footer .profileMenuResponsive > div:nth-child(even) {
-    border-right: 2px solid #E5E5E5;
+    border-right: 2px solid #e5e5e5;
 }
 
 footer .profileMenuLinks {
@@ -1357,23 +1366,23 @@ footer .profileMenuLinks {
     border-width: 2px 0;
 }
 
-.footerSocialDivPhone{
+.footerSocialDivPhone {
     background-color: var(--koochita-yellow);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
-.footerSocialDivPhone a{
+.footerSocialDivPhone a {
     min-width: 15%;
 }
-.footerLanguageSectionPhone{
+.footerLanguageSectionPhone {
     display: flex;
     margin-top: 11px;
     padding: 0px 10px;
     justify-content: space-between;
     align-items: center;
 }
-.footerLanguageDivPhone{
+.footerLanguageDivPhone {
     width: 65px;
     margin: 10px;
     display: flex;
@@ -1388,21 +1397,20 @@ footer .profileMenuLinks {
     font-size: 12px;
     border: var(--koochita-yellow) solid 2px;
 }
-.footerLanguageTextPhone{
+.footerLanguageTextPhone {
     height: 100%;
     border-right: solid 1px gray;
     padding-right: 5px;
     margin-right: 5px;
 }
-.footerLanguageInputPhone{
-
+.footerLanguageInputPhone {
 }
-.chooseLanguagePhone{
+.chooseLanguagePhone {
     border: none;
     background: inherit;
 }
 
-.closeFooterPopupIcon{
+.closeFooterPopupIcon {
     position: absolute;
     top: 5px;
     font-size: 30px;
@@ -1417,107 +1425,104 @@ footer .profileMenuLinks {
     align-items: center;
     border-radius: 50%;
 }
-.closeFooterPopupIcon:before{
+.closeFooterPopupIcon:before {
     font-size: 18px;
     font-weight: bold;
     color: black;
 }
 
-.eatery_filters{
+.eatery_filters {
     height: auto;
     overflow: hidden;
 }
 
-.shareSection{
+.shareSection {
     position: relative;
 }
 
-.footerSearchBar{
+.footerSearchBar {
     transform: none;
     align-items: center;
 }
 
-.footerSafarnmaehCategoryRow{
-
+.footerSafarnmaehCategoryRow {
 }
-.footerSafarnmaehCategoryRow .subSafarnamehCategory{
+.footerSafarnmaehCategoryRow .subSafarnamehCategory {
     display: none;
     width: 100%;
 }
-.footerSafarnmaehCategoryRow .subSafarnamehCategory .subSec{
+.footerSafarnmaehCategoryRow .subSafarnamehCategory .subSec {
     display: none;
     width: 100%;
-    transition: .3s;
+    transition: 0.3s;
     margin-right: -600px;
 }
-.footerSafarnmaehCategoryRow .subSafarnamehCategory .subSec.show{
+.footerSafarnmaehCategoryRow .subSafarnamehCategory .subSec.show {
     margin-right: 0;
 }
 
-
-.footerSafarnmaehCategoryRow .mainSafarnamehCategory{
+.footerSafarnmaehCategoryRow .mainSafarnamehCategory {
     width: 100%;
 }
-.footerSafarnmaehCategoryRow .safarnamehRow{
+.footerSafarnmaehCategoryRow .safarnamehRow {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 5px 10px;
     border-bottom: solid 1px #dcdcdc75;
 }
-.footerSafarnmaehCategoryRow .safarnamehRow.back{
+.footerSafarnmaehCategoryRow .safarnamehRow.back {
     background: var(--koochita-blue);
     justify-content: center;
     align-items: center;
     width: fit-content;
     margin-right: auto;
 }
-.footerSafarnmaehCategoryRow .safarnamehRow.back .name{
+.footerSafarnmaehCategoryRow .safarnamehRow.back .name {
     font-weight: bold;
     background: var(--koochita-blue);
     color: white;
     margin: 0px;
 }
-.footerSafarnmaehCategoryRow .safarnamehRow .name{
+.footerSafarnmaehCategoryRow .safarnamehRow .name {
     margin-right: auto;
     color: black;
 }
-.footerSafarnmaehCategoryRow .safarnamehRow .next{
+.footerSafarnmaehCategoryRow .safarnamehRow .next {
     transform: rotate(180deg);
     font-size: 20px;
 }
 
-footer .safarnamehSearchRowFooter{
+footer .safarnamehSearchRowFooter {
     margin-top: 25px;
     border-top: solid #80808052;
 }
-footer .safarnamehSearchRowFooter .inputs{
-
+footer .safarnamehSearchRowFooter .inputs {
 }
-footer .safarnamehSearchRowFooter .header{
+footer .safarnamehSearchRowFooter .header {
     display: flex;
     width: 100%;
 }
-footer .safarnamehSearchRowFooter .header > div{
+footer .safarnamehSearchRowFooter .header > div {
     padding: 10px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-footer .safarnamehSearchRowFooter .title{
+footer .safarnamehSearchRowFooter .title {
     width: 50%;
     font-size: 12px;
 }
-footer .safarnamehSearchRowFooter .tab{
+footer .safarnamehSearchRowFooter .tab {
     width: 25%;
     font-weight: bold;
 }
-footer .safarnamehSearchRowFooter .tab.selected{
+footer .safarnamehSearchRowFooter .tab.selected {
     border-bottom: solid 3px var(--koochita-blue);
     background: white;
     color: var(--koochita-blue);
 }
-footer .safarnamehSearchRowFooter .safarnamehInput{
+footer .safarnamehSearchRowFooter .safarnamehInput {
     width: 100%;
     background: #f2f2f2;
     padding: 5px;
@@ -1525,7 +1530,7 @@ footer .safarnamehSearchRowFooter .safarnamehInput{
     margin-top: 10px;
     font-size: 20px;
 }
-footer .safarnamehSearchRowFooter  .searchIcon{
+footer .safarnamehSearchRowFooter .searchIcon {
     position: absolute;
     left: 4px;
     cursor: pointer;
@@ -1537,18 +1542,18 @@ footer .safarnamehSearchRowFooter  .searchIcon{
     top: 2px;
     border-radius: 7px;
 }
-footer .profileFooterPopUp{
+footer .profileFooterPopUp {
     height: 100vh;
     overflow: auto;
 }
-footer .profileFooterPopUp .firsLine{
+footer .profileFooterPopUp .firsLine {
     display: flex;
     width: 100%;
     align-items: center;
     padding: 15px;
     padding-bottom: 0px;
 }
-footer .profileFooterPopUp .firsLine .pic{
+footer .profileFooterPopUp .firsLine .pic {
     width: 60px;
     height: 60px;
     overflow: hidden;
@@ -1557,25 +1562,24 @@ footer .profileFooterPopUp .firsLine .pic{
     align-items: center;
     border-radius: 50%;
 }
-footer .profileFooterPopUp .firsLine .infos{
+footer .profileFooterPopUp .firsLine .infos {
     display: flex;
     justify-content: space-evenly;
     width: calc(100% - 60px);
     text-align: center;
 }
-footer .profileFooterPopUp .firsLine .infos .inf{
-
+footer .profileFooterPopUp .firsLine .infos .inf {
 }
-footer .profileFooterPopUp .firsLine .infos .inf .number{
+footer .profileFooterPopUp .firsLine .infos .inf .number {
     font-weight: bold;
     font-size: 18px;
     color: var(--koochita-blue);
 }
-footer .profileFooterPopUp .firsLine .infos .inf .name{
+footer .profileFooterPopUp .firsLine .infos .inf .name {
     font-size: 11px;
-    color: black
+    color: black;
 }
-footer .profileFooterPopUp .firsLine .pic > img{
+footer .profileFooterPopUp .firsLine .pic > img {
     height: 100%;
 }
 footer .profileFooterPopUp .secondLine {
@@ -1586,11 +1590,11 @@ footer .profileFooterPopUp .secondLine {
 footer .profileFooterPopUp .buttonsLine {
     margin-bottom: 10px;
 }
-footer .profileFooterPopUp .buttonsLine .bLine{
+footer .profileFooterPopUp .buttonsLine .bLine {
     display: flex;
     width: 100%;
 }
-footer .profileFooterPopUp .buttonsLine .bLine > div{
+footer .profileFooterPopUp .buttonsLine .bLine > div {
     color: var(--koochita-blue);
     border: solid 1px;
     display: flex;
@@ -1603,30 +1607,30 @@ footer .profileFooterPopUp .buttonsLine .bLine > div{
     border-color: gray;
     color: var(--koochita-blue);
 }
-footer .profileFooterPopUp .buttonsLine .bLine > div:nth-of-type(1){
+footer .profileFooterPopUp .buttonsLine .bLine > div:nth-of-type(1) {
     border-right: none;
 }
-footer .profileFooterPopUp .buttonsLine .bLine > div:nth-of-type(n){
+footer .profileFooterPopUp .buttonsLine .bLine > div:nth-of-type(n) {
     border-left: none;
 }
-footer .profileFooterPopUp .buttonsLine .sBLine > div{
+footer .profileFooterPopUp .buttonsLine .sBLine > div {
     width: 100%;
 }
-footer .profileFooterPopUp .buttonsLine .mBLine > div{
+footer .profileFooterPopUp .buttonsLine .mBLine > div {
     width: 100%;
     border-top: none;
     position: relative;
 }
-footer .profileFooterPopUp .buttonsLine .mBLine > div .name{
+footer .profileFooterPopUp .buttonsLine .mBLine > div .name {
     font-size: 9px;
 }
-footer .profileFooterPopUp .buttonsLine .mBLine > div .icon{
+footer .profileFooterPopUp .buttonsLine .mBLine > div .icon {
     font-size: 32px;
     line-height: 19px;
     margin: 8px 0px;
     color: gray;
 }
-footer .logoutButton{
+footer .logoutButton {
     /*position: absolute;*/
     bottom: 0;
     width: 100%;
@@ -1638,13 +1642,11 @@ footer .logoutButton{
     border-radius: 30px 30px 0px 0px;
     margin-top: 35px;
 }
-footer .logoutButton .icon{
-
+footer .logoutButton .icon {
 }
-footer .logoutButton .name{
-
+footer .logoutButton .name {
 }
-footer .footerMsgCountNumber{
+footer .footerMsgCountNumber {
     color: var(--koochita-red);
     left: 10px;
     display: flex;
@@ -1655,7 +1657,7 @@ footer .footerMsgCountNumber{
     padding: 0px 10px;
 }
 
-.loginHelperSection.footerLoginHelperSection .login-button{
+.loginHelperSection.footerLoginHelperSection .login-button {
     background: white;
     display: flex;
     align-items: center;
@@ -1667,19 +1669,19 @@ footer .footerMsgCountNumber{
     width: 70px;
     border-radius: 50%;
 }
-.loginHelperSection.footerLoginHelperSection .helperDescriptionDiv{
+.loginHelperSection.footerLoginHelperSection .helperDescriptionDiv {
     bottom: 85px;
     right: 10px;
     left: auto;
     top: auto;
 }
 
-footer .profileMobileFooterImg{
+footer .profileMobileFooterImg {
     height: 40px;
     margin-bottom: 5px;
 }
 
-footer .overallMobileFooterModal{
+footer .overallMobileFooterModal {
     position: absolute;
     bottom: 80px;
     right: 24px;
@@ -1696,26 +1698,26 @@ footer .overallMobileFooterModal{
     color: black;
     font-size: 12px;
 }
-footer .overallMobileFooterModal:before{
+footer .overallMobileFooterModal:before {
     font-size: 43px;
     line-height: 35px;
     padding-top: 7px;
     color: #333;
     padding-bottom: 1px;
 }
-footer .overallMobileFooterModal:after{
+footer .overallMobileFooterModal:after {
     position: absolute;
     left: 14px;
     font-size: 19px;
     font-weight: bold;
     color: #333;
 }
-footer .overallMobileFooterModal.BookMarkIconEmpty:before{
+footer .overallMobileFooterModal.BookMarkIconEmpty:before {
     font-size: 30px;
     color: #333;
     padding-bottom: 1px;
 }
-footer .notInfoFooterModalImg{
+footer .notInfoFooterModalImg {
     height: 100%;
     width: 100%;
     display: flex;
@@ -1724,44 +1726,44 @@ footer .notInfoFooterModalImg{
     flex-direction: column;
     filter: grayscale(1);
 }
-footer .notInfoFooterModalImg .text{
+footer .notInfoFooterModalImg .text {
     margin: 11px 0px;
-    opacity: .3;
+    opacity: 0.3;
     text-align: center;
 }
 
-footer .bookMarkSSec{
+footer .bookMarkSSec {
     border-bottom: solid 1px #d4d4d4;
     position: relative;
     margin-bottom: 15px;
     width: 48%;
 }
-footer .bookMarkSSec .imgSec{
+footer .bookMarkSSec .imgSec {
     width: 100%;
     height: 100px;
     border-radius: 10px;
     overflow: hidden;
 }
-footer .bookMarkSSec .BookMarkIcon{
+footer .bookMarkSSec .BookMarkIcon {
     position: absolute;
     top: 5px;
     left: 5px;
     font-size: 25px;
 }
-footer .bookMarkSSec .BookMarkIcon:after{
+footer .bookMarkSSec .BookMarkIcon:after {
     position: absolute;
     right: 0;
     color: black;
 }
-footer .bookMarkSSec .infoSec{
+footer .bookMarkSSec .infoSec {
     position: relative;
     padding: 10px;
     padding-top: 5px;
 }
-footer .bookMarkSSec .infoSec .name{
+footer .bookMarkSSec .infoSec .name {
     font-size: 11px;
 }
-footer .bookMarkSSec .infoSec .type{
+footer .bookMarkSSec .infoSec .type {
     position: absolute;
     top: -16px;
     right: 0px;
@@ -1774,20 +1776,20 @@ footer .bookMarkSSec .infoSec .type{
     justify-content: center;
     color: gray;
 }
-footer .bookMarkSSec .infoSec .type:before{
+footer .bookMarkSSec .infoSec .type:before {
     display: none;
     margin-left: 5px;
     font-size: 18px;
 }
-footer .bookMarkSSec .infoSec .state{
+footer .bookMarkSSec .infoSec .state {
     color: gray;
     font-size: 7px;
 }
-.myTripFooter{
+.myTripFooter {
     display: flex;
     flex-wrap: wrap;
- }
-.myTripFooter .myTripCard{
+}
+.myTripFooter .myTripCard {
     color: black;
     padding: 0px 0px;
     display: flex;
@@ -1799,11 +1801,11 @@ footer .bookMarkSSec .infoSec .state{
     width: 230px;
     margin: 15px;
 }
-.myTripFooter .myTripCard .name{
+.myTripFooter .myTripCard .name {
     padding: 2px 5px;
     font-weight: bold;
 }
-.myTripFooter .myTripCard .date{
+.myTripFooter .myTripCard .date {
     font-size: 10px;
     display: flex;
     font-style: normal;
@@ -1812,78 +1814,76 @@ footer .bookMarkSSec .infoSec .state{
     padding: 0px 5px;
     align-items: center;
 }
-.myTripFooter .myTripCard .date .from{
+.myTripFooter .myTripCard .date .from {
     margin: 0px 5px;
     font-size: 13px;
 }
-.myTripFooter .myTripCard .picsSec{
+.myTripFooter .myTripCard .picsSec {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     overflow: hidden;
 }
-.myTripFooter .myTripCard .picsSec .pic{
+.myTripFooter .myTripCard .picsSec .pic {
     display: inline-flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
 }
-.myTripFooter .myTripCard .picsSec .pic img{
+.myTripFooter .myTripCard .picsSec .pic img {
     width: 100%;
 }
-.myTripFooter .myTripCard .picsSec.pic_1 div{
+.myTripFooter .myTripCard .picsSec.pic_1 div {
     height: 200px;
 }
-.myTripFooter .myTripCard .picsSec.pic_2 div{
+.myTripFooter .myTripCard .picsSec.pic_2 div {
     height: 200px;
 }
-.myTripFooter .myTripCard .picsSec.pic_3 div{
+.myTripFooter .myTripCard .picsSec.pic_3 div {
     height: 100px;
 }
-.myTripFooter .myTripCard .picsSec.pic_4 div{
+.myTripFooter .myTripCard .picsSec.pic_4 div {
     height: 100px;
 }
-.myTripFooter .myTripCard .picsSec.pic_1 div:nth-of-type(1){
+.myTripFooter .myTripCard .picsSec.pic_1 div:nth-of-type(1) {
     width: 100%;
 }
-.myTripFooter .myTripCard .picsSec.pic_2 div:nth-of-type(1){
+.myTripFooter .myTripCard .picsSec.pic_2 div:nth-of-type(1) {
     width: 50%;
 }
-.myTripFooter .myTripCard .picsSec.pic_2 div:nth-of-type(2){
+.myTripFooter .myTripCard .picsSec.pic_2 div:nth-of-type(2) {
     width: 50%;
 }
-.myTripFooter .myTripCard .picsSec.pic_3 div:nth-of-type(1){
+.myTripFooter .myTripCard .picsSec.pic_3 div:nth-of-type(1) {
     width: 50%;
 }
-.myTripFooter .myTripCard .picsSec.pic_3 div:nth-of-type(2){
+.myTripFooter .myTripCard .picsSec.pic_3 div:nth-of-type(2) {
     width: 50%;
 }
-.myTripFooter .myTripCard .picsSec.pic_3 div:nth-of-type(3){
+.myTripFooter .myTripCard .picsSec.pic_3 div:nth-of-type(3) {
     width: 100%;
 }
-.myTripFooter .myTripCard .picsSec.pic_4 div:nth-of-type(1){
+.myTripFooter .myTripCard .picsSec.pic_4 div:nth-of-type(1) {
     width: 50%;
 }
-.myTripFooter .myTripCard .picsSec.pic_4 div:nth-of-type(2){
+.myTripFooter .myTripCard .picsSec.pic_4 div:nth-of-type(2) {
     width: 50%;
 }
-.myTripFooter .myTripCard .picsSec.pic_4 div:nth-of-type(3){
+.myTripFooter .myTripCard .picsSec.pic_4 div:nth-of-type(3) {
     width: 50%;
 }
-.myTripFooter .myTripCard .picsSec.pic_4 div:nth-of-type(4){
+.myTripFooter .myTripCard .picsSec.pic_4 div:nth-of-type(4) {
     width: 50%;
 }
-.myTripFooter .myTripCard .placeCount{
+.myTripFooter .myTripCard .placeCount {
     font-size: 13px;
     padding: 5px 10px;
 }
 
-
-
-.mobileFiltersButtonTabs{
+.mobileFiltersButtonTabs {
     position: fixed;
-    bottom: 48px;
+    bottom: 0px;
     display: flex;
     justify-content: center;
     font-size: 17px;
@@ -1896,7 +1896,7 @@ footer .bookMarkSSec .infoSec .state{
     align-items: center;
     z-index: 99;
 }
-.mobileFiltersButtonTabs .tabs{
+.mobileFiltersButtonTabs .tabs {
     display: flex;
     border-radius: 20px 20px 0px 0px;
     overflow: hidden;
@@ -1905,7 +1905,7 @@ footer .bookMarkSSec .infoSec .state{
     background: white;
     z-index: 1;
 }
-.mobileFiltersButtonTabs .tabs .tab{
+.mobileFiltersButtonTabs .tabs .tab {
     padding: 10px 9px;
     margin-bottom: 7px;
     background: white !important;
@@ -1915,21 +1915,21 @@ footer .bookMarkSSec .infoSec .state{
     justify-content: center;
     width: 120px;
 }
-.mobileFiltersButtonTabs .tabs div:nth-of-type(1){
+.mobileFiltersButtonTabs .tabs div:nth-of-type(1) {
     border-left: solid 1px #ddd;
     margin-left: 4px;
 }
-.mobileFiltersButtonTabs .tabs div:nth-of-type(2){
+.mobileFiltersButtonTabs .tabs div:nth-of-type(2) {
     border-right: solid 1px #ddd;
 }
-.mobileFiltersButtonTabs .tabs .twoHouseIcon.selected{
+.mobileFiltersButtonTabs .tabs .twoHouseIcon.selected {
     background: var(--koochita-blue) !important;
     color: white;
 }
-.filterGroupTitle{
+.filterGroupTitle {
     color: gray !important;
 }
-.gombadi{
+.gombadi {
     height: 90%;
     overflow: hidden;
     width: 95%;
@@ -1938,14 +1938,14 @@ footer .bookMarkSSec .infoSec .state{
     position: absolute;
     max-width: 500px;
 }
-.gombadi .mobileFooterFilterPic{
+.gombadi .mobileFooterFilterPic {
     position: relative;
     border-radius: 10000px 10000px 0px 0px;
     overflow: hidden;
     border: solid 2px black;
     border-bottom: none;
 }
-.gombadi .gradientWhite{
+.gombadi .gradientWhite {
     background: linear-gradient(0deg, white, transparent);
     bottom: 0px;
     position: absolute;
@@ -1955,7 +1955,7 @@ footer .bookMarkSSec .infoSec .state{
     align-items: flex-end;
     justify-content: flex-end;
 }
-.gombadi .gradientWhite .closeThisModal{
+.gombadi .gradientWhite .closeThisModal {
     bottom: 0px;
     display: flex;
     justify-content: center;
@@ -1967,15 +1967,15 @@ footer .bookMarkSSec .infoSec .state{
     line-height: 16px;
     width: 19px;
 }
-.squerRadioInputSec{
+.squerRadioInputSec {
     display: flex;
     align-items: center;
 }
-.squerRadioInputSec .inputRadionSquer{
+.squerRadioInputSec .inputRadionSquer {
     display: flex;
     align-items: center;
 }
-.squerRadioInputSec .inputRadionSquer .labelBox{
+.squerRadioInputSec .inputRadionSquer .labelBox {
     width: 20px;
     height: 20px;
     border: solid 1px gray;
@@ -1984,19 +1984,22 @@ footer .bookMarkSSec .infoSec .state{
     background: none !important;
     margin-left: 5px !important;
 }
-.squerRadioInputSec .inputRadionSquer .name{
+.squerRadioInputSec .inputRadionSquer .name {
     background: none !important;
     width: auto;
 }
 
 .squerRadioInputSec input[type="checkbox"]:checked + .inputRadionSquer .name,
-.squerRadioInputSec input[type="radio"]:checked + .inputRadionSquer .name{
+.squerRadioInputSec input[type="radio"]:checked + .inputRadionSquer .name {
     color: var(--koochita-green);
     background: none !important;
 }
 
-.squerRadioInputSec input[type="checkbox"]:checked + .inputRadionSquer .labelBox,
-.squerRadioInputSec input[type="radio"]:checked + .inputRadionSquer .labelBox{
+.squerRadioInputSec
+    input[type="checkbox"]:checked
+    + .inputRadionSquer
+    .labelBox,
+.squerRadioInputSec input[type="radio"]:checked + .inputRadionSquer .labelBox {
     border-color: var(--koochita-green);
     border-radius: 50%;
     display: flex;
@@ -2005,16 +2008,21 @@ footer .bookMarkSSec .infoSec .state{
     background: none !important;
 }
 
-.squerRadioInputSec input[type="checkbox"]:checked + .inputRadionSquer .labelBox:before,
-.squerRadioInputSec input[type="radio"]:checked + .inputRadionSquer .labelBox:before{
-    content: '\E02B';
-    font-family: 'Shazde_Regular2' !important;
+.squerRadioInputSec
+    input[type="checkbox"]:checked
+    + .inputRadionSquer
+    .labelBox:before,
+.squerRadioInputSec
+    input[type="radio"]:checked
+    + .inputRadionSquer
+    .labelBox:before {
+    content: "\E02B";
+    font-family: "Shazde_Regular2" !important;
     color: var(--koochita-green);
     font-size: 18px;
 }
 
-
-.specialFooterRow{
+.specialFooterRow {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2023,18 +2031,17 @@ footer .bookMarkSSec .infoSec .state{
     margin: 5px 0px;
 }
 
-
-.minGombad{
+.minGombad {
     display: flex;
     justify-content: space-between;
     position: absolute;
     bottom: -33px;
     transition: 1s;
 }
-.minGombad.open{
+.minGombad.open {
     bottom: 51px;
 }
-.minGombad .gomb{
+.minGombad .gomb {
     border-radius: 50px 50px 0px 0px;
     background: white;
     font-size: 12px;
@@ -2051,7 +2058,7 @@ footer .bookMarkSSec .infoSec .state{
     padding: 0px !important;
     justify-content: end;
 }
-.minGombad .gomb .topGomb{
+.minGombad .gomb .topGomb {
     background: var(--koochita-blue);
     width: 100%;
     display: flex;
@@ -2061,7 +2068,7 @@ footer .bookMarkSSec .infoSec .state{
     color: white;
     font-size: 23px;
 }
-.minGombad .gomb .text{
+.minGombad .gomb .text {
     width: 100%;
     padding: 0px 5px;
     height: 47%;
@@ -2070,34 +2077,33 @@ footer .bookMarkSSec .infoSec .state{
     align-items: center;
     color: black;
 }
-.minGombad .gomb.selectOrder .topGomb{
+.minGombad .gomb.selectOrder .topGomb {
     color: var(--koochita-yellow);
 }
-.minGombad .gomb.selectOrder .text{
+.minGombad .gomb.selectOrder .text {
     background: var(--koochita-yellow);
 }
 
-.minGombad .gomb.selectOrder .offEye{
+.minGombad .gomb.selectOrder .offEye {
     display: none;
 }
-.minGombad .gomb.selectOrder .onEye{
+.minGombad .gomb.selectOrder .onEye {
     display: block;
 }
-.minGombad .gomb .offEye{
+.minGombad .gomb .offEye {
     display: block;
 }
-.minGombad .gomb .onEye{
+.minGombad .gomb .onEye {
     display: none;
 }
 
-
-.addNewReviewButtonMobileFooter{
+.addNewReviewButtonMobileFooter {
     position: fixed;
     background: WHITE;
     color: #333;
     color: #2c2c2c;
-    height: 50px !IMPORTANT;
-    BORDER: solid 1px;
+    height: 50px !important;
+    border: solid 1px;
     width: 100px;
     border-bottom: none;
     border-radius: 20px 20px 0px 0px;
@@ -2112,7 +2118,7 @@ footer .bookMarkSSec .infoSec .state{
     font-weight: bold;
     /*animation: writePostAnimationInMobile 2s infinite;*/
 }
-.addNewReviewButtonMobileFooter:before{
+.addNewReviewButtonMobileFooter:before {
     font-size: 22px;
     line-height: 8px;
     width: 25px;
@@ -2125,8 +2131,7 @@ footer .bookMarkSSec .infoSec .state{
     font-weight: normal;
 }
 
-
-footer .profileFooterPopUp .profileSideMenu{
+footer .profileFooterPopUp .profileSideMenu {
     position: absolute;
     left: 0;
     width: 0px;
@@ -2135,27 +2140,27 @@ footer .profileFooterPopUp .profileSideMenu{
     height: 100%;
     border-right: solid 1px black;
     box-shadow: 0px 0px 5px 3px #0000004a;
-    transition: .2s;
+    transition: 0.2s;
     overflow: hidden;
 }
-footer .profileFooterPopUp .profileSideMenu.open{
+footer .profileFooterPopUp .profileSideMenu.open {
     width: 100%;
 }
-footer .profileFooterPopUp .profileSideMenu .body{
+footer .profileFooterPopUp .profileSideMenu .body {
     width: 60%;
     height: 100%;
     background: white;
     margin-right: auto;
     top: 0px;
 }
-footer .profileFooterPopUp .profileSideMenu .iconClose{
+footer .profileFooterPopUp .profileSideMenu .iconClose {
     position: absolute;
     top: 0px;
     left: 0px;
     font-size: 30px;
     z-index: 1;
 }
-footer .profileFooterPopUp .profileSideMenu .tabs .tab{
+footer .profileFooterPopUp .profileSideMenu .tabs .tab {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
@@ -2163,86 +2168,85 @@ footer .profileFooterPopUp .profileSideMenu .tabs .tab{
     border-bottom: solid 1px #d3d3d340;
     color: #333;
 }
-footer .profileFooterPopUp .profileSideMenu .tabs .tab .icon{
+footer .profileFooterPopUp .profileSideMenu .tabs .tab .icon {
     margin-left: 10px;
 }
-footer .profileFooterPopUp .profileSideMenu .tabs .tab .icon .pic{
+footer .profileFooterPopUp .profileSideMenu .tabs .tab .icon .pic {
     width: 20px;
     height: 20px;
 }
 
-
-footer .profileFooterPopUp .searchReviewMFooter{
+footer .profileFooterPopUp .searchReviewMFooter {
     position: absolute;
     width: 100%;
     height: 0px;
     background: white;
     z-index: 2;
-    transition: .3s;
+    transition: 0.3s;
     overflow: hidden;
     bottom: 60px;
 }
-footer .profileFooterPopUp .searchReviewMFooter.open{
+footer .profileFooterPopUp .searchReviewMFooter.open {
     height: calc(100% - 60px);
 }
 
-footer .profileFooterPopUp .searchReviewMFooter .searchBar{
+footer .profileFooterPopUp .searchReviewMFooter .searchBar {
     display: flex;
     padding-top: 15px;
     padding-right: 15px;
     height: 50px;
 }
-footer .profileFooterPopUp .searchReviewMFooter .searchBar .iconClose{
+footer .profileFooterPopUp .searchReviewMFooter .searchBar .iconClose {
     width: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 25px;
 }
-footer .profileFooterPopUp .searchReviewMFooter .searchBar input{
+footer .profileFooterPopUp .searchReviewMFooter .searchBar input {
     width: 100%;
     border: none;
     background: #8080803b;
     padding: 0px 10px;
     border-radius: 5px;
 }
-footer .profileFooterPopUp .searchReviewMFooter .searchKindTab{
+footer .profileFooterPopUp .searchReviewMFooter .searchKindTab {
     display: flex;
     width: 100%;
     padding-top: 20px;
     height: 50px;
 }
-footer .profileFooterPopUp .searchReviewMFooter .searchKindTab .tab{
+footer .profileFooterPopUp .searchReviewMFooter .searchKindTab .tab {
     width: 33%;
     text-align: center;
     border-bottom: solid 1px lightgray;
     padding-bottom: 3px;
     color: gray;
 }
-footer .profileFooterPopUp .searchReviewMFooter .searchKindTab .tab.select{
+footer .profileFooterPopUp .searchReviewMFooter .searchKindTab .tab.select {
     font-weight: bold;
     border-bottom: solid 2px black;
     color: black;
 }
 
-footer .profileFooterPopUp .searchReviewMFooter .searchResultSec{
+footer .profileFooterPopUp .searchReviewMFooter .searchResultSec {
     height: calc(100% - 100px);
     overflow: auto;
 }
-footer .profileFooterPopUp .searchReviewMFooter .item{
+footer .profileFooterPopUp .searchReviewMFooter .item {
     display: flex;
     padding: 5px 5px;
     margin: 5px 0px;
     border-bottom: solid 1px lightgray;
     align-items: center;
 }
-footer .profileFooterPopUp .searchReviewMFooter .item .rr{
+footer .profileFooterPopUp .searchReviewMFooter .item .rr {
     width: 100%;
     height: 8px;
     margin: 4px 0px;
     border-radius: 12px;
 }
-footer .profileFooterPopUp .searchReviewMFooter .item .pic{
+footer .profileFooterPopUp .searchReviewMFooter .item .pic {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -2254,14 +2258,14 @@ footer .profileFooterPopUp .searchReviewMFooter .item .pic{
     text-align: center;
     font-size: 21px;
 }
-footer .profileFooterPopUp .searchReviewMFooter .item .content{
+footer .profileFooterPopUp .searchReviewMFooter .item .content {
     font-size: 15px;
 }
-footer .profileFooterPopUp .searchReviewMFooter .item .content .firstRow{
+footer .profileFooterPopUp .searchReviewMFooter .item .content .firstRow {
     font-size: 1em;
 }
-footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
-    font-size: .7em;
+footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow {
+    font-size: 0.7em;
     color: gray;
 }
 
@@ -2276,7 +2280,6 @@ footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
         background-color: var(--koochita-yellow);
     }
 }
-
 
 @media (max-width: 1300px) {
     .footerRside {
@@ -2331,8 +2334,8 @@ footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
     }
 }
 
-@media (max-width: 992px){
-    .FilterTopController{
+@media (max-width: 992px) {
+    .FilterTopController {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -2403,18 +2406,17 @@ footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
     }
 }
 
-@media (max-width: 767px){
-
-    .eatery_filters{
+@media (max-width: 767px) {
+    .eatery_filters {
         height: calc(100vh - 225px);
         overflow-y: auto;
         overflow-x: hidden;
     }
-    .shareSection{
+    .shareSection {
         position: absolute;
         top: 0px;
     }
-    .FilterTopController{
+    .FilterTopController {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -2424,12 +2426,12 @@ footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
     .footerPhoneMenuBar {
         display: flex;
     }
-    .footerIconHor{
+    .footerIconHor {
         width: 40px;
         height: 35px;
         background-size: 35px;
     }
-    footer .logoutSectionMobile{
+    footer .logoutSectionMobile {
         display: flex;
         bottom: 0;
         right: 0;
@@ -2437,11 +2439,11 @@ footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
         margin-top: auto;
     }
 
-    .loginHelperSection.footerLoginHelperSection .login-button{
+    .loginHelperSection.footerLoginHelperSection .login-button {
         width: 25%;
         background: unset;
     }
-    .loginHelperSection.footerLoginHelperSection .footerMenuBarLinks{
+    .loginHelperSection.footerLoginHelperSection .footerMenuBarLinks {
         width: 70px;
         height: 70px;
         background: white;
@@ -2451,7 +2453,7 @@ footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
         border-radius: 50%;
     }
 
-    .headerSearchBar{
+    .headerSearchBar {
         width: calc(100% - 23px);
         justify-content: space-evenly;
         background: none;
@@ -2462,7 +2464,7 @@ footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
         margin: 0px 12px;
         margin-top: 10px;
     }
-    .headerSearchBar .footerSearchBar{
+    .headerSearchBar .footerSearchBar {
         width: 48%;
         border-radius: 5px;
         color: white;
@@ -2472,17 +2474,17 @@ footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
         margin: 0px;
         margin-bottom: 2px;
     }
-    .headerSearchBar .footerSearchBar .icc{
+    .headerSearchBar .footerSearchBar .icc {
         font-size: 15px;
         text-align: center;
         width: 100%;
         color: white;
     }
-    .headerSearchBar .footerSearchBar .icc:before{
+    .headerSearchBar .footerSearchBar .icc:before {
         font-size: 20px;
     }
 
-    .headerSearchBar.cityButtonsSec{
+    .headerSearchBar.cityButtonsSec {
         border: none;
         margin: 0px 0px;
         width: calc(100% - 20px);
@@ -2493,19 +2495,18 @@ footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
         position: absolute;
         bottom: 27px;
     }
-    .headerSearchBar.cityButtonsSec .footerSearchBar.cityButton{
+    .headerSearchBar.cityButtonsSec .footerSearchBar.cityButton {
         background: white;
         border: solid 1px gray;
         width: 100%;
     }
-
 
     .footerMenuBarLinks {
         font-size: 14px;
         font-weight: normal;
     }
 
-    .filterBoxMobile{
+    .filterBoxMobile {
         display: none;
         position: absolute;
         left: 0px;
@@ -2513,7 +2514,7 @@ footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
         height: calc(100% - 170px);
         top: 30px;
     }
-    .filterBoxShadow{
+    .filterBoxShadow {
         background: white;
         border: solid 1px gray;
         border-radius: 5px;
@@ -2525,7 +2526,7 @@ footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
         overflow: hidden;
         position: relative;
     }
-    .filterBoxShadow .clearAll{
+    .filterBoxShadow .clearAll {
         font-size: 12px;
         text-align: center;
         color: var(--koochita-red);
@@ -2534,14 +2535,14 @@ footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
         margin-bottom: 5px;
         font-weight: bold;
     }
-    .filterBoxShadow .filtersRows{
+    .filterBoxShadow .filtersRows {
         max-height: calc(100% - 55px);
         overflow: auto;
         padding: 0px 5px;
         padding-left: 0px;
         position: relative;
     }
-    .filterBoxShadow .filtersRows .filters{
+    .filterBoxShadow .filtersRows .filters {
         display: flex;
         font-size: 14px;
         justify-content: center;
@@ -2553,10 +2554,10 @@ footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
         background: #fcc1564f;
         position: relative;
     }
-    .filterBoxShadow .filtersRows .filters .name{
+    .filterBoxShadow .filtersRows .filters .name {
         color: black;
     }
-    .filterBoxShadow .filtersRows .filters .iconClose{
+    .filterBoxShadow .filtersRows .filters .iconClose {
         color: var(--koochita-red);
         position: absolute;
         right: -11px;
@@ -2564,8 +2565,7 @@ footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
         z-index: 99;
     }
 
-
-    .submitFiltersInMobile{
+    .submitFiltersInMobile {
         display: block;
         position: absolute;
         bottom: 0px;
@@ -2577,32 +2577,28 @@ footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
         padding: 5px 0px;
     }
 
-    .myTripFooter .myTripCard{
+    .myTripFooter .myTripCard {
         margin: 5px;
         width: calc(50% - 10px);
     }
-
 
     .pSC_boxOfDetails {
         overflow: auto;
     }
 
-    .squerRadioInputSec.filterItem.hidden{
+    .squerRadioInputSec.filterItem.hidden {
         display: flex !important;
     }
 }
 
 @media (max-height: 700px) {
-
     .overflowOptimizer {
         display: block;
     }
 
-
     .pSC_tilte {
         padding: 15px 20px;
     }
-
 }
 
 @media (max-width: 630px) {
@@ -2615,7 +2611,8 @@ footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
         font-weight: normal;
     }
 
-    .lp_others_titles, .lp_others_titles .trips-header {
+    .lp_others_titles,
+    .lp_others_titles .trips-header {
         font-size: 1.5em;
         padding: 0 0 15px;
     }
@@ -2663,11 +2660,9 @@ footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
     footer .modules-membercenter-total-points .points_to_go > span > span {
         font-size: 14px;
     }
-
 }
 
 @media (max-width: 480px) {
-
     .lp_icons {
         font-size: 30px;
     }
@@ -2679,7 +2674,6 @@ footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
     .lp_eachMenu > div:nth-child(2) {
         font-size: 10px;
     }
-
 
     .lp_others_recentView {
         flex-direction: column;
@@ -2749,18 +2743,18 @@ footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
         margin: 0 0 0 15px;
     }
 
-    .myTripFooter .myTripCard{
+    .myTripFooter .myTripCard {
         width: calc(100% - 10px);
     }
 }
 
 @media (max-width: 400px) {
-
     .masthead-recent-class {
         margin: 20px 0;
     }
 
-    .mainPopUp, .lp_phoneMenuBar {
+    .mainPopUp,
+    .lp_phoneMenuBar {
         width: 85%;
     }
 
@@ -2768,7 +2762,9 @@ footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
         font-size: 12px;
     }
 
-    .ui_icon.search, .ui_icon.plus-circle, .ui_icon.member {
+    .ui_icon.search,
+    .ui_icon.plus-circle,
+    .ui_icon.member {
         font-size: 20px;
     }
 
@@ -2830,17 +2826,16 @@ footer .profileFooterPopUp .searchReviewMFooter .item .content .secRow{
     width: 20%;
 }
 
-
-footer .memberPointInfo .head{
+footer .memberPointInfo .head {
     color: #0076ac;
     font-size: 20px;
     margin-top: 5px;
     display: flex;
     justify-content: space-between;
-    align-items: center
+    align-items: center;
 }
 
-.phoneMainFooter{
+.phoneMainFooter {
     padding: 0;
     padding-top: 12px;
     position: absolute;

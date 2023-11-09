@@ -1,4 +1,4 @@
-.secHeadMain{
+.secHeadMain {
     direction: rtl;
     text-align: right;
     position: relative;
@@ -7,27 +7,26 @@
 }
 
 .secHeadTabs:not(:first-child) {
-
     margin-right: 20px;
 }
 
 .secHeadTabs {
-    font-size: 13px;
+    font-size: 17px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #16174f;
+    color: white;
     font-weight: bold;
     position: relative;
     cursor: pointer;
     height: 40px;
 }
 
-.secHeadNavs{
+.secHeadNavs {
     display: flex;
 }
 
-.secHeadTabsSubList{
+.secHeadTabsSubList {
     position: absolute;
     top: 40px;
     z-index: 10;
@@ -38,28 +37,28 @@
     border-radius: 0px 0px 10px 10px;
 }
 
-.secHeadTabs:hover .secHeadTabsSubList{
+.secHeadTabs:hover .secHeadTabsSubList {
     display: flex;
 }
 
-.secHeadTabsSubList > a{
+.secHeadTabsSubList > a {
     color: black;
     padding: 10px 5px;
     font-size: 12px;
     text-align: center;
 }
 
-.secHeadTabsSubList > a:hover{
-    background-color: #88070B;
+.secHeadTabsSubList > a:hover {
+    background-color: #88070b;
     color: white;
 }
 
-.linkRoute{
+.linkRoute {
     color: #16174f !important;
     font-size: 15px;
 }
 
-.spanMarginSecHead{
+.spanMarginSecHead {
     flex-wrap: wrap;
 }
 
@@ -73,51 +72,50 @@
 }
 
 .secHeadTabsSubList > a:last-child {
-    border-radius:  0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
 }
 
-.secHeaderPathDiv{
+.secHeaderPathDiv {
     margin-right: 10px;
     /*min-width: 90px;*/
 }
 
-.yelCol{
+.yelCol {
     color: var(--koochita-yellow);
 }
 
-.listSecHeadContainer{
+.listSecHeadContainer {
     font-size: 20px;
     flex-wrap: nowrap;
 }
 
-.fluidPlacePath{
+.fluidPlacePath {
     background-color: white;
     padding-top: 10px;
     overflow-y: hidden;
     overflow-x: auto;
 }
 
-.linkRoute{
+.linkRoute {
     min-width: 60px;
 }
 
 @media (max-width: 889px) {
-    .secHeadTabs{
+    .secHeadTabs {
         margin-right: 13px;
         font-size: 10px;
         font-weight: 800;
     }
 }
 
-@media (max-width: 650px){
-
-    .listSecHeadContainer{
+@media (max-width: 650px) {
+    .listSecHeadContainer {
         width: fit-content;
     }
     .linkRoute {
         font-size: 12px;
     }
-    .spanMarginSecHead{
+    .spanMarginSecHead {
         padding: 0px;
         padding-left: 10px;
     }

@@ -12,7 +12,7 @@ class AuthController extends Controller
 {
     public function login() {
         if(Auth::check())
-            return Redirect::route('home');
+            return Redirect::route('news.list');
 
         return view('login', ['msg' => '']);
     }
@@ -26,7 +26,7 @@ class AuthController extends Controller
             $password = self::makeValidInput($_POST["password"]);
 
             if(Auth::attempt(['email' => $username, 'password' => $password], true)) {
-                return Redirect::route('home');
+                return Redirect::route('news.list');
             }
 
             return view('login', ['msg' => 'نام کاربری یا رمز عبور را اشتباه وارد کرده اید']);

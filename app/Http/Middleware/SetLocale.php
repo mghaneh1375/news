@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class SetLocale
 {
@@ -16,7 +17,7 @@ class SetLocale
      */
     public function handle(Request $request, Closure $next)
     {
-        \App::setLocale('fa');
+        App::setLocale($request->route()->parameter('lang', 'fa'));
         return $next($request);
     }
 }

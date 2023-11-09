@@ -14,6 +14,8 @@ use Carbon\Carbon;
 use Hekmatinasser\Verta\Facades\Verta;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\SiteResource;
+use App\Models\Site;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
@@ -88,17 +90,18 @@ class NewsController extends Controller
         return view('admin.newsList', compact(['news', 'noneConfirmNews']));
     }
 
-    public function newsNewPage()
+    public function newsNewPage(Request $request)
     {
         $category = NewsCategory::where('parentId', 0)->get();
         foreach ($category as $item)
             $item->sub = NewsCategory::where('parentId', $item->id)->get();
 
         $code = rand(10000, 99999);
-        return view('admin.newNews', compact(['category', 'code']));
+        $sites = SiteResource::collection(Site::all())->toArray($request);
+        return view('admin.newNews', compact(['category', 'code', 'sites']));
     }
 
-    public function editNewsPage($id)
+    public function editNewsPage($id, Request $request)
     {
         $code = rand(10000, 99999);
         $news = News::find($id);
@@ -133,8 +136,9 @@ class NewsController extends Controller
         $news->time = $dateAndTime[1];
         $news->date = str_replace('/', '-', $dateAndTime[0]);
         $news->date = convertNumber('fa', $news->date);
+        $sites = SiteResource::collection(Site::all())->toArray($request);
 
-        return view('admin.newNews', compact(['news', 'category', 'code']));
+        return view('admin.newNews', compact(['news', 'category', 'code', 'sites']));
     }
 
     public function newsTagSearch(){
@@ -266,6 +270,7 @@ class NewsController extends Controller
             'title' => 'required',
             'releaseType' => 'required',
             'category' => 'required',
+            'site' => 'required|integer|exists:site,id'
         ]);
 
         $news = null;
@@ -295,10 +300,17 @@ class NewsController extends Controller
         $news->meta = $request->meta;
         $news->keyword = $request->keyword;
         $news->seoTitle = $request->seoTitle;
+        $news->textEn = ' ';
+        $news->metaEn = $request->metaEn;
+        $news->titleEn = $request->titleEn;
+        $news->keywordEn = $request->keywordEn;
+        $news->seoTitleEn = $request->seoTitleEn;
+        $news->slugEn = makeSlug($request->slugEn);
         $news->slug = makeSlug($request->slug);
         $news->release = $request->releaseType;
+        $news->site_id = $request->site;
 
-	$news->rtl = ($request->has('direction') && $request->direction == 'ltr') ? 0 : 1;
+	    $news->rtl = ($request->has('direction') && $request->direction == 'ltr') ? 0 : 1;
 
         if($request->slug != null)
             $news->slug = makeSlug($request->slug);
@@ -336,6 +348,22 @@ class NewsController extends Controller
                 unlink($locationss.$item->pic);
             $item->delete();
         }
+
+
+        
+        $descriptionEn = $request->descriptionEn;
+        $limbos = explode(',', $request->limboPicIds);
+        $limboPics = NewsLimboPics::whereIn('id', $limbos)->where('userId', auth()->user()->id)->get();
+        foreach ($limboPics as $item){
+            if(is_file("{$limboDestination}/{$item->pic}")) {
+                rename( "{$limboDestination}/{$item->pic}",  "{$newDestination}/{$item->pic}");
+                $url = URL::asset("assets/news/limbo/{$item->pic}", null, $item->server);
+                $newUrl = URL::asset("assets/news/{$newsId}/{$item->pic}", null, config('app.ServerNumber'));
+                $descriptionEn = str_replace($url, $newUrl, $descriptionEn);
+            }
+            $item->delete();
+        }
+        $news->textEn = $descriptionEn;
         $news->text = $description;
         $news->save();
 

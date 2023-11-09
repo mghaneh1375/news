@@ -21,5 +21,30 @@ class Controller extends BaseController
         $input = htmlspecialchars($input);
         return $input;
     }
+    public static function sendDeleteFileApiToServer($files, $server){
+
+        if(config('app.env') === 'local')
+            return ['status' => 'ok', 'result' => 'not in local'];
+
+        $nonce = config('app.DeleteNonceCode');
+        $apiUrl = "https://sr{$server}.koochita.com/api/deleteFileWithDir";
+
+        $time = Carbon::now()->getTimestamp();
+        $hash = Hash::make($nonce.'_'.$time);
+        $files =  json_encode($files);
+
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('DELETE', $apiUrl, ['form_params' => [
+            'code' => $hash,
+            'time' => $time,
+            'filesDirectory' => $files,
+        ]]);
+        $statusCode = $response->getStatusCode();
+        $content = json_decode($response->getBody()->getContents());
+
+        $status = ($statusCode == 200 && $content->status == 'ok') ? 'ok' : 'error';
+
+        return ['status' => $status, 'result' => $content->result];
+    }
     
 }

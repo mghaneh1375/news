@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserNewsController;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,30 +16,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['setLocale'])->group(function() {
+Route::get('/', function () {
+    return Redirect::to('/fa');
+})->name('home');
 
-    Route::get('/', function () {
-        return view('welcome');
-    })->name('home');
+Route::get('login', function () {
+    return Redirect::to('/fa/login');
+});
 
-    Route::get('login', [AuthController::class, 'login'])->name('login');
-
-    Route::post('login', [AuthController::class, 'doLogin'])->name('doLogin');
-
-    Route::middleware(['auth'])->group(function() {
-
-        Route::get('/doLogOut', [AuthController::class, 'logout'])->name('logout');
-
-        Route::get('changePass', ['as' => 'changePass', 'uses' => 'HomeController@changePass']);
-
-        Route::post('doChangePass', ['as' => 'doChangePass', 'uses' => 'HomeController@doChangePass']);
-
-    });
+Route::prefix('{lang}')->middleware(['setLocale'])->group(function() {
 
 
     Route::middleware(['shareNews'])->group(function (){
 
-        Route::get('/main/{lang?}', [UserNewsController::class, 'newsMainPage'])->name('site.news.main');
+        Route::get('/', [UserNewsController::class, 'newsMainPage'])->name('site.news.main');
+
+        Route::get('/main', [UserNewsController::class, 'newsMainPage'])->name('site.news.main');
 
         Route::get('/list/{kind}/{content?}', [UserNewsController::class, 'newsListPage'])->name('site.news.list');
 
@@ -48,7 +41,23 @@ Route::middleware(['setLocale'])->group(function() {
 
     Route::get('/listGetElemes', [UserNewsController::class, 'newsListElements'])->name('site.news.list.getElements');
 
-    Route::middleware(['auth'])->prefix('admin')
-        ->group(base_path('routes/adminRoutes.php'));
-        
+Route::get('login', [AuthController::class, 'login'])->name('login');
+    
+Route::middleware(['auth'])->group(function() {
+
+    Route::get('/doLogOut', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('changePass', ['as' => 'changePass', 'uses' => 'HomeController@changePass']);
+
+    Route::post('doChangePass', ['as' => 'doChangePass', 'uses' => 'HomeController@doChangePass']);
+
 });
+
+});
+
+
+Route::post('login', [AuthController::class, 'doLogin'])->name('doLogin');
+
+
+Route::middleware(['auth'])->prefix('admin')
+    ->group(base_path('routes/adminRoutes.php'));

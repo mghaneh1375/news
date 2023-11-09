@@ -2,17 +2,17 @@
 
 
 @section('head')
-    <title>کوچیتا | لیست {{$header}}</title>
+    <title>کوچیتا | لیست {{ $header }}</title>
 @endsection
 
 
 @section('body')
     <div class="row listHeaderRow">
-        <h2 style="font-weight: bold;">لیست {{$header}}</h2>
+        <h2 style="font-weight: bold;">لیست {{ $header }}</h2>
     </div>
 
     <div class="row">
-        <div class="col-md-2 hideOnPhone" >
+        <div class="col-md-2 hideOnPhone">
             <div data-kind="ver_b" class="edSections edBetween onED"></div>
             <div data-kind="ver_s" class="edSections edBetween onED"></div>
             <div data-kind="ver_s" class="edSections edBetween onED"></div>
@@ -23,8 +23,6 @@
             <div id="bottomMainList"></div>
         </div>
     </div>
-
-
 @endsection
 
 
@@ -34,24 +32,24 @@
         var isFinish = false;
         var inTake = false;
 
-        var kind = '{{$kind}}';
-        var content = '{{$content}}';
+        var kind = '{{ $kind }}';
+        var content = '{{ $content }}';
         var page = 0;
         var take = 8;
 
-        function getListElemes(){
+        function getListElemes() {
             openLoading();
-            if(!inTake && !isFinish) {
+            if (!inTake && !isFinish) {
                 inTake = true;
                 $.ajax({
                     type: 'GET',
-                    url: `{{route("site.news.list.getElements")}}?kind=${kind}&content=${content}&take=${take}&page=${page}`,
+                    url: `{{ route('site.news.list.getElements', ['lang' => \App::getLocale()]) }}?kind=${kind}&content=${content}&take=${take}&page=${page}`,
                     headers: {
                         accept: 'application/json'
                     },
                     success: response => {
-                        
-                        if(response.status == 'ok')
+
+                        if (response.status == 'ok')
                             createListElements(response.result);
                         else
                             getsList();
@@ -64,17 +62,17 @@
             }
         }
 
-        function getsList(){
+        function getsList() {
             inTake = false;
             closeLoading();
         }
 
-        function createListElements(_news){
-	console.log(_news);
+        function createListElements(_news) {
+
             var html = '';
             mustBeTaken = false;
 
-            if(_news.length != take)
+            if (_news.length != take)
                 isFinish = true;
 
             _news.map(item => {
@@ -103,7 +101,7 @@
             var bottomOfList = document.getElementById('bottomMainList').getBoundingClientRect().top;
             var windowHeight = $(window).height();
 
-            if(bottomOfList-windowHeight < 0 && !inTake && (!isFinish || mustBeTaken))
+            if (bottomOfList - windowHeight < 0 && !inTake && (!isFinish || mustBeTaken))
                 getListElemes();
         });
 

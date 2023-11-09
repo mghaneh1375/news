@@ -4,23 +4,22 @@
     @parent
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <script src="{{asset('js/ckeditor5/ckeditorUpload.js')}}"></script>
-    <script src="{{asset('js/ckeditor5/ckeditor.js')}}"></script>
+    <script src="{{ asset('js/ckeditor5/ckeditorUpload.js') }}"></script>
+    <script src="{{ asset('js/ckeditor5/ckeditor.js') }}"></script>
 
-    <script src="{{URL::asset('js/jalali.js')}}"></script>
-    <script src="{{URL::asset('js/calendar/persian-date.min.js')}}"></script>
-    <script src="{{URL::asset('js/calendar/persian-datepicker.js')}}"></script>
-    <script src= {{URL::asset("js/clockPicker/clockpicker.js") }}></script>
+    <script src="{{ URL::asset('js/jalali.js') }}"></script>
+    <script src="{{ URL::asset('js/calendar/persian-date.min.js') }}"></script>
+    <script src="{{ URL::asset('js/calendar/persian-datepicker.js') }}"></script>
+    <script src={{ URL::asset('js/clockPicker/clockpicker.js') }}></script>
 
-    <link rel="stylesheet" href="{{URL::asset('css/calendar/persian-datepicker.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('css/clockPicker/clockpicker.css')}}"/>
-    <link rel="stylesheet" href="{{URL::asset('css/pages/safarnamehPage.css')}}">
+    <link rel="stylesheet" href="{{ URL::asset('css/calendar/persian-datepicker.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/clockPicker/clockpicker.css') }}" />
+    <link rel="stylesheet" href="{{ URL::asset('css/pages/safarnamehPage.css') }}">
 
 @stop
 
 @section('content')
-
-    <input type="hidden" id="newsId" value="{{isset($news) ? $news->id : '0'}}">
+    <input type="hidden" id="newsId" value="{{ isset($news) ? $news->id : '0' }}">
 
     <div class="col-md-3 leftSection" style="padding-right: 0px;">
         <div class="sparkline8-list shadow-reset mg-tb10">
@@ -31,21 +30,28 @@
             </div>
             <div class="sparkline8-graph dashone-comment  dashtwo-messages">
                 <div class="form-group">
-                    <select class="form-control botBorderInput" id="releaseType" name="release" onchange="changeRelease(this.value)">
-                        <option value="released" {{isset($news) ? ($news->release == 'released' ? 'selected' : '')  : ''}}>منتشرشده</option>
-                        <option value="draft" {{isset($news) ? ($news->release == 'draft' ? 'selected' : '')  : 'selected'}}>پیش نویس</option>
-                        <option value="future" {{isset($news) ? ($news->release == 'future' ? 'selected' : '')  : ''}}>آینده</option>
+                    <select class="form-control botBorderInput" id="releaseType" name="release"
+                        onchange="changeRelease(this.value)">
+                        <option value="released"
+                            {{ isset($news) ? ($news->release == 'released' ? 'selected' : '') : '' }}>منتشرشده</option>
+                        <option value="draft"
+                            {{ isset($news) ? ($news->release == 'draft' ? 'selected' : '') : 'selected' }}>پیش نویس
+                        </option>
+                        <option value="future" {{ isset($news) ? ($news->release == 'future' ? 'selected' : '') : '' }}>
+                            آینده</option>
                     </select>
                 </div>
 
-                <div id="futureDiv" style="display: {{isset($news) && $news->release == 'future' ? '' : 'none'}}">
+                <div id="futureDiv" style="display: {{ isset($news) && $news->release == 'future' ? '' : 'none' }}">
                     <div class="form-group" style="display: flex">
                         <label for="date" style="font-size: 10px;">تاریخ انتشار</label>
-                        <input name="date" id="date" class="observer-example inputBoxInput" value="{{isset($news) ? $news->date : ''}}" readonly/>
+                        <input name="date" id="date" class="observer-example inputBoxInput"
+                            value="{{ isset($news) ? $news->date : '' }}" readonly />
                     </div>
                     <div class="form-group" style="display: flex;">
                         <label for="time" style="font-size: 10px;">ساعت انتشار</label>
-                        <input name="time" id="time" class="inputBoxInput" style="width: 73%;" value="{{isset($news) ? $news->time : ''}}" readonly/>
+                        <input name="time" id="time" class="inputBoxInput" style="width: 73%;"
+                            value="{{ isset($news) ? $news->time : '' }}" readonly />
                     </div>
                 </div>
             </div>
@@ -60,7 +66,8 @@
                 <div class="row">
                     <div class="selectCategSec">
                         <div class="inputSec">
-                            <input type="text" placeholder="نام دسته بندی..." onfocus="openCategoryResult()" onkeyup="searchInNewsCategory(this.value)">
+                            <input type="text" placeholder="نام دسته بندی..." onfocus="openCategoryResult()"
+                                onkeyup="searchInNewsCategory(this.value)">
                             <button class="arrowDonwIcon" onclick="openCategoryResult()"></button>
                         </div>
                         <div id="categoryResultDiv" class="resultSec"></div>
@@ -74,16 +81,14 @@
                 <div class="main-sparkline8-hd">
                     <h5>برچسب ها</h5>
                 </div>
+
             </div>
             <div class="sparkline8-graph dashone-comment  dashtwo-messages" style="height: auto">
                 <div class="row">
                     <div class="form-group">
                         <div class="inputBorder newTagSection">
                             <div class="inputGroup newTagInputDiv">
-                                <input type="text"
-                                       class="newTag"
-                                       id="newTag"
-                                       placeholder="برچسپ جدید...">
+                                <input type="text" class="newTag" id="newTag" placeholder="برچسپ جدید...">
                                 <i class="fa fa-check checkIconTag" onclick="selectTag()"></i>
                             </div>
                             <div id="searchTagResultDiv" class="searchTagResultDiv"></div>
@@ -96,36 +101,57 @@
                 </div>
             </div>
         </div>
+        <div class="sparkline8-list shadow-reset mg-tb10">
+            <div class="sparkline8-hd" style="padding: 5px 10px;">
+                <div class="main-sparkline8-hd">
+                    <h5>سایت مورد نظر</h5>
+                </div>
+            </div>
+            <div class="sparkline8-graph dashone-comment  dashtwo-messages">
+                <div class="form-group">
+                    <select class="form-control botBorderInput" id="siteName" name="siteName">
+
+                        @foreach ($sites as $site)
+                            <option value="{{ $site['id'] }}">
+                                {{ $site['name'] }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
 
         <div class="sparkline8-list shadow-reset mg-tb-10">
             <div class="sparkline8-hd" style="padding: 5px 10px">
-                    <div class="main-sparkline8-hd">
-                        <h5 id="mainPicHeader">عکس اصلی</h5>
-                    </div>
+                <div class="main-sparkline8-hd">
+                    <h5 id="mainPicHeader">عکس اصلی</h5>
                 </div>
+            </div>
             <div class="sparkline8-graph dashone-comment  dashtwo-messages" style="height: auto">
                 <div class="row">
-                    <div class="showImg {{ isset($news)? 'open' : ''}}">
-                        <img id="mainPicShow" src="{{isset($news)? $news->pic : URL::asset('img/uploadPic.png')}}">
+                    <div class="showImg {{ isset($news) ? 'open' : '' }}">
+                        <img id="mainPicShow" src="{{ isset($news) ? $news->pic : URL::asset('img/uploadPic.png') }}">
 
-                        <label for="imgInput" class="btn btn-success" style="width: 100%; text-align: center; margin-top: 10px">
+                        <label for="imgInput" class="btn btn-success"
+                            style="width: 100%; text-align: center; margin-top: 10px">
                             انتخاب عکس
-                            <input type="file" id="imgInput" name="mainPic" accept="image/*" style="display: none;" onchange="changePic(this)">
+                            <input type="file" id="imgInput" name="mainPic" accept="image/*" style="display: none;"
+                                onchange="changePic(this)">
                         </label>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="col-md-9" style="padding-left: 0px;">
         <div class="col-md-12">
             <div class="sparkline8-list shadow-reset mg-tb-10">
                 <div class="sparkline8-hd">
                     <div class="main-sparkline8-hd" STYLE="display: flex; justify-content: space-between; color: white">
-                        @if(isset($news))
+                        @if (isset($news))
                             <h4>ویرایش خبر</h4>
-                            <button class="btn btn-success noneSeoTestButton" onclick="storePost(false)">ثبت بدون تست سئو</button>
+                            <button class="btn btn-success noneSeoTestButton" onclick="storePost(false)">ثبت بدون تست
+                                سئو</button>
                         @else
                             <h4>ثبت خبر جدید</h4>
                         @endif
@@ -137,7 +163,8 @@
 
                         <div class="col-xs-12">
                             <div class="form-group">
-                                <input class="form-control titleInputClass" type="text" name="title" id="title" value="{{(isset($news) ? $news->title : '')}}" placeholder="عنوان خبر">
+                                <input class="form-control titleInputClass" type="text" name="title" id="title"
+                                    value="{{ isset($news) ? $news->title : '' }}" placeholder="عنوان خبر">
                             </div>
                         </div>
 
@@ -146,8 +173,27 @@
                                 <div class="grid-container">
                                     <div class="grid-width-100">
                                         <div id="newsText" class="textEditor">
-                                            @if(isset($news))
+                                            @if (isset($news))
                                                 {!! html_entity_decode($news->text) !!}
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <input class="form-control titleInputClass" type="text" name="title" id="titleEn"
+                                    value="{{ isset($news) ? $news->titleEn : '' }}" placeholder="عنوان خبر انگلیسی">
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="adjoined-bottom">
+                                <div class="grid-container">
+                                    <div class="grid-width-100">
+                                        <div id="newsTextEn" class="textEditor">
+                                            @if (isset($news))
+                                                {!! html_entity_decode($news->textEn) !!}
                                             @endif
                                         </div>
                                     </div>
@@ -173,13 +219,15 @@
                         <div class="col-xs-2">
                             <div class="form-group">
                                 <label for="noVideo">خیر</label>
-                                <input type="radio" id="noVideo" name="videoQuestion" value="0" checked onchange="changeVideoQuestion(this.value)">
+                                <input type="radio" id="noVideo" name="videoQuestion" value="0" checked
+                                    onchange="changeVideoQuestion(this.value)">
                             </div>
                         </div>
                         <div class="col-xs-2">
                             <div class="form-group">
                                 <label for="yesVideo">بله</label>
-                                <input type="radio" id="yesVideo" name="videoQuestion" value="1" onchange="changeVideoQuestion(this.value)"}>
+                                <input type="radio" id="yesVideo" name="videoQuestion" value="1"
+                                    onchange="changeVideoQuestion(this.value)"}>
                             </div>
                         </div>
                         <div class="col-xs-4">ایا خبر شما، خبر ویدیویی است؟</div>
@@ -187,12 +235,14 @@
 
                     <div id="uploadVideoSection" class="row" style="display: none">
                         <div class="col-xs-8">
-                            <video id="previewVideo" src="{{isset($news->video) ? $news->video : '#'}}" controls></video>
+                            <video id="previewVideo" src="{{ isset($news->video) ? $news->video : '#' }}"
+                                controls></video>
                         </div>
                         <div class="col-xs-4">
                             <div>
                                 <label for="videoInput">ویدیو</label>
-                                <input type="file" accept="video/*" id="videoInput" class="form-control" onchange="changeVideoFile(this)">
+                                <input type="file" accept="video/*" id="videoInput" class="form-control"
+                                    onchange="changeVideoFile(this)">
                             </div>
                         </div>
                     </div>
@@ -212,13 +262,15 @@
                         <div class="col-xs-2">
                             <div class="form-group">
                                 <label for="RTL">RTL</label>
-                                <input type="radio" id="RTL" name="direction" value="rtl" {{ isset($news->rtl) && !$news->rtl ? '' : 'checked' }}>
+                                <input type="radio" id="RTL" name="direction" value="rtl"
+                                    {{ isset($news->rtl) && !$news->rtl ? '' : 'checked' }}>
                             </div>
                         </div>
                         <div class="col-xs-2">
                             <div class="form-group">
                                 <label for="LTR">LTR</label>
-                                <input type="radio" id="LTR" name="direction" value="ltr"  {{ isset($news->rtl) && !$news->rtl ? 'checked' : '' }}>
+                                <input type="radio" id="LTR" name="direction" value="ltr"
+                                    {{ isset($news->rtl) && !$news->rtl ? 'checked' : '' }}>
                             </div>
                         </div>
                         <div class="col-xs-4">نوع چینش را انتخاب کنید</div>
@@ -226,12 +278,14 @@
 
                     <div id="uploadVideoSection" class="row" style="display: none">
                         <div class="col-xs-8">
-                            <video id="previewVideo" src="{{isset($news->video) ? $news->video : '#'}}" controls></video>
+                            <video id="previewVideo" src="{{ isset($news->video) ? $news->video : '#' }}"
+                                controls></video>
                         </div>
                         <div class="col-xs-4">
                             <div>
                                 <label for="videoInput">ویدیو</label>
-                                <input type="file" accept="video/*" id="videoInput" class="form-control" onchange="changeVideoFile(this)">
+                                <input type="file" accept="video/*" id="videoInput" class="form-control"
+                                    onchange="changeVideoFile(this)">
                             </div>
                         </div>
                     </div>
@@ -251,12 +305,9 @@
                         <div class="col-md-12 floR mg-tb-10">
                             <div class="form-group">
                                 <label for="keyword">کلمه کلیدی</label>
-                                <input class="form-control botBorderInput"
-                                       type="text"
-                                       id="keyword"
-                                       name="keyword"
-                                       placeholder="کلمه کلیدی را اینجا بنویسید..."
-                                       value="{{isset($news)? $news->keyword: ''}}">
+                                <input class="form-control botBorderInput" type="text" id="keyword" name="keyword"
+                                    placeholder="کلمه کلیدی را اینجا بنویسید..."
+                                    value="{{ isset($news) ? $news->keyword : '' }}">
                             </div>
                         </div>
                         <div class="col-md-12 floR">
@@ -264,29 +315,26 @@
                                 <label for="seoTitle">عنوان سئو:
                                     <span id="seoTitleNumber" style="font-weight: 200;"></span>
                                 </label>
-                                <input type="text"
-                                       class="form-control botBorderInput"
-                                       id="seoTitle"
-                                       name="seoTitle"
-                                       placeholder="عنوان سئو را اینجا بنویسید (عنوان سئو باید بین 60 حرف تا 85 حرف باشد)"
-                                       onkeyup="changeSeoTitle(this.value)" value="{{isset($news)? $news->seoTitle: ''}}">
+                                <input type="text" class="form-control botBorderInput" id="seoTitle" name="seoTitle"
+                                    placeholder="عنوان سئو را اینجا بنویسید (عنوان سئو باید بین 60 حرف تا 85 حرف باشد)"
+                                    onkeyup="changeSeoTitle(this.value)"
+                                    value="{{ isset($news) ? $news->seoTitle : '' }}">
                             </div>
                         </div>
                         <div class="col-md-12 floR mg-tb-10">
                             <div class="form-group">
                                 <label for="slug">نامک</label>
-                                <input class="form-control botBorderInput"
-                                       type="text"
-                                       id="slug"
-                                       placeholder="نامک را اینجا بنویسید..."
-                                       name="slug"
-                                       value="{{isset($news)? $news->slug: ''}}">
+                                <input class="form-control botBorderInput" type="text" id="slug"
+                                    placeholder="نامک را اینجا بنویسید..." name="slug"
+                                    value="{{ isset($news) ? $news->slug : '' }}">
                             </div>
                         </div>
                         <div class="col-md-12 floR">
                             <div class="form-group">
-                                <label for="meta">متا: <span id="metaNumber" style="font-weight: 200;"></span></label>
-                                <textarea class="form-control botBorderInput" type="text" id="meta" name="meta" onkeyup="changeMeta(this.value)" rows="3">{{isset($news)? $news->meta: ''}}</textarea>
+                                <label for="meta">متا: <span id="metaNumber"
+                                        style="font-weight: 200;"></span></label>
+                                <textarea class="form-control botBorderInput" type="text" id="meta" name="meta"
+                                    onkeyup="changeMeta(this.value)" rows="3">{{ isset($news) ? $news->meta : '' }}</textarea>
                             </div>
                         </div>
 
@@ -302,9 +350,66 @@
                     </div>
                 </div>
 
+
+
+                <div style="height: auto !important;" class="sparkline8-graph dashone-comment  dashtwo-messages">
+                    <div class="row" style="text-align: right">
+                        <div class="col-md-12 floR mg-tb-10">
+                            <div class="form-group">
+                                <label for="keyword">کلمه کلیدی انگلیسی</label>
+                                <input class="form-control botBorderInput" type="text" id="keywordEn" name="keyword"
+                                    placeholder="کلمه کلیدی  انگلیسی را اینجا بنویسید..."
+                                    value="{{ isset($news) ? $news->keywordEn : '' }}">
+                            </div>
+                        </div>
+                        <div class="col-md-12 floR">
+                            <div class="form-group">
+                                <label for="seoTitle">عنوان سئو انگلیسی:
+                                    <span id="seoTitleNumber" style="font-weight: 200;"></span>
+                                </label>
+                                <input type="text" class="form-control botBorderInput" id="seoTitleEn"
+                                    name="seoTitle"
+                                    placeholder="عنوان سئو را اینجا بنویسید (عنوان سئو باید بین 60 حرف تا 85 حرف باشد)"
+                                    onkeyup="changeSeoTitle(this.value)"
+                                    value="{{ isset($news) ? $news->seoTitleEn : '' }}">
+                            </div>
+                        </div>
+                        <div class="col-md-12 floR mg-tb-10">
+                            <div class="form-group">
+                                <label for="slug">نامک انگلیسی</label>
+                                <input class="form-control botBorderInput" type="text" id="slugEn"
+                                    placeholder="نامک انگلیسی را اینجا بنویسید..." name="slug"
+                                    value="{{ isset($news) ? $news->slugEn : '' }}">
+                            </div>
+                        </div>
+                        <div class="col-md-12 floR">
+                            <div class="form-group">
+                                <label for="meta">متاانگلیسی: <span id="metaNumber"
+                                        style="font-weight: 200;"></span></label>
+                                <textarea class="form-control botBorderInput" type="text" id="metaEn" name="meta"
+                                    onkeyup="changeMeta(this.value)" rows="3">{{ isset($news) ? $news->metaEn : '' }}</textarea>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row" style="text-align: center">
+                        <button class="btn btn-primary" onclick="checkSeo(0)">تست سئو</button>
+                    </div>
+                    <div class="row" style="text-align: right">
+                        <div id="errorResult"></div>
+                        <div id="warningResult"></div>
+                        <div id="goodResult"></div>
+                    </div>
+                </div>
+
+
+
+
                 <div style="padding: 10px; width: 100%; display: flex; justify-content: center; align-items: center;">
-                    <input type="button" onclick="checkSeo(1)"  value="ثبت" class="btn btn-success">
-                    <input type="button" onclick="window.location.href='{{route("news.list")}}'"  value="بازگشت" class="btn btn-secondry">
+                    <input type="button" onclick="checkSeo(1)" value="ثبت" class="btn btn-success">
+                    <input type="button" onclick="window.location.href='{{ route('news.list') }}'" value="بازگشت"
+                        class="btn btn-secondry">
                 </div>
 
             </div>
@@ -314,6 +419,7 @@
     <img id="beforeSaveImg" src="" style="display: none;">
 
     <script>
+        var secendCkeditor;
         var tagsName = [];
         var newsId;
         var mainDataForm = new FormData();
@@ -332,7 +438,7 @@
         var selectedNewsCategory = [];
         var newsCategory = {!! $category !!};
 
-        @if(isset($news))
+        @if (isset($news))
             news = {!! json_encode($news) !!};
             newsId = news.id;
             news['category'].map(item => selectedCat.push({
@@ -341,8 +447,8 @@
             }));
 
             $(window).ready(() => {
-            news['tags'].map(item => chooseTag(item));
-        });
+                news['tags'].map(item => chooseTag(item));
+            });
         @endif
 
         $('.observer-example').persianDatepicker({
@@ -357,58 +463,120 @@
             autoclose: true,
         });
 
-        BalloonBlockEditor.create( document.querySelector('#newsText'), {
-            placeholder: 'متن خبر خود را اینجا وارد کنید...',
-            toolbar: {
-                items: [
-                    'bold',
-                    'italic',
-                    'link',
-                    'highlight'
-                ]
-            },
-            language: 'fa',
-            blockToolbar: [
-                'blockQuote',
-                'heading',
-                'indent',
-                'outdent',
-                'numberedList',
-                'bulletedList',
-                'insertTable',
-                'imageUpload',
-                'undo',
-                'redo'
-            ],
-            table: {
-                contentToolbar: [
-                    'tableColumn',
-                    'tableRow',
-                    'mergeTableCells'
-                ]
-            },
-            licenseKey: '',
-        } )
-            .then( editor => {
+        BalloonBlockEditor.create(document.querySelector('#newsText'), {
+                placeholder: 'متن خبر خود را اینجا وارد کنید...',
+                toolbar: {
+                    items: [
+                        'bold',
+                        'italic',
+                        'link',
+                        'highlight'
+                    ]
+                },
+                language: 'fa',
+                blockToolbar: [
+                    'blockQuote',
+                    'heading',
+                    'indent',
+                    'outdent',
+                    'numberedList',
+                    'bulletedList',
+                    'insertTable',
+                    'imageUpload',
+                    'undo',
+                    'redo'
+                ],
+                table: {
+                    contentToolbar: [
+                        'tableColumn',
+                        'tableRow',
+                        'mergeTableCells'
+                    ]
+                },
+                licenseKey: '',
+            })
+            .then(editor => {
                 window.editor = editor;
-                window.uploaderClass = editor.plugins.get( 'FileRepository' ).createUploadAdapter = ( loader ) => {
-                    let data = { code: {{$code}}, newsId: newsId };
+                window.uploaderClass = editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                    let data = {
+                        code: {{ $code }},
+                        newsId: newsId
+                    };
                     data = JSON.stringify(data);
-                    return new MyUploadAdapter( loader, '{{route('news.uploadDescPic')}}', '{{csrf_token()}}', data);
+                    return new MyUploadAdapter(loader, '{{ route('news.uploadDescPic') }}', '{{ csrf_token() }}',
+                        data);
                 };
             })
-            .catch( error => {
-                console.error( 'Oops, something went wrong!' );
-                console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
-                console.warn( 'Build id: wgqoghm20ep6-7otme29let2s' );
-                console.error( error );
-            } );
+            .catch(error => {
+                console.error('Oops, something went wrong!');
+                console.error(
+                    'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:'
+                );
+                console.warn('Build id: wgqoghm20ep6-7otme29let2s');
+                console.error(error);
+            });
 
-        function changeRelease(value){
+        function changeRelease(value) {
+            document.getElementById('futureDiv').style.display = value == 'future' ? 'block' : 'none';
+        }
+        BalloonBlockEditor.create(document.querySelector('#newsTextEn'), {
+                placeholder: 'Write your news here...',
+                toolbar: {
+                    items: [
+                        'bold',
+                        'italic',
+                        'link',
+                        'highlight'
+                    ]
+                },
+                language: 'en',
+                blockToolbar: [
+                    'blockQuote',
+                    'heading',
+                    'indent',
+                    'outdent',
+                    'numberedList',
+                    'bulletedList',
+                    'insertTable',
+                    'imageUpload',
+                    'undo',
+                    'redo'
+                ],
+                table: {
+                    contentToolbar: [
+                        'tableColumn',
+                        'tableRow',
+                        'mergeTableCells'
+                    ]
+                },
+                licenseKey: '',
+            })
+            .then(editor => {
+                window.editorr = editor;
+                window.uploaderClass = editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                    let data = {
+                        code: {{ $code }},
+                        newsId: newsId
+                    };
+                    data = JSON.stringify(data);
+                    return new MyUploadAdapter(loader, '{{ route('news.uploadDescPic') }}', '{{ csrf_token() }}',
+                        data);
+                };
+            })
+            .catch(error => {
+                console.error('Oops, something went wrong!');
+                console.error(
+                    'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:'
+                );
+                console.warn('Build id: wgqoghm20ep6-7otme29let2s');
+                console.error(error);
+            });
+
+        function changeRelease(value) {
             document.getElementById('futureDiv').style.display = value == 'future' ? 'block' : 'none';
         }
 
-        function changePic(input){
+        function changePic(input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 $('.showImg').addClass('open');
@@ -417,7 +585,7 @@
             }
         }
 
-        function storePost(_checkSeo = true){
+        function storePost(_checkSeo = true) {
 
             var id = document.getElementById('newsId').value;
             var title = document.getElementById('title').value;
@@ -430,51 +598,61 @@
             var slug = document.getElementById('slug').value;
             var meta = document.getElementById('meta').value;
 
+            var titleEn = document.getElementById('titleEn').value;
+            var keywordEn = document.getElementById('keywordEn').value;
+            var seoTitleEn = document.getElementById('seoTitleEn').value;
+            var slugEn = document.getElementById('slugEn').value;
+            var metaEn = document.getElementById('metaEn').value;
+
+            var site = document.getElementById('siteName').value;
             var hasVideo = $('input[name="videoQuestion"]:checked').val();
             var direction = $('input[name="direction"]:checked').val();
 
-            if(hasVideo == 1){
+            if (hasVideo == 1) {
                 var hasVideoFile = document.getElementById('videoInput').files[0];
-                if((hasVideoFile == null || hasVideoFile == undefined) && id == 0){
+                if ((hasVideoFile == null || hasVideoFile == undefined) && id == 0) {
                     alert('ویدیو خبر را مشخص کنید');
                     return;
                 }
             }
 
-            if(title.trim().length < 2){
+            if (title.trim().length < 2) {
+                alert('عنوان خبر را مشخص کنید');
+                return;
+            }
+            if (titleEn.trim().length < 2) {
                 alert('عنوان خبر را مشخص کنید');
                 return;
             }
 
-            if(selectedNewsCategory.length == 0){
+            if (selectedNewsCategory.length == 0) {
                 alert('دسته بندی را مشخص کنید');
                 return;
             }
 
             var hasMain = 0;
             selectedNewsCategory.map(item => {
-                if(item.thisIsMain == 1)
+                if (item.thisIsMain == 1)
                     hasMain = 1;
             });
 
-            if(hasMain == 0){
+            if (hasMain == 0) {
                 alert('دسته بندی اصلی را مشخص کنید');
                 return;
             }
 
-            if(release == 'future' && (date == null || date == '' || time == null || time == '')){
+            if (release == 'future' && (date == null || date == '' || time == null || time == '')) {
                 alert('تاریخ و ساعت انتشار را مشخص کنید.');
                 return;
-            }
-            else if(release != 'release' && release != 'future'){
+            } else if (release != 'release' && release != 'future') {
                 var d = new Date();
                 date = d.getJalaliFullYear() + '/' + (d.getJalaliMonth() + 1) + '/' + d.getJalaliDate();
             }
 
-            if(release != 'draft'){
+            if (release != 'draft') {
                 let errInIf = '';
 
-                if(_checkSeo) {
+                if (_checkSeo) {
                     if (keyword.trim().length < 2)
                         errInIf += 'کلمه کلیدی خبر را مشخص کنید';
                     if (meta.trim().length < 2)
@@ -485,20 +663,32 @@
                         errInIf += 'نامک خبر را مشخص کنید';
                 }
 
-                if(errInIf != ''){
+                if (errInIf != '') {
                     alert(errInIf);
                     return;
                 }
             }
 
             mainDataForm.append('id', id);
-            mainDataForm.append('code', {{$code}});
+            mainDataForm.append('code', {{ $code }});
             mainDataForm.append('title', title);
             mainDataForm.append('keyword', keyword);
             mainDataForm.append('seoTitle', seoTitle);
             mainDataForm.append('slug', slug);
             mainDataForm.append('direction', direction);
             mainDataForm.append('meta', meta);
+            mainDataForm.append('site', site);
+
+
+            mainDataForm.append('titleEn', titleEn);
+            mainDataForm.append('keywordEn', keywordEn);
+            mainDataForm.append('seoTitleEn', seoTitleEn);
+            mainDataForm.append('slugEn', slugEn);
+            mainDataForm.append('metaEn', metaEn);
+            mainDataForm.append('descriptionEn', window.editorr.getData());
+
+
+
             mainDataForm.append('description', window.editor.getData());
             mainDataForm.append('limboPicIds', window.limboIds);
             mainDataForm.append('releaseType', release);
@@ -509,18 +699,15 @@
             mainDataForm.append('warningCount', warningCount);
 
             if (id == 0) {
-                if(inputMainPic.files && inputMainPic.files[0]){
+                if (inputMainPic.files && inputMainPic.files[0]) {
                     mainDataForm.append('pic', inputMainPic.files[0]);
                     ajaxPost();
-                }
-                else if(release != 'draft'){
+                } else if (release != 'draft') {
                     alert('لطفا عکس اصلی را مشخص کنید.');
                     return;
-                }
-                else if(release == 'draft')
+                } else if (release == 'draft')
                     ajaxPost();
-            }
-            else {
+            } else {
                 if (inputMainPic.files && inputMainPic.files[0])
                     mainDataForm.append('pic', inputMainPic.files[0]);
 
@@ -528,21 +715,22 @@
             }
         }
 
-        function ajaxPost(){
+        function ajaxPost() {
+            console.log(mainDataForm);
             openLoading();
 
             $.ajax({
                 type: 'post',
-                url: '{{route("news.store")}}',
+                url: '{{ route('news.store') }}',
                 data: mainDataForm,
                 processData: false,
                 contentType: false,
-                success: function(response){
-                    if(response.status == 'ok'){
+                success: function(response) {
+                    if (response.status == 'ok') {
                         newsId = response.result;
                         var hasVideo = $('input[name="videoQuestion"]:checked').val();
 
-                        if(hasVideo == 1)
+                        if (hasVideo == 1)
                             uploadVideo(afterSuccessUpload);
                         else
                             deleteVideoRequest(afterSuccessUpload);
@@ -551,40 +739,53 @@
             });
         }
 
-        function afterSuccessUpload(_result, _response){
+        function afterSuccessUpload(_result, _response) {
             alert('تغییرات با موفقیت ثبت شد');
 
             var location = window.location.href;
-            if(location.includes('news/new'))
-                window.location.href = '{{url("admin/news/edit")}}/' + newsId;
+            if (location.includes('news/new'))
+                window.location.href = '{{ url('admin/news/edit') }}/' + newsId;
             else
                 closeLoading();
         }
 
-        function checkSeo(kind){
+        function checkSeo(kind) {
             var value = document.getElementById('keyword').value;
             var seoTitle = document.getElementById('seoTitle').value;
             var slug = document.getElementById('slug').value;
             var meta = document.getElementById('meta').value;
             var title = document.getElementById('title').value;
             var newsId = document.getElementById('newsId').value;
+
+            var valueEn = document.getElementById('keywordEn').value;
+            var seoTitleEn = document.getElementById('seoTitleEn').value;
+            var slugEn = document.getElementById('slugEn').value;
+            var metaEn = document.getElementById('metaEn').value;
+            var titleEn = document.getElementById('titleEn').value;
             var desc = window.editor.getData();
+            var descEn = window.editorr.getData();
 
             $.ajax({
                 type: 'POST',
-                url : '{{route("seoTesterContent")}}',
+                url: '{{ route('seoTesterContent') }}',
                 data: {
-                    _token: '{{csrf_token()}}',
+                    _token: '{{ csrf_token() }}',
                     keyword: value,
                     meta: meta,
                     seoTitle: seoTitle,
                     slug: slug,
                     title: title,
+                    keywordEn: valueEn,
+                    metaEn: metaEn,
+                    seoTitleEn: seoTitleEn,
+                    slugEn: slugEn,
+                    titleEn: titleEn,
                     id: newsId,
                     database: 'news',
+                    descEn: descEn,
                     desc: desc
                 },
-                success: function(response){
+                success: function(response) {
                     response = JSON.parse(response);
                     document.getElementById('errorResult').innerHTML = '';
                     document.getElementById('warningResult').innerHTML = '';
@@ -607,78 +808,74 @@
             })
         }
 
-        function inlineSeoCheck(kind){
+        function inlineSeoCheck(kind) {
             var tags = tagsName;
             var text;
-            if(tags.length == 0){
+            if (tags.length == 0) {
                 errorCount++;
                 text = '<div style="color: red;">شما باید برای متن خود برچسب انتخاب نمایید</div>';
                 $('#errorResult').append(text);
-            }
-            else if(tags.length < 10){
+            } else if (tags.length < 10) {
                 warningCount++;
                 text = '<div style="color: #dec300;">پیشنهاد می گردد حداقل ده برچسب انتخاب نمایید.</div>';
                 $('#warningResult').append(text);
-            }
-            else{
+            } else {
                 text = '<div style="color: green;">تعداد برچسب های متن مناسب می باشد.</div>';
                 $('#goodResult').append(text);
             }
 
             var inputMainPic = document.getElementById('imgInput');
 
-            if(!(inputMainPic.files && inputMainPic.files[0]) && (news == null || news['pic'] == null)){
+            if (!(inputMainPic.files && inputMainPic.files[0]) && (news == null || news['pic'] == null)) {
                 errorCount++;
                 text = '<div style="color: red;">خبر باید حتما دارای عکس اصلی باشد.</div>';
                 $('#errorResult').append(text);
-            }
-            else{
+            } else {
                 text = '<div style="color: green;">متن دارای عکس اصلی است.</div>';
                 $('#goodResult').append(text);
             }
 
-            if(kind == 1) {
+            if (kind == 1) {
                 var release = document.getElementById('releaseType').value;
 
                 if (release != 'draft' && errorCount > 0)
                     alert('برای ثبت خبر باید ارورها رابرطرف کرده و یا انتشار را به حالت پیش نویس دراوردی.');
-                if(!uniqueTitle)
+                if (!uniqueTitle)
                     alert('عنوان خبر یکتا نیست');
-                else if(!uniqueSlug)
+                else if (!uniqueSlug)
                     alert('نامک خبر یکتا نیست');
-                else if(!uniqueKeyword)
+                else if (!uniqueKeyword)
                     alert('کلمه کلیدی خبر یکتا نیست');
-                else if(!uniqueSeoTitle)
+                else if (!uniqueSeoTitle)
                     alert('عنوان سئو خبر یکتا نیست');
                 else {
                     if (warningCount > 0) {
                         $('#warningContentModal').html('');
-                        $('#warningResult').children().each(function (){
+                        $('#warningResult').children().each(function() {
                             text = '<li style="margin-bottom: 5px">' + $(this).text() + '</li>';
                             $('#warningContentModal').append(text);
                         });
                         $('#warningModal').modal('show');
-                    }
-                    else
+                    } else
                         storePost();
                 }
             }
         }
 
-        function changeSeoTitle(_value){
+        function changeSeoTitle(_value) {
             var text = _value.length + ' حرف';
             $('#seoTitleNumber').text(text);
-            if(_value.length > 60 && _value.length <= 85)
+            if (_value.length > 60 && _value.length <= 85)
                 $('#seoTitleNumber').css('color', 'green');
             else
                 $('#seoTitleNumber').css('color', 'red');
 
         }
 
-        function changeMeta(_value){
+        function changeMeta(_value) {
             var text = _value.length + ' حرف';
             $('#metaNumber').text(text);
-            if(_value.length > 120 && _value.length <= 156)
+            if (_value.length > 120 && _value.length <= 156)
                 $('#metaNumber').css('color', 'green');
             else
                 $('#metaNumber').css('color', 'red');
@@ -705,25 +902,29 @@
         closeCategoryResult = () => $('#categoryResultDiv').removeClass('open');
         $(window).on('click', () => setTimeout(() => closeCategoryResult(), 100));
 
-        function openCategoryResult(){
-            if(!$('#categoryResultDiv').hasClass('open'))
+        function openCategoryResult() {
+            if (!$('#categoryResultDiv').hasClass('open'))
                 setTimeout(() => $('#categoryResultDiv').addClass('open'), 200);
         }
-        function createCategoryResult(_result){
+
+        function createCategoryResult(_result) {
             var text = '';
             _result.map((item, index) => {
-                if(item.show)
-                    text += `<div class="resRow ${item.main == 1 ? 'mainCat' : 'sideCat'} ${item.selected == 1 ? 'selected' : ''}" onclick="selectedThisNewsCategory(${index})">${item.name}</div>`;
+                if (item.show)
+                    text +=
+                    `<div class="resRow ${item.main == 1 ? 'mainCat' : 'sideCat'} ${item.selected == 1 ? 'selected' : ''}" onclick="selectedThisNewsCategory(${index})">${item.name}</div>`;
             });
             $('#categoryResultDiv').html(text);
         }
-        function searchInNewsCategory(_value){
+
+        function searchInNewsCategory(_value) {
             allNewsCategoryList.map(item => item.show = item.name.search(_value) > -1 ? 1 : 0);
             createCategoryResult(allNewsCategoryList);
         }
-        function selectedThisNewsCategory(_index){
+
+        function selectedThisNewsCategory(_index) {
             allNewsCategoryList.map(item => item.show = 1);
-            if(allNewsCategoryList[_index].selected == 1)
+            if (allNewsCategoryList[_index].selected == 1)
                 return;
 
             allNewsCategoryList[_index].selected = 1;
@@ -731,13 +932,14 @@
             selectedNewsCategory[selectedNewsCategory.length - 1].thisIsMain = 0;
             selectedNewsCategory[selectedNewsCategory.length - 1].indexList = _index;
 
-            if(selectedNewsCategory.length == 1)
+            if (selectedNewsCategory.length == 1)
                 selectedNewsCategory[0].thisIsMain = 1;
 
             createSelectedCategoryRow();
             createCategoryResult(allNewsCategoryList);
         }
-        function createSelectedCategoryRow(){
+
+        function createSelectedCategoryRow() {
             var text = '';
             selectedNewsCategory.map((item, index) => {
                 text += `<div class="scRow">
@@ -749,12 +951,14 @@
 
             $('#selectedCategory').html(text);
         }
-        function chooseThisForMainCat(_index){
+
+        function chooseThisForMainCat(_index) {
             selectedNewsCategory.map(item => item.thisIsMain = 0);
             selectedNewsCategory[_index].thisIsMain = 1;
             createSelectedCategoryRow();
         }
-        function deleteFromSelectedCategory(_index){
+
+        function deleteFromSelectedCategory(_index) {
             allNewsCategoryList[selectedNewsCategory[_index].indexList].selected = 0;
             selectedNewsCategory.splice(_index, 1);
             allNewsCategoryList.map(item => item.show = 1);
@@ -765,31 +969,34 @@
 
         selectedCat.map(item => {
             allNewsCategoryList.map((ascl, index) => {
-                if(item.id == ascl.id) {
+                if (item.id == ascl.id) {
                     selectedThisNewsCategory(index);
-                    if(item.isMain == 1)
-                        chooseThisForMainCat(selectedNewsCategory.length-1);
+                    if (item.isMain == 1)
+                        chooseThisForMainCat(selectedNewsCategory.length - 1);
                 }
             });
         });
 
         $('#newTag').on('keyup', e => e.keyCode == 13 ? selectTag() : searchTag(e.target.value));
-        function searchTag(value){
-            if(value.trim().length > 1) {
+
+        function searchTag(value) {
+            if (value.trim().length > 1) {
                 $('#searchTagResultDiv').empty();
                 $.ajax({
                     type: 'GET',
-                    url: '{{route("news.tagSearch")}}?text=' + value,
-                    success: function (response) {
+                    url: '{{ route('news.tagSearch') }}?text=' + value,
+                    success: function(response) {
                         if (response.status == 'ok') {
                             var text = '';
-                            if(value.trim().length  == 0){
+                            if (value.trim().length == 0) {
                                 $('#searchTagResultDiv').empty();
                                 return;
                             }
 
                             if (response.value == value) {
-                                response.result.map(item => text += `<div class="row searchTagResult" onclick="chooseTag(this.innerText)">${item}</div>`);
+                                response.result.map(item => text +=
+                                    `<div class="row searchTagResult" onclick="chooseTag(this.innerText)">${item}</div>`
+                                );
                                 $('#searchTagResultDiv').html(text);
                             }
                         }
@@ -797,14 +1004,16 @@
                 });
             }
         }
-        function chooseTag(_value){
+
+        function chooseTag(_value) {
             $('#searchTagResultDiv').empty();
             $('#newTag').val(_value);
             selectTag();
         }
+
         function selectTag() {
             var value = $('#newTag').val();
-            if(tagsName.indexOf(value) == -1) {
+            if (tagsName.indexOf(value) == -1) {
                 tagsName.push(value);
                 if (value.trim().length != 0) {
                     $('#newTag').val('');
@@ -817,31 +1026,32 @@
                 }
             }
         }
-        function deleteTag(element){
+
+        function deleteTag(element) {
             var value = $(element).prev().text();
             var index = tagsName.indexOf(value);
-            if(index != -1)
+            if (index != -1)
                 tagsName.splice(index, 1);
 
             $(element).parent().remove();
         }
 
-        function changeVideoQuestion(_value){
-            if(_value == 1){
+        function changeVideoQuestion(_value) {
+            if (_value == 1) {
                 $('#mainPicHeader').text('عکس شاخص ویدیو');
                 $('#uploadVideoSection').show();
-            }
-            else{
+            } else {
                 $('#mainPicHeader').text('عکس اصلی');
                 $('#uploadVideoSection').hide();
             }
         }
-        function changeVideoFile(_input){
-            if(_input.files[0]['type'].includes('video/'))
+
+        function changeVideoFile(_input) {
+            if (_input.files[0]['type'].includes('video/'))
                 $('#previewVideo').attr('src', URL.createObjectURL(_input.files[0]));
         }
 
-        function uploadVideo(_callBack){
+        function uploadVideo(_callBack) {
             var formData = new FormData();
             formData.append('video', document.getElementById('videoInput').files[0]);
             formData.append('newsId', newsId);
@@ -849,13 +1059,13 @@
             openLoading(true, 'درحال بارگذاری ویدیو');
             $.ajax({
                 type: 'POST',
-                url: '{{route("news.store.video")}}',
+                url: '{{ route('news.store.video') }}',
                 data: formData,
                 processData: false,
                 contentType: false,
-                xhr: function () {
+                xhr: function() {
                     var xhr = new XMLHttpRequest();
-                    xhr.upload.onprogress = function (e) {
+                    xhr.upload.onprogress = function(e) {
                         var percent = '0';
                         var percentage = '0%';
 
@@ -873,12 +1083,12 @@
             })
         }
 
-        function deleteVideoRequest(_callBack){
+        function deleteVideoRequest(_callBack) {
             $.ajax({
                 type: 'DELETE',
-                url: '{{route("news.delete.video")}}',
+                url: '{{ route('news.delete.video') }}',
                 data: {
-                    _token: '{{csrf_token()}}',
+                    _token: '{{ csrf_token() }}',
                     newsId: newsId
                 },
                 success: response => _callBack(1, response),
@@ -889,7 +1099,7 @@
 
 
         $(window).ready(() => {
-            @if(isset($news) && $news->video != null)
+            @if (isset($news) && $news->video != null)
                 $('input[name="videoQuestion"][value="1"]').prop('checked', true);
                 changeVideoQuestion(1);
             @else
@@ -915,14 +1125,16 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <div style="font-size: 18px; margin-bottom: 20px;"> در خبر شما اخطارهای زیر موجود است . ایا از ثبت سفرنامه خود اطمینان دارید؟</div>
+                    <div style="font-size: 18px; margin-bottom: 20px;"> در خبر شما اخطارهای زیر موجود است . ایا از ثبت
+                        سفرنامه خود اطمینان دارید؟</div>
                     <div id="warningContentModal" style="padding-right: 5px;"></div>
                 </div>
 
                 <!-- Modal footer -->
                 <div class="modal-footer" style="text-align: center">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">خیر اصلاح می کنم.</button>
-                    <button type="button" class="btn btn-success"  data-dismiss="modal" onclick="storePost()">بله خبر ثبت شود</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" onclick="storePost()">بله خبر
+                        ثبت شود</button>
                 </div>
 
             </div>

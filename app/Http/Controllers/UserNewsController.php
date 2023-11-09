@@ -16,14 +16,13 @@ class UserNewsController extends Controller
 {
     public function newsMainPage($lang="fa")
     {
-        \App::setLocale($lang);
-        $selectCol = ['id', 'title', 'meta', 'slug', 'keyword', 'pic', 'video', 'server'];
+        $selectCol = ['id', 'title', 'meta', 'slug', 'keyword', 'pic', 'video', 'server','dateAndTime'];
         $sliderNews = News::youCanSee()->orderByDesc('dateAndTime')->select($selectCol)->take(5)->get();
-        $sideSliderNews = News::youCanSee()->orderByDesc('dateAndTime')->select($selectCol)->skip(5)->take(4)->get();
+        $sideSliderNews = News::youCanSee()->orderByDesc('dateAndTime')->select($selectCol)->skip(5)->take(2)->get();
         if(count($sideSliderNews) < 4){
             $remaining = 4 - count($sideSliderNews);
             $skip = 5 - $remaining;
-            $sideSliderNews = News::youCanSee()->select($selectCol)->orderBy('created_at')->skip($skip)->take(4)->get();
+            $sideSliderNews = News::youCanSee()->select($selectCol)->orderBy('created_at')->skip($skip)->take(2)->get();
         }
 
         foreach ([$sliderNews, $sideSliderNews] as $section){
@@ -31,6 +30,12 @@ class UserNewsController extends Controller
                 $item = getNewsMinimal($item);
         }
 
+        $mostViewNews = News::youCanSee()->orderBy('seen','desc')->select($selectCol)->take(6)->get();
+        if(count($mostViewNews) < 4){
+            $remaining = 4 - count($mostViewNews);
+            $skip = 5 - $remaining;
+            $mostViewNews = News::youCanSee()->select($selectCol)->orderBy('created_at')->skip($skip)->take(4)->get();
+        }
 
         $allCategories = NewsCategory::where('parentId', 0)->get();
         foreach ($allCategories as $category){
@@ -50,19 +55,23 @@ class UserNewsController extends Controller
         foreach ($topNews as $item)
             $item = getNewsMinimal($item);
 
-        $lastVideos = News::youCanSee()->where('video', '!=', null)->orderByDesc('dateAndTime')->select($selectCol)->take(5)->get();
+        $lastVideos = News::youCanSee()->whereNotNull('video')->orderByDesc('dateAndTime')->select($selectCol)->take(10)->get();
+        
         foreach ($lastVideos as $item)
             $item = getNewsMinimal($item);
 
-        return view('user.newsMainPage', compact(['sliderNews', 'sideSliderNews', 'allCategories', 'topNews', 'lastVideos']));
+        $lastNews = News::youCanSee()->whereNull('video')->orderBy('dateAndTime')->select($selectCol)->take(6)->get();
+        foreach ($lastNews as $item)
+            $item = getNewsMinimal($item);
+
+        return view('user.newsMainPage', compact(['sliderNews', 'sideSliderNews','mostViewNews', 'allCategories', 'topNews', 'lastVideos','lastNews']));
     }
 
-    public function newsShow($slug, $lang="fa")
+    public function newsShow($lang, $slug)
     {
-        \App::setLocale($lang);
-        $news = News::youCanSee()->where('slug', $slug)->first();
+        $news = News::youCanSee()->where('slug', $slug)->orWhere('slugEn', $slug)->first();
         if($news == null)
-            return redirect(route('site.news.main'));
+            return redirect(route('site.news.main', ['lang' => $lang]));
 
         $news->tags = $news->getTags->pluck('tag')->toArray();
 
@@ -97,7 +106,7 @@ class UserNewsController extends Controller
         return view('user.newsShow', compact(['news', 'otherNews']));
     }
 
-    public function newsListPage($kind, $content = ''){
+    public function newsListPage($lang, $kind, $content = ''){
 
         $header = '';
         if($kind == 'all')
@@ -156,7 +165,7 @@ class UserNewsController extends Controller
                                     ->take($take)
                                     ->get();
         }
-
+        
         foreach($news as $item)
             $item = getNewsMinimal($item);
 

@@ -2,8 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Resources\NewsCategoryResource;
 use App\Models\NewsCategory;
 use Closure;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\View;
 
 class NewsShareData
@@ -17,14 +19,7 @@ class NewsShareData
      */
     public function handle($request, Closure $next)
     {
-        $newsCategories = NewsCategory::where('parentId', 0)->get();
-        foreach ($newsCategories as $category)
-            $category->sub = NewsCategory::where('parentId', $category->id)->get();
-
-
-        View::share(['newsCategories' => $newsCategories]);
-
-
+        View::share(['newsCategories' => NewsCategoryResource::customCollection(NewsCategory::top()->get(), App::getLocale())->toArray($request)]);
         return $next($request);
     }
 }
