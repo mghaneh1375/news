@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
+use App\Http\Resources\NewsDigest;
 
 function trueShowForTextArea($text){
     $breaks = array("<br />","<br>","<br/>");
@@ -164,10 +165,7 @@ function convertDateToString($date, $between = '') {
 
 function getNewsMinimal($news){
     $locale = App::getLocale();
-    $news->pic = URL::asset("assets/news/{$news->id}/{$news->pic}", null, $news->server);
-    $news->url = route('site.news.show', ['slug' => getData($locale, $news->slug, $news->slugEn), 'lang' => $locale]);
-    
-    return $news;
+    return NewsDigest::customMake($news, $locale);
 }
 
 function findImagesFromText($text){
@@ -211,7 +209,7 @@ function getData($lang, $faData, $enData) {
 
     if($enData != null)
         return $enData;
-
+    
     return $faData;
 }
 

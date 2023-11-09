@@ -52,8 +52,12 @@ class UserNewsController extends Controller
         }
 
         $topNews = News::youCanSee()->where('topNews', 1)->orderByDesc('dateAndTime')->select($selectCol)->get();
+        $topNewsOutput = [];
+
         foreach ($topNews as $item)
-            $item = getNewsMinimal($item);
+            array_push($topNewsOutput, getNewsMinimal($item));
+
+        $topNews = $topNewsOutput;
 
         $lastVideos = News::youCanSee()->whereNotNull('video')->orderByDesc('dateAndTime')->select($selectCol)->take(5)->get();
         
@@ -61,8 +65,12 @@ class UserNewsController extends Controller
             $item = getNewsMinimal($item);
 
         $lastNews = News::youCanSee()->whereNull('video')->orderBy('dateAndTime')->select($selectCol)->take(6)->get();
+        $lastNewsOutput = [];
+
         foreach ($lastNews as $item)
-            $item = getNewsMinimal($item);
+            array_push($lastNewsOutput, getNewsMinimal($item));
+
+        $lastNews = $lastNewsOutput;
 
         return view('user.newsMainPage', compact(['sliderNews', 'sideSliderNews','mostViewNews', 'allCategories', 'topNews', 'lastVideos','lastNews']));
     }
