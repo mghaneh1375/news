@@ -19,7 +19,6 @@
 @stop
 
 @section('content')
-
     <input type="hidden" id="newsId" value="{{ isset($news) ? $news->id : '0' }}">
 
     <div class="col-md-3 leftSection" style="padding-right: 0px;">
@@ -111,8 +110,10 @@
             <div class="sparkline8-graph dashone-comment  dashtwo-messages">
                 <div class="form-group">
                     <select class="form-control botBorderInput" id="siteName" name="siteName">
+
                         @foreach ($sites as $site)
-                            <option value="{{ $site['id'] }}">{{ $site['name'] }}
+                            <option value="{{ $site['id'] }}">
+                                {{ $site['name'] }}
                             </option>
                         @endforeach
                     </select>
@@ -142,7 +143,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-md-9" style="padding-left: 0px;">
         <div class="col-md-12">
             <div class="sparkline8-list shadow-reset mg-tb-10">
@@ -175,6 +175,25 @@
                                         <div id="newsText" class="textEditor">
                                             @if (isset($news))
                                                 {!! html_entity_decode($news->text) !!}
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <input class="form-control titleInputClass" type="text" name="title" id="titleEn"
+                                    value="{{ isset($news) ? $news->titleEn : '' }}" placeholder="عنوان خبر انگلیسی">
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="adjoined-bottom">
+                                <div class="grid-container">
+                                    <div class="grid-width-100">
+                                        <div id="newsTextEn" class="textEditor">
+                                            @if (isset($news))
+                                                {!! html_entity_decode($news->textEn) !!}
                                             @endif
                                         </div>
                                     </div>
@@ -331,6 +350,62 @@
                     </div>
                 </div>
 
+
+
+                <div style="height: auto !important;" class="sparkline8-graph dashone-comment  dashtwo-messages">
+                    <div class="row" style="text-align: right">
+                        <div class="col-md-12 floR mg-tb-10">
+                            <div class="form-group">
+                                <label for="keyword">کلمه کلیدی انگلیسی</label>
+                                <input class="form-control botBorderInput" type="text" id="keywordEn" name="keyword"
+                                    placeholder="کلمه کلیدی  انگلیسی را اینجا بنویسید..."
+                                    value="{{ isset($news) ? $news->keywordEn : '' }}">
+                            </div>
+                        </div>
+                        <div class="col-md-12 floR">
+                            <div class="form-group">
+                                <label for="seoTitle">عنوان سئو انگلیسی:
+                                    <span id="seoTitleNumber" style="font-weight: 200;"></span>
+                                </label>
+                                <input type="text" class="form-control botBorderInput" id="seoTitleEn"
+                                    name="seoTitle"
+                                    placeholder="عنوان سئو را اینجا بنویسید (عنوان سئو باید بین 60 حرف تا 85 حرف باشد)"
+                                    onkeyup="changeSeoTitle(this.value)"
+                                    value="{{ isset($news) ? $news->seoTitleEn : '' }}">
+                            </div>
+                        </div>
+                        <div class="col-md-12 floR mg-tb-10">
+                            <div class="form-group">
+                                <label for="slug">نامک انگلیسی</label>
+                                <input class="form-control botBorderInput" type="text" id="slugEn"
+                                    placeholder="نامک انگلیسی را اینجا بنویسید..." name="slug"
+                                    value="{{ isset($news) ? $news->slugEn : '' }}">
+                            </div>
+                        </div>
+                        <div class="col-md-12 floR">
+                            <div class="form-group">
+                                <label for="meta">متاانگلیسی: <span id="metaNumber"
+                                        style="font-weight: 200;"></span></label>
+                                <textarea class="form-control botBorderInput" type="text" id="metaEn" name="meta"
+                                    onkeyup="changeMeta(this.value)" rows="3">{{ isset($news) ? $news->metaEn : '' }}</textarea>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row" style="text-align: center">
+                        <button class="btn btn-primary" onclick="checkSeo(0)">تست سئو</button>
+                    </div>
+                    <div class="row" style="text-align: right">
+                        <div id="errorResult"></div>
+                        <div id="warningResult"></div>
+                        <div id="goodResult"></div>
+                    </div>
+                </div>
+
+
+
+
                 <div style="padding: 10px; width: 100%; display: flex; justify-content: center; align-items: center;">
                     <input type="button" onclick="checkSeo(1)" value="ثبت" class="btn btn-success">
                     <input type="button" onclick="window.location.href='{{ route('news.list') }}'" value="بازگشت"
@@ -344,6 +419,7 @@
     <img id="beforeSaveImg" src="" style="display: none;">
 
     <script>
+        var secendCkeditor;
         var tagsName = [];
         var newsId;
         var mainDataForm = new FormData();
@@ -443,6 +519,62 @@
         function changeRelease(value) {
             document.getElementById('futureDiv').style.display = value == 'future' ? 'block' : 'none';
         }
+        BalloonBlockEditor.create(document.querySelector('#newsTextEn'), {
+                placeholder: 'Write your news here...',
+                toolbar: {
+                    items: [
+                        'bold',
+                        'italic',
+                        'link',
+                        'highlight'
+                    ]
+                },
+                language: 'en',
+                blockToolbar: [
+                    'blockQuote',
+                    'heading',
+                    'indent',
+                    'outdent',
+                    'numberedList',
+                    'bulletedList',
+                    'insertTable',
+                    'imageUpload',
+                    'undo',
+                    'redo'
+                ],
+                table: {
+                    contentToolbar: [
+                        'tableColumn',
+                        'tableRow',
+                        'mergeTableCells'
+                    ]
+                },
+                licenseKey: '',
+            })
+            .then(editor => {
+                window.editorr = editor;
+                window.uploaderClass = editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                    let data = {
+                        code: {{ $code }},
+                        newsId: newsId
+                    };
+                    data = JSON.stringify(data);
+                    return new MyUploadAdapter(loader, '{{ route('news.uploadDescPic') }}', '{{ csrf_token() }}',
+                        data);
+                };
+            })
+            .catch(error => {
+                console.error('Oops, something went wrong!');
+                console.error(
+                    'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:'
+                );
+                console.warn('Build id: wgqoghm20ep6-7otme29let2s');
+                console.error(error);
+            });
+
+        function changeRelease(value) {
+            document.getElementById('futureDiv').style.display = value == 'future' ? 'block' : 'none';
+        }
 
         function changePic(input) {
             if (input.files && input.files[0]) {
@@ -465,8 +597,14 @@
             var seoTitle = document.getElementById('seoTitle').value;
             var slug = document.getElementById('slug').value;
             var meta = document.getElementById('meta').value;
-            var site = document.getElementById('siteName').value;
 
+            var titleEn = document.getElementById('titleEn').value;
+            var keywordEn = document.getElementById('keywordEn').value;
+            var seoTitleEn = document.getElementById('seoTitleEn').value;
+            var slugEn = document.getElementById('slugEn').value;
+            var metaEn = document.getElementById('metaEn').value;
+
+            var site = document.getElementById('siteName').value;
             var hasVideo = $('input[name="videoQuestion"]:checked').val();
             var direction = $('input[name="direction"]:checked').val();
 
@@ -479,6 +617,10 @@
             }
 
             if (title.trim().length < 2) {
+                alert('عنوان خبر را مشخص کنید');
+                return;
+            }
+            if (titleEn.trim().length < 2) {
                 alert('عنوان خبر را مشخص کنید');
                 return;
             }
@@ -536,6 +678,17 @@
             mainDataForm.append('direction', direction);
             mainDataForm.append('meta', meta);
             mainDataForm.append('site', site);
+
+
+            mainDataForm.append('titleEn', titleEn);
+            mainDataForm.append('keywordEn', keywordEn);
+            mainDataForm.append('seoTitleEn', seoTitleEn);
+            mainDataForm.append('slugEn', slugEn);
+            mainDataForm.append('metaEn', metaEn);
+            mainDataForm.append('descriptionEn', window.editorr.getData());
+
+
+
             mainDataForm.append('description', window.editor.getData());
             mainDataForm.append('limboPicIds', window.limboIds);
             mainDataForm.append('releaseType', release);
@@ -563,6 +716,7 @@
         }
 
         function ajaxPost() {
+            console.log(mainDataForm);
             openLoading();
 
             $.ajax({
@@ -602,7 +756,14 @@
             var meta = document.getElementById('meta').value;
             var title = document.getElementById('title').value;
             var newsId = document.getElementById('newsId').value;
+
+            var valueEn = document.getElementById('keywordEn').value;
+            var seoTitleEn = document.getElementById('seoTitleEn').value;
+            var slugEn = document.getElementById('slugEn').value;
+            var metaEn = document.getElementById('metaEn').value;
+            var titleEn = document.getElementById('titleEn').value;
             var desc = window.editor.getData();
+            var descEn = window.editorr.getData();
 
             $.ajax({
                 type: 'POST',
@@ -614,8 +775,14 @@
                     seoTitle: seoTitle,
                     slug: slug,
                     title: title,
+                    keywordEn: valueEn,
+                    metaEn: metaEn,
+                    seoTitleEn: seoTitleEn,
+                    slugEn: slugEn,
+                    titleEn: titleEn,
                     id: newsId,
                     database: 'news',
+                    descEn: descEn,
                     desc: desc
                 },
                 success: function(response) {

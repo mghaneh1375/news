@@ -59,7 +59,7 @@ class UserNewsController extends Controller
 
         $topNews = $topNewsOutput;
 
-        $lastVideos = News::youCanSee()->whereNotNull('video')->orderByDesc('dateAndTime')->select($selectCol)->take(5)->get();
+        $lastVideos = News::youCanSee()->whereNotNull('video')->orderByDesc('dateAndTime')->select($selectCol)->take(10)->get();
         
         foreach ($lastVideos as $item)
             $item = getNewsMinimal($item);

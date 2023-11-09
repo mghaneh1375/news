@@ -1883,7 +1883,7 @@ footer .bookMarkSSec .infoSec .state {
 
 .mobileFiltersButtonTabs {
     position: fixed;
-    bottom: 48px;
+    bottom: 0px;
     display: flex;
     justify-content: center;
     font-size: 17px;

@@ -33,7 +33,7 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    padding-left: unset !important; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        padding-left: unset !important; */
             margin-right: unset !important;
             margin-left: unset !important;
             width: 95% !important;
@@ -66,14 +66,6 @@
 
         .content .title:hover {
             color: #ffad14 !important;
-        }
-
-
-
-        .lastNewsCard {
-            width: 32% !important;
-            border-bottom: 2px solid #6d0606;
-            height: 300px !important;
         }
 
         .lastNewsCard .title {

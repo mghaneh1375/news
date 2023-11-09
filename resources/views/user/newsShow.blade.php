@@ -87,9 +87,6 @@
                     </div>
                 </div>
 
-                <div data-kind="ver_b" class="edSections edBetween onED"></div>
-                <div data-kind="ver_s" class="edSections edBetween onED"></div>
-                <div data-kind="ver_s" class="edSections edBetween onED"></div>
             </div>
         </div>
 
@@ -200,8 +197,6 @@
                     </div>
                 </div>
             </div>
-            <div data-kind="ver_s" class="edSections edBetween onED"></div>
-            <div data-kind="ver_s" class="edSections edBetween onED"></div>
         </div>
     </div>
 @endsection
