@@ -1,7 +1,7 @@
 /*header1 styles*/
 
 .mainHeader {
-    padding-top: 5px;
+    padding-top: 30px;
     background-color: #6d0606;
 }
 
@@ -262,7 +262,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
 }
 
 .headerContainer {
-    padding: 0px 24px;
+    padding: 0px 24px 15px 24px;
     display: flex;
     align-items: center;
     position: relative;
@@ -625,7 +625,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
 
 .mobileHeader {
     direction: rtl;
-    background-color: #30b4a6;
+    background-color: #6d0606;
     height: 8vh !important;
     padding: 0px 24px;
     display: flex;

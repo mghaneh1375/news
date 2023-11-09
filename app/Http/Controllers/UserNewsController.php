@@ -55,7 +55,7 @@ class UserNewsController extends Controller
         foreach ($topNews as $item)
             $item = getNewsMinimal($item);
 
-        $lastVideos = News::youCanSee()->whereNotNull('video')->orderByDesc('dateAndTime')->select($selectCol)->take(5)->get();
+        $lastVideos = News::youCanSee()->whereNotNull('video')->orderByDesc('dateAndTime')->select($selectCol)->take(10)->get();
         
         foreach ($lastVideos as $item)
             $item = getNewsMinimal($item);

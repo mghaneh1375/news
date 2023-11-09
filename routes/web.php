@@ -20,6 +20,10 @@ Route::get('/', function () {
     return Redirect::to('/fa');
 })->name('home');
 
+Route::get('login', function () {
+    return Redirect::to('/fa/login');
+});
+
 Route::prefix('{lang}')->middleware(['setLocale'])->group(function() {
 
 
@@ -36,13 +40,9 @@ Route::prefix('{lang}')->middleware(['setLocale'])->group(function() {
     });
 
     Route::get('/listGetElemes', [UserNewsController::class, 'newsListElements'])->name('site.news.list.getElements');
-        
-});
 
 Route::get('login', [AuthController::class, 'login'])->name('login');
-
-Route::post('login', [AuthController::class, 'doLogin'])->name('doLogin');
-
+    
 Route::middleware(['auth'])->group(function() {
 
     Route::get('/doLogOut', [AuthController::class, 'logout'])->name('logout');
@@ -52,6 +52,12 @@ Route::middleware(['auth'])->group(function() {
     Route::post('doChangePass', ['as' => 'doChangePass', 'uses' => 'HomeController@doChangePass']);
 
 });
+
+});
+
+
+Route::post('login', [AuthController::class, 'doLogin'])->name('doLogin');
+
 
 Route::middleware(['auth'])->prefix('admin')
     ->group(base_path('routes/adminRoutes.php'));

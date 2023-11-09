@@ -15,6 +15,7 @@
 .headerContainer {
     direction: ltr;
 }
+
 .headerButtonsSection {
     right: 0;
     left: auto;
@@ -68,5 +69,11 @@ div:has(.keyNumber) {
     padding-right: 24px !important;
 }
 .secHeadTabs {
-    margin-right: 20px;
+    margin-right: 25px;
+}
+.rowCard {
+    direction: ltr;
+}
+.mostViewDay li {
+    direction: ltr;
 }

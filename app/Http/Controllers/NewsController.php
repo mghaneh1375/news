@@ -300,6 +300,12 @@ class NewsController extends Controller
         $news->meta = $request->meta;
         $news->keyword = $request->keyword;
         $news->seoTitle = $request->seoTitle;
+        $news->textEn = ' ';
+        $news->metaEn = $request->metaEn;
+        $news->titleEn = $request->titleEn;
+        $news->keywordEn = $request->keywordEn;
+        $news->seoTitleEn = $request->seoTitleEn;
+        $news->slugEn = makeSlug($request->slugEn);
         $news->slug = makeSlug($request->slug);
         $news->release = $request->releaseType;
         $news->site_id = $request->site;
@@ -342,6 +348,22 @@ class NewsController extends Controller
                 unlink($locationss.$item->pic);
             $item->delete();
         }
+
+
+        
+        $descriptionEn = $request->descriptionEn;
+        $limbos = explode(',', $request->limboPicIds);
+        $limboPics = NewsLimboPics::whereIn('id', $limbos)->where('userId', auth()->user()->id)->get();
+        foreach ($limboPics as $item){
+            if(is_file("{$limboDestination}/{$item->pic}")) {
+                rename( "{$limboDestination}/{$item->pic}",  "{$newDestination}/{$item->pic}");
+                $url = URL::asset("assets/news/limbo/{$item->pic}", null, $item->server);
+                $newUrl = URL::asset("assets/news/{$newsId}/{$item->pic}", null, config('app.ServerNumber'));
+                $descriptionEn = str_replace($url, $newUrl, $descriptionEn);
+            }
+            $item->delete();
+        }
+        $news->textEn = $descriptionEn;
         $news->text = $description;
         $news->save();
 
