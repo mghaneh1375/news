@@ -47,7 +47,7 @@
                 </div>
             </a>
         @else
-            <a href="{{ route('login') }}" aria-expanded="false" class="navs">
+            <a href="{{ route('login', ['lang' => 'fa']) }}" aria-expanded="false" class="navs">
                 <div class="header">
                     <i class="fa big-icon fa-login icon"></i>
                     <span class="text">ورود</span>
