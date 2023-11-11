@@ -30,10 +30,10 @@
     <style>
         .eddsSec {}
 
-        .eddsSec.fixedL {
-            position: fixed;
-            bottom: 0px;
-        }
+        /* .eddsSec.fixedL {
+                position: fixed;
+                bottom: 0px;
+            } */
 
         .newsVideo {}
 
@@ -61,7 +61,7 @@
 
 
 @section('body')
-    <div class="row" style="margin-top: 20px">
+    <div class="row" style="margin-top: 20px;margin-bottom: 40px">
         <div id="pcSideAdSection" class="col-md-2 hideOnPhone">
             <div id="dsfjk" class="eddsSec">
                 <div class="row sideSec">

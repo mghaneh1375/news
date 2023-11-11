@@ -8,6 +8,7 @@ use App\Models\NewsCategory;
 use App\Models\NewsCategoryRelations;
 use App\Models\NewsTags;
 use App\Models\User;
+use Carbon\Carbon;
 use Hekmatinasser\Verta\Facades\Verta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
@@ -31,10 +32,12 @@ class UserNewsController extends Controller
             $sideSliderNews = News::youCanSee()->select($selectCol)->orderBy('created_at')->skip($skip)->take(2)->get();
         }
 
+        $sectionOutput = [];
         foreach ([$sliderNews, $sideSliderNews] as $section){
             foreach ($section as $item)
-                $item = getNewsMinimal($item);
+                array_push($sectionOutput, getNewsMinimal($item));
         }
+        $sliderNews = $sectionOutput;
 
         $mostViewNews = News::youCanSee()->orderBy('seen','desc')->select($selectCol)->take(6)->get();
         if(count($mostViewNews) < 4){
@@ -42,6 +45,12 @@ class UserNewsController extends Controller
             $skip = 5 - $remaining;
             $mostViewNews = News::youCanSee()->select($selectCol)->orderBy('created_at')->skip($skip)->take(4)->get();
         }
+        $mostViewNewsOutput = [];
+
+        foreach ($mostViewNews as $item)
+            array_push($mostViewNewsOutput, getNewsMinimal($item));
+
+        $mostViewNews = $mostViewNewsOutput;
 
         $allCategories = NewsCategory::where('parentId', 0)->get();
         foreach ($allCategories as $category){
@@ -56,6 +65,7 @@ class UserNewsController extends Controller
             foreach ($category->news as $item)
                 $item = getNewsMinimal($item);
         }
+
 
         $topNews = News::youCanSee()->where('topNews', 1)->orderByDesc('dateAndTime')->select($selectCol)->get();
         $topNewsOutput = [];

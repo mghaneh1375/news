@@ -33,7 +33,7 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                padding-left: unset !important; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        padding-left: unset !important; */
             margin-right: unset !important;
             margin-left: unset !important;
             width: 95% !important;
@@ -162,7 +162,7 @@
                             <a href="{{ $item->url }}" class="content">
                                 <h3 class="title">{{ $item->title }}</h3>
                                 <p class="summery">{{ $item->meta }}</p>
-                            </a>
+                            </a>‍
                         </div>
                     @endforeach
                 </div>
@@ -174,7 +174,7 @@
 
         @if (count($lastVideos) > 0)
             <div class="row inOneRows swiper mySwiper swiper-container videoConv">
-                <div class="d-flex alignItemBase">
+                <div class="videosHeader">
                     <div class="bgColorRed colorWhite alignItemCen pd5 mg17">{{ __('main.MostViewed') }}</div>
                     <div class="title" style="margin-top: 10px;margin-right: 10px">
                         {{ __('main.VideoCoversation') }}</div>
@@ -252,7 +252,7 @@
                 </div>
                 <div class="row inOneRows swiper mySwiper swiper-container"
                     style="background-color: black;float:right !important;height: 250px;overflow: hidden;">
-                    <div class="d-flex alignItemBase">
+                    <div class="videosHeader">
                         <div class="bgColorRed colorWhite alignItemCen pd5 mg17">{{ __('main.MostViewed') }}</div>
                         <div class="title" style="color: white;margin-top: 10px;margin-right: 10px">
                             {{ __('main.LatestVideos') }}</div>
@@ -307,7 +307,7 @@
                                             alt="{{ $category->news[$i]->keyword }}" class="resizeImgClass"
                                             onload="fitThisImg(this)">
                                     </div>
-                                    <h4 class="content">{{ $category->news[$i]->title }}</h4>
+                                    <h3 class="content">{{ $category->news[$i]->title }}</h3>
                                 </a>
                             @endfor
                         </div>
@@ -413,7 +413,7 @@
                             '" loading="lazy"class="lazyload resizeImgClass" onload="fitThisImg(this)">';
                         html += '</a>';
                         html += '<a href="' + myRes.result[i].url + '" class="colorWhite">';
-                        html += '<h4 class="title">' + myRes.result[i].title + '</h4>';
+                        html += '<h3 class="title">' + myRes.result[i].title + '</h3>';
                         html += '<p class="summery">' + myRes.result[i].meta + '</p>';
 
                         html += '</a>';

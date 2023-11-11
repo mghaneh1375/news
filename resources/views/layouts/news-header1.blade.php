@@ -19,6 +19,15 @@
         .headerAuthButton:hover .nameOfIconHeaders {
             color: white;
         }
+
+        #time {
+            color: white;
+            margin-left: 5px
+        }
+
+        #enTime {
+            color: white;
+        }
     </style>
 @endif
 
@@ -30,6 +39,8 @@
         </a>
 
         <div class="headerButtonsSection">
+            <div id="time"></div>
+            <div id="enTime"></div>
 
 
         </div>
@@ -67,11 +78,16 @@
         </div>
     </div>
 </div>
-
+<script src="{{ URL::asset('js/jalaliDate.js') }}"></script>
+<script script src="https://momentjs.com/downloads/moment.js"></script>
 <script>
     var bookMarksData = null;
     var locked = false;
     var superAccess = false;
+    var time = getPersianDate();
+    $('#time').append(time);
+    var enTime = moment().format('|  MMMM Do YYYY');
+    $('#enTime').append(enTime);
 </script>
 
 <script src="{{ URL::asset('js/pages/layout/header1.js?v=1.1') }}"></script>

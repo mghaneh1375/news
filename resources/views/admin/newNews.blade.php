@@ -181,31 +181,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-12">
-                            <div class="form-group">
-                                <input class="form-control titleInputClass" type="text" name="title" id="titleEn"
-                                    value="{{ isset($news) ? $news->titleEn : '' }}" placeholder="عنوان خبر انگلیسی">
-                            </div>
-                        </div>
-                        <div class="col-xs-12">
-                            <div class="adjoined-bottom">
-                                <div class="grid-container">
-                                    <div class="grid-width-100">
-                                        <div id="newsTextEn" class="textEditor">
-                                            @if (isset($news))
-                                                {!! html_entity_decode($news->textEn) !!}
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
                 </div>
             </div>
         </div>
-
 
         <div class="col-md-12" style="margin-top: 10px;">
             <div class="sparkline8-list shadow-reset">
@@ -292,7 +272,6 @@
                 </div>
             </div>
         </div>
-
         <div class="col-md-12" style="margin-top: 10px;">
             <div class="sparkline8-list shadow-reset">
                 <div class="sparkline8-hd" style="padding: 5px 10px;">
@@ -349,8 +328,57 @@
                         <div id="goodResult"></div>
                     </div>
                 </div>
+            </div>
+        </div>
 
+        <div class="col-md-12">
+            <div class="sparkline8-list shadow-reset mg-tb-10">
+                <div class="sparkline8-hd">
+                    <div class="main-sparkline8-hd" STYLE="display: flex; justify-content: space-between; color: white">
+                        @if (isset($news))
+                            <h4>ویرایش خبر</h4>
+                            <button class="btn btn-success noneSeoTestButton" onclick="storePost(false)">ثبت بدون تست
+                                سئو</button>
+                        @else
+                            <h4>ثبت خبر جدید</h4>
+                        @endif
+                    </div>
+                </div>
 
+                <div style="height: auto !important;" class="sparkline8-graph dashone-comment  dashtwo-messages">
+                    <div class="row" style="text-align: right">
+
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <input class="form-control titleInputClass" type="text" name="title" id="titleEn"
+                                    value="{{ isset($news) ? $news->titleEn : '' }}" placeholder="عنوان خبر انگلیسی">
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="adjoined-bottom">
+                                <div class="grid-container">
+                                    <div class="grid-width-100">
+                                        <div id="newsTextEn" class="textEditor">
+                                            @if (isset($news))
+                                                {!! html_entity_decode($news->textEn) !!}
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12" style="margin-top: 10px;">
+            <div class="sparkline8-list shadow-reset">
+                <div class="sparkline8-hd" style="padding: 5px 10px;">
+                    <div class="main-sparkline8-hd">
+                        <h5>سئو</h5>
+                    </div>
+                </div>
 
                 <div style="height: auto !important;" class="sparkline8-graph dashone-comment  dashtwo-messages">
                     <div class="row" style="text-align: right">
@@ -365,12 +393,12 @@
                         <div class="col-md-12 floR">
                             <div class="form-group">
                                 <label for="seoTitle">عنوان سئو انگلیسی:
-                                    <span id="seoTitleNumber" style="font-weight: 200;"></span>
+                                    <span id="EnSeoTitleNumber" style="font-weight: 200;"></span>
                                 </label>
                                 <input type="text" class="form-control botBorderInput" id="seoTitleEn"
                                     name="seoTitle"
                                     placeholder="عنوان سئو را اینجا بنویسید (عنوان سئو باید بین 60 حرف تا 85 حرف باشد)"
-                                    onkeyup="changeSeoTitle(this.value)"
+                                    onkeyup="EnChangeSeoTitle(this.value)"
                                     value="{{ isset($news) ? $news->seoTitleEn : '' }}">
                             </div>
                         </div>
@@ -384,36 +412,32 @@
                         </div>
                         <div class="col-md-12 floR">
                             <div class="form-group">
-                                <label for="meta">متاانگلیسی: <span id="metaNumber"
+                                <label for="meta">متاانگلیسی: <span id="EnMetaNumber"
                                         style="font-weight: 200;"></span></label>
                                 <textarea class="form-control botBorderInput" type="text" id="metaEn" name="meta"
-                                    onkeyup="changeMeta(this.value)" rows="3">{{ isset($news) ? $news->metaEn : '' }}</textarea>
+                                    onkeyup="EnChangeMeta(this.value)" rows="3">{{ isset($news) ? $news->metaEn : '' }}</textarea>
                             </div>
                         </div>
 
                     </div>
 
                     <div class="row" style="text-align: center">
-                        <button class="btn btn-primary" onclick="checkSeo(0)">تست سئو</button>
+                        <button class="btn btn-primary" onclick="EnCheckSeo(0)">تست سئو</button>
                     </div>
                     <div class="row" style="text-align: right">
-                        <div id="errorResult"></div>
-                        <div id="warningResult"></div>
-                        <div id="goodResult"></div>
+                        <div id="errorResult2"></div>
+                        <div id="warningResult2"></div>
+                        <div id="goodResult2"></div>
                     </div>
                 </div>
-
-
-
-
-                <div style="padding: 10px; width: 100%; display: flex; justify-content: center; align-items: center;">
-                    <input type="button" onclick="checkSeo(1)" value="ثبت" class="btn btn-success">
-                    <input type="button" onclick="window.location.href='{{ route('news.list') }}'" value="بازگشت"
-                        class="btn btn-secondry">
-                </div>
-
             </div>
         </div>
+        <div style="padding: 10px; width: 100%; display: flex; justify-content: center; align-items: center;">
+            <input type="button" onclick="TwoCheckSeo()" value="ثبت" class="btn btn-success">
+            <input type="button" onclick="window.location.href='{{ route('news.list') }}'" value="بازگشت"
+                class="btn btn-secondry">
+        </div>
+
     </div>
 
     <img id="beforeSaveImg" src="" style="display: none;">
@@ -716,7 +740,6 @@
         }
 
         function ajaxPost() {
-            console.log(mainDataForm);
             openLoading();
 
             $.ajax({
@@ -756,15 +779,7 @@
             var meta = document.getElementById('meta').value;
             var title = document.getElementById('title').value;
             var newsId = document.getElementById('newsId').value;
-
-            var valueEn = document.getElementById('keywordEn').value;
-            var seoTitleEn = document.getElementById('seoTitleEn').value;
-            var slugEn = document.getElementById('slugEn').value;
-            var metaEn = document.getElementById('metaEn').value;
-            var titleEn = document.getElementById('titleEn').value;
             var desc = window.editor.getData();
-            var descEn = window.editorr.getData();
-
             $.ajax({
                 type: 'POST',
                 url: '{{ route('seoTesterContent') }}',
@@ -775,14 +790,8 @@
                     seoTitle: seoTitle,
                     slug: slug,
                     title: title,
-                    keywordEn: valueEn,
-                    metaEn: metaEn,
-                    seoTitleEn: seoTitleEn,
-                    slugEn: slugEn,
-                    titleEn: titleEn,
                     id: newsId,
                     database: 'news',
-                    descEn: descEn,
                     desc: desc
                 },
                 success: function(response) {
@@ -802,7 +811,6 @@
 
                     errorCount = response[3];
                     warningCount = response[4];
-
                     inlineSeoCheck(kind);
                 }
             })
@@ -879,6 +887,128 @@
                 $('#metaNumber').css('color', 'green');
             else
                 $('#metaNumber').css('color', 'red');
+        }
+
+
+
+
+
+        function EnCheckSeo(kind) {
+
+            var valueEn = document.getElementById('keywordEn').value;
+            var seoTitleEn = document.getElementById('seoTitleEn').value;
+            var slugEn = document.getElementById('slugEn').value;
+            var metaEn = document.getElementById('metaEn').value;
+            var titleEn = document.getElementById('titleEn').value;
+            var descEn = window.editorr.getData();
+
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('EnSeoTesterContent') }}',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    keywordEn: valueEn,
+                    metaEn: metaEn,
+                    seoTitleEn: seoTitleEn,
+                    slugEn: slugEn,
+                    titleEn: titleEn,
+                    descEn: descEn,
+                    id: newsId,
+                    database: 'news',
+                },
+                success: function(response) {
+                    response = JSON.parse(response);
+                    document.getElementById('errorResult2').innerHTML = '';
+                    document.getElementById('warningResult2').innerHTML = '';
+                    document.getElementById('goodResult2').innerHTML = '';
+
+
+                    $('#warningResult2').append(response[0]);
+                    $('#goodResult2').append(response[1]);
+                    $('#errorResult2').append(response[2]);
+                    uniqueKeyword = response[5];
+                    uniqueSlug = response[6];
+                    uniqueTitle = response[7];
+                    uniqueSeoTitle = response[8];
+
+                    errorCount = response[3];
+                    warningCount = response[4];
+                    EnInlineSeoCheck(kind);
+                }
+            })
+        }
+
+        function EnInlineSeoCheck(kind) {
+            var tags = tagsName;
+            var text;
+            if (tags.length == 0) {
+                errorCount++;
+                text = '<div style="color: red;">شما باید برای متن خود برچسب انتخاب نمایید</div>';
+                $('#errorResult2').append(text);
+            } else if (tags.length < 10) {
+                warningCount++;
+                text = '<div style="color: #dec300;">پیشنهاد می گردد حداقل ده برچسب انتخاب نمایید.</div>';
+                $('#warningResult2').append(text);
+            } else {
+                text = '<div style="color: green;">تعداد برچسب های متن مناسب می باشد.</div>';
+                $('#goodResult2').append(text);
+            }
+
+            var inputMainPic = document.getElementById('imgInput');
+
+            if (!(inputMainPic.files && inputMainPic.files[0]) && (news == null || news['pic'] == null)) {
+                errorCount++;
+                text = '<div style="color: red;">خبر باید حتما دارای عکس اصلی باشد.</div>';
+                $('#errorResult2').append(text);
+            } else {
+                text = '<div style="color: green;">متن دارای عکس اصلی است.</div>';
+                $('#goodResult2').append(text);
+            }
+
+            if (kind == 1) {
+                var release = document.getElementById('releaseType').value;
+
+                if (release != 'draft' && errorCount > 0)
+                    alert('برای ثبت خبر باید ارورها رابرطرف کرده و یا انتشار را به حالت پیش نویس دراوردی.');
+                if (!uniqueTitle)
+                    alert('عنوان خبر یکتا نیست');
+                else if (!uniqueSlug)
+                    alert('نامک خبر یکتا نیست');
+                else if (!uniqueKeyword)
+                    alert('کلمه کلیدی خبر یکتا نیست');
+                else if (!uniqueSeoTitle)
+                    alert('عنوان سئو خبر یکتا نیست');
+                else {
+                    if (warningCount > 0) {
+                        $('#warningContentModal').html('');
+                        $('#warningResult2').children().each(function() {
+                            text = '<li style="margin-bottom: 5px">' + $(this).text() + '</li>';
+                            $('#warningContentModal').append(text);
+                        });
+                        $('#warningModal').modal('show');
+                    } else
+                        storePost();
+                }
+            }
+        }
+
+        function EnChangeSeoTitle(_value) {
+            var text = _value.length + ' حرف';
+            $('#EnSeoTitleNumber').text(text);
+            if (_value.length > 60 && _value.length <= 85)
+                $('#EnSeoTitleNumber').css('color', 'green');
+            else
+                $('#EnSeoTitleNumber').css('color', 'red');
+
+        }
+
+        function EnChangeMeta(_value) {
+            var text = _value.length + ' حرف';
+            $('#EnMetaNumber').text(text);
+            if (_value.length > 120 && _value.length <= 156)
+                $('#EnMetaNumber').css('color', 'green');
+            else
+                $('#EnMetaNumber').css('color', 'red');
         }
 
         newsCategory.map(item => {
@@ -1106,7 +1236,14 @@
                 changeVideoQuestion(0);
             @endif
         })
+
+        function TwoCheckSeo() {
+            $('#warningModal').modal('show');
+            // checkSeo(0);
+            // EnCheckSeo(0);
+        }
     </script>
+
 @stop
 
 
