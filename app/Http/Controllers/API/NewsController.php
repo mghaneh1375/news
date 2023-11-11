@@ -19,7 +19,6 @@ class NewsController extends Controller
     public function search(Request $request, $lang="fa")
     {
         $postfix = ($lang == 'fa') ? '' : 'En';
-
         $request->validate([
             'kind' => ['required', Rule::in(['all', 'tag', 'category', 'content'])],
             'content' => ['nullable'],
