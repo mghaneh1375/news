@@ -3,11 +3,14 @@
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\NewsTagController;
 use App\Http\Controllers\SeoController;
+use App\Http\Controllers\EnSeoController;
 use Illuminate\Support\Facades\Route;
 
 
 //news.list
 Route::post('seoTesterContent', [SeoController::class, 'seoTesterContent'])->name('seoTesterContent');
+Route::post('EnSeoTesterContent', [EnSeoController::class, 'EnSeoTesterContent'])->name('EnSeoTesterContent');
+
 
 Route::prefix('tags')->group(function() {
     

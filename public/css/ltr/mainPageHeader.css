@@ -15,6 +15,9 @@
 .headerContainer {
     direction: ltr;
 }
+.videosHeader {
+    flex-direction: row-reverse;
+}
 
 .headerButtonsSection {
     right: 0;
@@ -75,5 +78,8 @@ div:has(.keyNumber) {
     direction: ltr;
 }
 .mostViewDay li {
+    direction: ltr;
+}
+.inOneRows .cardDownTitle .content {
     direction: ltr;
 }
