@@ -19,6 +19,7 @@ class News extends Model
     ];
 
     public function scopeYouCanSee($query, $site=4){
+
         date_default_timezone_set('Asia/Tehran');
 
         $time = verta()->format('Y/m/d H:i');

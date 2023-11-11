@@ -16,10 +16,6 @@ use App\Http\Controllers\API\NewsController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::prefix('{lang}')->middleware(['setLocale'])->group(function() {
 
     Route::get('search', [NewsController::class, 'search']);
