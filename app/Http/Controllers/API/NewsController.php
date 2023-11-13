@@ -35,7 +35,7 @@ class NewsController extends Controller
 	$origin = $request->header('origin');
 	$siteId = 1;
 
-	if($origin == 'https://tourismfinancialgroup.com')
+	if($origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000')
 		$siteId = 6;
 
         if($kind == 'all'){

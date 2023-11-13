@@ -640,14 +640,12 @@
                 }
             }
 
-            if (title.trim().length < 2) {
+            if (title.trim().length < 2 && titleEn.trim().length < 2) {
+
                 alert('عنوان خبر را مشخص کنید');
                 return;
             }
-            if (titleEn.trim().length < 2) {
-                alert('عنوان خبر را مشخص کنید');
-                return;
-            }
+
 
             if (selectedNewsCategory.length == 0) {
                 alert('دسته بندی را مشخص کنید');

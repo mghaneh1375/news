@@ -51,13 +51,14 @@ class NewsController extends Controller
     }
 
     public function newsList(){
-        $selectCols = ['id', 'title', 'userId', 'release', 'updated_at', 'topNews', 'confirm', 'dateAndTime'];
+        $selectCols = ['id', 'title', 'userId', 'release', 'updated_at', 'topNews', 'confirm', 'dateAndTime','site_id'];
 
         $news = News::where('confirm', 1)->select($selectCols)->orderBy('created_at', 'desc')->get();
         $noneConfirmNews = News::where('confirm', 0)->select($selectCols)->orderBy('updated_at', 'desc')->get();
 
         foreach ([$news, $noneConfirmNews] as $nItem) {
             foreach ($nItem as $item) {
+        $sites = SiteResource::collection(Site::all())->toArray($item);
 
                 $item->user = User::find($item->userId);
                 $item->categories = DB::table('news_category_relations')->join('news_categories', 'news_categories.id', 'news_category_relations.categoryId')
@@ -87,7 +88,7 @@ class NewsController extends Controller
             }
         }
 
-        return view('admin.newsList', compact(['news', 'noneConfirmNews']));
+        return view('admin.newsList', compact(['news', 'noneConfirmNews','sites']));
     }
 
     public function newsNewPage(Request $request)
