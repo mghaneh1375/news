@@ -112,7 +112,8 @@
                     <select class="form-control botBorderInput" id="siteName" name="siteName">
 
                         @foreach ($sites as $site)
-                            <option value="{{ $site['id'] }}">
+                            <option value="{{ $site['id'] }}"
+                                {{ isset($news) ? ($news->site_id == $site['id'] ? 'selected' : '') : '' }}>
                                 {{ $site['name'] }}
                             </option>
                         @endforeach
