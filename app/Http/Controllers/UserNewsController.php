@@ -53,7 +53,6 @@ class UserNewsController extends Controller
         $mostViewNews = $mostViewNewsOutput;
 
         $allCategories = NewsCategory::where('parentId', 0)->get();
-        $allCategoriesOutput = [];
 
         foreach ($allCategories as $category){
             $category->allSubIds = NewsCategory::where('id', $category->id)->orWhere('parentId', $category->id)->pluck('id')->toArray();
@@ -63,12 +62,14 @@ class UserNewsController extends Controller
                                     ->select(['news.id', 'news.title', 'news.meta', 'news.slug', 'news.keyword', 'news.pic', 'news.server', 'news.video'])
                                     ->orderByDesc('news.dateAndTime')
                                     ->take(7)->get();
+            
+            $allNews = [];
 
             foreach ($category->news as $item)
-                array_push($allCategoriesOutput, getNewsMinimal($item));
-        }
+                array_push($allNews, getNewsMinimal($item));
 
-        $allCategories = $allCategoriesOutput;
+            $category->news = $allNews;
+        }
 
         $topNews = News::youCanSee()->where('topNews', 1)->orderByDesc('dateAndTime')->select($selectCol)->get();
         $topNewsOutput = [];
