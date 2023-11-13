@@ -59,7 +59,6 @@ class UserNewsController extends Controller
             $category->news = News::youCanSee()->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
                                     ->where('news_category_relations.categoryId', $category->id)
                                     ->where('news_category_relations.isMain', 1)
-                                    ->select(['news.id', 'news.title', 'news.meta', 'news.slug', 'news.keyword', 'news.pic', 'news.server', 'news.video'])
                                     ->orderByDesc('news.dateAndTime')
                                     ->take(7)->get();
             
@@ -70,6 +69,7 @@ class UserNewsController extends Controller
 
             $category->news = $allNews;
         }
+
 
         $topNews = News::youCanSee()->where('topNews', 1)->orderByDesc('dateAndTime')->select($selectCol)->get();
         $topNewsOutput = [];
