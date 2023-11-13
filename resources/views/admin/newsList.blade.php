@@ -75,7 +75,13 @@
                                                     {{ $item->status }}
                                                     {{ isset($item->futureDate) ? $item->futureDate : '' }}
                                                 </td>
-                                                <td>{{ $item->lastUpdate }}</td>
+                                                <td>
+                                                    @foreach ($sites as $site)
+                                                        @if ($site['id'] == $item->site_id)
+                                                            {{ $site['name'] }}
+                                                        @endif
+                                                    @endforeach
+                                                </td>
 
                                                 <td>{{ $item->lastUpdate }}</td>
                                                 <td>
