@@ -53,17 +53,21 @@ class UserNewsController extends Controller
         $mostViewNews = $mostViewNewsOutput;
 
         $allCategories = NewsCategory::where('parentId', 0)->get();
+
         foreach ($allCategories as $category){
             $category->allSubIds = NewsCategory::where('id', $category->id)->orWhere('parentId', $category->id)->pluck('id')->toArray();
             $category->news = News::youCanSee()->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
                                     ->where('news_category_relations.categoryId', $category->id)
                                     ->where('news_category_relations.isMain', 1)
-                                    ->select(['news.id', 'news.title', 'news.meta', 'news.slug', 'news.keyword', 'news.pic', 'news.server', 'news.video'])
                                     ->orderByDesc('news.dateAndTime')
                                     ->take(7)->get();
+            
+            $allNews = [];
 
             foreach ($category->news as $item)
-                $item = getNewsMinimal($item);
+                array_push($allNews, getNewsMinimal($item));
+
+            $category->news = $allNews;
         }
 
 
@@ -76,9 +80,12 @@ class UserNewsController extends Controller
         $topNews = $topNewsOutput;
 
         $lastVideos = News::youCanSee()->whereNotNull('video')->orderByDesc('dateAndTime')->select($selectCol)->take(10)->get();
+        $lastVideosOutput = [];
         
         foreach ($lastVideos as $item)
-            $item = getNewsMinimal($item);
+            array_push($lastNewsOutput, getNewsMinimal($item));
+
+        $lastVideos = $lastVideosOutput;
 
         $lastNews = News::youCanSee()->whereNull('video')->orderBy('dateAndTime')->select($selectCol)->take(6)->get();
         $lastNewsOutput = [];
