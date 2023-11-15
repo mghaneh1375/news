@@ -121,7 +121,31 @@
                 </div>
             </div>
         </div>
+        <div class="sparkline8-list shadow-reset mg-tb-10">
+            <div class="sparkline8-hd" style="padding: 5px 10px">
+                <div class="main-sparkline8-hd">
+                    <h5>برچسب ها</h5>
+                </div>
 
+            </div>
+            <div class="sparkline8-graph dashone-comment  dashtwo-messages" style="height: auto">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="inputBorder newTagSection">
+                            <div class="inputGroup newTagInputDiv">
+                                <input type="text" class="newTagEn" id="newTagEn" placeholder="برچسپ جدید...">
+                                <i class="fa fa-check checkIconTag" onclick="selectTagEn()"></i>
+                            </div>
+                            <div id="searchTagResultDiv" class="searchTagResultDiv"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div id="selectedTags" class="col-md-12"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
         <div class="sparkline8-list shadow-reset mg-tb-10">
             <div class="sparkline8-hd" style="padding: 5px 10px">
                 <div class="main-sparkline8-hd">
@@ -1107,6 +1131,8 @@
         });
 
         $('#newTag').on('keyup', e => e.keyCode == 13 ? selectTag() : searchTag(e.target.value));
+        $('#newTagEn').on('keyup', e => e.keyCode == 13 ? selectTag() : searchTag(e.target.value));
+
 
         function searchTag(value) {
             if (value.trim().length > 1) {
@@ -1140,6 +1166,7 @@
             selectTag();
         }
 
+
         function selectTag() {
             var value = $('#newTag').val();
             if (tagsName.indexOf(value) == -1) {
@@ -1164,6 +1191,58 @@
 
             $(element).parent().remove();
         }
+
+
+
+        function searchTag(value) {
+            if (value.trim().length > 1) {
+                $('#searchTagResultDiv').empty();
+                $.ajax({
+                    type: 'GET',
+                    url: '{{ route('news.tagSearch') }}?text=' + value,
+                    success: function(response) {
+                        if (response.status == 'ok') {
+                            var text = '';
+                            if (value.trim().length == 0) {
+                                $('#searchTagResultDiv').empty();
+                                return;
+                            }
+
+                            if (response.value == value) {
+                                response.result.map(item => text +=
+                                    `<div class="row searchTagResult" onclick="chooseTag(this.innerText)">${item}</div>`
+                                );
+                                $('#searchTagResultDiv').html(text);
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        function chooseTagEn(_value) {
+            $('#searchTagEnResultDiv').empty();
+            $('#newTagEn').val(_value);
+            selectTagEn();
+        }
+
+        function selectTagEn() {
+            var value = $('#newTagEn').val();
+            if (tagsName.indexOf(value) == -1) {
+                tagsName.push(value);
+                if (value.trim().length != 0) {
+                    $('#newTagEn').val('');
+                    var text = `<div class="scRow">
+                                <div class="name tagNameInputs">${value}</div>
+                                <span class="closeWithCircleIcon" onclick="deleteTag(this)"></span>
+                                </div>`;
+
+                    $('#selectedTagsEn').append(text);
+                }
+            }
+        }
+
+
 
         function changeVideoQuestion(_value) {
             if (_value == 1) {
