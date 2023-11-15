@@ -89,7 +89,7 @@
                         <div class="inputBorder newTagSection">
                             <div class="inputGroup newTagInputDiv">
                                 <input type="text" class="newTag" id="newTag" placeholder="برچسپ جدید...">
-                                <i class="fa fa-check checkIconTag" onclick="selectTag()"></i>
+                                <i class="fa fa-check checkIconTag" onclick="selectTagEn()"></i>
                             </div>
                             <div id="searchTagResultDiv" class="searchTagResultDiv"></div>
                         </div>
@@ -124,7 +124,7 @@
         <div class="sparkline8-list shadow-reset mg-tb-10">
             <div class="sparkline8-hd" style="padding: 5px 10px">
                 <div class="main-sparkline8-hd">
-                    <h5>برچسب ها</h5>
+                    <h5>برچسب انگلیسی</h5>
                 </div>
 
             </div>
@@ -133,14 +133,14 @@
                     <div class="form-group">
                         <div class="inputBorder newTagSection">
                             <div class="inputGroup newTagInputDiv">
-                                <input type="text" class="newTagEn" id="newTagEn" placeholder="برچسپ جدید...">
+                                <input type="text" class="newTag" id="newTagEn" placeholder="برچسپ جدید...">
                                 <i class="fa fa-check checkIconTag" onclick="selectTagEn()"></i>
                             </div>
-                            <div id="searchTagResultDiv" class="searchTagResultDiv"></div>
+                            <div id="searchTagEnResultDiv" class="searchTagResultDiv"></div>
                         </div>
                     </div>
                     <div>
-                        <div id="selectedTags" class="col-md-12"></div>
+                        <div id="selectedTagsEn" class="col-md-12"></div>
                     </div>
 
                 </div>
@@ -470,6 +470,7 @@
     <script>
         var secendCkeditor;
         var tagsName = [];
+        var tagsEnName = [];
         var newsId;
         var mainDataForm = new FormData();
         var warningCount = 0;
@@ -497,6 +498,7 @@
 
             $(window).ready(() => {
                 news['tags'].map(item => chooseTag(item));
+                news['tagsEn'].map(item => chooseTagEn(item));
             });
         @endif
 
@@ -700,13 +702,13 @@
                 let errInIf = '';
 
                 if (_checkSeo) {
-                    if (keyword.trim().length < 2)
+                    if (keyword.trim().length < 2 && keywordEn.trim().length < 2)
                         errInIf += 'کلمه کلیدی خبر را مشخص کنید';
-                    if (meta.trim().length < 2)
+                    if (meta.trim().length < 2 && metaEn.trim().length < 2)
                         errInIf += 'متا خبر را مشخص کنید';
-                    if (seoTitle.trim().length < 2)
+                    if (seoTitle.trim().length < 2 && seoTitleEn.trim().length < 2)
                         errInIf += 'عنوان سئو خبر را مشخص کنید';
-                    if (slug.trim().length < 2)
+                    if (slug.trim().length < 2 && slugEn.trim().length < 2)
                         errInIf += 'نامک خبر را مشخص کنید';
                 }
 
@@ -733,6 +735,8 @@
             mainDataForm.append('slugEn', slugEn);
             mainDataForm.append('metaEn', metaEn);
             mainDataForm.append('descriptionEn', window.editorr.getData());
+            mainDataForm.append('tagsEn', JSON.stringify(tagsEnName));
+
 
 
 
@@ -962,13 +966,13 @@
         }
 
         function EnInlineSeoCheck(kind) {
-            var tags = tagsName;
+            var tagsEn = tagsEnName;
             var text;
-            if (tags.length == 0) {
+            if (tagsEn.length == 0) {
                 errorCount++;
                 text = '<div style="color: red;">شما باید برای متن خود برچسب انتخاب نمایید</div>';
                 $('#errorResult2').append(text);
-            } else if (tags.length < 10) {
+            } else if (tagsEn.length < 10) {
                 warningCount++;
                 text = '<div style="color: #dec300;">پیشنهاد می گردد حداقل ده برچسب انتخاب نمایید.</div>';
                 $('#warningResult2').append(text);
@@ -1131,7 +1135,7 @@
         });
 
         $('#newTag').on('keyup', e => e.keyCode == 13 ? selectTag() : searchTag(e.target.value));
-        $('#newTagEn').on('keyup', e => e.keyCode == 13 ? selectTag() : searchTag(e.target.value));
+        $('#newTagEn').on('keyup', e => e.keyCode == 13 ? selectTagEn() : searchTagEn(e.target.value));
 
 
         function searchTag(value) {
@@ -1194,9 +1198,9 @@
 
 
 
-        function searchTag(value) {
+        function searchTagEn(value) {
             if (value.trim().length > 1) {
-                $('#searchTagResultDiv').empty();
+                $('#searchTagEnResultDiv').empty();
                 $.ajax({
                     type: 'GET',
                     url: '{{ route('news.tagSearch') }}?text=' + value,
@@ -1204,15 +1208,15 @@
                         if (response.status == 'ok') {
                             var text = '';
                             if (value.trim().length == 0) {
-                                $('#searchTagResultDiv').empty();
+                                $('#searchTagEnResultDiv').empty();
                                 return;
                             }
 
                             if (response.value == value) {
                                 response.result.map(item => text +=
-                                    `<div class="row searchTagResult" onclick="chooseTag(this.innerText)">${item}</div>`
+                                    `<div class="row searchTagResult" onclick="chooseTagEn(this.innerText)">${item}</div>`
                                 );
-                                $('#searchTagResultDiv').html(text);
+                                $('#searchTagEnResultDiv').html(text);
                             }
                         }
                     }
@@ -1228,8 +1232,8 @@
 
         function selectTagEn() {
             var value = $('#newTagEn').val();
-            if (tagsName.indexOf(value) == -1) {
-                tagsName.push(value);
+            if (tagsEnName.indexOf(value) == -1) {
+                tagsEnName.push(value);
                 if (value.trim().length != 0) {
                     $('#newTagEn').val('');
                     var text = `<div class="scRow">

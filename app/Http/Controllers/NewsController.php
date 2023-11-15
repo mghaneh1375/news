@@ -129,6 +129,8 @@ class NewsController extends Controller
         $news->mainCategory = $mainCategory != null ? $mainCategory->categoryId : 0;
 
         $news->tags = $news->getTags->pluck('tag')->toArray();
+        $news->tagsEn = $news->getTagsEn->pluck('tagEn')->toArray();
+
 
         $category = NewsCategory::where('parentId', 0)->get();
         foreach ($category as $item)
@@ -369,16 +371,27 @@ class NewsController extends Controller
         $news->text = $description;
         $news->save();
 
+
+
         $tagId = [];
         $tags = json_decode($request->tags);
         foreach ($tags as $item){
             $tt = NewsTags::firstOrCreate(['tag' => $item]);
             array_push($tagId, $tt->id);
         }
+
+        $tagsEn = json_decode($request->tagsEn);
+        foreach ($tagsEn as $item){
+            $tt = NewsTags::firstOrCreate(['tagEn' => $item]);
+            array_push($tagId, $tt->id);
+        }
+
         NewsTagsRelation::where('newsId', $newsId)->whereNotIn('tagId', $tagId)->delete();
         foreach ($tagId as $id)
             NewsTagsRelation::firstOrCreate(['newsId' => $newsId, 'tagId' => $id]);
 
+
+       
         $categories = json_decode($request->category);
         $categoryId = [];
         $mainCategoryId = 0;
