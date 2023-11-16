@@ -273,7 +273,8 @@ class NewsController extends Controller
             'id' => 'required',
             'releaseType' => 'required',
             'category' => 'required',
-            'site' => 'required|integer|exists:site,id'
+            'site' => 'required|integer|exists:site,id',
+            'createdAt' => 'nullable|date'
         ]);
 
         $news = null;
@@ -312,6 +313,9 @@ class NewsController extends Controller
         $news->slug = makeSlug($request->slug);
         $news->release = $request->releaseType;
         $news->site_id = $request->site;
+
+        if($request->has('createdAt'))
+            $news->createdAt = date('Y-m-d H:m:s', strtotime(ShamsiToMilady($request['createdAt']) . " 00:00"));
 
 	    $news->rtl = ($request->has('direction') && $request->direction == 'ltr') ? 0 : 1;
 

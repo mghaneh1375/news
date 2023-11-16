@@ -13,6 +13,9 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    public static $DEFAULT_SITE_ID = 4;
+    public static $LANG_MODE = 'both'; // 1- both, 2- just_fa 3- just_en
+
     public static function makeValidInput($input) {
         $input = addslashes($input);
         $input = trim($input);

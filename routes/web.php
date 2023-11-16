@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserNewsController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
@@ -29,7 +30,7 @@ Route::prefix('{lang}')->middleware(['setLocale'])->group(function() {
 
     Route::middleware(['shareNews'])->group(function (){
 
-        Route::get('/', [UserNewsController::class, 'newsMainPage'])->name('site.news.main');
+        Route::get('/', [UserNewsController::class, 'newsMainPage'])->name('index');
 
         Route::get('/main', [UserNewsController::class, 'newsMainPage'])->name('site.news.main');
 

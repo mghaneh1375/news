@@ -24,12 +24,12 @@ class UserNewsController extends Controller
             'titleEn', 'metaEn', 'slugEn', 'keywordEn',
         ];
 
-        $sliderNews = News::youCanSee()->orderByDesc('dateAndTime')->select($selectCol)->take(5)->get();
-        $sideSliderNews = News::youCanSee()->orderByDesc('dateAndTime')->select($selectCol)->skip(5)->take(2)->get();
+        $sliderNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->select($selectCol)->take(5)->get();
+        $sideSliderNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->select($selectCol)->skip(5)->take(2)->get();
         if(count($sideSliderNews) < 4){
             $remaining = 4 - count($sideSliderNews);
             $skip = 5 - $remaining;
-            $sideSliderNews = News::youCanSee()->select($selectCol)->orderBy('created_at')->skip($skip)->take(2)->get();
+            $sideSliderNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->select($selectCol)->orderBy('created_at')->skip($skip)->take(2)->get();
         }
 
         $sectionOutput = [];
@@ -39,11 +39,11 @@ class UserNewsController extends Controller
         }
         $sliderNews = $sectionOutput;
 
-        $mostViewNews = News::youCanSee()->orderBy('seen','desc')->select($selectCol)->take(6)->get();
+        $mostViewNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderBy('seen','desc')->select($selectCol)->take(6)->get();
         if(count($mostViewNews) < 4){
             $remaining = 4 - count($mostViewNews);
             $skip = 5 - $remaining;
-            $mostViewNews = News::youCanSee()->select($selectCol)->orderBy('created_at')->skip($skip)->take(4)->get();
+            $mostViewNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->select($selectCol)->orderBy('created_at')->skip($skip)->take(4)->get();
         }
         $mostViewNewsOutput = [];
 
@@ -56,7 +56,7 @@ class UserNewsController extends Controller
 
         foreach ($allCategories as $category){
             $category->allSubIds = NewsCategory::where('id', $category->id)->orWhere('parentId', $category->id)->pluck('id')->toArray();
-            $category->news = News::youCanSee()->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
+            $category->news = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
                                     ->where('news_category_relations.categoryId', $category->id)
                                     ->where('news_category_relations.isMain', 1)
                                     ->orderByDesc('news.dateAndTime')
@@ -71,7 +71,7 @@ class UserNewsController extends Controller
         }
 
 
-        $topNews = News::youCanSee()->where('topNews', 1)->orderByDesc('dateAndTime')->select($selectCol)->get();
+        $topNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->where('topNews', 1)->orderByDesc('dateAndTime')->select($selectCol)->get();
         $topNewsOutput = [];
 
         foreach ($topNews as $item)
@@ -79,7 +79,7 @@ class UserNewsController extends Controller
 
         $topNews = $topNewsOutput;
 
-        $lastVideos = News::youCanSee()->whereNotNull('video')->orderByDesc('dateAndTime')->select($selectCol)->take(10)->get();
+        $lastVideos = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->whereNotNull('video')->orderByDesc('dateAndTime')->select($selectCol)->take(10)->get();
         $lastVideosOutput = [];
         
         foreach ($lastVideos as $item)
@@ -87,7 +87,7 @@ class UserNewsController extends Controller
 
         $lastVideos = $lastVideosOutput;
 
-        $lastNews = News::youCanSee()->whereNull('video')->orderBy('dateAndTime')->select($selectCol)->take(6)->get();
+        $lastNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->whereNull('video')->orderBy('dateAndTime')->select($selectCol)->take(6)->get();
         $lastNewsOutput = [];
 
         foreach ($lastNews as $item)
@@ -100,7 +100,7 @@ class UserNewsController extends Controller
 
     public function newsShow($lang, $slug)
     {
-        $news = News::youCanSee()->where('slug', $slug)->orWhere('slugEn', $slug)->first();
+        $news = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->where('slug', $slug)->orWhere('slugEn', $slug)->first();
         if($news == null)
             return redirect(route('site.news.main', ['lang' => $lang]));
 
@@ -134,11 +134,11 @@ class UserNewsController extends Controller
         $page = $_GET['page'];
 
         if($kind == 'all'){
-            $news = News::youCanSee()->orderByDesc('dateAndTime')->select($selectCol)->skip($page*$take)->take($take)->get();
+            $news = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->select($selectCol)->skip($page*$take)->take($take)->get();
         }
         else if($kind == 'category'){
             $category = NewsCategory::where('name', $content)->first();
-            $news = News::youCanSee()->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
+            $news = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
                         ->where('news_category_relations.categoryId', $category->id)
                         ->orderByDesc('news.dateAndTime')
                         ->select($joinSelectCol)
@@ -147,7 +147,7 @@ class UserNewsController extends Controller
         }
         else if($kind == 'tag'){
             $tag = NewsTags::where('tag', $content)->first();
-            $news = News::youCanSee()->join('news_tags_relations', 'news_tags_relations.newsId', 'news.id')
+            $news = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->join('news_tags_relations', 'news_tags_relations.newsId', 'news.id')
                         ->where('news_tags_relations.tagId', $tag->id)
                         ->orderByDesc('news.dateAndTime')
                         ->select($joinSelectCol)
@@ -156,11 +156,11 @@ class UserNewsController extends Controller
         }
         else if($kind == 'content'){
             $newsIdInTag = NewsTags::join('news_tags_relations', 'news_tags_relations.tagId', 'newsTags.id')->where('newsTags.tag', 'LIKE', "%$content%")->pluck('news_tags_relations.newsId')->toArray();
-            $newsIdInKeyWord = News::youCanSee()->where('keyword', 'LIKE', "%$content%")->pluck('id')->toArray();
+            $newsIdInKeyWord = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->where('keyword', 'LIKE', "%$content%")->pluck('id')->toArray();
 
             $newsId = array_merge($newsIdInTag, $newsIdInKeyWord);
 
-            $news = News::youCanSee()->whereIn('id', $newsId)
+            $news = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->whereIn('id', $newsId)
                                     ->orderByDesc('dateAndTime')
                                     ->select($selectCol)
                                     ->skip($page*$take)

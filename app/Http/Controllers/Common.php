@@ -12,6 +12,12 @@ function trueShowForTextArea($text){
     return $text;
 }
 
+function ShamsiToMilady($date, $delimeter='/'){
+    include_once 'jdate.php';
+    $date = explode($delimeter, $date);
+    return jalali_to_gregorian($date[0],$date[1],$date[2], '-');
+}
+
 function makeSlug($name){
     $name = str_replace(':', '', $name);
     $name = str_replace('\\', '', $name);
