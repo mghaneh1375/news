@@ -271,7 +271,6 @@ class NewsController extends Controller
 
         $request->validate([
             'id' => 'required',
-            'title' => 'required',
             'releaseType' => 'required',
             'category' => 'required',
             'site' => 'required|integer|exists:site,id'

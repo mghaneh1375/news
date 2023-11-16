@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('news_tags', function (Blueprint $table) {
-            $table->string('tagEn', 100)->nullabe();
+            $table->string('tagEn', 100)->nullable();
         });
     }
 

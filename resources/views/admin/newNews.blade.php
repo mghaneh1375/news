@@ -718,34 +718,38 @@
                 }
             }
 
+            if (title.trim().length > 2) {
+
+                mainDataForm.append('title', title);
+                mainDataForm.append('keyword', keyword);
+                mainDataForm.append('seoTitle', seoTitle);
+                mainDataForm.append('slug', slug);
+                mainDataForm.append('meta', meta);
+                mainDataForm.append('tags', JSON.stringify(tagsName));
+                mainDataForm.append('description', window.editor.getData());
+            }
+
+            if (titleEn.trim().length > 2) {
+                mainDataForm.append('titleEn', titleEn);
+                mainDataForm.append('keywordEn', keywordEn);
+                mainDataForm.append('seoTitleEn', seoTitleEn);
+                mainDataForm.append('slugEn', slugEn);
+                mainDataForm.append('metaEn', metaEn);
+                mainDataForm.append('descriptionEn', window.editorr.getData());
+                mainDataForm.append('tagsEn', JSON.stringify(tagsEnName));
+            }
+
+
+
+
+            mainDataForm.append('direction', direction);
             mainDataForm.append('id', id);
             mainDataForm.append('code', {{ $code }});
-            mainDataForm.append('title', title);
-            mainDataForm.append('keyword', keyword);
-            mainDataForm.append('seoTitle', seoTitle);
-            mainDataForm.append('slug', slug);
-            mainDataForm.append('direction', direction);
-            mainDataForm.append('meta', meta);
             mainDataForm.append('site', site);
-
-
-            mainDataForm.append('titleEn', titleEn);
-            mainDataForm.append('keywordEn', keywordEn);
-            mainDataForm.append('seoTitleEn', seoTitleEn);
-            mainDataForm.append('slugEn', slugEn);
-            mainDataForm.append('metaEn', metaEn);
-            mainDataForm.append('descriptionEn', window.editorr.getData());
-            mainDataForm.append('tagsEn', JSON.stringify(tagsEnName));
-
-
-
-
-            mainDataForm.append('description', window.editor.getData());
             mainDataForm.append('limboPicIds', window.limboIds);
             mainDataForm.append('releaseType', release);
             mainDataForm.append('date', date);
             mainDataForm.append('time', time);
-            mainDataForm.append('tags', JSON.stringify(tagsName));
             mainDataForm.append('category', JSON.stringify(selectedNewsCategory));
             mainDataForm.append('warningCount', warningCount);
 
