@@ -129,7 +129,10 @@ class NewsController extends Controller
         $news->mainCategory = $mainCategory != null ? $mainCategory->categoryId : 0;
 
         $news->tags = $news->getTags->pluck('tag')->toArray();
-        $news->tagsEn = $news->getTagsEn->pluck('tagEn')->toArray();
+        if($news->getTagsEn != null)
+            $news->tagsEn = $news->getTagsEn->pluck('tagEn')->toArray();
+        else
+            $news->tagsEn =[];
 
 
         $category = NewsCategory::where('parentId', 0)->get();
@@ -274,7 +277,7 @@ class NewsController extends Controller
             'releaseType' => 'required',
             'category' => 'required',
             'site' => 'required|integer|exists:site,id',
-            'createdAt' => 'nullable|date'
+            'createdAt' => 'nullable' // todo: date validator
         ]);
 
         $news = null;
@@ -315,7 +318,7 @@ class NewsController extends Controller
         $news->site_id = $request->site;
 
         if($request->has('createdAt'))
-            $news->createdAt = date('Y-m-d H:m:s', strtotime(ShamsiToMilady($request['createdAt']) . " 00:00"));
+            $news->created_at = date('Y-m-d H:m:s', strtotime(ShamsiToMilady(convertNumber('en', $request['createdAt'])) . " 00:00"));
 
 	    $news->rtl = ($request->has('direction') && $request->direction == 'ltr') ? 0 : 1;
 
