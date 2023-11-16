@@ -39,18 +39,21 @@
                         </option>
                         <option value="future" {{ isset($news) ? ($news->release == 'future' ? 'selected' : '') : '' }}>
                             آینده</option>
+                        <option value="past" {{ isset($news) ? ($news->release == 'past' ? 'selected' : '') : '' }}>
+                            گذشته</option>
                     </select>
                 </div>
 
-                <div id="futureDiv" style="display: {{ isset($news) && $news->release == 'future' ? '' : 'none' }}">
+                <div id="futureDiv"
+                    style="display: {{ (isset($news) && $news->release == 'future') || (isset($news) && $news->release == 'past') ? '' : 'none' }}">
                     <div class="form-group" style="display: flex">
                         <label for="date" style="font-size: 10px;">تاریخ انتشار</label>
                         <input name="date" id="date" class="observer-example inputBoxInput"
                             value="{{ isset($news) ? $news->date : '' }}" readonly />
                     </div>
-                    <div class="form-group" style="display: flex;">
+                    <div class="form-group alignItemBase">
                         <label for="time" style="font-size: 10px;">ساعت انتشار</label>
-                        <input name="time" id="time" class="inputBoxInput" style="width: 73%;"
+                        <input name="time" id="time" class="inputBoxInput" style="width: 73%; margin-right: 5px"
                             value="{{ isset($news) ? $news->time : '' }}" readonly />
                     </div>
                 </div>
@@ -503,7 +506,7 @@
         @endif
 
         $('.observer-example').persianDatepicker({
-            minDate: new Date().getTime(),
+            // minDate: new Date().getTime(),
             format: 'YYYY/MM/DD',
             initialValueType: 'persian',
             autoClose: true,
@@ -568,7 +571,8 @@
             });
 
         function changeRelease(value) {
-            document.getElementById('futureDiv').style.display = value == 'future' ? 'block' : 'none';
+            document.getElementById('futureDiv').style.display = value == 'future' || value == 'past' ? 'block' : 'none';
+            // document.getElementById('futureDiv').style.display = value == 'past' ? 'block' : 'none';
         }
         BalloonBlockEditor.create(document.querySelector('#newsTextEn'), {
                 placeholder: 'Write your news here...',
@@ -623,9 +627,6 @@
                 console.error(error);
             });
 
-        function changeRelease(value) {
-            document.getElementById('futureDiv').style.display = value == 'future' ? 'block' : 'none';
-        }
 
         function changePic(input) {
             if (input.files && input.files[0]) {
