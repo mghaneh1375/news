@@ -44,8 +44,7 @@
                     </select>
                 </div>
 
-                <div id="futureDiv"
-                    style="display: {{ (isset($news) && $news->release == 'future') || (isset($news) && $news->release == 'past') ? '' : 'none' }}">
+                <div id="futureDiv" style="display: {{ isset($news) && $news->release == 'future' ? '' : 'none' }}">
                     <div class="form-group" style="display: flex">
                         <label for="date" style="font-size: 10px;">تاریخ انتشار</label>
                         <input name="date" id="date" class="observer-example inputBoxInput"
@@ -56,6 +55,14 @@
                         <input name="time" id="time" class="inputBoxInput" style="width: 73%; margin-right: 5px"
                             value="{{ isset($news) ? $news->time : '' }}" readonly />
                     </div>
+                </div>
+                <div id="pastDiv" style="display: {{ isset($news) && $news->release == 'past' ? '' : 'none' }}">
+                    <div class="form-group" style="display: flex">
+                        <label for="date" style="font-size: 10px;">تاریخ انتشار</label>
+                        <input name="date" id="datePast" class="observer-example inputBoxInput"
+                            value="{{ isset($news) ? $news->date : '' }}" readonly />
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -475,7 +482,7 @@
         var tagsName = [];
         var tagsEnName = [];
         var newsId;
-        var mainDataForm = new FormData();
+        var mainDataForm;
         var warningCount = 0;
         var errorCount = 0;
         var uniqueKeyword;
@@ -571,8 +578,8 @@
             });
 
         function changeRelease(value) {
-            document.getElementById('futureDiv').style.display = value == 'future' || value == 'past' ? 'block' : 'none';
-            // document.getElementById('futureDiv').style.display = value == 'past' ? 'block' : 'none';
+            document.getElementById('futureDiv').style.display = value == 'future' ? 'block' : 'none';
+            document.getElementById('pastDiv').style.display = value == 'past' ? 'block' : 'none';
         }
         BalloonBlockEditor.create(document.querySelector('#newsTextEn'), {
                 placeholder: 'Write your news here...',
@@ -639,10 +646,13 @@
 
         function storePost(_checkSeo = true) {
 
+            mainDataForm = new FormData();
+
             var id = document.getElementById('newsId').value;
             var title = document.getElementById('title').value;
             var release = document.getElementById('releaseType').value;
             var date = $('#date').val();
+            var createdAt = $('#datePast').val();
             var time = document.getElementById('time').value;
             var inputMainPic = document.getElementById('imgInput');
             var keyword = document.getElementById('keyword').value;
@@ -699,6 +709,7 @@
                 date = d.getJalaliFullYear() + '/' + (d.getJalaliMonth() + 1) + '/' + d.getJalaliDate();
             }
 
+
             if (release != 'draft') {
                 let errInIf = '';
 
@@ -750,6 +761,7 @@
             mainDataForm.append('limboPicIds', window.limboIds);
             mainDataForm.append('releaseType', release);
             mainDataForm.append('date', date);
+            mainDataForm.append('createdAt', createdAt);
             mainDataForm.append('time', time);
             mainDataForm.append('category', JSON.stringify(selectedNewsCategory));
             mainDataForm.append('warningCount', warningCount);

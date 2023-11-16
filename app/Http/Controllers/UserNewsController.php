@@ -81,9 +81,8 @@ class UserNewsController extends Controller
 
         $lastVideos = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->whereNotNull('video')->orderByDesc('dateAndTime')->select($selectCol)->take(10)->get();
         $lastVideosOutput = [];
-        
         foreach ($lastVideos as $item)
-            array_push($lastNewsOutput, getNewsMinimal($item));
+            array_push($lastVideosOutput, getNewsMinimal($item));
 
         $lastVideos = $lastVideosOutput;
 
