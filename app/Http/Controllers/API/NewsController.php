@@ -109,7 +109,7 @@ class NewsController extends Controller
 
             if($origin == 'https://tourismfinancialgroup.com')
                 $siteId = 6;
-            else if($origin == 'https://tit.tourismfinancialgroup.com')
+            else if($origin == 'https://titcompony.com')
                 $siteId = 1;
 
             $news = News::youCanSee($siteId, $lang)
