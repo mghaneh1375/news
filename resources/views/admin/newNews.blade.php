@@ -468,7 +468,8 @@
             </div>
         </div>
         <div style="padding: 10px; width: 100%; display: flex; justify-content: center; align-items: center;">
-            <input type="button" onclick="TwoCheckSeo()" value="ثبت" class="btn btn-success">
+            <input type="button" id="save" style="display: none" onclick="TwoCheckSeo()" value="ثبت"
+                class="btn btn-success">
             <input type="button" onclick="window.location.href='{{ route('news.list') }}'" value="بازگشت"
                 class="btn btn-secondry">
         </div>
@@ -817,6 +818,7 @@
         }
 
         function checkSeo(kind) {
+            $('#save').css('display', 'block')
             var value = document.getElementById('keyword').value;
             var seoTitle = document.getElementById('seoTitle').value;
             var slug = document.getElementById('slug').value;
@@ -938,6 +940,7 @@
 
 
         function EnCheckSeo(kind) {
+            $('#save').css('display', 'block')
 
             var valueEn = document.getElementById('keywordEn').value;
             var seoTitleEn = document.getElementById('seoTitleEn').value;

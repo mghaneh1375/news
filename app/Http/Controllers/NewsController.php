@@ -135,6 +135,8 @@ class NewsController extends Controller
             $news->tagsEn =[];
 
 
+
+
         $category = NewsCategory::where('parentId', 0)->get();
         foreach ($category as $item)
             $item->sub = NewsCategory::where('parentId', $item->id)->get();
