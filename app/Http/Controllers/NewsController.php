@@ -127,10 +127,9 @@ class NewsController extends Controller
         $news->category = NewsCategoryRelations::where('newsId', $news->id)->get();
         $mainCategory = NewsCategoryRelations::where('newsId', $news->id)->where('isMain', 1)->first();
         $news->mainCategory = $mainCategory != null ? $mainCategory->categoryId : 0;
-
         $news->tags = $news->getTags->pluck('tag')->toArray();
-        if($news->getTagsEn != null)
-            $news->tagsEn = $news->getTagsEn->pluck('tagEn')->toArray();
+        if($news->getTags != null)
+            $news->tagsEn = $news->getTags->pluck('tagEn')->toArray();
         else
             $news->tagsEn =[];
 
@@ -398,8 +397,6 @@ class NewsController extends Controller
         foreach ($tagId as $id)
             NewsTagsRelation::firstOrCreate(['newsId' => $newsId, 'tagId' => $id]);
 
-
-       
         $categories = json_decode($request->category);
         $categoryId = [];
         $mainCategoryId = 0;

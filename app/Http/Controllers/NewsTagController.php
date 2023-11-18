@@ -24,7 +24,7 @@ class NewsTagController extends Controller
     public function store(Request $request) {
 
         $request->validate([
-            'tag' => 'required|string|min:2',
+            'tag' => 'nullable|string|min:2',
             'tagEn' => 'nullable|string|min:2'
         ]);
 
@@ -40,7 +40,7 @@ class NewsTagController extends Controller
     public function update(Request $request, NewsTags $newsTags) {
 
         $request->validate([
-            'tag' => 'required|string|min:2',
+            'tag' => 'nullable|string|min:2',
             'tagEn' => 'nullable|string|min:2'
         ]);
 

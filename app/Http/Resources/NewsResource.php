@@ -74,6 +74,7 @@ class NewsResource extends JsonResource
             'tags' => array_filter($this->getTags->pluck(self::$locale == 'fa' ? 'tag' : 'tagEn')->toArray(), function($var) {
                 return !empty($var);
             }),
+
             'category' => $category,
             'otherNews' => (object)$otherNewsArr
         ];
