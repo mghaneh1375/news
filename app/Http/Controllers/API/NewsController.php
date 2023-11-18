@@ -45,7 +45,7 @@ class NewsController extends Controller
                 $siteId = 6;
             else if($origin == 'https://tit.tourismfinancialgroup.com')
                 $siteId = 1;
-            
+
             if($kind == 'all'){
                 $news = News::youCanSee($siteId, $lang)->orderByDesc('dateAndTime')->skip(($page - 1)*$take)->take($take)->get();
             }
@@ -95,7 +95,38 @@ class NewsController extends Controller
         return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(News::find($id), $lang)]);
     }
 
+    public function topNews(Request $request, $lang="fa") {
 
+        
+        $origin = $request->header('origin');
+
+        if(
+            $origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000' ||
+                $origin == 'https://tit.tourismfinancialgroup.com' || 1 == 1
+        ) {
+            
+            $siteId = 4;
+
+            if($origin == 'https://tourismfinancialgroup.com')
+                $siteId = 6;
+            else if($origin == 'https://tit.tourismfinancialgroup.com')
+                $siteId = 1;
+
+            $news = News::youCanSee($siteId, $lang)
+                ->where('news.topNews', true)
+                ->orderByDesc('news.dateAndTime')
+                ->get();
+                
+            $output = [];
+            foreach($news as $item)
+                array_push($output, getNewsMinimal($item));
+
+            return response()->json(['status' => 'ok', 'data' => $output]);
+        }
+
+        abort(401);
+        
+    }
 
 }
 
