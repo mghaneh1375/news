@@ -381,16 +381,19 @@ class NewsController extends Controller
 
 
         $tagId = [];
-        $tags = json_decode($request->tags);
-        foreach ($tags as $item){
-            $tt = NewsTags::firstOrCreate(['tag' => $item]);
-            array_push($tagId, $tt->id);
+        if($request->tags != null){
+            $tags = json_decode($request->tags);
+            foreach ($tags as $item){
+                $tt = NewsTags::firstOrCreate(['tag' => $item]);
+                array_push($tagId, $tt->id);
+            }
         }
-
-        $tagsEn = json_decode($request->tagsEn);
-        foreach ($tagsEn as $item){
-            $tt = NewsTags::firstOrCreate(['tagEn' => $item]);
-            array_push($tagId, $tt->id);
+        if($request->tagsEn != null){
+            $tagsEn = json_decode($request->tagsEn);
+            foreach ($tagsEn as $item){
+                $tt = NewsTags::firstOrCreate(['tagEn' => $item]);
+                array_push($tagId, $tt->id);
+            }
         }
 
         NewsTagsRelation::where('newsId', $newsId)->whereNotIn('tagId', $tagId)->delete();
