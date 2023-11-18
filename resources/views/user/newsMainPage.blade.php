@@ -33,7 +33,7 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        padding-left: unset !important; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                padding-left: unset !important; */
             margin-right: unset !important;
             margin-left: unset !important;
             width: 95% !important;
@@ -423,7 +423,7 @@
                 $('.RecommendedVideo').empty().append(html);
             },
             error: err => {
-                console.log(err);
+                // console.log(err);
                 getsList();
             }
         })
@@ -436,11 +436,13 @@
             success: function(myRes) {
                 var html = '';
                 if (myRes.status == 'ok') {
+                    console.log(myRes);
                     for (let i = 0; i < myRes.result.length; i++) {
                         html += '<div class="sideNewsCard" style="width: 100% !important;height:600px;">';
                         html += '<a href="' + myRes.result[i].url +
                             '" style="height: 100%" class="picSec fullyCenterContent {{ ' + myRes.result[i].video +' != null ? 'playIcon' : '' }}">';
-                        html += '<img data-src="' + myRes.result[i].pic + '" alt="' + myRes.result[i].keyword +
+                        html += '<img data-src="' + myRes.result[i].pic + '" alt="' + myRes.result[i]
+                            .keyword +
                             '" loading="lazy"class="lazyload resizeImgClass" onload="fitThisImg(this)"style="height: 100%;object-fit: fill;">';
                         html += '<a href="' + myRes.result[i].url + '" class="content">';
                         html += '<h3 class="title">' + myRes.result[i].title + '</h3>';
@@ -449,13 +451,20 @@
                         html += '</a>';
                         html += '</div>';
                     }
+
+
                 }
                 $('#SelectionsVideos').empty().append(html);
             },
             error: err => {
-                console.log(err);
+                // console.log(err);
                 getsList();
             }
         })
+
+        function getsList() {
+            inTake = false;
+            closeLoading();
+        }
     </script>
 @endsection

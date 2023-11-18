@@ -8,6 +8,7 @@ use App\Models\NewsCategory;
 use App\Models\NewsCategoryRelations;
 use App\Models\NewsTags;
 use App\Models\User;
+use Illuminate\Support\Facades\App;
 use Carbon\Carbon;
 use Hekmatinasser\Verta\Facades\Verta;
 use Illuminate\Http\Request;
@@ -39,7 +40,7 @@ class UserNewsController extends Controller
         }
         $sliderNews = $sectionOutput;
 
-        $mostViewNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderBy('seen','desc')->select($selectCol)->take(6)->get();
+        $mostViewNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderBy('seen','desc')->select($selectCol)->take(5)->get();
         if(count($mostViewNews) < 4){
             $remaining = 4 - count($mostViewNews);
             $skip = 5 - $remaining;
@@ -124,9 +125,14 @@ class UserNewsController extends Controller
 
     public function newsListElements()
     {
-        $selectCol = ['id', 'title', 'meta', 'slug', 'dateAndTime', 'keyword', 'pic', 'server', 'video'];
-        $joinSelectCol = ['news.id', 'news.title', 'news.meta', 'news.slug', 'news.dateAndTime', 'news.keyword', 'news.pic', 'news.server', 'news.video'];
+        $selectCol = [
+            'id', 'pic', 'video', 'server','dateAndTime',
+            'title', 'meta', 'slug', 'keyword',
+            'titleEn', 'metaEn', 'slugEn', 'keywordEn',
+        ];
 
+        $joinSelectCol = ['news.id', 'news.title', 'news.meta', 'news.slug', 'news.dateAndTime', 'news.keyword', 'news.pic', 'news.server', 'news.video','news.titleEn', 'news.metaEn', 'news.slugEn','news.keywordEn',];
+        $lang= App::getLocale();
         $kind = $_GET['kind'];
         $content = $_GET['content'];
         $take = $_GET['take'];
@@ -167,9 +173,14 @@ class UserNewsController extends Controller
                                     ->get();
         }
         
-        foreach($news as $item)
-            $item = getNewsMinimal($item);
 
-        return response()->json(['status' => 'ok', 'result' => $news]);
+
+        $newsOutput = [];
+        foreach ($news as $item)
+            array_push($newsOutput, getNewsMinimal($item));
+
+        $newsItem = $newsOutput;
+
+        return response()->json(['status' => 'ok', 'result' => $newsItem]);
     }
 }

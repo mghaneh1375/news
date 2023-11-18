@@ -124,6 +124,9 @@
     height: 250px !important;
     overflow: hidden;
 }
+.lastSelectedNews {
+    height: unset !important;
+}
 .centerNav {
     display: flex;
     flex-direction: column;
@@ -137,7 +140,7 @@
 .lastNews {
     height: unset !important;
     margin-top: 10px;
-    float: right !important;
+    float: right;
     display: flex;
     flex-direction: column;
     padding-left: 10px;
@@ -446,12 +449,17 @@
     width: 100%;
     overflow: hidden;
     border-radius: 10px;
-    height: 250px;
+    height: 200px;
 }
 .colCard .content {
     color: white;
 }
 .colCard .content .title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: white;
     font-weight: normal;
 }

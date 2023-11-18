@@ -58,6 +58,9 @@
 div:has(.keyNumber) {
     flex-direction: row-reverse;
 }
+.lastNews {
+    float: left !important;
+}
 .keyNumber {
     margin-right: 15px;
 }
