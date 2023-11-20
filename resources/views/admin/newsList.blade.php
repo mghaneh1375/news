@@ -6,13 +6,16 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="{{ URL::asset('js/DataTable/jquery.dataTables.js') }}" defer>
     </script>
+    <style>
+        .table>thead>tr>th {
+            vertical-align: baseline !important;
+        }
+    </style>
 
 @stop
 
 @section('content')
-
     <div class="col-md-12">
-
         <div class="sparkline8-list shadow-reset mg-tb-30">
             <div class="sparkline8-hd">
                 <div class="main-sparkline8-hd" style=" width: 100%; display: flex; justify-content: space-between;">
@@ -58,11 +61,24 @@
                                         <tr>
                                             <th style="text-align: right">عنوان </th>
                                             <th style="text-align: right">نویسنده </th>
-                                            <th style="text-align: right; min-width: 150px">وضعیت </th>
-                                            <th style="text-align: right; min-width: 150px">سایت مربوطه </th>
-                                            <th style="text-align: right">اخرین ویرایش </th>
+                                            <th style="text-align: right">وضعیت </th>
+                                            <th style="text-align: right; min-width: 150px">
+                                                <div class="sparkline8-graph dashone-comment  dashtwo-messages"
+                                                    style="padding: 0px;background-color: black">
+                                                    <select class="form-control botBorderInput"
+                                                        style="background-color: black">
+
+                                                        @foreach ($sites as $site)
+                                                            <option value="{{ $site['name'] }}">
+                                                                {{ $site['name'] }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </th>
+                                            <th style="text-align: right">اخرین ویرایش</th>
                                             <th style="text-align: right">برگزیده</th>
-                                            <th style="min-width: 100px"></th>
+                                            <th style="min-width: 100px">عملیات</th>
                                         </tr>
                                     </thead>
 
@@ -78,7 +94,9 @@
                                                 <td>
                                                     @foreach ($sites as $site)
                                                         @if ($site['id'] == $item->site_id)
-                                                            {{ $site['name'] }}
+                                                            <div class="siteName">
+                                                                {{ $site['name'] }}
+                                                            </div>
                                                         @endif
                                                     @endforeach
                                                 </td>
@@ -106,7 +124,7 @@
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                    <tfoot>
+                                    {{-- <tfoot>
                                         <tr>
                                             <th style="text-align: right">عنوان</th>
                                             <th style="text-align: right">نویسنده</th>
@@ -114,7 +132,7 @@
                                             <th style="text-align: right">اخرین ویرایش</th>
                                             <th></th>
                                         </tr>
-                                    </tfoot>
+                                    </tfoot> --}}
                                 </table>
                             </div>
 
@@ -153,7 +171,7 @@
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                    <tfoot>
+                                    {{-- <tfoot>
                                         <tr>
                                             <th style="text-align: right">عنوان</th>
                                             <th style="text-align: right">نویسنده</th>
@@ -161,7 +179,7 @@
                                             <th style="text-align: right">اخرین ویرایش</th>
                                             <th></th>
                                         </tr>
-                                    </tfoot>
+                                    </tfoot> --}}
                                 </table>
                             </div>
                         @endif
@@ -360,6 +378,14 @@
                         fixedHeader: true,
                     });
                 }
+            });
+
+
+            $('select').on('change', function(e) {
+                var optionSelected = $("option:selected", this);
+                var valueSelected = this.value;
+                console.log(valueSelected);
+                console.log($('.siteName').text());
             });
         </script>
     @stop

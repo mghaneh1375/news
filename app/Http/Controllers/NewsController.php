@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\URL;
 
 class NewsController extends Controller
 {
+    
     public $newsDir =  __DIR__ .'/../../../public/assets/news';
 
     public function __construct()
@@ -53,7 +54,7 @@ class NewsController extends Controller
     public function newsList(){
         $sites = Site::all();
         $selectCols = ['id', 'title', 'userId', 'release', 'updated_at', 'topNews', 'confirm', 'dateAndTime','site_id'];
-        $news = News::where('confirm', 1)->select($selectCols)->orderBy('created_at', 'desc')->get();
+        $news = News::where('confirm', 1)->select($selectCols)->orderBy('updated_at', 'desc')->get();
         $noneConfirmNews = News::where('confirm', 0)->select($selectCols)->orderBy('updated_at', 'desc')->get();
         foreach ([$news, $noneConfirmNews] as $nItem) {
             foreach ($nItem as $item) {
@@ -66,7 +67,7 @@ class NewsController extends Controller
                                         ->get()->toArray();
 
                 $lastUpdate = gregorianToJalali(Carbon::make($item->updated_at)->format('Y-m-d'), '-');
-                $item->lastUpdate = $lastUpdate[0] . '/' . $lastUpdate[1] . '/' . $lastUpdate[2] . ' ' . Carbon::make($item->updated_at)->format('H:m');
+                $item->lastUpdate = $lastUpdate[0] . '/' . $lastUpdate[1] . '/' . $lastUpdate[2] . ' ' . Carbon::make($item->updated_at)->addMinutes(210)->format('H:i');
 
                 if ($item->confirm == 0)
                     $item->status = 'تایید نشده';
