@@ -1,7 +1,7 @@
 function fillMyDivWithAdv(sectionId, stateId) {
     $.ajax({
         type: "post",
-        url: "https://localhost/pro_shazde/public/fillMyDivWithAdv",
+        url: "http://localhost/pro_shazde/public/fillMyDivWithAdv",
         data: {
             sectionId: sectionId,
             state: stateId,
