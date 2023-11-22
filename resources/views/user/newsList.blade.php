@@ -7,18 +7,18 @@
 
 
 @section('body')
-    <div class="row listHeaderRow">
+    <div class="listHeaderRow">
         <h2 style="font-weight: bold;">لیست {{ $header }}</h2>
     </div>
 
-    <div class="row">
+    <div class="">
         <div class="col-md-2 hideOnPhone">
             <div data-kind="ver_b" class="edSections edBetween onED"></div>
             <div data-kind="ver_s" class="edSections edBetween onED"></div>
             <div data-kind="ver_s" class="edSections edBetween onED"></div>
         </div>
 
-        <div class="col-md-10">
+        <div class="col-md-10"style="padding-right:0px!important ">
             <div id="listBody" class="listBody"></div>
             <div id="bottomMainList"></div>
         </div>

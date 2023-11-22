@@ -703,7 +703,6 @@
 .listHeaderRow h2 {
     font-weight: bold;
     font-size: 25px !important;
-    margin-right: 11px;
     border-right: solid 5px;
     padding-right: 10px;
     color: var(--koochita-blue);

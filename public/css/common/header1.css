@@ -627,7 +627,6 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     direction: rtl;
     background-color: #6d0606;
     height: 8vh !important;
-    padding: 0px 24px;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -33,7 +33,7 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                padding-left: unset !important; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    padding-left: unset !important; */
             margin-right: unset !important;
             margin-left: unset !important;
             width: 95% !important;
@@ -401,7 +401,6 @@
             success: function(myRes) {
                 var html = '';
                 if (myRes.status == 'ok') {
-                    console.log(myRes);
                     for (let i = 0; i < myRes.result.length; i++) {
                         html += '<div class="sideNewsCard" style="width: 100% !important;height:100%;">';
                         html +=
@@ -436,7 +435,7 @@
             success: function(myRes) {
                 var html = '';
                 if (myRes.status == 'ok') {
-                    console.log(myRes);
+
                     for (let i = 0; i < myRes.result.length; i++) {
                         html += '<div class="sideNewsCard" style="width: 100% !important;height:600px;">';
                         html += '<a href="' + myRes.result[i].url +

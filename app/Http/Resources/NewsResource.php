@@ -37,7 +37,7 @@ class NewsResource extends JsonResource
                         ->where('news_category_relations.newsId', $this->id)
                         ->select(['news_categories.id', 'news_categories.name'])
                         ->first();
-        
+
         $otherNews = NewsCategoryRelations::join('news', 'news.id', 'news_category_relations.newsId')
                         ->where('news_category_relations.categoryId', $category->id)
                         ->where('news_category_relations.newsId', '!=', $this->id)

@@ -67,9 +67,11 @@
                                                     style="padding: 0px;background-color: black">
                                                     <select class="form-control botBorderInput"
                                                         style="background-color: black">
-
+                                                        <option value="all" selected>
+                                                            همه
+                                                        </option>
                                                         @foreach ($sites as $site)
-                                                            <option value="{{ $site['name'] }}">
+                                                            <option value="{{ $site['id'] }}">
                                                                 {{ $site['name'] }}
                                                             </option>
                                                         @endforeach
@@ -205,7 +207,8 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondery" data-dismiss="modal">بستن</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal"
-                            onclick="doDeleteAllTops()">بله پاک شوند</button>
+                            onclick="doDeleteAllTops()">بله
+                            پاک شوند</button>
                     </div>
 
                 </div>
@@ -214,6 +217,7 @@
 
         <script>
             var news = {!! $news !!}
+            console.log(news);
 
             function showThisTabs(_element, _kind) {
                 $(_element).parent().find('.active').removeClass('active');
@@ -382,10 +386,28 @@
 
 
             $('select').on('change', function(e) {
-                var optionSelected = $("option:selected", this);
                 var valueSelected = this.value;
-                console.log(valueSelected);
-                console.log($('.siteName').text());
+                if (valueSelected == "all") {
+                    for (let i = 0; i < news.length; i++) {
+                        console.log('#news_' + news[i].id);
+                        $('#news_' + news[i].id).css("display", "table-row");
+                    }
+                } else {
+
+                    for (let i = 0; i < news.length; i++) {
+                        console.log('#news_' + news[i].id);
+                        $('#news_' + news[i].id).css("display", "table-row");
+                    }
+                    var found_names;
+                    found_names = $.grep(news, function(v) {
+                        return v.site_id != valueSelected;
+
+                    });
+                    for (let i = 0; i < found_names.length; i++) {
+                        $('#news_' + found_names[i].id).css("display", "none");
+                    }
+                }
+
             });
         </script>
     @stop
