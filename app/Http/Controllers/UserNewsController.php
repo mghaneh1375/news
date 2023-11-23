@@ -57,6 +57,7 @@ class UserNewsController extends Controller
 
         foreach ($allCategories as $category){
             $category->allSubIds = NewsCategory::where('id', $category->id)->orWhere('parentId', $category->id)->pluck('id')->toArray();
+            
             $category->news = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
                                     ->where('news_category_relations.categoryId', $category->id)
                                     ->where('news_category_relations.isMain', 1)
@@ -69,6 +70,7 @@ class UserNewsController extends Controller
                 array_push($allNews, getNewsMinimal($item));
 
             $category->news = $allNews;
+
         }
 
 
@@ -81,12 +83,13 @@ class UserNewsController extends Controller
         $topNews = $topNewsOutput;
 
         $lastVideos = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->whereNotNull('video')->orderByDesc('dateAndTime')->select($selectCol)->take(10)->get();
+
+
         $lastVideosOutput = [];
         foreach ($lastVideos as $item)
             array_push($lastVideosOutput, getNewsMinimal($item));
 
         $lastVideos = $lastVideosOutput;
-
         $lastNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->whereNull('video')->orderBy('dateAndTime')->select($selectCol)->take(6)->get();
         $lastNewsOutput = [];
 

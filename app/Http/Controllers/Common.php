@@ -170,6 +170,8 @@ function convertDateToString($date, $between = '') {
 }
 
 function getNewsMinimal($news){
+    if(isset($news->newsId))
+        $news->id = $news->newsId;
     return NewsDigest::customMake($news, App::getLocale());
 }
 

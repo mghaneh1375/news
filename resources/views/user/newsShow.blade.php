@@ -10,7 +10,7 @@
     <meta name="description" content="{{ $news->meta }}" />
     <meta name="twitter:description" content="{{ $news->meta }}" />
     <meta property="og:description" content="{{ $news->meta }}" />
-    @if(isset($news->category) && $news->category != null)
+    @if (isset($news->category) && $news->category != null)
         <meta property="article:section" content="{{ $news->category->name }}" />
     @endif
     <meta property="article:author " content="{{ $news->username }}" />
@@ -33,9 +33,9 @@
         .eddsSec {}
 
         /* .eddsSec.fixedL {
-                position: fixed;
-                bottom: 0px;
-            } */
+                            position: fixed;
+                            bottom: 0px;
+                        } */
 
         .newsVideo {}
 

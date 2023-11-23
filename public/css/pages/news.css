@@ -667,7 +667,7 @@
 }
 .listBody .newsRow {
     display: flex;
-    margin: 15px 0px;
+    margin: 25px 0px;
     border-bottom: solid 1px lightgray;
     padding: 10px;
 }
@@ -698,14 +698,16 @@
 }
 
 .listHeaderRow {
-    border-bottom: solid 1px var(--koochita-blue);
+    border-bottom: solid 1px black;
 }
 .listHeaderRow h2 {
     font-weight: bold;
     font-size: 25px !important;
-    border-right: solid 5px;
-    padding-right: 10px;
-    color: var(--koochita-blue);
+    border-right: solid 3px #6d0606;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    color: black;
 }
 
 @media (max-width: 889px) {

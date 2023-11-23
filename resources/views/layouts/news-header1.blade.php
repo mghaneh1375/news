@@ -26,6 +26,8 @@
         }
 
         #enTime {
+            font-family: 'Courier New', Courier, monospace;
+            direction: ltr;
             color: white;
         }
     </style>
@@ -86,7 +88,7 @@
     var superAccess = false;
     var time = getPersianDate();
     $('#time').append(time);
-    var enTime = moment().format('|  MMMM Do YYYY');
+    var enTime = moment().format('D MMMM YYYY|');
     $('#enTime').append(enTime);
 </script>
 

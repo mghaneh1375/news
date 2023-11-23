@@ -92,7 +92,7 @@ class NewsController extends Controller
     
 
     public function find(Request $request, $lang="fa", $id) {
-        return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(News::find($id), $lang)]);
+        return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(News::find($slug), $lang)]);
     }
 
     public function topNews(Request $request, $lang="fa") {
