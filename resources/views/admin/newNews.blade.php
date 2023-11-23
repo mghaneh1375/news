@@ -964,7 +964,7 @@
                     database: 'news',
                 },
                 success: function(response) {
-                    response = JSON.parse(response);
+                    // response = JSON.parse(response);
                     document.getElementById('errorResult2').innerHTML = '';
                     document.getElementById('warningResult2').innerHTML = '';
                     document.getElementById('goodResult2').innerHTML = '';
