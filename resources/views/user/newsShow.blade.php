@@ -10,7 +10,9 @@
     <meta name="description" content="{{ $news->meta }}" />
     <meta name="twitter:description" content="{{ $news->meta }}" />
     <meta property="og:description" content="{{ $news->meta }}" />
-    <meta property="article:section" content="{{ $news->category->name }}" />
+    @if(isset($news->category) && $news->category != null)
+        <meta property="article:section" content="{{ $news->category->name }}" />
+    @endif
     <meta property="article:author " content="{{ $news->username }}" />
     <meta name="keywords" content="{{ $news->keyword }}">
     <meta property="og:url" content="{{ Request::url() }}" />
