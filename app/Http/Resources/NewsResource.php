@@ -37,22 +37,25 @@ class NewsResource extends JsonResource
                         ->where('news_category_relations.newsId', $this->id)
                         ->select(['news_categories.id', 'news_categories.name'])
                         ->first();
-
-        $otherNews = NewsCategoryRelations::join('news', 'news.id', 'news_category_relations.newsId')
-                        ->where('news_category_relations.categoryId', $category->id)
-                        ->where('news_category_relations.newsId', '!=', $this->id)
-                        ->where('news_category_relations.isMain', 1)
-                        ->select([
-                            'news.id', 'news.pic', 'news.server',
-                            'news.title', 'news.meta', 'news.slug', 'news.keyword',
-                            'news.titleEn', 'news.metaEn', 'news.slugEn', 'news.keywordEn',
-                        ])
-                        ->get();
-        
+                        
         $otherNewsArr = [];
 
-        foreach ($otherNews as $item)
-            array_push($otherNewsArr, getNewsMinimal($item));
+        if($category != null) {
+
+            $otherNews = NewsCategoryRelations::join('news', 'news.id', 'news_category_relations.newsId')
+                ->where('news_category_relations.categoryId', $category->id)
+                ->where('news_category_relations.newsId', '!=', $this->id)
+                ->where('news_category_relations.isMain', 1)
+                ->select([
+                    'news.id', 'news.pic', 'news.server',
+                    'news.title', 'news.meta', 'news.slug', 'news.keyword',
+                    'news.titleEn', 'news.metaEn', 'news.slugEn', 'news.keywordEn',
+                ])
+                ->get();
+        
+            foreach ($otherNews as $item)
+                array_push($otherNewsArr, getNewsMinimal($item));
+        }
 
         return [
             'id' => $this->id,
