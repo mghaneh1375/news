@@ -841,7 +841,7 @@
                     desc: desc
                 },
                 success: function(response) {
-                    response = JSON.parse(response);
+                    // response = JSON.parse(response);
                     document.getElementById('errorResult').innerHTML = '';
                     document.getElementById('warningResult').innerHTML = '';
                     document.getElementById('goodResult').innerHTML = '';
