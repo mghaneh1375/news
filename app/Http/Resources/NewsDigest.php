@@ -23,7 +23,7 @@ class NewsDigest extends JsonResource
                 
         return [
             'id'  => $this->id,
-            'slug'=> getData(self::$locale, $this->slug, $this->slugEn),
+            'slug'=>  $slug,
             'title' => getData(self::$locale, $this->title, $this->titleEn),
             'meta' => getData(self::$locale, $this->meta, $this->metaEn),
             'pic' => URL::asset("assets/news/{$this->id}/{$this->pic}"),
