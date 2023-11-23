@@ -840,6 +840,9 @@
                     database: 'news',
                     desc: desc
                 },
+                headers: {
+                    accept: 'application/json'
+                },
                 success: function(response) {
                     // response = JSON.parse(response);
                     document.getElementById('errorResult').innerHTML = '';
@@ -962,6 +965,9 @@
                     descEn: descEn,
                     id: newsId,
                     database: 'news',
+                },
+                headers: {
+                    accept: 'application/json'
                 },
                 success: function(response) {
                     // response = JSON.parse(response);
