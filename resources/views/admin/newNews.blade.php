@@ -844,7 +844,7 @@
                     accept: 'application/json'
                 },
                 success: function(response) {
-                    // response = JSON.parse(response);
+                    response = JSON.parse(response);
                     document.getElementById('errorResult').innerHTML = '';
                     document.getElementById('warningResult').innerHTML = '';
                     document.getElementById('goodResult').innerHTML = '';
@@ -970,7 +970,7 @@
                     accept: 'application/json'
                 },
                 success: function(response) {
-                    // response = JSON.parse(response);
+                    response = JSON.parse(response);
                     document.getElementById('errorResult2').innerHTML = '';
                     document.getElementById('warningResult2').innerHTML = '';
                     document.getElementById('goodResult2').innerHTML = '';
