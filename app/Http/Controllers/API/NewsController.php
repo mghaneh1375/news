@@ -105,7 +105,7 @@ class NewsController extends Controller
     }
 
     public function slugList(Request $request, $lang) {
-
+        
         $postfix = ($lang == 'fa') ? '' : 'En';
         $origin = $request->header('origin');
 
@@ -121,13 +121,9 @@ class NewsController extends Controller
             else if($origin == 'https://tit.tourismfinancialgroup.com')
                 $siteId = 1; 
             
-             $news = News::youCanSee($siteId, $lang)->select('slug')->get();
+            $news = News::youCanSee($siteId, $lang)->select('slug')->get();
 
-            $output = [];
-            foreach($news as $item)
-                array_push($output, getNewsMinimal($item));
-
-            return response()->json(['status' => 'ok', 'data' => $output]);
+            return response()->json(['status' => 'ok', 'data' => $news]);
             }    
         
     }
