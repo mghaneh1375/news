@@ -97,8 +97,10 @@ class NewsController extends Controller
 
 
     public function findBySlug(Request $request, $lang="fa", $slug) {
-        dd($slug);
-        return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(News::where('slugEn', $slug)->first(), $lang)]);
+        return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(
+            News::where('slugEn', $slug)->orWhere('slug', $slug)->first()
+            , $lang)]
+        );
     }
     public function topNews(Request $request, $lang="fa") {
 
