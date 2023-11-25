@@ -121,9 +121,9 @@ class NewsController extends Controller
             else if($origin == 'https://tit.tourismfinancialgroup.com')
                 $siteId = 1; 
             if ($lang == 'fa')
-                $news = News::youCanSee($siteId, $lang)->select('slug')->whereNotNull('slug')->get();
+                $news = News::youCanSee($siteId, $lang)->select('slug')->where('slug', '!=' , '')->get();
             else
-                $news = News::youCanSee($siteId, $lang)->select('slugEn')->whereNotNull('slugEn')->get();
+                $news = News::youCanSee($siteId, $lang)->select('slugEn')->where('slugEn', '!=' , '')->get();
                 
             return response()->json(['status' => 'ok', 'data' => $news]);
             }    
