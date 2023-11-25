@@ -120,6 +120,7 @@ class NewsController extends Controller
                 $siteId = 1; 
             
              $news = News::youCanSee($siteId, $lang)->select('slug'=== null ? 'slugEN' :'slug')->get();
+             dd($news);
             }    
             return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(News::$news, $lang)]
             );
