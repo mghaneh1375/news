@@ -104,14 +104,16 @@ class NewsController extends Controller
         );
     }
 
-    public function slugList(Request $request, $lang="fa") {
+    public function slugList(Request $request, $lang) {
+        $postfix = ($lang == 'fa') ? '' : 'En';
+        $origin = $request->header('origin');
         if(
             $origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000' ||
                 $origin == 'https://tit.tourismfinancialgroup.com' || 1 == 1
         ) {
                 
             $siteId = 4;
-            $origin = $request->header('origin');
+            
             if($origin == 'https://tourismfinancialgroup.com')
                 $siteId = 6;
             else if($origin == 'https://tit.tourismfinancialgroup.com')
