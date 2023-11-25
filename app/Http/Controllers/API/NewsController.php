@@ -104,8 +104,9 @@ class NewsController extends Controller
         );
     }
 
-    public function slugList(Request $request, $lang="fa") {
-        
+    public function slugList(Request $request, $lang) {
+
+        $postfix = ($lang == 'fa') ? '' : 'En';
         $origin = $request->header('origin');
 
         if(
@@ -126,7 +127,7 @@ class NewsController extends Controller
             foreach($news as $item)
                 array_push($output, getNewsMinimal($item));
 
-            return response()->json(['status' => 'ok', 'data' => $news]);
+            return response()->json(['status' => 'ok', 'data' => $output]);
             }    
         
     }
