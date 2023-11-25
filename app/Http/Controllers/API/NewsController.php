@@ -104,7 +104,7 @@ class NewsController extends Controller
         );
     }
 
-    public function slugList(Request $request, $lang="fa) {
+    public function slugList(Request $request, $lang="fa") {
         
         $origin = $request->header('origin');
 
