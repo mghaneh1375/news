@@ -122,9 +122,11 @@ class NewsController extends Controller
             
              $news = News::youCanSee($siteId, $lang)->select('slug')->get();
 
+            $output = [];
+            foreach($news as $item)
+                array_push($output, getNewsMinimal($item));
 
-             return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(News::$news, $lang)]
-             );
+            return response()->json(['status' => 'ok', 'data' => $news]);
             }    
         
     }
