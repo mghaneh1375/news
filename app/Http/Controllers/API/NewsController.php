@@ -120,7 +120,7 @@ class NewsController extends Controller
             else if($origin == 'https://tit.tourismfinancialgroup.com')
                 $siteId = 1; 
             
-             $news = News::youCanSee($siteId, $lang)->select('slug')->get();
+             $news = News::youCanSee($siteId, $lang)->select('slugEn')->get();
 
             $output = [];
             foreach($news as $item)
