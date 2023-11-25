@@ -120,9 +120,11 @@ class NewsController extends Controller
                 $siteId = 6;
             else if($origin == 'https://tit.tourismfinancialgroup.com')
                 $siteId = 1; 
-            
-            $news = News::youCanSee($siteId, $lang)->select('slugEn')->get();
-
+            if ($lang == 'fa')
+                $news = News::youCanSee($siteId, $lang)->select('slug')->whereNotNull('slug')->get();
+            else
+                $news = News::youCanSee($siteId, $lang)->select('slugEn')->whereNotNull('slugEn')->get();
+                
             return response()->json(['status' => 'ok', 'data' => $news]);
             }    
         
