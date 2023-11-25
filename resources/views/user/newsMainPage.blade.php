@@ -33,7 +33,7 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    padding-left: unset !important; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        padding-left: unset !important; */
             margin-right: unset !important;
             margin-left: unset !important;
             width: 95% !important;
@@ -459,6 +459,24 @@
                 getsList();
             }
         })
+        // $.ajax({
+        //     type: 'GET',
+        //     url: 'https://dornanews.com/api/en/slugList',
+        //     headers: {
+        //         accept: 'application/json'
+        //     },
+        //     success: function(myRes) {
+        //         var html = '';
+        //         if (myRes.status == 'ok') {
+        //             console.log(myRes);
+
+        //         }
+        //     },
+        //     error: err => {
+        //         // console.log(err);
+        //         getsList();
+        //     }
+        // })
 
         function getsList() {
             inTake = false;

@@ -107,6 +107,7 @@ class NewsController extends Controller
     public function slugList(Request $request, $lang) {
         $postfix = ($lang == 'fa') ? '' : 'En';
         $origin = $request->header('origin');
+
         if(
             $origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000' ||
                 $origin == 'https://tit.tourismfinancialgroup.com' || 1 == 1
@@ -119,7 +120,7 @@ class NewsController extends Controller
             else if($origin == 'https://tit.tourismfinancialgroup.com')
                 $siteId = 1; 
             
-             $news = News::youCanSee($siteId, $lang)->select('slug'=== null ? 'slugEN' :'slug')->get();
+             $news = News::youCanSee($siteId, $lang)->select('slug'=== null ? 'slugEn' :'slug')->get();
 
             }    
             return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(News::$news, $lang)]
