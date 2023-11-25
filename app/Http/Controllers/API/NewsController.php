@@ -120,7 +120,7 @@ class NewsController extends Controller
             else if($origin == 'https://tit.tourismfinancialgroup.com')
                 $siteId = 1; 
             
-             $news = News::youCanSee($siteId, $lang)->select('slug'=== null ? 'slugEn' :'slug')->get();
+             $news = News::youCanSee($siteId, $lang)->get();
 
             }    
             return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(News::$news, $lang)]
