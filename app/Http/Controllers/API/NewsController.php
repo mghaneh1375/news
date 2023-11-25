@@ -97,11 +97,33 @@ class NewsController extends Controller
 
 
     public function findBySlug(Request $request, $lang="fa", $slug) {
+
         return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(
             News::where('slugEn', $slug)->orWhere('slug', $slug)->first()
             , $lang)]
         );
     }
+
+    public function slugList(Request $request, $lang="fa") {
+        if(
+            $origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000' ||
+                $origin == 'https://tit.tourismfinancialgroup.com' || 1 == 1
+        ) {
+                
+            $siteId = 4;
+            $origin = $request->header('origin');
+            if($origin == 'https://tourismfinancialgroup.com')
+                $siteId = 6;
+            else if($origin == 'https://tit.tourismfinancialgroup.com')
+                $siteId = 1; 
+            
+             $news = News::youCanSee($siteId, $lang)->select('slug'=== null ? 'slugEN' :'slug')->get();
+            }    
+            return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(News::$news, $lang)]
+            );
+        
+    }
+
     public function topNews(Request $request, $lang="fa") {
 
         

@@ -24,6 +24,8 @@ Route::prefix('{lang}')->middleware(['setLocale'])->group(function() {
 
     Route::get('findSlug/{slug}', [NewsController::class, 'findBySlug']);
 
+    Route::get('slugList', [NewsController::class, 'slugList']);
+
     Route::get('topNews', [NewsController::class, 'topNews']);
 
 });
