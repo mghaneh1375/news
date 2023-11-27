@@ -90,7 +90,42 @@ class NewsController extends Controller
     
 
     public function find(Request $request, $lang="fa", $id) {
-        return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(News::find($slug), $lang)]);
+        return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(News::find($id), $lang)]);
+    }
+
+
+    public function findBySlug(Request $request, $lang="fa", $slug) {
+
+        return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(
+            News::where('slugEn', $slug)->orWhere('slug', $slug)->first()
+            , $lang)]
+        );
+    }
+
+    public function slugList(Request $request, $lang) {
+        
+        $postfix = ($lang == 'fa') ? '' : 'En';
+        $origin = $request->header('origin');
+
+        if(
+            $origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000' ||
+                $origin == 'https://tit.tourismfinancialgroup.com' || 1 == 1
+        ) {
+                
+            $siteId = 4;
+            
+            if($origin == 'https://tourismfinancialgroup.com')
+                $siteId = 6;
+            else if($origin == 'https://tit.tourismfinancialgroup.com')
+                $siteId = 1; 
+            if ($lang == 'fa')
+                $news = News::youCanSee($siteId, $lang)->select('slug')->where('slug', '!=' , '')->get();
+            else
+                $news = News::youCanSee($siteId, $lang)->select('slugEn')->where('slugEn', '!=' , '')->get();
+                
+            return response()->json(['status' => 'ok', 'data' => $news]);
+            }    
+        
     }
 
     public function topNews(Request $request, $lang="fa") {
