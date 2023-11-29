@@ -2,6 +2,26 @@
 
 
 @section('head')
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta name="theme-color" content="#30b4a6" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d2ac68">
+    <meta name="msapplication-TileColor" content="#d2ac68">
+    <meta name="theme-color" content="#d2ac68">
+
+
+
+
+    <link rel="canonical" href="{{ Request::url() }}" />
+    <meta name="author" content="{{ $news->username }}" />
+
+
     <meta content="article" property="og:type" />
     <meta property="og:title" content="{{ $news->seoTitle }}" />
     <meta property="title" content="{{ $news->seoTitle }}" />
@@ -13,10 +33,9 @@
     @if (isset($news->category) && $news->category != null)
         <meta property="article:section" content="{{ $news->category->name }}" />
     @endif
-    <meta property="article:author " content="{{ $news->username }}" />
+
     <meta name="keywords" content="{{ $news->keyword }}">
     <meta property="og:url" content="{{ Request::url() }}" />
-
     <meta property="og:image" content="{{ $news->pic }}" />
     <meta property="og:image:secure_url" content="{{ $news->pic }}" />
     <meta name="twitter:image" content="{{ $news->pic }}" />
@@ -28,14 +47,28 @@
     @endforeach
 
     <title>{{ isset($news->seoTitle) ? $news->seoTitle : $news->title }} </title>
-
+    {{-- 
+    <meta name="msapplication-TileColor" content="black">
+    <meta property="og:title" content="TITLETEXT" />
+    <meta property="og:description" content="descriptionTEXT" />
+    <meta property="og:image:alt" content="IMAGEALTTEXT" />
+    <meta property="og:url" ontent="URLTEXT" />
+    <meta property="og:site_name" content="SITENAMETEXT" />
+    <meta property="article:published_time" content="publishtimetext" />
+    <meta property="article:modified_time" content="updatetimetext" />
+    <meta property="og:image" content="IMAGEURLTEXT" />
+    <meta property="og:image:secure_url" content="IMAGEURLTEXT" />
+    <meta property="og:image:width" content="imagewidthtext" />
+    <meta property="og:image:height" content="imageheighttext" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:type" content="article" /> --}}
     <style>
         .eddsSec {}
 
         /* .eddsSec.fixedL {
-                            position: fixed;
-                            bottom: 0px;
-                        } */
+                                            position: fixed;
+                                            bottom: 0px;
+                                        } */
 
         .newsVideo {}
 

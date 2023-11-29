@@ -421,7 +421,8 @@
                         <div class="col-md-12 floR mg-tb-10">
                             <div class="form-group">
                                 <label for="keyword">کلمه کلیدی انگلیسی</label>
-                                <input class="form-control botBorderInput" type="text" id="keywordEn" name="keyword"
+                                <input style="text-align: left !important" class="form-control botBorderInput"
+                                    type="text" id="keywordEn" name="keyword"
                                     placeholder="کلمه کلیدی  انگلیسی را اینجا بنویسید..."
                                     value="{{ isset($news) ? $news->keywordEn : '' }}">
                             </div>
@@ -431,8 +432,8 @@
                                 <label for="seoTitle">عنوان سئو انگلیسی:
                                     <span id="EnSeoTitleNumber" style="font-weight: 200;"></span>
                                 </label>
-                                <input type="text" class="form-control botBorderInput" id="seoTitleEn"
-                                    name="seoTitle"
+                                <input style="text-align: left !important" type="text"
+                                    class="form-control botBorderInput" id="seoTitleEn" name="seoTitle"
                                     placeholder="عنوان سئو را اینجا بنویسید (عنوان سئو باید بین 60 حرف تا 85 حرف باشد)"
                                     onkeyup="EnChangeSeoTitle(this.value)"
                                     value="{{ isset($news) ? $news->seoTitleEn : '' }}">
@@ -441,17 +442,17 @@
                         <div class="col-md-12 floR mg-tb-10">
                             <div class="form-group">
                                 <label for="slug">نامک انگلیسی</label>
-                                <input class="form-control botBorderInput" type="text" id="slugEn"
-                                    placeholder="نامک انگلیسی را اینجا بنویسید..." name="slug"
-                                    value="{{ isset($news) ? $news->slugEn : '' }}">
+                                <input style="text-align: left !important" class="form-control botBorderInput"
+                                    type="text" id="slugEn" placeholder="نامک انگلیسی را اینجا بنویسید..."
+                                    name="slug" value="{{ isset($news) ? $news->slugEn : '' }}">
                             </div>
                         </div>
                         <div class="col-md-12 floR">
                             <div class="form-group">
                                 <label for="meta">متاانگلیسی: <span id="EnMetaNumber"
                                         style="font-weight: 200;"></span></label>
-                                <textarea class="form-control botBorderInput" type="text" id="metaEn" name="meta"
-                                    onkeyup="EnChangeMeta(this.value)" rows="3">{{ isset($news) ? $news->metaEn : '' }}</textarea>
+                                <textarea style="text-align: left !important" class="form-control botBorderInput" type="text" id="metaEn"
+                                    name="meta" onkeyup="EnChangeMeta(this.value)" rows="3">{{ isset($news) ? $news->metaEn : '' }}</textarea>
                             </div>
                         </div>
 
