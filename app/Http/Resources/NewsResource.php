@@ -20,6 +20,7 @@ class NewsResource extends JsonResource
      */
     public function toArray($request)
     {
+
         $slug = getData(self::$locale, $this->slug, $this->slugEn);
         
         $dateAndTime = explode(' ', $this->dateAndTime);
@@ -43,6 +44,7 @@ class NewsResource extends JsonResource
         if($category != null) {
 
             $otherNews = NewsCategoryRelations::join('news', 'news.id', 'news_category_relations.newsId')
+                ->where('site_id', $this->siteId )
                 ->where('news_category_relations.categoryId', $category->id)
                 ->where('news_category_relations.newsId', '!=', $this->id)
                 ->where('news_category_relations.isMain', 1)
@@ -56,7 +58,6 @@ class NewsResource extends JsonResource
             foreach ($otherNews as $item)
                 array_push($otherNewsArr, getNewsMinimal($item));
         }
-
         return [
             'id' => $this->id,
             'title' => getData(self::$locale, $this->title, $this->titleEn),

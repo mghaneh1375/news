@@ -87,7 +87,13 @@
                                     <tbody id="tBody">
                                         @foreach ($news as $item)
                                             <tr id="news_{{ $item->id }}" style="text-align: right">
-                                                <td>{{ $item->title }}</td>
+                                                <td>{{ $item->title }}
+                                                    @if ($item->title == null || $item->titleEn == null)
+                                                    @else
+                                                        <hr>
+                                                    @endif
+                                                    {{ $item->titleEn }}
+                                                </td>
                                                 <td>Koochita</td>
                                                 <td style="color: {{ $item->confirm == 1 ? 'green' : 'red' }}">
                                                     {{ $item->status }}

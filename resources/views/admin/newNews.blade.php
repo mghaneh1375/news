@@ -265,7 +265,7 @@
             </div>
         </div>
 
-        <div class="col-md-12" style="margin-top: 10px;">
+        <div class="col-md-12" style="margin-top: 10px;display: none">
             <div class="sparkline8-list shadow-reset">
                 <div class="sparkline8-hd" style="padding: 5px 10px;">
                     <div class="main-sparkline8-hd">
@@ -385,15 +385,16 @@
 
                         <div class="col-xs-12">
                             <div class="form-group">
-                                <input class="form-control titleInputClass" type="text" name="title" id="titleEn"
-                                    value="{{ isset($news) ? $news->titleEn : '' }}" placeholder="عنوان خبر انگلیسی">
+                                <input class="form-control titleInputClass" style="text-align: left !important"
+                                    type="text" name="title" id="titleEn"
+                                    value="{{ isset($news) ? $news->titleEn : '' }}" placeholder="English news title">
                             </div>
                         </div>
                         <div class="col-xs-12">
                             <div class="adjoined-bottom">
                                 <div class="grid-container">
                                     <div class="grid-width-100">
-                                        <div id="newsTextEn" class="textEditor">
+                                        <div id="newsTextEn" class="textEditor" style="direction: ltr !important">
                                             @if (isset($news))
                                                 {!! html_entity_decode($news->textEn) !!}
                                             @endif
@@ -545,6 +546,7 @@
                     'bulletedList',
                     'insertTable',
                     'imageUpload',
+                    'imageTextAlternative',
                     'undo',
                     'redo'
                 ],
@@ -602,6 +604,7 @@
                     'bulletedList',
                     'insertTable',
                     'imageUpload',
+                    'imageTextAlternative',
                     'undo',
                     'redo'
                 ],
@@ -611,6 +614,9 @@
                         'tableRow',
                         'mergeTableCells'
                     ]
+                },
+                image: {
+                    toolbar: ['toggleImageCaption', 'imageTextAlternative', 'ckboxImageEdit']
                 },
                 licenseKey: '',
             })

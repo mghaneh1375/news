@@ -21,17 +21,10 @@ Route::get('/', function () {
     return Redirect::to('/fa');
 })->name('home');
 
-
-
-// Route::get('/sitemap.xml/categories', 'SitemapController@categories');
-// Route::get('/sitemap.xml/tags', 'SitemapController@tags');
-
 Route::get('login', function () {
     return Redirect::to('/fa/login');
 });
 
-Route::get('/sitemap.xml', 'SitemapController@index');
-Route::get('/sitemap.xml/news', 'SitemapController@news');
 Route::prefix('{lang}')->middleware(['setLocale'])->group(function() {
 
     Route::middleware(['shareNews'])->group(function (){
