@@ -36,16 +36,16 @@ class NewsController extends Controller
 
         if(
             $origin == 'https://www.tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'https://www.tourismbanck.co' ||
-                $origin == 'https://www.titcompany.com'
+                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbanck.co'||$origin == 'https://titcompany.com'
         ) {
             
             $siteId = 4;
 
-            if($origin == 'https://www.tourismfinancialgroup.com')
+            if($origin == 'https://www.tourismfinancialgroup.com'||$origin == 'https://tourismfinancialgroup.com')
                 $siteId = 6;
-            if($origin == 'https://www.tourismbanck.co')
+            if($origin == 'https://www.tourismbanck.co'||$origin == 'https://tourismbanck.co')
                 $siteId = 3;
-            else if($origin == 'https://www.titcompany.com')
+            else if($origin == 'https://www.titcompany.com'||$origin == 'https://titcompany.com')
                 $siteId = 1;
 
             if($kind == 'all'){
