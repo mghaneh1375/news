@@ -117,7 +117,7 @@ class NewsController extends Controller
         ) {
                 
             $siteId = 4;
-            
+            dd($origin);
             if($origin == 'https://www.tourismfinancialgroup.com'||$origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || 1==1)
                 $siteId = 6;
             if($origin == 'https://www.tourismbanck.co'||$origin == 'https://tourismbanck.co')
