@@ -3,7 +3,6 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserNewsController;
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\sitemapController;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
@@ -21,10 +20,10 @@ Route::get('/', function () {
     return Redirect::to('/fa');
 })->name('home');
 
-Route::get('/test', function () {
-    phpinfo();
-    // return Redirect::to('/fa');
-})->name('test');
+// Route::get('/test', function () {
+//     phpinfo();
+//     return Redirect::to('/fa');
+// })->name('test');
 
 Route::get('login', function () {
     return Redirect::to('/fa/login');
