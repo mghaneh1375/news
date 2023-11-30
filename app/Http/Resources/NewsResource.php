@@ -44,7 +44,7 @@ class NewsResource extends JsonResource
         if($category != null) {
 
             $otherNews = NewsCategoryRelations::join('news', 'news.id', 'news_category_relations.newsId')
-                ->where('site_id', $this->siteId )
+                ->where('site_id', $this->site_id )
                 ->where('news_category_relations.categoryId', $category->id)
                 ->where('news_category_relations.newsId', '!=', $this->id)
                 ->where('news_category_relations.isMain', 1)

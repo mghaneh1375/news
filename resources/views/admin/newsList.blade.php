@@ -278,8 +278,11 @@
                     'newsId': _newsId
                 },
                 success: res => {
-                    if (res.status == "ok")
+                    if (res.status == "ok") {
+
+                        location.reload();
                         $("#news_" + _newsId).remove();
+                    }
                 }
             });
         };
@@ -417,7 +420,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">خیر</button>
-                    <button type="button" class="btn btn-danger" onclick="deleteMedal()">بله</button>
+                    <button type="button" class="btn btn-danger" onclick="deleteNews()">بله</button>
                 </div>
             </div>
         </div>

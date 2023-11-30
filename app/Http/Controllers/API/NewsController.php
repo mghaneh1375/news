@@ -35,17 +35,17 @@ class NewsController extends Controller
         $origin = $request->header('origin');
 
         if(
-            $origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'https://https://tourismbanck.co' ||
-                $origin == 'https://titcompany.com' || 1 == 1
+            $origin == 'https://www.tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'https://www.tourismbanck.co' ||
+                $origin == 'https://www.titcompany.com'
         ) {
             
             $siteId = 4;
 
-            if($origin == 'https://tourismfinancialgroup.com')
+            if($origin == 'https://www.tourismfinancialgroup.com')
                 $siteId = 6;
-            if($origin == 'https://tourismbanck.co')
+            if($origin == 'https://www.tourismbanck.co')
                 $siteId = 3;
-            else if($origin == 'https://titcompany.com')
+            else if($origin == 'https://www.titcompany.com')
                 $siteId = 1;
 
             if($kind == 'all'){
