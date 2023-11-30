@@ -112,16 +112,18 @@ class NewsController extends Controller
         $origin = $request->header('origin');
 
         if(
-            $origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000' ||
-                $origin == 'https://tit.tourismfinancialgroup.com' || 1 == 1
+             $origin == 'https://www.tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'https://www.tourismbanck.co' ||
+                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbanck.co'||$origin == 'https://titcompany.com'
         ) {
                 
             $siteId = 4;
             
-            if($origin == 'https://tourismfinancialgroup.com')
+            if($origin == 'https://www.tourismfinancialgroup.com'||$origin == 'https://tourismfinancialgroup.com')
                 $siteId = 6;
-            else if($origin == 'https://tit.tourismfinancialgroup.com')
-                $siteId = 1; 
+            if($origin == 'https://www.tourismbanck.co'||$origin == 'https://tourismbanck.co')
+                $siteId = 3;
+            else if($origin == 'https://www.titcompany.com'||$origin == 'https://titcompany.com')
+                $siteId = 1;
             if ($lang == 'fa')
                 $news = News::youCanSee($siteId, $lang)->select('slug')->where('slug', '!=' , '')->get();
             else
