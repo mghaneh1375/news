@@ -113,12 +113,12 @@ class NewsController extends Controller
 
         if(
              $origin == 'https://www.tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'https://www.tourismbanck.co' ||
-                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbanck.co'||$origin == 'https://titcompany.com'
+                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbanck.co'||$origin == 'https://titcompany.com'||1==1
         ) {
                 
             $siteId = 4;
             
-            if($origin == 'https://www.tourismfinancialgroup.com'||$origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000')
+            if($origin == 'https://www.tourismfinancialgroup.com'||$origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || 1==1)
                 $siteId = 6;
             if($origin == 'https://www.tourismbanck.co'||$origin == 'https://tourismbanck.co')
                 $siteId = 3;
