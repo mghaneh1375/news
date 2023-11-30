@@ -113,16 +113,16 @@ class NewsController extends Controller
 
         if(
              $origin == 'https://www.tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'https://www.tourismbanck.co' ||
-                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbanck.co'||$origin == 'https://titcompany.com'||1==1
+                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbanck.co'||$origin == 'https://titcompany.com'||$origin == 'TourismFinancialGroup'|| $origin == 'tourismIT'|| $origin == 'tourismBank'
         ) {
-                
+
             $siteId = 4;
-            dd($origin);
-            if($origin == 'https://www.tourismfinancialgroup.com'||$origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || 1==1)
+
+            if($origin == 'https://www.tourismfinancialgroup.com'||$origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'TourismFinancialGroup')
                 $siteId = 6;
-            if($origin == 'https://www.tourismbanck.co'||$origin == 'https://tourismbanck.co')
+            if($origin == 'https://www.tourismbanck.co'||$origin == 'https://tourismbanck.co' || $origin == 'tourismBank')
                 $siteId = 3;
-            else if($origin == 'https://www.titcompany.com'||$origin == 'https://titcompany.com')
+            else if($origin == 'https://www.titcompany.com'||$origin == 'https://titcompany.com' || $origin == 'tourismIT')
                 $siteId = 1;
             if ($lang == 'fa')
                 $news = News::youCanSee($siteId, $lang)->select('slug')->where('slug', '!=' , '')->get();

@@ -21,6 +21,11 @@ Route::get('/', function () {
     return Redirect::to('/fa');
 })->name('home');
 
+Route::get('/test', function () {
+    phpinfo();
+    // return Redirect::to('/fa');
+})->name('test');
+
 Route::get('login', function () {
     return Redirect::to('/fa/login');
 });
