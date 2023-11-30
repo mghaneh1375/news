@@ -118,7 +118,7 @@ class NewsController extends Controller
 
             $siteId = 4;
 
-            if($origin == 'https://www.tourismfinancialgroup.com'||$origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'TourismFinancialGroup')
+            if($origin == 'https://www.tourismfinancialgroup.com'||$origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'tourismFinancialGroup')
                 $siteId = 6;
             if($origin == 'https://www.tourismbanck.co'||$origin == 'https://tourismbanck.co' || $origin == 'tourismBank')
                 $siteId = 3;
