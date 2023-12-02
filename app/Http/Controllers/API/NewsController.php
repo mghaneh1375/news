@@ -116,7 +116,7 @@ class NewsController extends Controller
             else if($origin == 'https://www.titcompany.com'||$origin == 'https://titcompany.com' || $origin == 'tourismIT')
                 $siteId = 1;
             return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(
-            News::where('site_id',$siteId )->where('slugEn', $slug)->orWhere('slug', $slug)->first()
+            News::where('site_id',$siteId )->first()
             , $lang)]
             );
             } 
