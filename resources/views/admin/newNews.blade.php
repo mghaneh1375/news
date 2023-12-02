@@ -481,6 +481,7 @@
     <img id="beforeSaveImg" src="" style="display: none;">
 
     <script>
+        var site;
         var secendCkeditor;
         var tagsName = [];
         var tagsEnName = [];
@@ -674,7 +675,7 @@
             var slugEn = document.getElementById('slugEn').value;
             var metaEn = document.getElementById('metaEn').value;
 
-            var site = document.getElementById('siteName').value;
+            site = document.getElementById('siteName').value;
             var hasVideo = $('input[name="videoQuestion"]:checked').val();
             var direction = $('input[name="direction"]:checked').val();
 
@@ -958,6 +959,8 @@
             var metaEn = document.getElementById('metaEn').value;
             var titleEn = document.getElementById('titleEn').value;
             var descEn = window.editorr.getData();
+
+            checkSlug(slugEn, site);
 
             $.ajax({
                 type: 'POST',
@@ -1357,6 +1360,8 @@
             // checkSeo(0);
             // EnCheckSeo(0);
         }
+
+        function checkSlug() {}
     </script>
 
 @stop

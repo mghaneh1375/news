@@ -99,11 +99,27 @@ class NewsController extends Controller
 
 
     public function findBySlug(Request $request, $lang="fa", $slug) {
+        $postfix = ($lang == 'fa') ? '' : 'En';
+        $origin = $request->header('origin');
 
-        return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(
-            News::where('slugEn', $slug)->orWhere('slug', $slug)->first()
-            , $lang)]
-        );
+        if(
+             $origin == 'https://www.tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'https://www.tourismbanck.co' ||
+                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbanck.co'||$origin == 'https://titcompany.com'||$origin == 'tourismFinancialGroup'|| $origin == 'tourismIT'|| $origin == 'tourismBank'
+        ) {
+
+            $siteId = 4;
+
+            if($origin == 'https://www.tourismfinancialgroup.com'||$origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'tourismFinancialGroup')
+                $siteId = 6;
+            if($origin == 'https://www.tourismbanck.co'||$origin == 'https://tourismbanck.co' || $origin == 'tourismBank')
+                $siteId = 3;
+            else if($origin == 'https://www.titcompany.com'||$origin == 'https://titcompany.com' || $origin == 'tourismIT')
+                $siteId = 1;
+            
+                $news = News::youCanSee($siteId, $lang)->where('site_id',$siteId )->first();
+
+            return response()->json(['status' => 'ok', 'data' => $news]);
+            } 
     }
 
     public function slugList(Request $request, $lang) {
@@ -132,6 +148,14 @@ class NewsController extends Controller
             return response()->json(['status' => 'ok', 'data' => $news]);
             }    
         
+    }
+
+    public function slugCheck(Request $request, $lang="fa", $slug, $siteId) {
+
+        return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(
+            News::where('slugEn', $slug)->orWhere('slug', $slug)->first()
+            , $lang)]
+        );
     }
 
     public function topNews(Request $request, $lang="fa") {
