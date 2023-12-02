@@ -834,6 +834,7 @@
             var title = document.getElementById('title').value;
             var newsId = document.getElementById('newsId').value;
             var desc = window.editor.getData();
+            var siteId = document.getElementById('siteName').value;
             $.ajax({
                 type: 'POST',
                 url: '{{ route('seoTesterContent') }}',
@@ -846,7 +847,8 @@
                     title: title,
                     id: newsId,
                     database: 'news',
-                    desc: desc
+                    desc: desc,
+                    site: siteId
                 },
                 headers: {
                     accept: 'application/json'
@@ -960,7 +962,7 @@
             var titleEn = document.getElementById('titleEn').value;
             var descEn = window.editorr.getData();
 
-            checkSlug(slugEn, site);
+            var siteId = document.getElementById('siteName').value;
 
             $.ajax({
                 type: 'POST',
@@ -975,6 +977,7 @@
                     descEn: descEn,
                     id: newsId,
                     database: 'news',
+                    site: siteId
                 },
                 headers: {
                     accept: 'application/json'
@@ -1360,8 +1363,6 @@
             // checkSeo(0);
             // EnCheckSeo(0);
         }
-
-        function checkSlug() {}
     </script>
 
 @stop

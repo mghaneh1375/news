@@ -116,7 +116,7 @@ class NewsController extends Controller
             else if($origin == 'https://www.titcompany.com'||$origin == 'https://titcompany.com' || $origin == 'tourismIT')
                 $siteId = 1;
             return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(
-            News::where('site_id',$siteId )->first()
+            News::where('site_id',$siteId )->where('slugEn', $slug)->orWhere('slug', $slug)->first()
             , $lang)]
             );
             } 
@@ -149,14 +149,6 @@ class NewsController extends Controller
             return response()->json(['status' => 'ok', 'data' => $news]);
             }    
         
-    }
-
-    public function slugCheck(Request $request, $lang="fa", $slug, $siteId) {
-
-        return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(
-            News::where('slugEn', $slug)->orWhere('slug', $slug)->first()
-            , $lang)]
-        );
     }
 
     public function topNews(Request $request, $lang="fa") {
