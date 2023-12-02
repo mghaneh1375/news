@@ -115,11 +115,12 @@ class NewsController extends Controller
                 $siteId = 3;
             else if($origin == 'https://www.titcompany.com'||$origin == 'https://titcompany.com' || $origin == 'tourismIT')
                 $siteId = 1;
-            
-                $news = News::youCanSee($siteId, $lang)->where('site_id',$siteId )->first();
-
-            return response()->json(['status' => 'ok', 'data' => $news]);
+            return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(
+            News::where('site_id',$siteId )->where('slugEn', $slug)->orWhere('slug', $slug)->first()
+            , $lang)]
+            );
             } 
+       
     }
 
     public function slugList(Request $request, $lang) {
