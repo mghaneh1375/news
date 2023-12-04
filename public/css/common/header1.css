@@ -262,7 +262,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
 }
 
 .headerContainer {
-    padding: 0px 24px 15px 24px;
+    padding: 10px 24px 15px 24px;
     display: flex;
     align-items: center;
     position: relative;

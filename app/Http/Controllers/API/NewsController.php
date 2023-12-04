@@ -35,17 +35,17 @@ class NewsController extends Controller
         $origin = $request->header('origin');
 
         if(
-            $origin == 'https://www.tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'https://www.tourismbank.co' ||
-                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbank.co'||$origin == 'https://titcompany.com'
+             $origin == 'https://www.tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'https://www.tourismbank.co' ||
+                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbank.co'||$origin == 'https://titcompany.com'||$origin == 'tourismFinancialGroup'|| $origin == 'tourismIT'|| $origin == 'tourismBank'
         ) {
-            
+
             $siteId = 4;
 
-            if($origin == 'https://www.tourismfinancialgroup.com'||$origin == 'https://tourismfinancialgroup.com')
+            if($origin == 'https://www.tourismfinancialgroup.com'||$origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'tourismFinancialGroup')
                 $siteId = 6;
-            if($origin == 'https://www.tourismbank.co'||$origin == 'https://tourismbank.co')
+            if($origin == 'https://www.tourismbank.co'||$origin == 'https://tourismbank.co' || $origin == 'tourismBank')
                 $siteId = 3;
-            else if($origin == 'https://www.titcompany.com'||$origin == 'https://titcompany.com')
+            else if($origin == 'https://www.titcompany.com'||$origin == 'https://titcompany.com' || $origin == 'tourismIT')
                 $siteId = 1;
 
             if($kind == 'all'){

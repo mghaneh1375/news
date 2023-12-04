@@ -32,7 +32,6 @@
         }
 
         #enTime {
-            font-family: 'Courier New', Courier, monospace;
             direction: ltr;
             color: white;
         }

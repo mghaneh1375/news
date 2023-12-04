@@ -98,7 +98,16 @@ class UserNewsController extends Controller
 
         $lastNews = $lastNewsOutput;
 
-        return view('user.newsMainPage', compact(['sliderNews', 'sideSliderNews','mostViewNews', 'allCategories', 'topNews', 'lastVideos','lastNews']));
+
+        
+        $lastNews2 = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->whereNull('video')->orderBy('dateAndTime')->select($selectCol)->take(2)->get();
+        $lastNewsOutput = [];
+
+        foreach ($lastNews2 as $item)
+            array_push($lastNewsOutput, getNewsMinimal($item));
+
+        $lastNews2 = $lastNewsOutput;
+        return view('user.newsMainPage', compact(['sliderNews','lastNews2', 'sideSliderNews','mostViewNews', 'allCategories', 'topNews', 'lastVideos','lastNews']));
     }
 
     public function newsShow($lang, $slug)

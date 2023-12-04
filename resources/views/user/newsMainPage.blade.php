@@ -33,10 +33,10 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        padding-left: unset !important; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        padding-left: unset !important; */
             margin-right: unset !important;
             margin-left: unset !important;
-            width: 95% !important;
+            width: 99% !important;
         }
 
         .mostViewHeader {
@@ -114,11 +114,20 @@
 
 @section('body')
     <div class="row topSectionMainPageNews">
-        <div class="col-md-3 col-xs-12 heightUnset pdL0 pdR0 leftNavOne">
-            <div style="height: 200px ;width: 100%;">
+        <div class="col-md-3 col-xs-12 heightUnset  pdR0 leftNavOne">
+            <div class="flexDirColumn" style="height:85%;box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.7);">
+                <div class="mostViewHeader ">
+                    <div style="font-size: 18px !important">{{ __('main.suggestedVideos') }}</div>
+                </div>
+                <div class="RecommendedVideo">
+
+                </div>
+
+            </div>
+            {{-- <div style="height: 200px ;width: 100%;">
                 <img src="{{ URL::asset('images/shareBoxImg/tabligh2.png') }}"
                     alt=""style="width: 100%;height: 100%;object-fit: contain;box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.7);border: 1px solid gray;">
-            </div>
+            </div> --}}
             <div style="margin-top: 10px">
                 <div class="mostViewHeader">
                     <div style="font-size: 18px !important">{{ __('main.MostVisitedToday') }} </div>
@@ -136,20 +145,27 @@
             </div>
         </div>
         <div class="col-md-3 col-xs-12 centerNav">
-            <div
+            {{-- <div
                 style="height: 15%;margin-bottom: 10px;box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.7);border: 1px solid gray;">
                 <img src="{{ URL::asset('images/shareBoxImg/takhfif.png') }}"
                     alt=""style="width: 100%;height: 100%;object-fit: cover;">
-            </div>
-            <div class="flexDirColumn" style="height:85%;box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.7);">
+            </div> --}}
+            {{-- <div class="flexDirColumn" style="height:85%;box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.7);">
                 <div class="mostViewHeader ">
                     <div style="font-size: 18px !important">{{ __('main.suggestedVideos') }}</div>
                 </div>
                 <div class="RecommendedVideo">
 
                 </div>
-
-            </div>
+            </div> --}}
+            @foreach ($lastNews2 as $item)
+                <div class="flexDirColumn newNews" style="height:230px;position: relative;">
+                    <img data-src="{{ $item->pic }}" alt="{{ $item->keyword }}" class="lazyload resizeImgClass">
+                    <a href="{{ $item->url }}" class="content">
+                        <p class="title">{{ $item->title }}</p>
+                    </a>‍
+                </div>
+            @endforeach
         </div>
         <div class="col-md-6 col-xs-12 mainSwiper">
             <div id="mainSlider" class="swiper-container mainPageSlider">
@@ -171,7 +187,7 @@
             </div>
         </div>
 
-        @if (count($lastVideos) > 0)
+        {{-- @if (count($lastVideos) > 0)
             <div class="row inOneRows swiper mySwiper swiper-container videoConv">
                 <div class="videosHeader">
                     <div class="bgColorRed colorWhite alignItemCen pd5 mg17">{{ __('main.MostViewed') }}</div>
@@ -195,7 +211,7 @@
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
-        @endif
+        @endif --}}
         <div class="col-md-3 col-xs-12 pdL0 pdR0 lastSelectedNews">
             <div style="height: 200px ;width: 100%;">
                 <img src="{{ URL::asset('images/shareBoxImg/tabligh3.png') }}"
