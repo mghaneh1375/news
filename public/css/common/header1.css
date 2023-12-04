@@ -1,8 +1,8 @@
 /*header1 styles*/
 
 .mainHeader {
-    padding-top: 30px;
-    background-color: #6d0606;
+    height: 100px;
+    background-color: #e7e0d8;
 }
 
 .glyphicon {
@@ -267,13 +267,14 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     align-items: center;
     position: relative;
     direction: rtl;
+    justify-content: space-between;
 }
 
 .headerPcLogoDiv {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50px;
+    height: 100%;
 }
 
 .headerPcLogo {
@@ -308,8 +309,6 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
     display: flex;
     align-items: center;
     padding: 0;
-    position: absolute;
-    left: 0;
 }
 
 .headerSecondSection {

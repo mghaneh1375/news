@@ -7447,8 +7447,8 @@ button.close {
 .panel-body:before,
 .row:after,
 .row:before {
-    display: table;
-    content: " "
+    /* display: table;
+    content: " " */
 }
 
 .btn-group-vertical>.btn-group:after,
@@ -15848,8 +15848,8 @@ input[type=submit]:hover {
 .row:before,
 .vc_row:after,
 .vc_row:before {
-    content: " ";
-    display: table
+    /* content: " ";
+    display: table */
 }
 
 @media (max-width:767px) {

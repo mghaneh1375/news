@@ -35,16 +35,17 @@
 
 {{-- pc header --}}
 <div class="mainHeader hideOnPhone">
-    <div class="container headerContainer">
+    <div class="headerContainer">
         <a href="{{ route('site.news.main', ['lang' => \App::getLocale()]) }}" class="headerPcLogoDiv">
-            <img src="{{ URL::asset('images/icons/mainLogo.png') }}" alt="{{ __('کوچیتا') }}" class="headerPcLogo" />
+            <img src="{{ URL::asset('images/icons/mainLogo.svg') }}" alt="{{ __('کوچیتا') }}" class="headerPcLogo" />
         </a>
 
         <div class="headerButtonsSection">
             <div id="time"></div>
-            <div id="enTime"></div>
-
-
+            <div>
+                <div><input type="text"></div>
+                <div id="enTime"></div>
+            </div>
         </div>
     </div>
 

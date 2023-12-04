@@ -2012,8 +2012,8 @@ pre code {
 
 .container:before,
 .container:after {
-  content: " ";
-  display: table;
+  /* content: " ";
+  display: table; */
 }
 
 .container:after {
