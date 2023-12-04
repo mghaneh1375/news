@@ -20,6 +20,7 @@
 .d-flex {
     display: flex !important;
 }
+
 .alignItemCen {
     display: flex;
     align-items: center;
@@ -115,6 +116,10 @@
 }
 .flexDirRow {
     flex-direction: row !important;
+}
+.flexRowRev {
+    display: flex;
+    flex-direction: row-reverse !important;
 }
 .videoConv {
     background-color: black;

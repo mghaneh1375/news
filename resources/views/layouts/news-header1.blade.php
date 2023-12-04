@@ -1,5 +1,11 @@
 @if (!Request::is('main') && !Request::is('main/*') && !Request::is('/'))
     <style>
+        ::placeholder {
+            color: white;
+            opacity: 1;
+            /* Firefox */
+        }
+
         .headerSecondSection {
             display: none;
         }
@@ -40,11 +46,17 @@
             <img src="{{ URL::asset('images/icons/mainLogo.svg') }}" alt="{{ __('کوچیتا') }}" class="headerPcLogo" />
         </a>
 
-        <div class="headerButtonsSection">
-            <div id="time"></div>
-            <div>
-                <div><input type="text"></div>
-                <div id="enTime"></div>
+        <div class="headerButtonsSection flexDirColumn">
+            {{-- <div id="time"></div> --}}
+            <div style="color: #232323;font-size: 14px;text-align: end;width: 100%;"> فارسی - About - policies -
+                advertizement</div>
+            <div class="d-flex">
+                <div id="enTime"style="background-color: #6D0606;margin-left:5px;" class="alignItemCen pd10"></div>
+                <div style="background-color: #6D0606" class="flexRowRev alignItemCen">
+                    <span class="searchIcon colorWhite" style="font-size: 30px;margin-left: 3px;"></span>
+                    <input type="text" placeholder="Type Here"
+                        style="background-color: #6D0606;border: unset;color:#ffffff ;height: 30px;">
+                </div>
             </div>
         </div>
     </div>
@@ -89,7 +101,7 @@
     var superAccess = false;
     var time = getPersianDate();
     $('#time').append(time);
-    var enTime = moment().format('D MMMM YYYY|');
+    var enTime = moment().format('D MMMM YYYY');
     $('#enTime').append(enTime);
 </script>
 
