@@ -45,7 +45,7 @@
     </div>
 
 
-    <div class="container pdL0">
+    <div class="container" style="padding: 0px 10px">
         @yield('body')
     </div>
 

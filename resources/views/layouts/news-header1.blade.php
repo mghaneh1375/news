@@ -47,15 +47,15 @@
 
         <div class="headerButtonsSection flexDirColumn">
             {{-- <div id="time"></div> --}}
-            <div style="color: #232323;font-size: 14px;text-align: end;width: 100%;"> فارسی - About - policies -
-                advertizement</div>
+            <div style="color: #232323;font-size: 14px;width: 100%;"> About - policies -
+                advertizement - فارسی </div>
             <div class="d-flex">
-                <div id="enTime"style="background-color: #6D0606;margin-left:5px;" class="alignItemCen pd10"></div>
                 <div style="background-color: #6D0606" class="flexRowRev alignItemCen">
-                    <span class="searchIcon colorWhite" style="font-size: 30px;margin-left: 3px;"></span>
                     <input type="text" placeholder="Type Here"
                         style="background-color: #6D0606;border: unset;color:#ffffff ;height: 30px;">
+                    <span class="searchIcon colorWhite" style="font-size: 30px;margin-left: 3px;"></span>
                 </div>
+                <div id="enTime"style="background-color: #6D0606;margin-left:5px;" class="alignItemCen pd10"></div>
             </div>
         </div>
     </div>

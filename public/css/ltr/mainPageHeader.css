@@ -45,7 +45,6 @@
 }
 .mostViewHeader {
     border-right: unset !important;
-    border-left: 4px solid #6d0606;
 }
 .cardDownTitle {
     flex-direction: row-reverse !important;
@@ -57,9 +56,9 @@
     float: left !important;
 }
 
-div:has(.keyNumber) {
+/* div:has(.keyNumber) {
     flex-direction: row-reverse;
-}
+} */
 .lastNews {
     float: left !important;
 }

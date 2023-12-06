@@ -36,7 +36,7 @@ class NewsController extends Controller
 
         if(
              $origin == 'https://www.tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'https://www.tourismbank.co' ||
-                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbank.co'||$origin == 'https://titcompany.com'||$origin == 'tourismFinancialGroup'|| $origin == 'tourismIT'|| $origin == 'tourismBank'
+                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbank.co'||$origin == 'https://titcompany.com'||$origin == 'tourismFinancialGroup'|| $origin == 'tourismIT'|| $origin == 'tourismBank'|| $origin == 'mahan'
         ) {
 
             $siteId = 4;
@@ -104,7 +104,7 @@ class NewsController extends Controller
 
         if(
              $origin == 'https://www.tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'https://www.tourismbank.co' ||
-                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbank.co'||$origin == 'https://titcompany.com'||$origin == 'tourismFinancialGroup'|| $origin == 'tourismIT'|| $origin == 'tourismBank'
+                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbank.co'||$origin == 'https://titcompany.com'||$origin == 'tourismFinancialGroup'|| $origin == 'tourismIT'|| $origin == 'tourismBank'|| $origin == 'mahan'
         ) {
 
             $siteId = 4;
@@ -130,7 +130,7 @@ class NewsController extends Controller
 
         if(
              $origin == 'https://www.tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'https://www.tourismbank.co' ||
-                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbank.co'||$origin == 'https://titcompany.com'||$origin == 'tourismFinancialGroup'|| $origin == 'tourismIT'|| $origin == 'tourismBank'
+                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbank.co'||$origin == 'https://titcompany.com'||$origin == 'tourismFinancialGroup'|| $origin == 'tourismIT'|| $origin == 'tourismBank'|| $origin == 'mahan'
         ) {
 
             $siteId = 4;

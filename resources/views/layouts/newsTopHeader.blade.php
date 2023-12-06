@@ -50,7 +50,7 @@
 
         * {
             font-family: enFonts;
-            direction: ltr;
+            direction: ltr !important;
             text-align: left;
         }
 

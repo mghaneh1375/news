@@ -53,7 +53,7 @@ class UserNewsController extends Controller
 
         $mostViewNews = $mostViewNewsOutput;
 
-        $allCategories = NewsCategory::where('parentId', 0)->get();
+        $allCategories = NewsCategory::where('parentId', 0)->where('top', 1)->get();
 
         foreach ($allCategories as $category){
             $category->allSubIds = NewsCategory::where('id', $category->id)->orWhere('parentId', $category->id)->pluck('id')->toArray();
