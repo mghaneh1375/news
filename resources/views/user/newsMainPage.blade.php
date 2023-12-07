@@ -33,7 +33,7 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        padding-left: unset !important; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                padding-left: unset !important; */
             margin-right: unset !important;
             margin-left: unset !important;
             width: 99% !important;
@@ -41,13 +41,13 @@
 
         .mostViewHeader {
             color: white !important;
-            background-color: #232323;
+            background-color: #6D0606;
             padding: 6px 5px;
             margin-bottom: 2px
         }
 
         .selectionNews {
-            background-color: #6d0606;
+            background-color: #232323;
             padding: 6px 8px;
             color: white
         }
@@ -73,13 +73,7 @@
 
         }
 
-        .lastSpecialNew li:nth-child(2n+1) {
-            background-color: black;
-        }
 
-        .lastSpecialNew li:nth-child(2n) {
-            background-color: #232323;
-        }
 
         ul {
             list-style-type: none;
@@ -87,17 +81,7 @@
             margin: 0px
         }
 
-        .lastSpecialNew li .keyNumber {
-            /* position: absolute; */
-            background-color: #6d0606;
-            color: #fff;
-            border-radius: 50%;
-            font-size: 0.8em;
-            width: 29px;
-            height: 29px;
-            text-align: center;
-            padding-top: 5px;
-        }
+
 
 
         .mostViewDay li:hover {
@@ -123,31 +107,10 @@
                 </div>
 
             </div>
-            <div style="height: 200px ;width: 100%;">
+            <div style="height: 200px ;width: 100%;margin-top: 10px">
                 <img src="{{ URL::asset('images/shareBoxImg/tabligh3.png') }}"
                     alt=""style="width: 100%;height: 100%;object-fit: contain;border: 1px solid gray;">
             </div>
-            <div style="margin-top: 10px">
-                <div class="selectionNews">
-                    <div style="font-size: 16px !important">{{ __('main.LatestSelections') }}</div>
-                </div>
-                <ul class="lastSpecialNew">
-                    @foreach ($topNews as $item)
-                        <li class="pd5">
-                            <div class="alignItemCen">
-                                <div class="keyNumber mrLeft5">{{ $loop->index + 1 }}</div>
-                                <a class="col-md-9 padUnset" style="color: white !important" href="{{ $item->url }}">
-                                    <h6 class="title ">{{ $item->title }}</h6>
-                                </a>
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-            {{-- <div style="height: 200px ;width: 100%;">
-                <img src="{{ URL::asset('images/shareBoxImg/tabligh2.png') }}"
-                    alt=""style="width: 100%;height: 100%;object-fit: contain;box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.7);border: 1px solid gray;">
-            </div> --}}
             <div style="margin-top: 10px">
                 <div class="mostViewHeader">
                     <div style="font-size: 18px !important">{{ __('main.MostVisitedToday') }} </div>
@@ -163,6 +126,16 @@
                     @endforeach
                 </ul>
             </div>
+
+            <div style="height: 200px ;width: 100%;margin-top: 10px">
+                <img src="{{ URL::asset('images/shareBoxImg/tabligh3.png') }}"
+                    alt=""style="width: 100%;height: 100%;object-fit: contain;border: 1px solid gray;">
+            </div>
+            {{-- <div style="height: 200px ;width: 100%;">
+                <img src="{{ URL::asset('images/shareBoxImg/tabligh2.png') }}"
+                    alt=""style="width: 100%;height: 100%;object-fit: contain;box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.7);border: 1px solid gray;">
+            </div> --}}
+
         </div>
         <div class="col-md-3 col-xs-12 centerNav">
             {{-- <div
@@ -256,6 +229,21 @@
                         </a>
                     </div>
                 @endforeach
+            </div>
+            <div style="margin-top: 10px">
+                <div class="selectionNews">
+                    <div style="font-size: 14px !important">{{ __('main.LatestSelections') }}</div>
+                </div>
+                <ul class="lastSpecialNew">
+                    @foreach ($topNews as $item)
+                        <li class="Point alignItemCen" style="border-left: solid 3px #6D0606;margin-top: 5px;">
+
+                            <a class="pdl10" style="color: black !important" href="{{ $item->url }}">
+                                <h6 class="title" style="margin:5px 0 0 0">{{ $item->title }}</h6>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
         @if (count($lastVideos) > 0)

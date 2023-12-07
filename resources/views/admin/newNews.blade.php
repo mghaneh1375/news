@@ -549,6 +549,8 @@
                     'insertTable',
                     'imageUpload',
                     'imageTextAlternative',
+                    "imageStyle:alignLeft",
+                    "imageStyle:alignRight",
                     'undo',
                     'redo'
                 ],
@@ -558,6 +560,10 @@
                         'tableRow',
                         'mergeTableCells'
                     ]
+                },
+                image: {
+                    styles: ["full", "alignLeft", "alignRight", ],
+
                 },
                 licenseKey: '',
             })
@@ -606,8 +612,10 @@
                     'bulletedList',
                     'insertTable',
                     'imageUpload',
-                    'imageTextAlternative',
+                    'ImageTextAlternative',
                     'undo',
+                    "imageStyle:alignLeft",
+                    "imageStyle:alignRight",
                     'redo'
                 ],
                 table: {
@@ -617,8 +625,10 @@
                         'mergeTableCells'
                     ]
                 },
+
                 image: {
-                    toolbar: ['toggleImageCaption', 'imageTextAlternative', 'ckboxImageEdit']
+                    styles: ["full", "alignLeft", "alignRight", ],
+
                 },
                 licenseKey: '',
             })

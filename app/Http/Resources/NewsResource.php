@@ -72,8 +72,8 @@ class NewsResource extends JsonResource
             'seoTitle' => getData(self::$locale, $this->seoTitle, $this->seoTitleEn),
             'video' => $video,
             'showTime' => Verta::createJalali($date[0], $date[1], $date[2], $times[0], $times[1], 0)->format('%d %B %Y  H:i'),
-            'author' => 'کوچیتا',
-            'username' => 'کوچیتا',
+            'author' => 'koochita',
+            'username' => 'koochita',
             'rtl' => $this->rtl,
             'tags' => array_filter($this->getTags->pluck(self::$locale == 'fa' ? 'tag' : 'tagEn')->toArray(), function($var) {
                 return !empty($var);

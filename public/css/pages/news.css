@@ -379,7 +379,7 @@
 }
 .sideNewsCard .picSec .title {
     position: absolute;
-    padding: 5px;
+    padding-left: 5px;
     background: linear-gradient(0deg, black, transparent);
     bottom: 0;
     left: 0;
