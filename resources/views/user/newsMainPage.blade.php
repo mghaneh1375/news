@@ -33,7 +33,7 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                padding-left: unset !important; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    padding-left: unset !important; */
             margin-right: unset !important;
             margin-left: unset !important;
             width: 99% !important;
@@ -95,7 +95,7 @@
 @endsection
 
 
-@section('body'){{ dd($sliderNews) }}
+@section('body')
     <div class="row topSectionMainPageNews">
         <div class="col-md-3 col-xs-12 heightUnset  pdR0 leftNavOne">
             <div class="flexDirColumn" style="height:85%;box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.7);">
@@ -167,7 +167,17 @@
                         <div class="swiper-slide">
                             <img data-src="{{ $item->pic }}" alt="{{ $item->keyword }}" loading="lazy"
                                 class="lazyload resizeImgClass" onload="fitThisImg(this)">
+
                             <a href="{{ $item->url }}" class="content">
+                                <div style="display: flex">
+
+                                    <div style="background-color: #6D0606 ;width: 18px;">
+                                    </div>
+                                    <div
+                                        style="background-color: #6D0606;margin-left: 2px;width: fit-content;padding: 0px 10px;color: white ">
+                                        {{ $item->category }}
+                                    </div>
+                                </div>
                                 <h3 class="title">{{ $item->title }}</h3>
                             </a>‍
                         </div>
@@ -248,42 +258,31 @@
         </div>
 
 
-
-        @foreach ($allCategories as $category)
-            @if (count($category->news) > 0)
-                <div class="oneBig4SmallRows bgColorRed" style="display: inline-block;">
-                    <a href="{{ route('site.news.list', ['kind' => 'category', 'content' => $category->name, 'lang' => \App::getLocale()]) }}"
-                        class="col-md-12 title colorWhite"> {{ __('main.TourismNewsList') }} </a>
-
-                    <div class="col-md-4 oneBigSec floatRight">
-                        <a href="{{ $category->news[0]->url }}" class="colCard bgColorGray">
-                            <div
-                                class="picSec fullyCenterContent {{ $category->news[0]->video != null ? 'playIcon' : '' }}">
-                                <img src="{{ $category->news[0]->pic }}" alt="{{ $category->news[0]->keyword }}"
-                                    class="resizeImgClass" onload="fitThisImg(this)">
-                            </div>
-                            <div class="content">
-                                <h3 class="title">{{ $category->news[0]->title }}</h3>
-                                <p class="summery">{{ $category->news[0]->meta }}</p>
-                            </div>
-                        </a>
+        <?php
+        $takenColor = 0;
+        ?>
+        <div class="col-md-9 col-xs-12  lastNews">
+            @foreach ($allCategories as $category)
+                @if (count($category->news) > 0)
+                    <?php
+                    $takenColor++;
+                    ?>
+                    <div class="selectionNews">
+                        <a class="col-md-12 title colorWhite"> {{ __('main.TourismNewsList') }} </a>
                     </div>
-                    <div class="col-md-8 sideDown">
-                        @for ($i = 1; $i < 7 && $i < count($category->news); $i++)
-                            <a href="{{ $category->news[$i]->url }}" class="rowCard">
-                                <div
-                                    class="picSec fullyCenterContent {{ $category->news[$i]->video != null ? 'playIcon' : '' }}">
-                                    <img src="{{ $category->news[$i]->pic }}" alt="{{ $category->news[$i]->keyword }}"
-                                        class="resizeImgClass" onload="fitThisImg(this)">
-                                </div>
-                                <h3 class="content">{{ $category->news[$i]->title }}</h3>
-                            </a>
+                    <ul class="lastSpecialNew">
+                        @for ($i = 0; $i < 6 && $i < count($category->news); $i++)
+                            <li class="Point alignItemCen" style="border-left: solid 3px #6D0606;margin-top: 5px;">
+                                <a class="pdl10" style="color: black !important" href="{{ $category->news[$i]->url }}">
+                                    <h6 class="title" style="margin:5px 0 0 0">{{ $category->news[$i]->title }}</h6>
+                                </a>
+                            </li>
                         @endfor
-                    </div>
-                </div>
-            @endif
-        @endforeach
-        @if (count($lastVideos) > 0)
+                    </ul>
+                @endif
+            @endforeach
+        </div>
+        {{-- @if (count($lastVideos) > 0)
             <div class="col-md-12 col-xs-12  secendVideoBox">
                 <div class="mostViewHeader  bgColorBlack  w100">
                     <div style="font-size: 18px !important">{{ __('main.video') }}</div>
@@ -316,7 +315,7 @@
                     <div class="swiper-button-prev"></div>
                 </div>
             </div>
-        @endif
+        @endif --}}
     </div>
 
 
@@ -343,11 +342,6 @@
             </div>
         </div>
     @endif --}}
-
-
-
-
-
 @endsection
 
 

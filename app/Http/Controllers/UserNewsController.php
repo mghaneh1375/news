@@ -33,7 +33,7 @@ class UserNewsController extends Controller
             ->select([
                 'news.id', 'news.pic', 'news.server',
                 'news.title', 'news.meta', 'news.slug', 'news.keyword',
-                'news.titleEn', 'news.metaEn', 'news.slugEn', 'news.keywordEn','news_categories.name',
+                'news.titleEn', 'news.metaEn', 'news.slugEn', 'news.keywordEn','news_categories.name','news_categories.nameEn',
             ])->take(5)->get();
 
         // $sideSliderNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->select($selectCol)->skip(5)->take(2)->get();
@@ -44,7 +44,7 @@ class UserNewsController extends Controller
             ->select([
                 'news.id', 'news.pic', 'news.server',
                 'news.title', 'news.meta', 'news.slug', 'news.keyword',
-                'news.titleEn', 'news.metaEn', 'news.slugEn', 'news.keywordEn','news_categories.name',
+                'news.titleEn', 'news.metaEn', 'news.slugEn', 'news.keywordEn','news_categories.name','news_categories.nameEn',
             ])->skip(5)->take(2)->get();
         if(count($sideSliderNews) < 4){
             $remaining = 4 - count($sideSliderNews);
@@ -57,7 +57,7 @@ class UserNewsController extends Controller
                 ->select([
                     'news.id', 'news.pic', 'news.server',
                     'news.title', 'news.meta', 'news.slug', 'news.keyword',
-                    'news.titleEn', 'news.metaEn', 'news.slugEn', 'news.keywordEn','news_categories.name',
+                    'news.titleEn', 'news.metaEn', 'news.slugEn', 'news.keywordEn','news_categories.name','news_categories.nameEn',
                 ])->skip($skip)->take(2)->get();
         }
 
