@@ -16,17 +16,20 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return Redirect::to('/fa');
 })->name('home');
+
+// Route::get('/test', function () {
+//     phpinfo();
+//     return Redirect::to('/fa');
+// })->name('test');
 
 Route::get('login', function () {
     return Redirect::to('/fa/login');
 });
 
 Route::prefix('{lang}')->middleware(['setLocale'])->group(function() {
-
 
     Route::middleware(['shareNews'])->group(function (){
 
@@ -42,17 +45,17 @@ Route::prefix('{lang}')->middleware(['setLocale'])->group(function() {
 
     Route::get('/listGetElemes', [UserNewsController::class, 'newsListElements'])->name('site.news.list.getElements');
 
-Route::get('login', [AuthController::class, 'login'])->name('login');
+    Route::get('login', [AuthController::class, 'login'])->name('login');
     
-Route::middleware(['auth'])->group(function() {
+    Route::middleware(['auth'])->group(function() {
 
-    Route::get('/doLogOut', [AuthController::class, 'logout'])->name('logout');
+        Route::get('/doLogOut', [AuthController::class, 'logout'])->name('logout');
 
-    Route::get('changePass', ['as' => 'changePass', 'uses' => 'HomeController@changePass']);
+        Route::get('changePass', ['as' => 'changePass', 'uses' => 'HomeController@changePass']);
 
-    Route::post('doChangePass', ['as' => 'doChangePass', 'uses' => 'HomeController@doChangePass']);
+        Route::post('doChangePass', ['as' => 'doChangePass', 'uses' => 'HomeController@doChangePass']);
 
-});
+    });
 
 });
 

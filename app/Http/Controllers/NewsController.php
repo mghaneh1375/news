@@ -53,7 +53,7 @@ class NewsController extends Controller
 
     public function newsList(){
         $sites = Site::all();
-        $selectCols = ['id', 'title', 'userId', 'release', 'updated_at', 'topNews', 'confirm', 'dateAndTime','site_id'];
+        $selectCols = ['id', 'title','titleEn', 'userId', 'release', 'updated_at', 'topNews', 'confirm', 'dateAndTime','site_id'];
         $news = News::where('confirm', 1)->select($selectCols)->orderBy('updated_at', 'desc')->get();
         $noneConfirmNews = News::where('confirm', 0)->select($selectCols)->orderBy('updated_at', 'desc')->get();
         foreach ([$news, $noneConfirmNews] as $nItem) {

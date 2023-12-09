@@ -6,7 +6,7 @@ return [
     'VideoCoversation'=>'Video Coversation',
     'LatestNews'=>'Latest news',
     'MostVisitedToday'=>'Most Visited Today',
-    'LatestSelections'=>'Latest Selections',
+    'LatestSelections'=>'Top News',
     'video'=>'video',
     'LatestVideos'=>'Latest Videos',
     'MostViewed'=>'Most Viewed',

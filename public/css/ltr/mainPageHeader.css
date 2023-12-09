@@ -1,3 +1,7 @@
+* {
+    font: normal normal normal 14px/19px Segoe UI;
+}
+
 .col-md-1,
 .col-md-10,
 .col-md-11,
@@ -20,8 +24,6 @@
 }
 
 .headerButtonsSection {
-    right: 0;
-    left: auto;
 }
 .headerSearchIcon {
     transform: scale(1, 1);
@@ -43,7 +45,6 @@
 }
 .mostViewHeader {
     border-right: unset !important;
-    border-left: 4px solid #6d0606;
 }
 .cardDownTitle {
     flex-direction: row-reverse !important;
@@ -55,9 +56,9 @@
     float: left !important;
 }
 
-div:has(.keyNumber) {
+/* div:has(.keyNumber) {
     flex-direction: row-reverse;
-}
+} */
 .lastNews {
     float: left !important;
 }

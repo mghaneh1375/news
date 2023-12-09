@@ -35,15 +35,17 @@ class NewsController extends Controller
         $origin = $request->header('origin');
 
         if(
-            $origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000' ||
-                $origin == 'https://tit.tourismfinancialgroup.com' || 1 == 1
+             $origin == 'https://www.tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'https://www.tourismbank.co' ||
+                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbank.co'||$origin == 'https://titcompany.com'||$origin == 'tourismFinancialGroup'|| $origin == 'tourismIT'|| $origin == 'tourismBank'|| $origin == 'mahan'
         ) {
-            
+
             $siteId = 4;
 
-            if($origin == 'https://tourismfinancialgroup.com')
+            if($origin == 'https://www.tourismfinancialgroup.com'||$origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'tourismFinancialGroup')
                 $siteId = 6;
-            else if($origin == 'https://tit.tourismfinancialgroup.com')
+            if($origin == 'https://www.tourismbank.co'||$origin == 'https://tourismbank.co' || $origin == 'tourismBank')
+                $siteId = 3;
+            else if($origin == 'https://www.titcompany.com'||$origin == 'https://titcompany.com' || $origin == 'tourismIT')
                 $siteId = 1;
 
             if($kind == 'all'){
@@ -95,11 +97,28 @@ class NewsController extends Controller
 
 
     public function findBySlug(Request $request, $lang="fa", $slug) {
+        $postfix = ($lang == 'fa') ? '' : 'En';
+        $origin = $request->header('origin');
 
-        return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(
-            News::where('slugEn', $slug)->orWhere('slug', $slug)->first()
+        if(
+             $origin == 'https://www.tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'https://www.tourismbank.co' ||
+                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbank.co'||$origin == 'https://titcompany.com'||$origin == 'tourismFinancialGroup'|| $origin == 'tourismIT'|| $origin == 'tourismBank'|| $origin == 'mahan'
+        ) {
+
+            $siteId = 4;
+
+            if($origin == 'https://www.tourismfinancialgroup.com'||$origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'tourismFinancialGroup')
+                $siteId = 6;
+            if($origin == 'https://www.tourismbank.co'||$origin == 'https://tourismbank.co' || $origin == 'tourismBank')
+                $siteId = 3;
+            else if($origin == 'https://www.titcompany.com'||$origin == 'https://titcompany.com' || $origin == 'tourismIT')
+                $siteId = 1;
+            return response()->json(['status' => 'ok', 'data' => NewsResource::customMake(
+            News::where('site_id',$siteId )->where('slugEn', $slug)->orWhere('slug', $slug)->first()
             , $lang)]
-        );
+            );
+            } 
+       
     }
 
     public function slugList(Request $request, $lang) {
@@ -108,16 +127,18 @@ class NewsController extends Controller
         $origin = $request->header('origin');
 
         if(
-            $origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000' ||
-                $origin == 'https://tit.tourismfinancialgroup.com' || 1 == 1
+             $origin == 'https://www.tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'https://www.tourismbank.co' ||
+                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbank.co'||$origin == 'https://titcompany.com'||$origin == 'tourismFinancialGroup'|| $origin == 'tourismIT'|| $origin == 'tourismBank'|| $origin == 'mahan'
         ) {
-                
+
             $siteId = 4;
-            
-            if($origin == 'https://tourismfinancialgroup.com')
+
+            if($origin == 'https://www.tourismfinancialgroup.com'||$origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'tourismFinancialGroup')
                 $siteId = 6;
-            else if($origin == 'https://tit.tourismfinancialgroup.com')
-                $siteId = 1; 
+            if($origin == 'https://www.tourismbank.co'||$origin == 'https://tourismbank.co' || $origin == 'tourismBank')
+                $siteId = 3;
+            else if($origin == 'https://www.titcompany.com'||$origin == 'https://titcompany.com' || $origin == 'tourismIT')
+                $siteId = 1;
             if ($lang == 'fa')
                 $news = News::youCanSee($siteId, $lang)->select('slug')->where('slug', '!=' , '')->get();
             else

@@ -20,6 +20,7 @@ class NewsResource extends JsonResource
      */
     public function toArray($request)
     {
+
         $slug = getData(self::$locale, $this->slug, $this->slugEn);
         
         $dateAndTime = explode(' ', $this->dateAndTime);
@@ -43,6 +44,7 @@ class NewsResource extends JsonResource
         if($category != null) {
 
             $otherNews = NewsCategoryRelations::join('news', 'news.id', 'news_category_relations.newsId')
+                ->where('site_id', $this->site_id )
                 ->where('news_category_relations.categoryId', $category->id)
                 ->where('news_category_relations.newsId', '!=', $this->id)
                 ->where('news_category_relations.isMain', 1)
@@ -56,7 +58,6 @@ class NewsResource extends JsonResource
             foreach ($otherNews as $item)
                 array_push($otherNewsArr, getNewsMinimal($item));
         }
-
         return [
             'id' => $this->id,
             'title' => getData(self::$locale, $this->title, $this->titleEn),
@@ -71,8 +72,8 @@ class NewsResource extends JsonResource
             'seoTitle' => getData(self::$locale, $this->seoTitle, $this->seoTitleEn),
             'video' => $video,
             'showTime' => Verta::createJalali($date[0], $date[1], $date[2], $times[0], $times[1], 0)->format('%d %B %Y  H:i'),
-            'author' => 'کوچیتا',
-            'username' => 'کوچیتا',
+            'author' => 'koochita',
+            'username' => 'koochita',
             'rtl' => $this->rtl,
             'tags' => array_filter($this->getTags->pluck(self::$locale == 'fa' ? 'tag' : 'tagEn')->toArray(), function($var) {
                 return !empty($var);

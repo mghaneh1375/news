@@ -406,6 +406,7 @@ class EnSeoController extends Controller {
         $seoTitle = $request->seoTitleEn;
         $title = $request->titleEn;
         $slug= $request->slugEn;
+        $siteId= $request->site;
 
         $this->type = $request->database;
 
@@ -540,7 +541,7 @@ class EnSeoController extends Controller {
         }
 
         if($slug != null){
-            $slugInDataBase = $this->slugInDataBase($slug, $request->id);
+            $slugInDataBase = $this->slugInDataBase($siteId,$slug, $request->id);
             if($slugInDataBase) {
                 $goodResult .= '<div style="color: green;">نامک شما یکتاست.</div>';
                 $goodResultCount++;
@@ -877,9 +878,9 @@ class EnSeoController extends Controller {
         return true;
     }
 
-    private function slugInDataBase($slug, $id)
+    private function slugInDataBase($slug, $id,$siteId)
     {
-        $s = DB::table($this->type)->where('slug', $slug)->where('id', '!=', $id)->first();
+        $s = DB::table($this->type)->where('site_id',$siteId )->where('slug', $slug)->where('id', '!=', $id)->first();
         return $s == null;
     }
 

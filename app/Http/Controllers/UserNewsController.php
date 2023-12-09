@@ -25,12 +25,40 @@ class UserNewsController extends Controller
             'titleEn', 'metaEn', 'slugEn', 'keywordEn',
         ];
 
-        $sliderNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->select($selectCol)->take(5)->get();
-        $sideSliderNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->select($selectCol)->skip(5)->take(2)->get();
+        // $sliderNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->select($selectCol)->take(5)->get();
+        $sliderNews =News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')
+            ->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
+            ->join('news_categories', 'news_categories.id', 'news_category_relations.categoryId')
+            ->where('news_category_relations.isMain', 1)
+            ->select([
+                'news.id', 'news.pic', 'news.server',
+                'news.title', 'news.meta', 'news.slug', 'news.keyword',
+                'news.titleEn', 'news.metaEn', 'news.slugEn', 'news.keywordEn','news_categories.name','news_categories.nameEn',
+            ])->take(5)->get();
+
+        // $sideSliderNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->select($selectCol)->skip(5)->take(2)->get();
+        $sideSliderNews =News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')
+            ->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
+            ->join('news_categories', 'news_categories.id', 'news_category_relations.categoryId')
+            ->where('news_category_relations.isMain', 1)
+            ->select([
+                'news.id', 'news.pic', 'news.server',
+                'news.title', 'news.meta', 'news.slug', 'news.keyword',
+                'news.titleEn', 'news.metaEn', 'news.slugEn', 'news.keywordEn','news_categories.name','news_categories.nameEn',
+            ])->skip(5)->take(2)->get();
         if(count($sideSliderNews) < 4){
             $remaining = 4 - count($sideSliderNews);
             $skip = 5 - $remaining;
-            $sideSliderNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->select($selectCol)->orderBy('created_at')->skip($skip)->take(2)->get();
+            // $sideSliderNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->select($selectCol)->orderBy('created_at')->skip($skip)->take(2)->get();
+            $sideSliderNews =News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')
+                ->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
+                ->join('news_categories', 'news_categories.id', 'news_category_relations.categoryId')
+                ->where('news_category_relations.isMain', 1)
+                ->select([
+                    'news.id', 'news.pic', 'news.server',
+                    'news.title', 'news.meta', 'news.slug', 'news.keyword',
+                    'news.titleEn', 'news.metaEn', 'news.slugEn', 'news.keywordEn','news_categories.name','news_categories.nameEn',
+                ])->skip($skip)->take(2)->get();
         }
 
         $sectionOutput = [];
@@ -53,7 +81,7 @@ class UserNewsController extends Controller
 
         $mostViewNews = $mostViewNewsOutput;
 
-        $allCategories = NewsCategory::where('parentId', 0)->get();
+        $allCategories = NewsCategory::where('parentId', 0)->where('top', 1)->get();
 
         foreach ($allCategories as $category){
             $category->allSubIds = NewsCategory::where('id', $category->id)->orWhere('parentId', $category->id)->pluck('id')->toArray();
@@ -98,7 +126,16 @@ class UserNewsController extends Controller
 
         $lastNews = $lastNewsOutput;
 
-        return view('user.newsMainPage', compact(['sliderNews', 'sideSliderNews','mostViewNews', 'allCategories', 'topNews', 'lastVideos','lastNews']));
+
+        
+        $lastNews2 = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->whereNull('video')->orderBy('dateAndTime')->select($selectCol)->take(2)->get();
+        $lastNewsOutput = [];
+
+        foreach ($lastNews2 as $item)
+            array_push($lastNewsOutput, getNewsMinimal($item));
+
+        $lastNews2 = $lastNewsOutput;
+        return view('user.newsMainPage', compact(['sliderNews','lastNews2', 'sideSliderNews','mostViewNews', 'allCategories', 'topNews', 'lastVideos','lastNews']));
     }
 
     public function newsShow($lang, $slug)

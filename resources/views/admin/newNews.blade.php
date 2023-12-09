@@ -265,7 +265,7 @@
             </div>
         </div>
 
-        <div class="col-md-12" style="margin-top: 10px;">
+        <div class="col-md-12" style="margin-top: 10px;display: none">
             <div class="sparkline8-list shadow-reset">
                 <div class="sparkline8-hd" style="padding: 5px 10px;">
                     <div class="main-sparkline8-hd">
@@ -385,15 +385,16 @@
 
                         <div class="col-xs-12">
                             <div class="form-group">
-                                <input class="form-control titleInputClass" type="text" name="title" id="titleEn"
-                                    value="{{ isset($news) ? $news->titleEn : '' }}" placeholder="عنوان خبر انگلیسی">
+                                <input class="form-control titleInputClass" style="text-align: left !important"
+                                    type="text" name="title" id="titleEn"
+                                    value="{{ isset($news) ? $news->titleEn : '' }}" placeholder="English news title">
                             </div>
                         </div>
                         <div class="col-xs-12">
                             <div class="adjoined-bottom">
                                 <div class="grid-container">
                                     <div class="grid-width-100">
-                                        <div id="newsTextEn" class="textEditor">
+                                        <div id="newsTextEn" class="textEditor" style="direction: ltr !important">
                                             @if (isset($news))
                                                 {!! html_entity_decode($news->textEn) !!}
                                             @endif
@@ -420,7 +421,8 @@
                         <div class="col-md-12 floR mg-tb-10">
                             <div class="form-group">
                                 <label for="keyword">کلمه کلیدی انگلیسی</label>
-                                <input class="form-control botBorderInput" type="text" id="keywordEn" name="keyword"
+                                <input style="text-align: left !important" class="form-control botBorderInput"
+                                    type="text" id="keywordEn" name="keyword"
                                     placeholder="کلمه کلیدی  انگلیسی را اینجا بنویسید..."
                                     value="{{ isset($news) ? $news->keywordEn : '' }}">
                             </div>
@@ -430,8 +432,8 @@
                                 <label for="seoTitle">عنوان سئو انگلیسی:
                                     <span id="EnSeoTitleNumber" style="font-weight: 200;"></span>
                                 </label>
-                                <input type="text" class="form-control botBorderInput" id="seoTitleEn"
-                                    name="seoTitle"
+                                <input style="text-align: left !important" type="text"
+                                    class="form-control botBorderInput" id="seoTitleEn" name="seoTitle"
                                     placeholder="عنوان سئو را اینجا بنویسید (عنوان سئو باید بین 60 حرف تا 85 حرف باشد)"
                                     onkeyup="EnChangeSeoTitle(this.value)"
                                     value="{{ isset($news) ? $news->seoTitleEn : '' }}">
@@ -440,17 +442,17 @@
                         <div class="col-md-12 floR mg-tb-10">
                             <div class="form-group">
                                 <label for="slug">نامک انگلیسی</label>
-                                <input class="form-control botBorderInput" type="text" id="slugEn"
-                                    placeholder="نامک انگلیسی را اینجا بنویسید..." name="slug"
-                                    value="{{ isset($news) ? $news->slugEn : '' }}">
+                                <input style="text-align: left !important" class="form-control botBorderInput"
+                                    type="text" id="slugEn" placeholder="نامک انگلیسی را اینجا بنویسید..."
+                                    name="slug" value="{{ isset($news) ? $news->slugEn : '' }}">
                             </div>
                         </div>
                         <div class="col-md-12 floR">
                             <div class="form-group">
                                 <label for="meta">متاانگلیسی: <span id="EnMetaNumber"
                                         style="font-weight: 200;"></span></label>
-                                <textarea class="form-control botBorderInput" type="text" id="metaEn" name="meta"
-                                    onkeyup="EnChangeMeta(this.value)" rows="3">{{ isset($news) ? $news->metaEn : '' }}</textarea>
+                                <textarea style="text-align: left !important" class="form-control botBorderInput" type="text" id="metaEn"
+                                    name="meta" onkeyup="EnChangeMeta(this.value)" rows="3">{{ isset($news) ? $news->metaEn : '' }}</textarea>
                             </div>
                         </div>
 
@@ -479,6 +481,7 @@
     <img id="beforeSaveImg" src="" style="display: none;">
 
     <script>
+        var site;
         var secendCkeditor;
         var tagsName = [];
         var tagsEnName = [];
@@ -545,6 +548,9 @@
                     'bulletedList',
                     'insertTable',
                     'imageUpload',
+                    'imageTextAlternative',
+                    "imageStyle:alignLeft",
+                    "imageStyle:alignRight",
                     'undo',
                     'redo'
                 ],
@@ -554,6 +560,10 @@
                         'tableRow',
                         'mergeTableCells'
                     ]
+                },
+                image: {
+                    styles: ["full", "alignLeft", "alignRight", ],
+
                 },
                 licenseKey: '',
             })
@@ -602,7 +612,10 @@
                     'bulletedList',
                     'insertTable',
                     'imageUpload',
+                    'ImageTextAlternative',
                     'undo',
+                    "imageStyle:alignLeft",
+                    "imageStyle:alignRight",
                     'redo'
                 ],
                 table: {
@@ -611,6 +624,11 @@
                         'tableRow',
                         'mergeTableCells'
                     ]
+                },
+
+                image: {
+                    styles: ["full", "alignLeft", "alignRight", ],
+
                 },
                 licenseKey: '',
             })
@@ -667,7 +685,7 @@
             var slugEn = document.getElementById('slugEn').value;
             var metaEn = document.getElementById('metaEn').value;
 
-            var site = document.getElementById('siteName').value;
+            site = document.getElementById('siteName').value;
             var hasVideo = $('input[name="videoQuestion"]:checked').val();
             var direction = $('input[name="direction"]:checked').val();
 
@@ -826,6 +844,7 @@
             var title = document.getElementById('title').value;
             var newsId = document.getElementById('newsId').value;
             var desc = window.editor.getData();
+            var siteId = document.getElementById('siteName').value;
             $.ajax({
                 type: 'POST',
                 url: '{{ route('seoTesterContent') }}',
@@ -838,7 +857,8 @@
                     title: title,
                     id: newsId,
                     database: 'news',
-                    desc: desc
+                    desc: desc,
+                    site: siteId
                 },
                 headers: {
                     accept: 'application/json'
@@ -952,6 +972,8 @@
             var titleEn = document.getElementById('titleEn').value;
             var descEn = window.editorr.getData();
 
+            var siteId = document.getElementById('siteName').value;
+
             $.ajax({
                 type: 'POST',
                 url: '{{ route('EnSeoTesterContent') }}',
@@ -965,6 +987,7 @@
                     descEn: descEn,
                     id: newsId,
                     database: 'news',
+                    site: siteId
                 },
                 headers: {
                     accept: 'application/json'

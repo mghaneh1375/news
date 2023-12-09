@@ -19689,8 +19689,8 @@ let noFollow = false;
                     items: ["heading", "|", "fontsize", "fontfamily", "|", "bold", "italic", "underline", "strikethrough", "highlight", "|", "alignment", "|", "numberedList", "bulletedList", "|", "link", "blockquote", "imageUpload", "insertTable", "mediaEmbed", "|", "undo", "redo"]
                 },
                 image: {
-                    styles: ["full", "alignLeft", "alignRight"],
-                    toolbar: ["imageStyle:alignLeft", "imageStyle:full", "imageStyle:alignRight", "|", "imageTextAlternative"]
+                    styles: ["full", "alignLeft", "alignRight","inLine"],
+                    toolbar: ["imageStyle:alignLeft", "imageStyle:full", "imageStyle:alignRight","imageStyle:inLine", "|", "imageTextAlternative"]
                 },
                 table: {
                     contentToolbar: ["tableColumn", "tableRow", "mergeTableCells"]

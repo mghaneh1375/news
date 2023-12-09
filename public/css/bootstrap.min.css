@@ -6868,8 +6868,8 @@ button.close {
 .panel-body:before,
 .row:after,
 .row:before {
-    display: table;
-    content: " ";
+    /* display: table;
+    content: " "; */
 }
 .btn-group-vertical > .btn-group:after,
 .btn-toolbar:after,

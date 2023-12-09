@@ -405,6 +405,8 @@ class SeoController extends Controller {
         $seoTitle = $request->seoTitle;
         $title = $request->title;
         $slug= $request->slug;
+        $siteId= $request->site;
+
 
         $this->type = $request->database;
 
@@ -539,7 +541,7 @@ class SeoController extends Controller {
         }
 
         if($slug != null){
-            $slugInDataBase = $this->slugInDataBase($slug, $request->id);
+            $slugInDataBase = $this->slugInDataBase($siteId,$slug, $request->id);
             if($slugInDataBase) {
                 $goodResult .= '<div style="color: green;">نامک شما یکتاست.</div>';
                 $goodResultCount++;
@@ -876,9 +878,9 @@ class SeoController extends Controller {
         return true;
     }
 
-    private function slugInDataBase($slug, $id)
+    private function slugInDataBase($siteId,$slug, $id)
     {
-        $s = DB::table($this->type)->where('slug', $slug)->where('id', '!=', $id)->first();
+        $s = DB::table($this->type)->where('site_id',$siteId )->where('slug', $slug)->where('id', '!=', $id)->first();
         return $s == null;
     }
 
