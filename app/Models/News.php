@@ -9,6 +9,11 @@ class News extends Model
     protected $guarded = [];
     protected $table = 'news';
 
+    public function categories() {
+        return $this
+            ->hasManyThrough(NewsCategory::class, NewsCategoryRelations::class, 'categoryId', 'id');
+            // ->with('isMain');
+    }
 
     protected $fillable = [
         'userId', 'title', 'slug', 'pic', 'video', 'videoServer',

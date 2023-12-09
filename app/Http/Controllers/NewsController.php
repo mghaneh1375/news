@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use Hekmatinasser\Verta\Facades\Verta;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\NewsDigest;
 use App\Http\Resources\SiteResource;
 use App\Models\Site;
 use Illuminate\Support\Facades\DB;
@@ -49,6 +50,11 @@ class NewsController extends Controller
 
         foreach ($fileWithServer as $server => $files)
             Controller::sendDeleteFileApiToServer($files, $server);
+    }
+
+    public function tmpSalam(Request $request) {
+        $news = News::find(3);
+        dd(NewsDigest::customMake($news, 'fa'));
     }
 
     public function newsList(){
