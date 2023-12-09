@@ -18,8 +18,8 @@ class NewsDigest extends JsonResource
      */
     public function toArray($request)
     {
-
         $slug = getData(self::$locale, $this->slug, $this->slugEn);
+
         return [
             'id'  => $this->id,
             'slug' => $slug,
@@ -29,7 +29,8 @@ class NewsDigest extends JsonResource
             'url' => route('site.news.show', ['slug' => $slug, 'lang' => self::$locale]),
             'dateAndTime' => $this->dateAndTime,
             'keyword' => getData(self::$locale, $this->keyword, $this->keywordEn),
-            'video' => $this->video
+            'video' => $this->video,
+            'category'=> $this->name
         ];
     }
     

@@ -33,7 +33,7 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                padding-left: unset !important; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                padding-left: unset !important; */
             margin-right: unset !important;
             margin-left: unset !important;
             width: 99% !important;
@@ -95,7 +95,7 @@
 @endsection
 
 
-@section('body')
+@section('body'){{ dd($sliderNews) }}
     <div class="row topSectionMainPageNews">
         <div class="col-md-3 col-xs-12 heightUnset  pdR0 leftNavOne">
             <div class="flexDirColumn" style="height:85%;box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.7);">
@@ -246,40 +246,7 @@
                 </ul>
             </div>
         </div>
-        @if (count($lastVideos) > 0)
-            <div class="col-md-12 col-xs-12  secendVideoBox">
-                <div class="mostViewHeader  bgColorBlack  w100">
-                    <div style="font-size: 18px !important">{{ __('main.video') }}</div>
-                </div>
-                <div id="SelectionsVideos" class="mainPageSlider"
-                    style="border: 4px solid black; border-radius: 0px !important">
-                </div>
-                <div class="row inOneRows swiper mySwiper swiper-container"
-                    style="background-color: black;float:right !important;height: 250px;overflow: hidden;">
-                    <div class="videosHeader">
-                        <div class="bgColorRed colorWhite alignItemCen pd5 mg17">{{ __('main.MostViewed') }}</div>
-                        <div class="title" style="color: white;margin-top: 10px;margin-right: 10px">
-                            {{ __('main.LatestVideos') }}</div>
-                    </div>
-                    <div class="body swiper-wrapper heightUnset justifyContentUnset" style="position: relative;">
-                        @foreach ($lastVideos as $item)
-                            <div class="cardDownTitle swiper-slide">
-                                <a href="{{ $item->url }}" class="picSec fullyCenterContent  borderRadiusUnset">
-                                    <img src="{{ $item->pic }}" alt="{{ $item->keyword }}" class="resizeImgClass"
-                                        onload="fitThisImg(this)">
-                                </a>
-                                <a href="{{ $item->url }}" class="content">
-                                    <div>
-                                        {{ $item->title }}</div>
-                                </a>
-                            </div>
-                        @endforeach
-                    </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
-            </div>
-        @endif
+
 
 
         @foreach ($allCategories as $category)
@@ -316,6 +283,40 @@
                 </div>
             @endif
         @endforeach
+        @if (count($lastVideos) > 0)
+            <div class="col-md-12 col-xs-12  secendVideoBox">
+                <div class="mostViewHeader  bgColorBlack  w100">
+                    <div style="font-size: 18px !important">{{ __('main.video') }}</div>
+                </div>
+                <div id="SelectionsVideos" class="mainPageSlider"
+                    style="border: 4px solid black; border-radius: 0px !important">
+                </div>
+                <div class="row inOneRows swiper mySwiper swiper-container"
+                    style="background-color: black;float:right !important;height: 250px;overflow: hidden;">
+                    <div class="videosHeader">
+                        <div class="bgColorRed colorWhite alignItemCen pd5 mg17">{{ __('main.MostViewed') }}</div>
+                        <div class="title" style="color: white;margin-top: 10px;margin-right: 10px">
+                            {{ __('main.LatestVideos') }}</div>
+                    </div>
+                    <div class="body swiper-wrapper heightUnset justifyContentUnset" style="position: relative;">
+                        @foreach ($lastVideos as $item)
+                            <div class="cardDownTitle swiper-slide">
+                                <a href="{{ $item->url }}" class="picSec fullyCenterContent  borderRadiusUnset">
+                                    <img src="{{ $item->pic }}" alt="{{ $item->keyword }}" class="resizeImgClass"
+                                        onload="fitThisImg(this)">
+                                </a>
+                                <a href="{{ $item->url }}" class="content">
+                                    <div>
+                                        {{ $item->title }}</div>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        @endif
     </div>
 
 

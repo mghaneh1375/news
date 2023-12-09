@@ -25,12 +25,40 @@ class UserNewsController extends Controller
             'titleEn', 'metaEn', 'slugEn', 'keywordEn',
         ];
 
-        $sliderNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->select($selectCol)->take(5)->get();
-        $sideSliderNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->select($selectCol)->skip(5)->take(2)->get();
+        // $sliderNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->select($selectCol)->take(5)->get();
+        $sliderNews =News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')
+            ->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
+            ->join('news_categories', 'news_categories.id', 'news_category_relations.categoryId')
+            ->where('news_category_relations.isMain', 1)
+            ->select([
+                'news.id', 'news.pic', 'news.server',
+                'news.title', 'news.meta', 'news.slug', 'news.keyword',
+                'news.titleEn', 'news.metaEn', 'news.slugEn', 'news.keywordEn','news_categories.name',
+            ])->take(5)->get();
+
+        // $sideSliderNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->select($selectCol)->skip(5)->take(2)->get();
+        $sideSliderNews =News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')
+            ->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
+            ->join('news_categories', 'news_categories.id', 'news_category_relations.categoryId')
+            ->where('news_category_relations.isMain', 1)
+            ->select([
+                'news.id', 'news.pic', 'news.server',
+                'news.title', 'news.meta', 'news.slug', 'news.keyword',
+                'news.titleEn', 'news.metaEn', 'news.slugEn', 'news.keywordEn','news_categories.name',
+            ])->skip(5)->take(2)->get();
         if(count($sideSliderNews) < 4){
             $remaining = 4 - count($sideSliderNews);
             $skip = 5 - $remaining;
-            $sideSliderNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->select($selectCol)->orderBy('created_at')->skip($skip)->take(2)->get();
+            // $sideSliderNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->select($selectCol)->orderBy('created_at')->skip($skip)->take(2)->get();
+            $sideSliderNews =News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')
+                ->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
+                ->join('news_categories', 'news_categories.id', 'news_category_relations.categoryId')
+                ->where('news_category_relations.isMain', 1)
+                ->select([
+                    'news.id', 'news.pic', 'news.server',
+                    'news.title', 'news.meta', 'news.slug', 'news.keyword',
+                    'news.titleEn', 'news.metaEn', 'news.slugEn', 'news.keywordEn','news_categories.name',
+                ])->skip($skip)->take(2)->get();
         }
 
         $sectionOutput = [];
