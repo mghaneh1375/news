@@ -3,6 +3,9 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserNewsController;
 use App\Http\Controllers\NewsController;
+use App\Http\Resources\NewsDigest;
+use App\Models\News;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/salam', [NewsController::class, 'tmpSalam']);
+
 Route::get('/', function () {
     return Redirect::to('/fa');
 })->name('home');

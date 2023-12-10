@@ -64,7 +64,6 @@ class NewsController extends Controller
                 $news = News::youCanSee($siteId, $lang)->join('news_tags_relations', 'news_tags_relations.newsId', 'news.id')
                             ->where('news_tags_relations.tagId', $tag->id)
                             ->orderByDesc('news.dateAndTime')
-                            ->select($joinSelectCol)
                             ->skip(($page-1)*$take)->take($take)
                             ->get();
             }
@@ -76,7 +75,6 @@ class NewsController extends Controller
 
                 $news = News::youCanSee($siteId, $lang)->whereIn('id', $newsId)
                                         ->orderByDesc('dateAndTime')
-                                        ->select($selectCol)
                                         ->skip(($page-1)*$take)
                                         ->take($take)
                                         ->get();

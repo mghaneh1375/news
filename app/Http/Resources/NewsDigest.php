@@ -19,7 +19,13 @@ class NewsDigest extends JsonResource
     public function toArray($request)
     {
         $slug = getData(self::$locale, $this->slug, $this->slugEn);
-$category = getData(self::$locale, $this->name, $this->nameEn);
+        
+        $category = $this->load(['categories' => function ($q) {
+            $q->where('isMain', '=', true);
+        }])->categories[0];
+
+        $category = getData(self::$locale, $category->name, $category->nameEn);
+
         return [
             'id'  => $this->id,
             'slug' => $slug,

@@ -9,4 +9,8 @@ class NewsCategoryRelations extends Model
     protected $guarded = [];
     protected $table = 'news_category_relations';
     public $timestamps = false;
+    
+    protected $fillable = [
+        'id', 'newsId', 'categoryId', 'isMain'
+    ];
 }
