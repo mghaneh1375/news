@@ -33,7 +33,7 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    padding-left: unset !important; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        padding-left: unset !important; */
             margin-right: unset !important;
             margin-left: unset !important;
             width: 99% !important;
@@ -263,10 +263,10 @@
         ?>
         <div class="col-md-9 col-xs-12  lastNews">
             @foreach ($allCategories as $category)
+                <?php
+                $takenColor++;
+                ?>
                 @if (count($category->news) > 0)
-                    <?php
-                    $takenColor++;
-                    ?>
                     <div class="selectionNews">
                         <a class="col-md-12 title colorWhite"> {{ __('main.TourismNewsList') }} </a>
                     </div>
@@ -280,6 +280,9 @@
                         @endfor
                     </ul>
                 @endif
+                {{-- @if ($takenColor == 3)
+                return
+                @endif --}}
             @endforeach
         </div>
         {{-- @if (count($lastVideos) > 0)
