@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\App;
 use Carbon\Carbon;
 use Hekmatinasser\Verta\Facades\Verta;
+use App\Http\Resources\NewsDigest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use App\Http\Resources\NewsResource;
@@ -24,41 +25,45 @@ class UserNewsController extends Controller
             'title', 'meta', 'slug', 'keyword',
             'titleEn', 'metaEn', 'slugEn', 'keywordEn',
         ];
-
+        $news =  News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->select($selectCol)->get();
         // $sliderNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->select($selectCol)->take(5)->get();
-        $sliderNews =News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')
-            ->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
-            ->join('news_categories', 'news_categories.id', 'news_category_relations.categoryId')
-            ->where('news_category_relations.isMain', 1)
-            ->select([
-                'news.id', 'news.pic', 'news.server',
-                'news.title', 'news.meta', 'news.slug', 'news.keyword',
-                'news.titleEn', 'news.metaEn', 'news.slugEn', 'news.keywordEn','news_categories.name','news_categories.nameEn',
-            ])->take(5)->get();
+        $sliderNews =NewsDigest::customMake($news,$lang)->take(5)->get();
+
+        // News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')
+        //     ->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
+        //     ->join('news_categories', 'news_categories.id', 'news_category_relations.categoryId')
+        //     ->where('news_category_relations.isMain', 1)
+        //     ->select([
+        //         'news.id', 'news.pic', 'news.server',
+        //         'news.title', 'news.meta', 'news.slug', 'news.keyword',
+        //         'news.titleEn', 'news.metaEn', 'news.slugEn', 'news.keywordEn','news_categories.name','news_categories.nameEn',
+        //     ])->take(5)->get();
 
         // $sideSliderNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->select($selectCol)->skip(5)->take(2)->get();
-        $sideSliderNews =News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')
-            ->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
-            ->join('news_categories', 'news_categories.id', 'news_category_relations.categoryId')
-            ->where('news_category_relations.isMain', 1)
-            ->select([
-                'news.id', 'news.pic', 'news.server',
-                'news.title', 'news.meta', 'news.slug', 'news.keyword',
-                'news.titleEn', 'news.metaEn', 'news.slugEn', 'news.keywordEn','news_categories.name','news_categories.nameEn',
-            ])->skip(5)->take(2)->get();
+        $sideSliderNews =NewsDigest::customMake($news,$lang)->skip(5)->take(2)->get();
+        // News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')
+        //     ->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
+        //     ->join('news_categories', 'news_categories.id', 'news_category_relations.categoryId')
+        //     ->where('news_category_relations.isMain', 1)
+        //     ->select([
+        //         'news.id', 'news.pic', 'news.server',
+        //         'news.title', 'news.meta', 'news.slug', 'news.keyword',
+        //         'news.titleEn', 'news.metaEn', 'news.slugEn', 'news.keywordEn','news_categories.name','news_categories.nameEn',
+        //     ])->skip(5)->take(2)->get();
         if(count($sideSliderNews) < 4){
             $remaining = 4 - count($sideSliderNews);
             $skip = 5 - $remaining;
             // $sideSliderNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->select($selectCol)->orderBy('created_at')->skip($skip)->take(2)->get();
-            $sideSliderNews =News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')
-                ->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
-                ->join('news_categories', 'news_categories.id', 'news_category_relations.categoryId')
-                ->where('news_category_relations.isMain', 1)
-                ->select([
-                    'news.id', 'news.pic', 'news.server',
-                    'news.title', 'news.meta', 'news.slug', 'news.keyword',
-                    'news.titleEn', 'news.metaEn', 'news.slugEn', 'news.keywordEn','news_categories.name','news_categories.nameEn',
-                ])->skip($skip)->take(2)->get();
+            $sideSliderNews =NewsDigest::customMake($news,$lang)->skip($skip)->take(2)->get();
+            // News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')
+            //     ->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
+            //     ->join('news_categories', 'news_categories.id', 'news_category_relations.categoryId')
+            //     ->where('news_category_relations.isMain', 1)
+            //     ->select([
+            //         'news.id', 'news.pic', 'news.server',
+            //         'news.title', 'news.meta', 'news.slug', 'news.keyword',
+            //         'news.titleEn', 'news.metaEn', 'news.slugEn', 'news.keywordEn','news_categories.name','news_categories.nameEn',
+            //     ])->skip($skip)->take(2)->get();
         }
 
         $sectionOutput = [];

@@ -15,6 +15,11 @@
     <link rel="stylesheet" href="{{ URL::asset('css/calendar/persian-datepicker.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/clockPicker/clockpicker.css') }}" />
     <link rel="stylesheet" href="{{ URL::asset('css/pages/safarnamehPage.css') }}">
+    <style>
+        #newsTextEn>* {
+            direction: ltr;
+        }
+    </style>
 
 @stop
 

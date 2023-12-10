@@ -54,6 +54,7 @@ class NewsController extends Controller
 
     public function tmpSalam(Request $request) {
         $news = News::find(3);
+        NewsDigest::customMake($news, 'fa');
         dd(NewsDigest::customMake($news, 'fa'));
     }
 
