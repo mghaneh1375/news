@@ -36,7 +36,7 @@ class NewsDigest extends JsonResource
             'dateAndTime' => $this->dateAndTime,
             'keyword' => getData(self::$locale, $this->keyword, $this->keywordEn),
             'video' => $this->video,
-            'category'=> $category
+            // 'category'=> $category
         ];
     }
     
