@@ -26,6 +26,7 @@ class UserNewsController extends Controller
             'titleEn', 'metaEn', 'slugEn', 'keywordEn',
         ];
         $news =  News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->select($selectCol)->get();
+
         // $sliderNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->select($selectCol)->take(5)->get();
         $sliderNews =NewsDigest::customMake($news,$lang)->take(5)->get();
 

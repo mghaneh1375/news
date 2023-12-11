@@ -56,6 +56,9 @@ class NewsController extends Controller
         $news = News::find(3);
         NewsDigest::customMake($news, 'fa');
         dd(NewsDigest::customMake($news, 'fa'));
+        // foreach($news as $item){
+        //     $news = NewsDigest::customMake( $item, 'fa');
+        // }
     }
 
     public function newsList(){

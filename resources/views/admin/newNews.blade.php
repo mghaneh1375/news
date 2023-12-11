@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="{{ URL::asset('css/pages/safarnamehPage.css') }}">
     <style>
         #newsTextEn>* {
-            direction: ltr;
+            direction: ltr !important;
+            text-align: left !important;
         }
     </style>
 

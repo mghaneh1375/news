@@ -18,12 +18,12 @@ class NewsDigest extends JsonResource
      */
     public function toArray($request)
     {
-        // dd($this);
-        // $slug ==null;
         $slug = getData(self::$locale, $this->slug, $this->slugEn);
         // $category = $this->load(['categories' => function ($q) {
         //     $q->where('isMain', '=', true);
         // }])->categories[0];
+        
+
         // $category = getData(self::$locale, $category->name, $category->nameEn);
 
         return [
