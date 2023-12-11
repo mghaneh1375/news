@@ -154,6 +154,21 @@
     padding-left: 0px;
     padding-right: 0px;
 }
+.newsCat {
+    height: unset !important;
+    margin-top: 10px;
+    float: right;
+    display: flex;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.newsCat .title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .secendVideoBox {
     height: unset !important;
     margin-top: 10px;

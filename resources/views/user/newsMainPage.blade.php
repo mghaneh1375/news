@@ -33,7 +33,7 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                padding-left: unset !important; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            padding-left: unset !important; */
             margin-right: unset !important;
             margin-left: unset !important;
             width: 99% !important;
@@ -175,7 +175,7 @@
                                     </div>
                                     <div
                                         style="background-color: #6D0606;margin-left: 2px;width: fit-content;padding: 0px 10px;color: white ">
-                                        {{ $item->category }}
+                                        {{-- {{ $item->category }} --}}
                                     </div>
                                 </div>
                                 <h3 class="title">{{ $item->title }}</h3>
@@ -258,17 +258,14 @@
         </div>
 
 
-        <?php
-        $takenColor = 0;
-        ?>
-        <div class="col-md-9 col-xs-12  lastNews">
-            @foreach ($allCategories as $category)
-                <?php
-                $takenColor++;
-                ?>
+
+        <div id="mainNews" class="col-md-9 col-xs-12  newsCat">
+
+            {{-- @foreach ($allCategories as $category)
+
                 @if (count($category->news) > 0)
                     <div class="selectionNews">
-                        <a class="col-md-12 title colorWhite"> {{ __('main.TourismNewsList') }} </a>
+                        <a class="col-md-12 title colorWhite"> {{ $category->nameEn }} </a>
                     </div>
                     <ul class="lastSpecialNew">
                         @for ($i = 0; $i < 6 && $i < count($category->news); $i++)
@@ -280,10 +277,7 @@
                         @endfor
                     </ul>
                 @endif
-                {{-- @if ($takenColor == 3)
-                return
-                @endif --}}
-            @endforeach
+            @endforeach --}}
         </div>
         {{-- @if (count($lastVideos) > 0)
             <div class="col-md-12 col-xs-12  secendVideoBox">
@@ -321,7 +315,6 @@
         @endif --}}
     </div>
 
-
     {{-- @if (count($topNews) > 1)
         <div class="row inOneRows">
             <div class="title">اخبار برگزیده</div>
@@ -350,6 +343,38 @@
 
 @section('script')
     <script>
+        var news = {!! $allCategories !!}
+        var cat = [];
+        var mainNewscat = [];
+        $(document).ready(function() {
+            var html = '';
+            for (let i = 0; i < 3; i++) {
+                mainNewscat.push(news[i]);
+                cat.push(news[i].news.length);
+            }
+            cat = cat.sort();
+            console.log(cat[0]);
+            for (let i = 0; i < mainNewscat.length; i++) {
+                html += '<div style="width:33%;margin-right: 5px;">';
+                html += '<div class="mostViewHeader">';
+                html += '' + mainNewscat[i].nameEn + '';
+                html += '</div>';
+                html += ' <ul class="lastSpecialNew">';
+                for (let j = 0; j < cat[0]; j++) {
+                    html +=
+                        '<li class="Point alignItemCen" style="border-left: solid 3px #6D0606;margin-top: 5px;">';
+                    html += '<a class="pdl10" style="color: black !important" href="' + mainNewscat[i].news[j].url +
+                        '">';
+                    html += '<h6 class="title" style="margin:5px 0 0 0">' + mainNewscat[i].news[j].title + '</h6>';
+                    html += ' </a>';
+                    html += ' </li>';
+                }
+                html += '</ul>';
+                html += '</div>';
+            }
+            $('#mainNews').empty().append(html);
+        });
+
         var swiper = new Swiper('#mainSlider', {
             spaceBetween: 30,
             centeredSlides: true,

@@ -201,7 +201,6 @@
     </div>
     <script>
         var news = {!! $news !!}
-        console.log(news);
 
         function showThisTabs(_element, _kind) {
             $(_element).parent().find('.active').removeClass('active');
