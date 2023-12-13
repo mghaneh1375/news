@@ -9,10 +9,12 @@ class News extends Model
     protected $guarded = [];
     protected $table = 'news';
 
-    public function categories() {
-        return $this
-            ->hasManyThrough(NewsCategory::class, NewsCategoryRelations::class, 'categoryId', 'id');
-            // ->with('isMain');
+    public function catogoryRelations() {
+        return $this->belongsToMany(
+            NewsCategoryRelations::class, 
+            table: 'news', relatedKey: 'newsId', relatedPivotKey: 'id',
+            foreignPivotKey: 'id'
+        );
     }
 
     protected $fillable = [

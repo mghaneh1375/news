@@ -19,12 +19,10 @@ class NewsDigest extends JsonResource
     public function toArray($request)
     {
         $slug = getData(self::$locale, $this->slug, $this->slugEn);
-        // $category = $this->load(['categories' => function ($q) {
-        //     $q->where('isMain', '=', true);
-        // }])->categories[0];
+        $category = $this->catogoryRelations()->main()->first()->category;
         
-
-        // $category = getData(self::$locale, $category->name, $category->nameEn);
+        if($category != null)
+            $category = getData(self::$locale, $category->name, $category->nameEn);
 
         return [
             'id'  => $this->id,
@@ -36,7 +34,7 @@ class NewsDigest extends JsonResource
             'dateAndTime' => $this->dateAndTime,
             'keyword' => getData(self::$locale, $this->keyword, $this->keywordEn),
             'video' => $this->video,
-            // 'category'=> $category
+            'category'=> $category
         ];
     }
     

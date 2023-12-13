@@ -13,4 +13,14 @@ class NewsCategoryRelations extends Model
     protected $fillable = [
         'id', 'newsId', 'categoryId', 'isMain'
     ];
+
+    
+    public function scopeMain($query) {
+        return $query->where('isMain', true);
+    }
+
+    
+    public function category() {
+        return $this->hasOne(NewsCategory::class, 'id', 'categoryId');
+    }
 }
