@@ -53,9 +53,11 @@ class NewsController extends Controller
     }
 
     public function tmpSalam(Request $request) {
-        $news = News::find(5);
-        NewsDigest::customMake($news, 'fa');
-        dd(NewsDigest::customMake($news, 'fa'));
+        // $news = News::find(54);
+        $news = News::youCanSee('4', 'fa')->orderByDesc('dateAndTime')->take(5)->get();
+        //dd($news);
+        //NewsDigest::customMake($news, 'fa');
+        dd(NewsDigest::customCollection($news, 'fa')->toArray($request));
         // foreach($news as $item){
         //     $news = NewsDigest::customMake( $item, 'fa');
         // }

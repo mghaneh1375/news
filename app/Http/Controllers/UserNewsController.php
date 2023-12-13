@@ -18,14 +18,14 @@ use App\Http\Resources\NewsResource;
 
 class UserNewsController extends Controller
 {
-    public function newsMainPage($lang="fa")
+    public function newsMainPage($lang="fa",Request $request)
     {
         $selectCol = [
             'id', 'pic', 'video', 'server','dateAndTime',
             'title', 'meta', 'slug', 'keyword',
             'titleEn', 'metaEn', 'slugEn', 'keywordEn',
         ];
-        $news =  News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->select($selectCol)->get();
+        $news =  News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->get();
 
         $sliderNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->select($selectCol)->take(5)->get();
         // $sliderNews =NewsDigest::customMake($news,$lang)->take(5)->get();
@@ -107,15 +107,16 @@ class UserNewsController extends Controller
             $category->news = $allNews;
 
         }
+        $tpNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->where('topNews', 1)->orderByDesc('dateAndTime')->take(5)->get();
+        $topNews = NewsDigest::customCollection($tpNews , $lang)->toArray($request);
+        // dd($topNews);   
+        // $topNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->where('topNews', 1)->orderByDesc('dateAndTime')->select($selectCol)->get();
+        // $topNewsOutput = [];
 
+        // foreach ($topNews as $item)
+        //     array_push($topNewsOutput, getNewsMinimal($item));
 
-        $topNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->where('topNews', 1)->orderByDesc('dateAndTime')->select($selectCol)->get();
-        $topNewsOutput = [];
-
-        foreach ($topNews as $item)
-            array_push($topNewsOutput, getNewsMinimal($item));
-
-        $topNews = $topNewsOutput;
+        // $topNews = $topNewsOutput;
 
         $lastVideos = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->whereNotNull('video')->orderByDesc('dateAndTime')->select($selectCol)->take(10)->get();
 

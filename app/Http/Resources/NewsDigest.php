@@ -19,6 +19,8 @@ class NewsDigest extends JsonResource
     public function toArray($request)
     {
         $slug = getData(self::$locale, $this->slug, $this->slugEn);
+
+        
         $category = $this->catogoryRelations()->main()->first()->category;
         
         if($category != null)

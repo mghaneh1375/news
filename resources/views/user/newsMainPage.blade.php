@@ -33,7 +33,7 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            padding-left: unset !important; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            padding-left: unset !important; */
             margin-right: unset !important;
             margin-left: unset !important;
             width: 99% !important;
@@ -240,25 +240,8 @@
                     </div>
                 @endforeach
             </div>
-            <div style="margin-top: 10px">
-                <div class="selectionNews">
-                    <div style="font-size: 14px !important">{{ __('main.LatestSelections') }}</div>
-                </div>
-                <ul class="lastSpecialNew">
-                    @foreach ($topNews as $item)
-                        <li class="Point alignItemCen" style="border-left: solid 3px #6D0606;margin-top: 5px;">
 
-                            <a class="pdl10" style="color: black !important" href="{{ $item->url }}">
-                                <h6 class="title" style="margin:5px 0 0 0">{{ $item->title }}</h6>
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
         </div>
-
-
-
         <div id="mainNews" class="col-md-9 col-xs-12  newsCat">
 
             {{-- @foreach ($allCategories as $category)
@@ -279,6 +262,49 @@
                 @endif
             @endforeach --}}
         </div>
+        <div id="lineAds" style="height: 100px;margin: 30px 0px"class="col-md-9 col-xs-12">
+            <img src="{{ URL::asset('images/shareBoxImg/lineAds.jpg') }}"
+                alt=""style="width: 100%;height: 100%;object-fit: fill;box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.7);border: 1px solid gray;">
+        </div>
+        <div class="col-md-6 col-xs-12  lastNews">
+            <div style="margin-top: 10px">
+                <div class="mostViewHeader">
+                    <div style="font-size: 14px !important">{{ __('main.LatestSelections') }}</div>
+                </div>
+                <ul class="lastSpecialNew">
+                    @foreach ($topNews as $item)
+                        <li class="Point alignItemCen" style="border-left: solid 3px #6D0606;margin-top: 5px;">
+                            <div class="pdl10 d-flex" style=" box-shadow: 0px 3px 6px #00000029; padding-top: 5px">
+                                <div style="width:210px;height:140px;"><img
+                                        style="width: 100%;height: 100%;object-fit: contain;" src="{{ $item['pic'] }}"
+                                        alt="">
+                                </div>
+                                <div style="padding-left: 10px">
+                                    <a href="{{ $item['url'] }}">
+                                        <div style="display: flex">
+
+                                            <div style="background-color: #6D0606 ;width: 18px;">
+                                            </div>
+                                            <div
+                                                style="background-color: #6D0606;margin-left: 2px;width: fit-content;padding: 0px 10px;color: white ">
+                                                {{ $item['category'] }}
+                                            </div>
+                                        </div>
+                                        <h6 class="title bold" style="margin:5px 0 0 0;color: #232323;">
+                                            {{ $item['title'] }}</h6>
+                                        <h6 class="title" style="margin:5px 0 0 0;color: #676767">{{ $item['meta'] }}
+                                        </h6>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+
+
         {{-- @if (count($lastVideos) > 0)
             <div class="col-md-12 col-xs-12  secendVideoBox">
                 <div class="mostViewHeader  bgColorBlack  w100">
