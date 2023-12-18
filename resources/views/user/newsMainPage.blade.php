@@ -33,7 +33,7 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            padding-left: unset !important; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    padding-left: unset !important; */
             margin-right: unset !important;
             margin-left: unset !important;
             width: 99% !important;
@@ -303,6 +303,10 @@
                 </ul>
             </div>
         </div>
+        <div class="col-md-3 col-xs-12  lastNews">
+            <div id="sideNews">
+            </div>
+        </div>
 
 
         {{-- @if (count($lastVideos) > 0)
@@ -372,14 +376,21 @@
         var news = {!! $allCategories !!}
         var cat = [];
         var mainNewscat = [];
+        var sideNewscat = [];
         $(document).ready(function() {
             var html = '';
             for (let i = 0; i < 3; i++) {
                 mainNewscat.push(news[i]);
                 cat.push(news[i].news.length);
             }
+            for (let i = 3; i < news.length; i++) {
+                if (news[i].news.length > 0) {
+
+                    sideNewscat.push(news[i]);
+                }
+            }
+
             cat = cat.sort();
-            console.log(cat[0]);
             for (let i = 0; i < mainNewscat.length; i++) {
                 html += '<div style="width:33%;margin-right: 5px;">';
                 html += '<div class="mostViewHeader">';
@@ -399,6 +410,25 @@
                 html += '</div>';
             }
             $('#mainNews').empty().append(html);
+            console.log(sideNewscat);
+            for (let i = 0; i < sideNewscat.length; i++) {
+                html += '<div style="margin-right: 5px;">';
+                html += '<div class="mostViewHeader">';
+                html += '' + sideNewscat[i].nameEn + '';
+                html += '</div>';
+                html += ' <ul class="lastSpecialNew">';
+                for (let j = 0; j < cat[0]; j++) {
+                    html +=
+                        '<li class="Point alignItemCen" style="border-left: solid 3px #6D0606;margin-top: 5px;">';
+                    html += '<a class="pdl10" style="color: black !important" href="' + sideNewscat[i].news[j].url +
+                        '">';
+                    html += '<h6 class="title" style="margin:5px 0 0 0">' + sideNewscat[i].news[j].title + '</h6>';
+                    html += ' </a>';
+                    html += ' </li>';
+                }
+                html += '</ul>';
+                html += '</div>';
+            }
         });
 
         var swiper = new Swiper('#mainSlider', {
