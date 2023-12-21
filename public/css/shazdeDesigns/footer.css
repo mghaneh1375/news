@@ -21,7 +21,7 @@ footer ul {
     list-style: none;
 }
 .screenFooterStyle {
-    background-color: #232323;
+    background-color: #e7e0d8;
     direction: rtl;
     padding: 20px;
     text-align: right;
@@ -178,10 +178,10 @@ footer li > img,
     margin-bottom: 5px;
 }
 
-.footerLogo {
+/* .footerLogo {
     width: 19%;
     clear: right;
-}
+} */
 
 .footerSocialMediaBox {
     width: 19%;

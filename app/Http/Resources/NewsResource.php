@@ -6,6 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\URL;
 use Hekmatinasser\Verta\Facades\Verta;
 use App\Models\NewsCategory;
+use App\Models\News;
 use App\Models\NewsCategoryRelations;
 
 class NewsResource extends JsonResource
@@ -56,7 +57,7 @@ class NewsResource extends JsonResource
                 ->get();
         
             foreach ($otherNews as $item)
-                array_push($otherNewsArr, getNewsMinimal($item));
+                array_push($otherNewsArr, getNewsMinimal(News::find($item->id)));
         }
         return [
             'id' => $this->id,

@@ -33,7 +33,7 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    padding-left: unset !important; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                padding-left: unset !important; */
             margin-right: unset !important;
             margin-left: unset !important;
             width: 99% !important;
@@ -152,11 +152,12 @@
                 </div>
             </div> --}}
             @foreach ($lastNews2 as $item)
-                <div class="flexDirColumn newNews" style="height:230px;position: relative;">
-                    <img data-src="{{ $item->pic }}" alt="{{ $item->keyword }}" class="lazyload resizeImgClass">
+                <div class="flexDirColumn newNews" style="height:245px;position: relative;padding-bottom: 5px">
+                    <img data-src="{{ $item->pic }}" alt="{{ $item->keyword }}" class="lazyload resizeImgClass"
+                        style="width: 100% !important;height: auto !important">
                     <a href="{{ $item->url }}" class="content">
                         <p class="title">{{ $item->title }}</p>
-                    </a>‍
+                    </a>
                 </div>
             @endforeach
         </div>
@@ -175,7 +176,7 @@
                                     </div>
                                     <div
                                         style="background-color: #6D0606;margin-left: 2px;width: fit-content;padding: 0px 10px;color: white ">
-                                        {{-- {{ $item->category }} --}}
+                                        {{ $item->category }}
                                     </div>
                                 </div>
                                 <h3 class="title">{{ $item->title }}</h3>
@@ -188,38 +189,12 @@
                 <div class="swiper-button-prev"></div>
             </div>
         </div>
-
-        {{-- @if (count($lastVideos) > 0)
-            <div class="row inOneRows swiper mySwiper swiper-container videoConv">
-                <div class="videosHeader">
-                    <div class="bgColorRed colorWhite alignItemCen pd5 mg17">{{ __('main.MostViewed') }}</div>
-                    <div class="title" style="margin-top: 10px;margin-right: 10px">
-                        {{ __('main.VideoCoversation') }}</div>
-                </div>
-
-                <div class="body swiper-wrapper heightUnset justifyContentUnset" style="position: relative;">
-                    @foreach ($lastVideos as $item)
-                        <div class="cardDownTitle swiper-slide">
-                            <a href="{{ $item->url }}" class="picSec fullyCenterContent  borderRadiusUnset">
-                                <img src="{{ $item->pic }}" alt="{{ $item->keyword }}" class="resizeImgClass"
-                                    onload="fitThisImg(this)">
-                            </a>
-                            <a href="{{ $item->url }}" class="content">
-                                <p> {{ $item->title }}</p>
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-        @endif --}}
-
         <div class="col-md-9 col-xs-12  lastNews">
             <div class="mostViewHeader  bgColorRed">
                 <div style="font-size: 18px !important">{{ __('main.LatestNews') }}</div>
             </div>
             <div class=" sideCardSec pd10 bgColorGray" style="padding-top: 0px !important">
+
                 @foreach ($lastNews as $item)
                     <div class="sideNewsCard lastNewsCard ">
 
@@ -235,139 +210,91 @@
                         <div class="bgColorWhite" style="margin-left: 5px">
                             <a href="{{ $item->url }}" class="colorGray">
                                 <div class="title">{{ $item->title }}</div>
+                            </a>
                         </div>
-                        </a>
                     </div>
                 @endforeach
             </div>
 
         </div>
         <div id="mainNews" class="col-md-9 col-xs-12  newsCat">
-
-            {{-- @foreach ($allCategories as $category)
-
-                @if (count($category->news) > 0)
-                    <div class="selectionNews">
-                        <a class="col-md-12 title colorWhite"> {{ $category->nameEn }} </a>
-                    </div>
-                    <ul class="lastSpecialNew">
-                        @for ($i = 0; $i < 6 && $i < count($category->news); $i++)
-                            <li class="Point alignItemCen" style="border-left: solid 3px #6D0606;margin-top: 5px;">
-                                <a class="pdl10" style="color: black !important" href="{{ $category->news[$i]->url }}">
-                                    <h6 class="title" style="margin:5px 0 0 0">{{ $category->news[$i]->title }}</h6>
-                                </a>
-                            </li>
-                        @endfor
-                    </ul>
-                @endif
-            @endforeach --}}
         </div>
         <div id="lineAds" style="height: 100px;margin: 30px 0px"class="col-md-9 col-xs-12">
             <img src="{{ URL::asset('images/shareBoxImg/lineAds.jpg') }}"
                 alt=""style="width: 100%;height: 100%;object-fit: fill;box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.7);border: 1px solid gray;">
         </div>
-        <div class="col-md-6 col-xs-12  lastNews">
-            <div style="margin-top: 10px">
-                <div class="mostViewHeader">
-                    <div style="font-size: 14px !important">{{ __('main.LatestSelections') }}</div>
-                </div>
-                <ul class="lastSpecialNew">
-                    @foreach ($topNews as $item)
-                        <li class="Point alignItemCen" style="border-left: solid 3px #6D0606;margin-top: 5px;">
-                            <div class="pdl10 d-flex" style=" box-shadow: 0px 3px 6px #00000029; padding-top: 5px">
-                                <div style="width:210px;height:140px;"><img
-                                        style="width: 100%;height: 100%;object-fit: contain;" src="{{ $item['pic'] }}"
-                                        alt="">
-                                </div>
-                                <div style="padding-left: 10px">
-                                    <a href="{{ $item['url'] }}">
-                                        <div style="display: flex">
+        <div class="col-md-12 col-xs-12 " style="height: unset;padding-left: 0px">
 
-                                            <div style="background-color: #6D0606 ;width: 18px;">
-                                            </div>
-                                            <div
-                                                style="background-color: #6D0606;margin-left: 2px;width: fit-content;padding: 0px 10px;color: white ">
-                                                {{ $item['category'] }}
-                                            </div>
-                                        </div>
-                                        <h6 class="title bold" style="margin:5px 0 0 0;color: #232323;">
-                                            {{ $item['title'] }}</h6>
-                                        <h6 class="title" style="margin:5px 0 0 0;color: #676767">{{ $item['meta'] }}
-                                        </h6>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-3 col-xs-12  lastNews">
-            <div id="sideNews">
-            </div>
-        </div>
-
-
-        {{-- @if (count($lastVideos) > 0)
-            <div class="col-md-12 col-xs-12  secendVideoBox">
-                <div class="mostViewHeader  bgColorBlack  w100">
-                    <div style="font-size: 18px !important">{{ __('main.video') }}</div>
-                </div>
-                <div id="SelectionsVideos" class="mainPageSlider"
-                    style="border: 4px solid black; border-radius: 0px !important">
-                </div>
-                <div class="row inOneRows swiper mySwiper swiper-container"
-                    style="background-color: black;float:right !important;height: 250px;overflow: hidden;">
-                    <div class="videosHeader">
-                        <div class="bgColorRed colorWhite alignItemCen pd5 mg17">{{ __('main.MostViewed') }}</div>
-                        <div class="title" style="color: white;margin-top: 10px;margin-right: 10px">
-                            {{ __('main.LatestVideos') }}</div>
+            <div class="col-md-6 col-xs-12  lastNews">
+                <div style="margin-top: 10px">
+                    <div class="mostViewHeader">
+                        <div style="font-size: 14px !important">{{ __('main.LatestSelections') }}</div>
                     </div>
-                    <div class="body swiper-wrapper heightUnset justifyContentUnset" style="position: relative;">
-                        @foreach ($lastVideos as $item)
-                            <div class="cardDownTitle swiper-slide">
-                                <a href="{{ $item->url }}" class="picSec fullyCenterContent  borderRadiusUnset">
-                                    <img src="{{ $item->pic }}" alt="{{ $item->keyword }}" class="resizeImgClass"
-                                        onload="fitThisImg(this)">
-                                </a>
-                                <a href="{{ $item->url }}" class="content">
-                                    <div>
-                                        {{ $item->title }}</div>
-                                </a>
-                            </div>
+                    <ul class="lastSpecialNew">
+                        @foreach ($topNews as $item)
+                            <li class="Point alignItemCen" style="border-left: solid 3px #6D0606;margin-top: 5px;">
+                                <div class="pdl10 d-flex" style=" box-shadow: 0px 3px 6px #00000029; padding-top: 5px">
+                                    <div style="width:210px;height:140px;"><img
+                                            style="width: 100%;height: 100%;object-fit: contain;"
+                                            src="{{ $item['pic'] }}" alt="">
+                                    </div>
+                                    <div style="padding-left: 10px">
+                                        <a href="{{ $item['url'] }}">
+                                            <div style="display: flex">
+
+                                                <div style="background-color: #6D0606 ;width: 18px;">
+                                                </div>
+                                                <div
+                                                    style="background-color: #6D0606;margin-left: 2px;width: fit-content;padding: 0px 10px;color: white ">
+                                                    {{ $item['category'] }}
+                                                </div>
+                                            </div>
+                                            <h6 class="title bold" style="margin:5px 0 0 0;color: #232323;">
+                                                {{ $item['title'] }}</h6>
+                                            <h6 class="title" style="margin:5px 0 0 0;color: #676767">
+                                                {{ $item['meta'] }}
+                                            </h6>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </li>
                         @endforeach
-                    </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+                    </ul>
                 </div>
             </div>
-        @endif --}}
+            <div class="col-md-3 col-xs-12  lastNews">
+                <div id="sideNews" style="margin-top: 10px ;margin-left: 5px">
+                </div>
+            </div>
+        </div>
+        @if (count($lastVideos) > 0)
+            <div class="col-md-6 col-xs-12 lastNews videoBox">
+                <div class="mostViewHeader">
+                    <div style="font-size: 14px !important">{{ __('main.LatestVideos') }}</div>
+                </div>
+                @foreach ($lastVideos as $item)
+                    <div class="sideNewsCard  ">
+
+                        <a href="{{ $item->url }}" style="position: relative;"
+                            class="picSec fullyCenterContent newNews ">
+                            <img data-src="{{ $item->pic }}" alt="{{ $item->keyword }}" loading="lazy"
+                                class="lazyload resizeImgClass" onload="fitThisImg(this)">
+                        </a>
+
+                        <div style="margin-left: 5px;background-color: #E7E0D8">
+                            <a href="{{ $item->url }}" class="colorGray">
+                                <div class="title">{{ $item->title }}</div>
+                                <div class="meta">{{ $item->meta }}</div>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @endif
     </div>
 
-    {{-- @if (count($topNews) > 1)
-        <div class="row inOneRows">
-            <div class="title">اخبار برگزیده</div>
-            <div class="body">
-                <div id="horizSlider" class="swiper-container">
-                    <div class="swiper-wrapper">
-                        @foreach ($topNews as $item)
-                            <div class="swiper-slide cardDownTitle">
-                                <a href="{{ $item->url }}"
-                                    class="picSec fullyCenterContent {{ $item->video != null ? 'playIcon' : '' }}">
-                                    <img src="{{ $item->pic }}" alt="{{ $item->keyword }}" class="resizeImgClass"
-                                        onload="fitThisImg(this)">
-                                </a>
-                                <a href="{{ $item->url }}" class="content">{{ $item->title }}</a>
-                            </div>
-                        @endforeach
-                    </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
-            </div>
-        </div>
-    @endif --}}
+
 @endsection
 
 
@@ -379,6 +306,7 @@
         var sideNewscat = [];
         $(document).ready(function() {
             var html = '';
+            var text = '';
             for (let i = 0; i < 3; i++) {
                 mainNewscat.push(news[i]);
                 cat.push(news[i].news.length);
@@ -412,23 +340,24 @@
             $('#mainNews').empty().append(html);
             console.log(sideNewscat);
             for (let i = 0; i < sideNewscat.length; i++) {
-                html += '<div style="margin-right: 5px;">';
-                html += '<div class="mostViewHeader">';
-                html += '' + sideNewscat[i].nameEn + '';
-                html += '</div>';
-                html += ' <ul class="lastSpecialNew">';
-                for (let j = 0; j < cat[0]; j++) {
-                    html +=
+                text += '<div style="margin-right: 5px;">';
+                text += '<div class="mostViewHeader">';
+                text += '' + sideNewscat[i].nameEn + '';
+                text += '</div>';
+                text += ' <ul class="lastSpecialNew">';
+                for (let j = 0; j < sideNewscat[i].news.length; j++) {
+                    text +=
                         '<li class="Point alignItemCen" style="border-left: solid 3px #6D0606;margin-top: 5px;">';
-                    html += '<a class="pdl10" style="color: black !important" href="' + sideNewscat[i].news[j].url +
+                    text += '<a class="pdl10" style="color: black !important" href="' + sideNewscat[i].news[j].url +
                         '">';
-                    html += '<h6 class="title" style="margin:5px 0 0 0">' + sideNewscat[i].news[j].title + '</h6>';
-                    html += ' </a>';
-                    html += ' </li>';
+                    text += '<h6 class="title" style="margin:5px 0 0 0">' + sideNewscat[i].news[j].title + '</h6>';
+                    text += ' </a>';
+                    text += ' </li>';
                 }
-                html += '</ul>';
-                html += '</div>';
+                text += '</ul>';
+                text += '</div>';
             }
+            $('#sideNews').empty().append(text);
         });
 
         var swiper = new Swiper('#mainSlider', {

@@ -2,7 +2,7 @@
 
 return [
     'suggestedVideos' => 'Suggested Videos',
-    'mainPage' => 'Homepage',
+    'mainPage' => 'Home',
     'VideoCoversation'=>'Video Coversation',
     'LatestNews'=>'Latest news',
     'MostVisitedToday'=>'Most Visited Today',

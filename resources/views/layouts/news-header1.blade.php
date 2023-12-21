@@ -52,7 +52,8 @@
             <div class="d-flex">
                 <div style="background-color: #6D0606" class="flexRowRev alignItemCen">
                     <input type="text" placeholder="Type Here"
-                        style="background-color: #6D0606;border: unset;color:#ffffff ;height: 30px;">
+                        style="background-color: #6D0606;border: unset;color:#ffffff ;height: 30px;width: 120px;
+">
                     <span class="searchIcon colorWhite" style="font-size: 30px;margin-left: 3px;"></span>
                 </div>
                 <div id="enTime"style="background-color: #6D0606;margin-left:5px;" class="alignItemCen pd10"></div>

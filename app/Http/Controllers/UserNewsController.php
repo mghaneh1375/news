@@ -162,7 +162,7 @@ class UserNewsController extends Controller
         if($kind == 'all')
             $header = 'آخرین اخبار';
         else if($kind == 'category')
-            $header = 'اخبار ' . $content;
+            $header = $content;
         else if($kind == 'tag')
             $header = 'اخبار مرتبط با  ' . $content;
         else if($kind == 'content')
@@ -190,7 +190,7 @@ class UserNewsController extends Controller
             $news = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->select($selectCol)->skip($page*$take)->take($take)->get();
         }
         else if($kind == 'category'){
-            $category = NewsCategory::where('name', $content)->first();
+            $category = NewsCategory::where('name', $content)->orWhere('nameEn', $content)->first();
             $news = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
                         ->where('news_category_relations.categoryId', $category->id)
                         ->orderByDesc('news.dateAndTime')
