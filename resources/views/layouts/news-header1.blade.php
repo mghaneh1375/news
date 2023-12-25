@@ -68,7 +68,7 @@
 <div class="hideOnScreen mobileHeader">
     <a href="{{ route('site.news.main', ['lang' => \App::getLocale()]) }}" class="global-nav-logo"
         style="height: 100%; display: flex; align-items: center">
-        <img src="{{ URL::asset('images/icons/mainLogo.png') }}" alt="{{ __('کوچیتا') }}"
+        <img src="{{ URL::asset('images/icons/mainLogo.svg') }}" alt="{{ __('کوچیتا') }}"
             style="height: 80%; width: auto;" />
     </a>
 </div>

@@ -23,8 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // if (app()->environment('remote')) {
-            // URL::forceScheme('https');
-        // }
+        if (app()->environment('remote')) {
+            URL::forceScheme('https');
+        }
     }
 }

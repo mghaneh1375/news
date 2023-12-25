@@ -33,15 +33,15 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                padding-left: unset !important; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    padding-left: unset !important; */
             margin-right: unset !important;
             margin-left: unset !important;
             width: 99% !important;
         }
 
-        .mostViewHeader {
+        .MostVisitedToday {
             color: white !important;
-            background-color: #6D0606;
+            background-color: #232323;
             padding: 6px 5px;
             margin-bottom: 2px
         }
@@ -112,7 +112,7 @@
                     alt=""style="width: 100%;height: 100%;object-fit: contain;border: 1px solid gray;">
             </div>
             <div style="margin-top: 10px">
-                <div class="mostViewHeader">
+                <div class="MostVisitedToday">
                     <div style="font-size: 18px !important">{{ __('main.MostVisitedToday') }} </div>
                 </div>
                 <ul class="mostViewDay">
@@ -171,7 +171,6 @@
 
                             <a href="{{ $item->url }}" class="content">
                                 <div style="display: flex">
-
                                     <div style="background-color: #6D0606 ;width: 18px;">
                                     </div>
                                     <div
@@ -223,7 +222,7 @@
             <img src="{{ URL::asset('images/shareBoxImg/lineAds.jpg') }}"
                 alt=""style="width: 100%;height: 100%;object-fit: fill;box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.7);border: 1px solid gray;">
         </div>
-        <div class="col-md-12 col-xs-12 " style="height: unset;padding-left: 0px">
+        <div class="col-md-12 col-xs-12 topnews" style="height: unset;padding-left: 0px;">
 
             <div class="col-md-6 col-xs-12  lastNews">
                 <div style="margin-top: 10px">
@@ -234,8 +233,7 @@
                         @foreach ($topNews as $item)
                             <li class="Point alignItemCen" style="border-left: solid 3px #6D0606;margin-top: 5px;">
                                 <div class="pdl10 d-flex" style=" box-shadow: 0px 3px 6px #00000029; padding-top: 5px">
-                                    <div style="width:210px;height:140px;"><img
-                                            style="width: 100%;height: 100%;object-fit: contain;"
+                                    <div style="topNewsImg"><img style="width: 100%;height: 100%;object-fit: contain;"
                                             src="{{ $item['pic'] }}" alt="">
                                     </div>
                                     <div style="padding-left: 10px">
@@ -264,12 +262,12 @@
                 </div>
             </div>
             <div class="col-md-3 col-xs-12  lastNews">
-                <div id="sideNews" style="margin-top: 10px ;margin-left: 5px">
+                <div id="sideNews">
                 </div>
             </div>
         </div>
         @if (count($lastVideos) > 0)
-            <div class="col-md-6 col-xs-12 lastNews videoBox">
+            <div class="col-md-6 col-xs-12  videoBox">
                 <div class="mostViewHeader">
                     <div style="font-size: 14px !important">{{ __('main.LatestVideos') }}</div>
                 </div>
@@ -338,9 +336,8 @@
                 html += '</div>';
             }
             $('#mainNews').empty().append(html);
-            console.log(sideNewscat);
             for (let i = 0; i < sideNewscat.length; i++) {
-                text += '<div style="margin-right: 5px;">';
+                text += '<div>';
                 text += '<div class="mostViewHeader">';
                 text += '' + sideNewscat[i].nameEn + '';
                 text += '</div>';
@@ -401,41 +398,7 @@
                 prevEl: '.swiper-button-next',
             },
         })
-        $.ajax({
-            type: 'GET',
-            url: `{{ route('site.news.list.getElements', ['lang' => \App::getLocale()]) }}?kind=category&content=ویدیو پیشنهادی&take=1&page=0`,
-            headers: {
-                accept: 'application/json'
-            },
-            success: function(myRes) {
-                var html = '';
-                if (myRes.status == 'ok') {
-                    for (let i = 0; i < myRes.result.length; i++) {
-                        html +=
-                            '<div class="sideNewsCard" style="width: 100% !important;height:100%;margin-top: 4px;">';
-                        html +=
-                            ' <a href="' + myRes.result[i].url +
-                            '"class="picSec fullyCenterContent {{ '+ myRes.result[i].video+' != null ? 'playIcon' : '' }}"style="height: 150px;">';
-                        html += '';
-                        html +=
-                            '<img data-src="' + myRes.result[i].pic + '" alt="' + myRes.result[i].keyword +
-                            '" loading="lazy"class="lazyload resizeImgClass" onload="fitThisImg(this)">';
-                        html += '</a>';
-                        html += '<a href="' + myRes.result[i].url + '" class="colorBlack">';
-                        html += '<h3 class="title">' + myRes.result[i].title + '</h3>';
-                        html += '<p class="summery">' + myRes.result[i].meta + '</p>';
 
-                        html += '</a>';
-                        html += '</div>';
-                    }
-                }
-                $('.RecommendedVideo').empty().append(html);
-            },
-            error: err => {
-                // console.log(err);
-                getsList();
-            }
-        })
         $.ajax({
             type: 'GET',
             url: `{{ route('site.news.list.getElements', ['lang' => \App::getLocale()]) }}?kind=category&content=ویدیو برگزیده&take=1&page=0`,
@@ -464,6 +427,41 @@
 
                 }
                 $('#SelectionsVideos').empty().append(html);
+            },
+            error: err => {
+                // console.log(err);
+                getsList();
+            }
+        })
+        $.ajax({
+            type: 'GET',
+            url: `{{ route('site.news.list.getElements', ['lang' => \App::getLocale()]) }}?kind=category&content=ویدیو پیشنهادی&take=1&page=0`,
+            headers: {
+                accept: 'application/json'
+            },
+            success: function(myRes) {
+                var html = '';
+                if (myRes.status == 'ok') {
+                    for (let i = 0; i < myRes.result.length; i++) {
+                        html +=
+                            '<div class="sideNewsCard" style="width: 100% !important;height:100%;margin-top: 4px;">';
+                        html +=
+                            ' <a href="' + myRes.result[i].url +
+                            '"class="picSec fullyCenterContent {{ '+ myRes.result[i].video+' != null ? 'playIcon' : '' }}"style="height: 150px;">';
+                        html += '';
+                        html +=
+                            '<img data-src="' + myRes.result[i].pic + '" alt="' + myRes.result[i].keyword +
+                            '" loading="lazy"class="lazyload resizeImgClass" onload="fitThisImg(this)">';
+                        html += '</a>';
+                        html += '<a href="' + myRes.result[i].url + '" class="colorBlack">';
+                        html += '<h3 class="title" style="color: #232323">' + myRes.result[i].title + '</h3>';
+                        html += '<p class="summery"style="color: #676767;">' + myRes.result[i].meta + '</p>';
+
+                        html += '</a>';
+                        html += '</div>';
+                    }
+                }
+                $('.RecommendedVideo').empty().append(html);
             },
             error: err => {
                 // console.log(err);

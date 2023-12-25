@@ -115,7 +115,6 @@ class UserNewsController extends Controller
 
         // foreach ($topNews as $item)
         //     array_push($topNewsOutput, getNewsMinimal($item));
-
         // $topNews = $topNewsOutput;
 
         $lastVideos = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->whereNotNull('video')->orderByDesc('dateAndTime')->select($selectCol)->take(10)->get();
@@ -146,18 +145,21 @@ class UserNewsController extends Controller
         return view('user.newsMainPage', compact(['sliderNews','lastNews2', 'sideSliderNews','mostViewNews', 'allCategories', 'topNews', 'lastVideos','lastNews']));
     }
 
-    public function newsShow($lang, $slug)
+    public function newsShow($lang, $slug,Request $request)
     {
+                $tpNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->where('topNews', 1)->orderByDesc('dateAndTime')->take(5)->get();
+        $topNews = NewsDigest::customCollection($tpNews , $lang)->toArray($request);
         $news = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->where('slug', $slug)->orWhere('slugEn', $slug)->first();
         if($news == null)
             return redirect(route('site.news.main', ['lang' => $lang]));
 
         $news = NewsResource::customMake($news, $lang);
-        return view('user.newsShow', compact(['news']));
+        return view('user.newsShow', compact(['news','topNews']));
     }
 
-    public function newsListPage($lang, $kind, $content = ''){
-
+    public function newsListPage($lang, $kind, $content = '',Request $request){
+        $tpNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->where('topNews', 1)->orderByDesc('dateAndTime')->take(5)->get();
+        $topNews = NewsDigest::customCollection($tpNews , $lang)->toArray($request);
         $header = '';
         if($kind == 'all')
             $header = 'آخرین اخبار';
@@ -168,7 +170,7 @@ class UserNewsController extends Controller
         else if($kind == 'content')
             $header = 'اخبار مرتبط با  ' . $content;
 
-        return view('user.newsList', compact(['kind', 'content', 'header']));
+        return view('user.newsList', compact(['kind', 'content', 'header','topNews']));
     }
 
     public function newsListElements()

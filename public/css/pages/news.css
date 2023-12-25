@@ -135,17 +135,26 @@
 .lastSelectedNews {
     height: unset !important;
 }
+
 .centerNav {
     padding: 0px;
     display: flex;
     flex-direction: column;
-    order: 5;
 }
 .mainSwiper {
     padding-left: 0px !important;
     order: 1;
 }
 .lastNews {
+    height: unset !important;
+    margin-top: 10px;
+    float: right;
+    display: flex;
+    flex-direction: column;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.videoBox {
     height: unset !important;
     margin-top: 10px;
     float: right;
@@ -708,6 +717,7 @@
 }
 
 .sideSec {
+    padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: solid 1px;
     margin-bottom: 10px;
@@ -720,6 +730,7 @@
 .shareSec .bu .text {
     color: var(--koochita-dark-green);
     margin-right: 5px;
+    margin-left: 5px;
 }
 .shareSec .bu .pic {
     width: 20px;
@@ -766,6 +777,21 @@
     padding-top: 5px;
     color: #6d0606;
     font-size: 14px;
+}
+.mostViewHeader {
+    color: white !important;
+    background-color: #6d0606;
+    padding: 6px 5px;
+    margin-bottom: 2px;
+}
+.topNewsImg {
+    width: 210px;
+    height: 140px;
+}
+#sideNews {
+    margin-right: 5px;
+    margin-top: 10px;
+    margin-left: 5px;
 }
 @media (max-width: 889px) {
     .secHeadTabs {
@@ -817,6 +843,10 @@
         line-height: 30px;
         margin-top: 5px;
     }
+
+    .col-md-12 {
+        padding: 0px !important;
+    }
     .videoConv {
         width: 100%;
     }
@@ -832,30 +862,61 @@
         align-items: center;
         margin-bottom: 50px;
     }
+
     .lastSelectedNews {
         height: unset !important;
         margin: 20px 15px 0px 0px;
     }
     .lastNews {
-        margin: 20px 15px 0px 0px;
-        order: 2;
+        margin: 20px 0px 0px 0px;
+        order: 3;
+    }
+    .videoBox {
+        order: 9;
+    }
+    .topnews {
+        order: 8;
+    }
+    .topNewsImg {
+        width: 30%;
+        height: 140px;
+    }
+    .centerNav {
+        display: none;
     }
     .lastSelectedNews {
-        order: 3;
+        order: 4;
     }
     .secendVideoBox {
         display: none;
     }
     .oneBig4SmallRows {
-        order: 4;
+        order: 5;
         height: unset !important;
     }
+    .newsCat {
+        flex-direction: column;
+        order: 6;
+    }
+    .newsCat > div {
+        padding-top: 5px;
+        width: 100% !important;
+    }
+    #lineAds {
+        order: 7;
+    }
+    #sideNews {
+        margin: 0px !important;
+    }
     .sideCardSec .lastNewsCard {
-        width: 45% !important;
-        height: 200px !important;
+        width: 100% !important;
+        height: 250px !important;
     }
     .sideNewsCard .picSec {
-        height: 100px;
+        height: 150px;
+    }
+    .videoBox .sideNewsCard {
+        width: 100% !important;
     }
     .lastNewsCard .title {
         display: -webkit-box;

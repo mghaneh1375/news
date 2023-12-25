@@ -45,6 +45,8 @@ class NewsController extends Controller
                 $siteId = 6;
             if($origin == 'https://www.tourismbank.co'||$origin == 'https://tourismbank.co' || $origin == 'tourismBank')
                 $siteId = 3;
+            if($origin == 'https://www.mahanmines.com'||$origin == 'https://mahanmines.com' || $origin == 'mahan')
+                $siteId = 5;
             else if($origin == 'https://www.titcompany.com'||$origin == 'https://titcompany.com' || $origin == 'tourismIT')
                 $siteId = 1;
 
@@ -109,6 +111,8 @@ class NewsController extends Controller
 
             if($origin == 'https://www.tourismfinancialgroup.com'||$origin == 'https://tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'tourismFinancialGroup')
                 $siteId = 6;
+            if($origin == 'https://www.mahanmines.com'||$origin == 'https://mahanmines.com' || $origin == 'mahan')
+                $siteId = 5;
             if($origin == 'https://www.tourismbank.co'||$origin == 'https://tourismbank.co' || $origin == 'tourismBank')
                 $siteId = 3;
             else if($origin == 'https://www.titcompany.com'||$origin == 'https://titcompany.com' || $origin == 'tourismIT')
@@ -137,6 +141,8 @@ class NewsController extends Controller
                 $siteId = 6;
             if($origin == 'https://www.tourismbank.co'||$origin == 'https://tourismbank.co' || $origin == 'tourismBank')
                 $siteId = 3;
+            if($origin == 'https://www.mahanmines.com'||$origin == 'https://mahanmines.com' || $origin == 'mahan')
+                $siteId = 5;
             else if($origin == 'https://www.titcompany.com'||$origin == 'https://titcompany.com' || $origin == 'tourismIT')
                 $siteId = 1;
             if ($lang == 'fa')

@@ -59,6 +59,9 @@ class NewsResource extends JsonResource
             foreach ($otherNews as $item)
                 array_push($otherNewsArr, getNewsMinimal(News::find($item->id)));
         }
+        // dd($this);
+        $time =getData(self::$locale,  Verta::createJalali($date[0], $date[1], $date[2], $times[0], $times[1], 0)->format('%d %B %Y  H:i'), date('D M Y H:i', strtotime($this->updated_at)));
+
         return [
             'id' => $this->id,
             'title' => getData(self::$locale, $this->title, $this->titleEn),
@@ -72,7 +75,7 @@ class NewsResource extends JsonResource
             'keyword' => getData(self::$locale, $this->keyword, $this->keywordEn),
             'seoTitle' => getData(self::$locale, $this->seoTitle, $this->seoTitleEn),
             'video' => $video,
-            'showTime' => Verta::createJalali($date[0], $date[1], $date[2], $times[0], $times[1], 0)->format('%d %B %Y  H:i'),
+            'showTime' => $time,
             'author' => 'koochita',
             'username' => 'koochita',
             'rtl' => $this->rtl,

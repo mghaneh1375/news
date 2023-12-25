@@ -66,9 +66,9 @@
         .eddsSec {}
 
         /* .eddsSec.fixedL {
-                                                position: fixed;
-                                                bottom: 0px;
-                                            } */
+                                                                                                                    position: fixed;
+                                                                                                                    bottom: 0px;
+                                                                                                                } */
 
         .newsVideo {}
 
@@ -78,6 +78,16 @@
             flex-wrap: wrap;
             gap: 10px;
             row-gap: 5px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0px;
+            margin: 0px
+        }
+
+        .row {
+            margin: 0px !important;
         }
     </style>
 
@@ -97,18 +107,74 @@
 
 @section('body')
     <div class="row" style="margin-top: 20px;margin-bottom: 40px">
-        <div id="pcSideAdSection" class="col-md-2 hideOnPhone">
-            <div id="dsfjk" class="eddsSec">
+        <div id="pcSideAdSection" class="col-md-3 hideOnPhone">
+            <div>
                 <div class="row sideSec">
-                    <div class="title">اخبار مشابه</div>
+                    <div> {{ $news->showTime }}</div>
+                </div>
+                <div class="row sideSec">
+                    <div class="title">{{ __('main.share') }}</div>
+                    <div class="shareSec">
+                        <div class="bu">
+                            <a target="_blank" class="link mg-tp-5" id="facebook" href="">
+                                <img src="{{ URL::asset('images/shareBoxImg/facebook.png') }}" class="pic">
+                                <div class="text">{{ __('main.facebook') }}</div>
+                            </a>
+                        </div>
+                        <div class="bu">
+                            <a target="_blank" class="link mg-tp-5" id="twitter" href="">
+                                <img src="{{ URL::asset('images/shareBoxImg/twitter.png') }}" class="pic">
+                                <div class="text"> {{ __('main.twitter') }}</div>
+                            </a>
+                        </div>
+                        <div class="bu">
+                            <a target="_blank" id="whatsApp" class="link mg-tp-5 whatsappLink" href="#">
+                                <img src="{{ URL::asset('images/shareBoxImg/whatsapp.png') }}" class="pic">
+                                <div class="text">{{ __('main.whatsApp') }}</div>
+                            </a>
+                        </div>
+                        <div class="bu">
+                            <a target="_blank" class="link mg-tp-5" id="telegram" href="">
+                                <img src="{{ URL::asset('images/shareBoxImg/telegram.png') }}" class="pic">
+                                <div class="text">{{ __('main.telegram') }}</div>
+                            </a>
+                        </div>
+                        <div class="bu" id="copy-button" style="cursor: pointer">
+                            <div style="display: flex;" target="_blank" class="link mg-tp-5" href="#">
+                                <img src="{{ URL::asset('images/shareBoxImg/copyLink.png') }}" class="pic">
+                                <div class="text">{{ __('main.copyLink') }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lastNews">
+                <div style="margin-top: 10px">
+                    <div class="mostViewHeader">
+                        <div style="font-size: 14px !important">{{ __('main.LatestSelections') }}</div>
+                    </div>
+                    <ul class="lastSpecialNew">
+                        @foreach ($topNews as $item)
+                            <li class="Point alignItemCen" style="border-left: solid 3px #6D0606;margin-top: 5px;">
+                                <a class="pdl10" style="color: black !important" href="{{ $item['url'] }}">
+                                    <h6 class="title" style="margin:5px 0 0 0">{{ $item['title'] }}</h6>
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+            {{-- <div id="dsfjk" class="eddsSec">
+                <div class="row sideSec">
+                    <div class="title">{{ __('main.similarNews') }}</div>
                     <div class="otherNewsInShowSec">
                         <div id="otherNewsSlider" class="swiper-container otherNewsInShow">
                             <div class="swiper-wrapper">
                                 @foreach ($news->otherNews as $item)
                                     <div class="swiper-slide">
                                         <a href="{{ $item->url }}" class="picSec">
-                                            <img data-src="{{ $item->pic }}" alt="{{ $item->keyword }}" loading="lazy"
-                                                class="lazyload resizeImgClass" onload="fitThisImg(this)">
+                                            <img data-src="{{ $item->pic }}" alt="{{ $item->keyword }}"
+                                                loading="lazy" class="lazyload resizeImgClass" onload="fitThisImg(this)">
                                         </a>
                                         <a href="{{ $item->url }}" class="content">
                                             <h3 class="title">{{ $item->title }}</h3>
@@ -122,10 +188,11 @@
                     </div>
                 </div>
 
-            </div>
+            </div> --}}
+
         </div>
 
-        <div class="col-md-8 newsContainer">
+        <div class="col-md-9 newsContainer">
 
             <div class="newsTitleShow hideOnScreen">
                 <h1 style="font-weight: bold">{{ $news->title }}</h1>
@@ -149,8 +216,8 @@
                 </div>
                 <div id="bottomOfText"></div>
 
-                <div class="row sideSec" style="border-bottom: 0">
-                    <div class="title">برچسب ها</div>
+                <div class="row sideSec" style="border-bottom: 0;display: none">
+                    <div class="title">{{ __('main.tags') }}</div>
                     <div class="tagSection">
                         @foreach ($news->tags as $item)
                             <div class="tag">
@@ -163,50 +230,6 @@
 
 
             </div>
-        </div>
-
-        <div class="col-md-2">
-            <div class="row sideSec">
-                <div> {{ $news->showTime }}</div>
-            </div>
-
-
-            <div class="row sideSec">
-                <div class="title">اشتراک گذاری</div>
-                <div class="shareSec">
-                    <div class="bu">
-                        <a target="_blank" class="link mg-tp-5" id="facebook" href="">
-                            <img src="{{ URL::asset('images/shareBoxImg/facebook.png') }}" class="pic">
-                            <div class="text"> فیسبوک</div>
-                        </a>
-                    </div>
-                    <div class="bu">
-                        <a target="_blank" class="link mg-tp-5" id="twitter" href="">
-                            <img src="{{ URL::asset('images/shareBoxImg/twitter.png') }}" class="pic">
-                            <div class="text"> توییتر</div>
-                        </a>
-                    </div>
-                    <div class="bu">
-                        <a target="_blank" id="whatsApp" class="link mg-tp-5 whatsappLink" href="#">
-                            <img src="{{ URL::asset('images/shareBoxImg/whatsapp.png') }}" class="pic">
-                            <div class="text"> واتس اپ</div>
-                        </a>
-                    </div>
-                    <div class="bu">
-                        <a target="_blank" class="link mg-tp-5" id="telegram" href="">
-                            <img src="{{ URL::asset('images/shareBoxImg/telegram.png') }}" class="pic">
-                            <div class="text">تلگرام</div>
-                        </a>
-                    </div>
-                    <div class="bu" id="copy-button" style="cursor: pointer">
-                        <div style="display: flex;" target="_blank" class="link mg-tp-5" href="#">
-                            <img src="{{ URL::asset('images/shareBoxImg/copyLink.png') }}" class="pic">
-                            <div class="text">کپی کردن لینک</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
 
         <div class="col-md-2 hideOnScreen">
@@ -342,7 +365,8 @@
                 tempTextarea.val(textToCopy).select();
                 document.execCommand('copy');
                 tempTextarea.remove();
-                $('#copy-button').attr('data-original-title', 'لینک کپی شد').tooltip('show');
+                $('#copy-button').attr('data-original-title', '{{ __('main.linkCopied') }}').tooltip(
+                    'show');
             });
         });
     </script>
