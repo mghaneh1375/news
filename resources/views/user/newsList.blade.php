@@ -32,8 +32,10 @@
         }
 
         .newsInRow {
+            padding-bottom: 20px;
+            padding-right: 20px;
             float: left !important;
-            padding: 0px
+
         }
 
         .mostViewHeader {
@@ -186,7 +188,7 @@
                     </a>
                 </div></div>`;
             });
-            text += '<div class="col-md-9 newsInRow" style="padding-bottom:20px;padding-right:20px">';
+            text += '<div class="col-md-9 newsInRow" >';
             text += '<div class="mostViewHeader  bgColorRed">';
             text += '<div style="font-size: 18px !important">{{ __('main.LatestNews') }}</div>';
             text += '</div>';
@@ -195,11 +197,11 @@
                 text += `                    
                             <li class="Point alignItemCen" style="border-left: solid 3px #6D0606;margin-top: 5px;">
                                 <div class="pdl10 d-flex" style=" box-shadow: 0px 3px 6px #00000029; padding-top: 5px">
-                                    <div style="min-width:210px;height:140px;"><img
-                                            style="width: 100%;height: 100%;object-fit: contain;"
+                                    <div class="topNewsImg"><img
+                                            style="width: 100%;height: 100%;object-fit: cover;"
                                             src="${item.pic}" alt="${item.keyword}"">
                                     </div>
-                                    <div style="padding-left: 10px;width:100%">
+                                    <div style="padding-left: 10px;width:70%">
                                         <a href="${item.url}">
                                             <div style="display: flex">
 

@@ -45,7 +45,7 @@
     </div>
 
 
-    <div class="container" style="padding: 0px 10px">
+    <div class="container" style="padding: 10px 10px">
         @yield('body')
     </div>
 

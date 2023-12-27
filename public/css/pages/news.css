@@ -234,6 +234,7 @@
 }
 
 .secHeadTabs {
+    white-space: nowrap;
     font-size: 17px;
     display: flex;
     justify-content: center;
@@ -424,7 +425,7 @@
     position: absolute;
     padding-left: 5px;
     background: linear-gradient(0deg, black, transparent);
-    bottom: 0;
+    bottom: -5;
     left: 0;
     color: white;
     width: 100%;
@@ -786,12 +787,20 @@
 }
 .topNewsImg {
     width: 210px;
+    min-width: 210px;
     height: 140px;
 }
 #sideNews {
     margin-right: 5px;
     margin-top: 10px;
     margin-left: 5px;
+}
+.mostViewDay .title {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 @media (max-width: 889px) {
     .secHeadTabs {
@@ -856,6 +865,12 @@
     .videoConv {
         display: none;
     }
+    .mainSwiper {
+        padding-right: 0px !important ;
+    }
+    .newsInRow {
+        padding-right: 0px !important;
+    }
     .topSectionMainPageNews {
         display: flex;
         flex-direction: column;
@@ -877,8 +892,17 @@
     .topnews {
         order: 8;
     }
+    .listBody .newsRow {
+        width: 50% !important;
+        padding: 10px 10px 0px 10px !important;
+    }
+
+    .listBody .newsRow:nth-child(1) {
+        width: 100% !important;
+    }
     .topNewsImg {
         width: 30%;
+        min-width: 30%;
         height: 140px;
     }
     .centerNav {
@@ -918,13 +942,7 @@
     .videoBox .sideNewsCard {
         width: 100% !important;
     }
-    .lastNewsCard .title {
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+
     .oneBigSec {
         width: 100%;
     }

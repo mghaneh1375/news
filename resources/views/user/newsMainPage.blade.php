@@ -33,7 +33,7 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    padding-left: unset !important; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    padding-left: unset !important; */
             margin-right: unset !important;
             margin-left: unset !important;
             width: 99% !important;
@@ -70,7 +70,11 @@
 
         .lastNewsCard .title {
             font-size: 14px;
-
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
 
@@ -109,7 +113,7 @@
             </div>
             <div style="height: 200px ;width: 100%;margin-top: 10px">
                 <img src="{{ URL::asset('images/shareBoxImg/tabligh3.png') }}"
-                    alt=""style="width: 100%;height: 100%;object-fit: contain;border: 1px solid gray;">
+                    alt=""style="width: 100%;height: 100%;object-fit: cover;border: 1px solid gray;">
             </div>
             <div style="margin-top: 10px">
                 <div class="MostVisitedToday">
@@ -129,11 +133,11 @@
 
             <div style="height: 200px ;width: 100%;margin-top: 10px">
                 <img src="{{ URL::asset('images/shareBoxImg/tabligh3.png') }}"
-                    alt=""style="width: 100%;height: 100%;object-fit: contain;border: 1px solid gray;">
+                    alt=""style="width: 100%;height: 100%;object-fit: cover;border: 1px solid gray;">
             </div>
             {{-- <div style="height: 200px ;width: 100%;">
                 <img src="{{ URL::asset('images/shareBoxImg/tabligh2.png') }}"
-                    alt=""style="width: 100%;height: 100%;object-fit: contain;box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.7);border: 1px solid gray;">
+                    alt=""style="width: 100%;height: 100%;object-fit: cover;box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.7);border: 1px solid gray;">
             </div> --}}
 
         </div>
@@ -233,7 +237,7 @@
                         @foreach ($topNews as $item)
                             <li class="Point alignItemCen" style="border-left: solid 3px #6D0606;margin-top: 5px;">
                                 <div class="pdl10 d-flex" style=" box-shadow: 0px 3px 6px #00000029; padding-top: 5px">
-                                    <div style="topNewsImg"><img style="width: 100%;height: 100%;object-fit: contain;"
+                                    <div class="topNewsImg"><img style="width: 100%;height: 100%;object-fit: cover;"
                                             src="{{ $item['pic'] }}" alt="">
                                     </div>
                                     <div style="padding-left: 10px">

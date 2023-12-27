@@ -66,9 +66,9 @@
         .eddsSec {}
 
         /* .eddsSec.fixedL {
-                                                                                                                    position: fixed;
-                                                                                                                    bottom: 0px;
-                                                                                                                } */
+                                                                                                                        position: fixed;
+                                                                                                                        bottom: 0px;
+                                                                                                                    } */
 
         .newsVideo {}
 
@@ -232,7 +232,7 @@
             </div>
         </div>
 
-        <div class="col-md-2 hideOnScreen">
+        <div class="col-md-2 hideOnScreen" style="display: none">
             <div class="row sideSec">
                 <div class="title">اخبار مشابه</div>
                 <div class="otherNewsInShowSec">

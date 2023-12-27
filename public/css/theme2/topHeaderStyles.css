@@ -39,6 +39,7 @@ p {
     background: #969696;
 }
 .resizeImgClass {
+    object-fit: cover;
     width: 100%;
 }
 

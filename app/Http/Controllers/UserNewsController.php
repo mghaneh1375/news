@@ -147,7 +147,7 @@ class UserNewsController extends Controller
 
     public function newsShow($lang, $slug,Request $request)
     {
-                $tpNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->where('topNews', 1)->orderByDesc('dateAndTime')->take(5)->get();
+        $tpNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->where('topNews', 1)->orderByDesc('dateAndTime')->take(5)->get();
         $topNews = NewsDigest::customCollection($tpNews , $lang)->toArray($request);
         $news = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->where('slug', $slug)->orWhere('slugEn', $slug)->first();
         if($news == null)
