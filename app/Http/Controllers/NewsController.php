@@ -330,6 +330,7 @@ class NewsController extends Controller
         $news->slug = makeSlug($request->slug);
         $news->release = $request->releaseType;
         $news->site_id = $request->site;
+        $news->author = $request->author;
 
         if($request->has('createdAt'))
             $news->created_at = date('Y-m-d H:m:s', strtotime(ShamsiToMilady(convertNumber('en', $request['createdAt'])) . " 00:00"));

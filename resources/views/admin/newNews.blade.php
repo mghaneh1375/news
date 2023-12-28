@@ -20,6 +20,10 @@
             direction: ltr !important;
             text-align: left !important;
         }
+
+        #previewVideo {
+            width: 100%;
+        }
     </style>
 
 @stop
@@ -137,6 +141,30 @@
                 </div>
             </div>
         </div>
+
+        <div class="sparkline8-list shadow-reset mg-tb10">
+            <div class="sparkline8-hd" style="padding: 5px 10px;">
+                <div class="main-sparkline8-hd">
+                    <h5>نویسنده</h5>
+                </div>
+            </div>
+            <div class="sparkline8-graph dashone-comment  dashtwo-messages">
+                <div class="form-group">
+                    <select class="form-control botBorderInput" id="author" name="author">
+                        <option value="koochita" selected>
+                            koochita
+                        </option>
+                        <option value="dornaAuthorF">
+                            dorna author F
+                        </option>
+                        <option value="dornaAuthorH">
+                            dorna author H
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
         <div class="sparkline8-list shadow-reset mg-tb-10">
             <div class="sparkline8-hd" style="padding: 5px 10px">
                 <div class="main-sparkline8-hd">
@@ -223,49 +251,6 @@
                             </div>
                         </div>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-12" style="margin-top: 10px;">
-            <div class="sparkline8-list shadow-reset">
-                <div class="sparkline8-hd" style="padding: 5px 10px;">
-                    <div class="main-sparkline8-hd">
-                        <h5>ویدیو</h5>
-                    </div>
-                </div>
-                <div style="height: auto !important;" class="sparkline8-graph dashone-comment  dashtwo-messages">
-                    <div class="row">
-                        <div class="col-xs-2">
-                            <div class="form-group">
-                                <label for="noVideo">خیر</label>
-                                <input type="radio" id="noVideo" name="videoQuestion" value="0" checked
-                                    onchange="changeVideoQuestion(this.value)">
-                            </div>
-                        </div>
-                        <div class="col-xs-2">
-                            <div class="form-group">
-                                <label for="yesVideo">بله</label>
-                                <input type="radio" id="yesVideo" name="videoQuestion" value="1"
-                                    onchange="changeVideoQuestion(this.value)"}>
-                            </div>
-                        </div>
-                        <div class="col-xs-4">ایا خبر شما، خبر ویدیویی است؟</div>
-                    </div>
-
-                    <div id="uploadVideoSection" class="row" style="display: none">
-                        <div class="col-xs-8">
-                            <video id="previewVideo" src="{{ isset($news->video) ? $news->video : '#' }}"
-                                controls></video>
-                        </div>
-                        <div class="col-xs-4">
-                            <div>
-                                <label for="videoInput">ویدیو</label>
-                                <input type="file" accept="video/*" id="videoInput" class="form-control"
-                                    onchange="changeVideoFile(this)">
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -367,6 +352,49 @@
                         <div id="errorResult"></div>
                         <div id="warningResult"></div>
                         <div id="goodResult"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12" style="margin-top: 10px;">
+            <div class="sparkline8-list shadow-reset">
+                <div class="sparkline8-hd" style="padding: 5px 10px;">
+                    <div class="main-sparkline8-hd">
+                        <h5>ویدیو</h5>
+                    </div>
+                </div>
+                <div style="height: auto !important;" class="sparkline8-graph dashone-comment  dashtwo-messages">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <div class="form-group">
+                                <label for="noVideo">خیر</label>
+                                <input type="radio" id="noVideo" name="videoQuestion" value="0" checked
+                                    onchange="changeVideoQuestion(this.value)">
+                            </div>
+                        </div>
+                        <div class="col-xs-2">
+                            <div class="form-group">
+                                <label for="yesVideo">بله</label>
+                                <input type="radio" id="yesVideo" name="videoQuestion" value="1"
+                                    onchange="changeVideoQuestion(this.value)"}>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">ایا خبر شما، خبر ویدیویی است؟</div>
+                    </div>
+
+                    <div id="uploadVideoSection" class="row" style="display: none">
+                        <div class="col-xs-8">
+                            <video id="previewVideo" src="{{ isset($news->video) ? $news->video : '#' }}"
+                                controls></video>
+                        </div>
+                        <div class="col-xs-4">
+                            <div style="text-align: right !important;">
+                                <label for="videoInput" style="padding-bottom: 10px">ویدیو</label>
+                                <input type="file" accept="video/*" id="videoInput" class="form-control"
+                                    onchange="changeVideoFile(this)">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -475,11 +503,11 @@
                 </div>
             </div>
         </div>
-        <div style="padding: 10px; width: 100%; display: flex; justify-content: center; align-items: center;">
-            <input type="button" id="save" style="display: none" onclick="TwoCheckSeo()" value="ثبت"
-                class="btn btn-success">
+        <div style="padding: 10px; width: 100%; display: flex; justify-content: space-between;">
             <input type="button" onclick="window.location.href='{{ route('news.list') }}'" value="بازگشت"
                 class="btn btn-secondry">
+            <input type="button" id="save" style="display: none" onclick="TwoCheckSeo()" value="ثبت"
+                class="btn btn-success">
         </div>
 
     </div>
@@ -510,6 +538,7 @@
 
         @if (isset($news))
             news = {!! json_encode($news) !!};
+            $('#author option[value="' + news.author + '"]').attr("selected", "selected");
             newsId = news.id;
             news['category'].map(item => selectedCat.push({
                 id: item.categoryId,
@@ -674,6 +703,7 @@
             mainDataForm = new FormData();
 
             var id = document.getElementById('newsId').value;
+            var author = document.getElementById('author').value;
             var title = document.getElementById('title').value;
             var release = document.getElementById('releaseType').value;
             var date = $('#date').val();
@@ -783,6 +813,7 @@
             mainDataForm.append('id', id);
             mainDataForm.append('code', {{ $code }});
             mainDataForm.append('site', site);
+            mainDataForm.append('author', author);
             mainDataForm.append('limboPicIds', window.limboIds);
             mainDataForm.append('releaseType', release);
             mainDataForm.append('date', date);
@@ -963,10 +994,6 @@
             else
                 $('#metaNumber').css('color', 'red');
         }
-
-
-
-
 
         function EnCheckSeo(kind) {
             $('#save').css('display', 'block')
@@ -1392,23 +1419,24 @@
             <div class="modal-content">
 
                 <!-- Modal Header -->
-                <div class="modal-header">
+                <div class="modal-header"
+                    style="display: flex;justify-content: space-between;flex-direction: row-reverse;">
                     <h4 class="modal-title">اخطارها</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" data-dismiss="modal"></button>
                 </div>
 
                 <!-- Modal body -->
                 <div class="modal-body">
                     <div style="font-size: 18px; margin-bottom: 20px;"> در خبر شما اخطارهای زیر موجود است . ایا از ثبت
-                        سفرنامه خود اطمینان دارید؟</div>
+                        خبر خود اطمینان دارید؟</div>
                     <div id="warningContentModal" style="padding-right: 5px;"></div>
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer" style="text-align: center">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">خیر اصلاح می کنم.</button>
+                <div class="modal-footer" style="display: flex;justify-content: space-between;">
                     <button type="button" class="btn btn-success" data-dismiss="modal" onclick="storePost()">بله خبر
                         ثبت شود</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">خیر اصلاح می کنم</button>
                 </div>
 
             </div>

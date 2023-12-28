@@ -15,12 +15,8 @@
     <meta name="msapplication-TileColor" content="#d2ac68">
     <meta name="theme-color" content="#d2ac68">
 
-
-
-
     <link rel="canonical" href="{{ Request::url() }}" />
     <meta name="author" content="{{ $news->username }}" />
-
 
     <meta content="article" property="og:type" />
     <meta property="og:title" content="{{ $news->seoTitle }}" />
@@ -66,9 +62,9 @@
         .eddsSec {}
 
         /* .eddsSec.fixedL {
-                                                                                                                        position: fixed;
-                                                                                                                        bottom: 0px;
-                                                                                                                    } */
+                                                                                                                                                                                position: fixed;
+                                                                                                                                                                                bottom: 0px;
+                                                                                                                                                                            } */
 
         .newsVideo {}
 
@@ -88,6 +84,29 @@
 
         .row {
             margin: 0px !important;
+        }
+
+        .ck-content .image {
+            display: table;
+            clear: both;
+            text-align: center;
+            margin: 1em auto;
+        }
+
+        .ck-content .image-style-align-left {
+            float: left;
+            margin-right: 10px;
+        }
+
+        .ck-content .image.image_resized {
+            max-width: 100%;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        .ck-content .image-style-align-right {
+            float: right;
+            margin-left: 10px;
         }
     </style>
 
@@ -211,10 +230,10 @@
             </div>
 
             <div class="body">
-                <div class="descriptionText">
+                <div class="descriptionText ck-content">
                     {!! $news->text !!}
                 </div>
-                <div id="bottomOfText"></div>
+                <div id="bottomOfText " style="font-weight: 800"> Writer: {{ $news->author }}</div>
 
                 <div class="row sideSec" style="border-bottom: 0;display: none">
                     <div class="title">{{ __('main.tags') }}</div>

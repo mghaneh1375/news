@@ -76,7 +76,7 @@ class NewsResource extends JsonResource
             'seoTitle' => getData(self::$locale, $this->seoTitle, $this->seoTitleEn),
             'video' => $video,
             'showTime' => $time,
-            'author' => 'koochita',
+            'author' => $this->author,
             'username' => 'koochita',
             'rtl' => $this->rtl,
             'tags' => array_filter($this->getTags->pluck(self::$locale == 'fa' ? 'tag' : 'tagEn')->toArray(), function($var) {
