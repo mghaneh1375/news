@@ -1,28 +1,31 @@
-.footerPhoneMenuBar{
+.footerPhoneMenuBar {
     direction: rtl;
 }
-.footerPhoneMenuBar > div{
+.closeInFooter {
+    flex-direction: row-reverse !important;
+}
+.footerPhoneMenuBar > div {
     direction: rtl;
 }
-.footerMenuBarLinks{
+.footerMenuBarLinks {
     direction: rtl;
 }
-.footerMenuBarLinks .iconFamily.UserIcon{
+.footerMenuBarLinks .iconFamily.UserIcon {
     margin-left: 0px !important;
     margin-right: 2px !important;
 }
-.closeFooterPopupIcon{
+.closeFooterPopupIcon {
     left: auto;
     right: 5px;
 }
-.profilePicFooter.type2{
+.profilePicFooter.type2 {
     margin-left: 0px;
     margin-right: 10px;
 }
-.pSC_cityDetails:nth-of-type(even){
+.pSC_cityDetails:nth-of-type(even) {
     border-left: solid #a1a1a1 1px;
     border-right: none;
 }
-.pSC_choiseDetailsText{
+.pSC_choiseDetailsText {
     text-align: center;
 }

@@ -45,7 +45,7 @@
     </div>
 
 
-    <div class="container" style="padding: 10px 10px">
+    <div class="container" style="padding: 10px 10px;min-height: 450px">
         @yield('body')
     </div>
 
@@ -64,7 +64,8 @@
                 </div>
             </div> --}}
             <div class="newsCategoryListMFooter">
-                <div class="closeThisModal iconClose" onclick="closeMyModal('newCategoryMobileModal')"></div>
+                <div class="closeThisModal iconClose closeInFooter" onclick="closeMyModal('newCategoryMobileModal')">
+                </div>
                 <div class="list">
                     @foreach ($newsCategories as $cat)
                         <a href="{{ route('site.news.list', ['kind' => 'category', 'content' => $cat['name'], 'lang' => \App::getLocale()]) }}"

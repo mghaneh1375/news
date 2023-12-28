@@ -68,8 +68,8 @@
 
         <div class="col-md-12"style="padding:0px!important ">
             <div id="listBody" class="listBody"></div>
-            <div id="lineAds" style="height: 100px;margin: 30px 0px;float: left;"class="col-md-9 col-xs-12">
-                <img src="{{ URL::asset('images/shareBoxImg/lineAds.jpg') }}"
+            <div id="lineAds" style="float: left;"class="col-md-12 col-xs-12">
+                <img src="{{ URL::asset('images/shareBoxImg/lineAds.webp') }}"
                     alt=""style="width: 100%;height: 100%;object-fit: fill;box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.7);border: 1px solid gray;">
             </div>
             <div id="newsBody" class="listBody"></div>
