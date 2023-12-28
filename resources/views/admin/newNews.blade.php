@@ -150,17 +150,8 @@
             </div>
             <div class="sparkline8-graph dashone-comment  dashtwo-messages">
                 <div class="form-group">
-                    <select class="form-control botBorderInput" id="author" name="author">
-                        <option value="koochita" selected>
-                            koochita
-                        </option>
-                        <option value="dornaAuthorF">
-                            dorna author F
-                        </option>
-                        <option value="dornaAuthorH">
-                            dorna author H
-                        </option>
-                    </select>
+                    <input style="width: 100%;" type="text" class="author" id="author"
+                        value="{{ isset($news) ? $news->author : '' }}" placeholder="نویسنده " disabled>
                 </div>
             </div>
         </div>
@@ -538,7 +529,6 @@
 
         @if (isset($news))
             news = {!! json_encode($news) !!};
-            $('#author option[value="' + news.author + '"]').attr("selected", "selected");
             newsId = news.id;
             news['category'].map(item => selectedCat.push({
                 id: item.categoryId,
@@ -703,7 +693,6 @@
             mainDataForm = new FormData();
 
             var id = document.getElementById('newsId').value;
-            var author = document.getElementById('author').value;
             var title = document.getElementById('title').value;
             var release = document.getElementById('releaseType').value;
             var date = $('#date').val();
@@ -813,7 +802,6 @@
             mainDataForm.append('id', id);
             mainDataForm.append('code', {{ $code }});
             mainDataForm.append('site', site);
-            mainDataForm.append('author', author);
             mainDataForm.append('limboPicIds', window.limboIds);
             mainDataForm.append('releaseType', release);
             mainDataForm.append('date', date);

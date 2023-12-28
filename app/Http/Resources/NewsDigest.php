@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\URL;
+use App\Models\User;
 
 class NewsDigest extends JsonResource
 {
@@ -35,7 +36,8 @@ class NewsDigest extends JsonResource
             'dateAndTime' => $this->dateAndTime,
             'keyword' => getData(self::$locale, $this->keyword, $this->keywordEn),
             'video' => $this->video,
-            'category'=> $category
+            'category'=> $category,
+            'author' => isset($this->userId) ? User::find($this->userId)->name : ''
         ];
     }
     

@@ -6,6 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\URL;
 use Hekmatinasser\Verta\Facades\Verta;
 use App\Models\NewsCategory;
+use App\Models\User;
 use App\Models\News;
 use App\Models\NewsCategoryRelations;
 
@@ -59,7 +60,6 @@ class NewsResource extends JsonResource
             foreach ($otherNews as $item)
                 array_push($otherNewsArr, getNewsMinimal(News::find($item->id)));
         }
-        // dd($this);
         $time =getData(self::$locale,  Verta::createJalali($date[0], $date[1], $date[2], $times[0], $times[1], 0)->format('%d %B %Y  H:i'), date('D M Y H:i', strtotime($this->updated_at)));
 
         return [
@@ -76,7 +76,7 @@ class NewsResource extends JsonResource
             'seoTitle' => getData(self::$locale, $this->seoTitle, $this->seoTitleEn),
             'video' => $video,
             'showTime' => $time,
-            'author' => $this->author,
+            'author' => isset($this->userId) ? User::find($this->userId)->name : '',
             'username' => 'koochita',
             'rtl' => $this->rtl,
             'tags' => array_filter($this->getTags->pluck(self::$locale == 'fa' ? 'tag' : 'tagEn')->toArray(), function($var) {
