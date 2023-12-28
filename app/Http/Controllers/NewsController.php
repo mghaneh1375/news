@@ -495,7 +495,6 @@ class NewsController extends Controller
         else if(isset($_FILES['video']) && $_FILES['video']['error'] == 0)
             return response()->json(['status' => 'max_file_size_error']);
         else{
-            dd($_FILES);
             return response()->json(['status' => 'error1']);
         }
     }
