@@ -160,6 +160,7 @@ class UserNewsController extends Controller
     public function newsListPage($lang, $kind, $content = '',Request $request){
         $tpNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->where('topNews', 1)->orderByDesc('dateAndTime')->take(5)->get();
         $topNews = NewsDigest::customCollection($tpNews , $lang)->toArray($request);
+
         $header = '';
         if($kind == 'all')
             $header = 'آخرین اخبار';

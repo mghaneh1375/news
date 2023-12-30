@@ -122,6 +122,7 @@
         var take = 10;
 
         function getListElemes() {
+
             openLoading();
             if (!inTake && !isFinish) {
                 inTake = true;
@@ -134,8 +135,8 @@
                     success: response => {
 
                         if (response.status == 'ok') {
-
                             console.log(response);
+
                             createListElements(response.result);
                         } else
                             getsList();
@@ -181,7 +182,7 @@
                             <div style="background-color: #6D0606 ;width: 18px;">
                             </div>
                                 <div style="background-color: #6D0606;margin-left: 2px;width: fit-content;padding: 0px 10px;color: white "> 
-                                    ${item.category}
+                                    ${content}
                                 </div>
                         </div>
                         <p class="title">${item.title}</p>
@@ -193,7 +194,7 @@
             text += '<div style="font-size: 18px !important">{{ __('main.LatestNews') }}</div>';
             text += '</div>';
             text += '<ul class="lastSpecialNew">';
-            _news.slice(0, 3).map(item => {
+            _news.slice(3, 10).map(item => {
                 text += `                    
                             <li class="Point alignItemCen" style="border-left: solid 3px #6D0606;margin-top: 5px;">
                                 <div class="pdl10 d-flex" style=" box-shadow: 0px 3px 6px #00000029; padding-top: 5px">
@@ -209,7 +210,7 @@
                                                 </div>
                                                 <div
                                                     style="background-color: #6D0606;margin-left: 2px;width: fit-content;padding: 0px 10px;color: white ">
-                                                    ${item.category}
+                                                    ${content}
                                                 </div>
                                             </div>
                                             <h6 class="title bold" style="margin:5px 0 0 0;color: #232323;">
@@ -235,7 +236,6 @@
 
             inTake = false;
         }
-
         $.ajax({
             type: 'GET',
             url: `{{ route('site.news.list.getElements', ['lang' => \App::getLocale()]) }}?kind=category&content=ویدیو پیشنهادی&take=1&page=0`,
