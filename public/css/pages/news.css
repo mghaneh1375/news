@@ -428,7 +428,7 @@
     position: absolute;
     padding-left: 5px;
     background: linear-gradient(0deg, black, transparent);
-    bottom: -5;
+    bottom: -5px;
     left: 0;
     color: white;
     width: 100%;

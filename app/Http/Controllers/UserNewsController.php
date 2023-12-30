@@ -125,7 +125,7 @@ class UserNewsController extends Controller
             array_push($lastVideosOutput, getNewsMinimal($item));
 
         $lastVideos = $lastVideosOutput;
-        $lastNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->whereNull('video')->orderBy('dateAndTime')->select($selectCol)->take(6)->get();
+        $lastNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->whereNull('video')->orderBy('dateAndTime')->select($selectCol)->skip(2)->take(6)->get();
         $lastNewsOutput = [];
 
         foreach ($lastNews as $item)

@@ -273,19 +273,6 @@
                         <div class="col-xs-4">نوع چینش را انتخاب کنید</div>
                     </div>
 
-                    <div id="uploadVideoSection" class="row" style="display: none">
-                        <div class="col-xs-8">
-                            <video id="previewVideo" src="{{ isset($news->video) ? $news->video : '#' }}"
-                                controls></video>
-                        </div>
-                        <div class="col-xs-4">
-                            <div>
-                                <label for="videoInput">ویدیو</label>
-                                <input type="file" accept="video/*" id="videoInput" class="form-control"
-                                    onchange="changeVideoFile(this)">
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
