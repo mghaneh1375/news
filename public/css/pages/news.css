@@ -166,6 +166,14 @@
     padding-left: 0px;
     padding-right: 0px;
 }
+.videoBox .meta {
+    font-size: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .newsCat {
     height: unset !important;
     margin-top: 10px;
@@ -402,7 +410,7 @@
     height: 250px;
 }
 .videoBox .sideNewsCard {
-    width: 45%;
+    width: 49%;
     height: fit-content;
     overflow: hidden;
     background-color: #e7e0d8;

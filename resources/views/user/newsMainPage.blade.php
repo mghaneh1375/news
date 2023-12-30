@@ -33,7 +33,7 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            padding-left: unset !important; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                padding-left: unset !important; */
             margin-right: unset !important;
             margin-left: unset !important;
             width: 99% !important;
@@ -263,23 +263,25 @@
                 <div class="mostViewHeader">
                     <div style="font-size: 14px !important">{{ __('main.LatestVideos') }}</div>
                 </div>
-                @foreach ($lastVideos as $item)
-                    <div class="sideNewsCard  ">
+                <div class="d-flex " style="justify-content: space-between;margin-top: 5px">
+                    @foreach ($lastVideos as $item)
+                        <div class="sideNewsCard  ">
 
-                        <a href="{{ $item->url }}" style="position: relative;"
-                            class="picSec fullyCenterContent newNews ">
-                            <img data-src="{{ $item->pic }}" alt="{{ $item->keyword }}" loading="lazy"
-                                class="lazyload resizeImgClass" onload="fitThisImg(this)">
-                        </a>
-
-                        <div style="margin-left: 5px;background-color: #E7E0D8">
-                            <a href="{{ $item->url }}" class="colorGray">
-                                <div class="title">{{ $item->title }}</div>
-                                <div class="meta">{{ $item->meta }}</div>
+                            <a href="{{ $item->url }}" style="position: relative;"
+                                class="picSec fullyCenterContent newNews ">
+                                <img data-src="{{ $item->pic }}" alt="{{ $item->keyword }}" loading="lazy"
+                                    class="lazyload resizeImgClass" onload="fitThisImg(this)">
                             </a>
+
+                            <div style="margin-left: 5px;background-color: #E7E0D8">
+                                <a href="{{ $item->url }}" class="colorGray">
+                                    <div class="title">{{ $item->title }}</div>
+                                    <div class="meta">{{ $item->meta }}</div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         @endif
     </div>
@@ -298,8 +300,10 @@
             var html = '';
             var text = '';
             for (let i = 0; i < 3; i++) {
-                mainNewscat.push(news[i]);
-                cat.push(news[i].news.length);
+                if (news[i].news.length > 0) {
+                    mainNewscat.push(news[i]);
+                    cat.push(news[i].news.length);
+                }
             }
             for (let i = 3; i < news.length; i++) {
                 if (news[i].news.length > 0) {
@@ -309,7 +313,13 @@
 
             cat = cat.sort();
             for (let i = 0; i < mainNewscat.length; i++) {
-                html += '<div style="width:33%;margin-right: 5px;">';
+                if (cat.length == 3) {
+                    html += '<div style="width:33%;margin-right: 5px;">';
+                } else if (cat.length == 2) {
+                    html += '<div style="width:48%;margin-right: 5px;">';
+                } else {
+                    html += '<div style="width:98%;margin-right: 5px;">';
+                }
                 html += '<div class="mostViewHeader">';
                 html += '' + mainNewscat[i].nameEn + '';
                 html += '</div>';
