@@ -83,7 +83,7 @@ class NewsController extends Controller
     {
         if(
              $origin == 'https://www.tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'https://www.tourismbank.co' ||
-                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbank.co'||$origin == 'https://titcompany.com'||$origin == 'tourismFinancialGroup'|| $origin == 'tourismIT'|| $origin == 'tourismBank'|| $origin == 'mahan'
+                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbank.co'||$origin == 'https://titcompany.com'||$origin == 'tourismFinancialGroup'|| $origin == 'tourismIT'|| $origin == 'tourismBank'|| $origin == 'mahan'|| $origin == 'fouladBaft'
         ) {
 
             $siteId = 4;
@@ -94,6 +94,8 @@ class NewsController extends Controller
                 $siteId = 5;
             if($origin == 'https://www.tourismbank.co'||$origin == 'https://tourismbank.co' || $origin == 'tourismBank')
                 $siteId = 3;
+            if($origin == 'https://www.fouladBaft.com'||$origin == 'https://fouladBaft.com' || $origin == 'fouladBaft')
+                $siteId = 2;
             else if($origin == 'https://www.titcompany.com'||$origin == 'https://titcompany.com' || $origin == 'tourismIT')
                 $siteId = 1;
 

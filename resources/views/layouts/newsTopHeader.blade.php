@@ -9,11 +9,11 @@
 <meta name="msapplication-TileImage" content="{{ URL::asset('images/icons/mainIcon.png') }}">
 <meta name="twitter:card" content="summary" />
 <meta property="og:url" content="{{ Request::url() }}" />
-<meta property="og:site_name" content="سامانه جامع گردشگری کوچیتا" />
+<meta property="og:site_name" content="سایت خبری درنا" />
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 
-<link rel="icon" href="{{ URL::asset('images/icons/KOFAV0.svg') }}" sizes="any" type="image/svg+xml">
-<link rel="apple-touch-icon-precomposed" href="{{ URL::asset('images/icons/KOFAV0.svg') }}" sizes="any"
+<link rel="icon" href="{{ URL::asset('images/icons/mainLogofav.png') }}" sizes="any" type="image/svg+xml">
+<link rel="apple-touch-icon-precomposed" href="{{ URL::asset('images/icons/mainLogofav.png') }}" sizes="any"
     type="image/svg+xml">
 
 <link rel='stylesheet' type='text/css' href='{{ URL::asset('css/fonts.css?v=1.1') }}' media="all" />
@@ -82,7 +82,7 @@
 {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name":"سامانه جامع گردشگری کوچیتا",
+    "name":"سایت خبری درنا",
 	"alternateName":"Koochita",
 	"url":"https://koochita.com",
 	"sameAs": [
@@ -101,7 +101,7 @@
         }
     ],
     "email":"info@koochita.com",
-    "logo":"{{URL::asset('images/icons/KOFAV0.svg')}}",
+    "logo":"{{URL::asset('images/icons/mainLogofav.png')}}",
 	"founder":[
 		{
 			"@type": "Person",

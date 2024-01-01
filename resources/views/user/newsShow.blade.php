@@ -62,9 +62,9 @@
         .eddsSec {}
 
         /* .eddsSec.fixedL {
-                                                                                                                                                                                        position: fixed;
-                                                                                                                                                                                        bottom: 0px;
-                                                                                                                                                                                    } */
+                                                                                                                                                                                            position: fixed;
+                                                                                                                                                                                            bottom: 0px;
+                                                                                                                                                                                        } */
 
         .newsVideo {}
 
@@ -218,8 +218,8 @@
             </div>
             <div class="mainPic" style="max-width: 100%; width: 100%; max-height: 500px; overflow: hidden; display: flex">
                 @if ($news->video == null)
-                    <img src="{{ $news->pic }}" alt="{{ $news->keyword }}" class="resizeImgClass"
-                        onload="fitThisImg(this)">
+                    <img src="{{ $news->pic }}" alt="{{ $news->keyword }}" onload="fitThisImg(this)"
+                        style="width: 100%;object-fit: contain">
                 @else
                     <video src="{{ $news->video }}" poster="{{ $news->pic }}" class="newsVideo" controls
                         style="width: 100%; max-height: 100%;"></video>

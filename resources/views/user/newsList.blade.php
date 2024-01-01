@@ -2,7 +2,7 @@
 
 
 @section('head')
-    <title>کوچیتا | لیست {{ $header }}</title>
+    <title>درنا | لیست {{ $header }}</title>
 @endsection
 
 

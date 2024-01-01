@@ -163,13 +163,13 @@ class UserNewsController extends Controller
 
         $header = '';
         if($kind == 'all')
-            $header = 'آخرین اخبار';
+            $header = 'last news';
         else if($kind == 'category')
             $header = $content;
         else if($kind == 'tag')
-            $header = 'اخبار مرتبط با  ' . $content;
+            $header = 'Related News  ' . $content;
         else if($kind == 'content')
-            $header = 'اخبار مرتبط با  ' . $content;
+            $header = 'Related News  ' . $content;
 
         return view('user.newsList', compact(['kind', 'content', 'header','topNews']));
     }

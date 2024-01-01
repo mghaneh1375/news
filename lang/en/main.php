@@ -22,7 +22,7 @@ return [
     'similarNews'=>'similar news',
     'tags'=>'tags',
     'linkCopied'=>'The link was copied',    
-    ''=>'',
+    'RelatedNews'=>'Related News',
     ''=>'',
     ''=>'',
     ''=>'',

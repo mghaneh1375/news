@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/salam', [NewsController::class, 'tmpSalam']);
 
 Route::get('/', function () {
-    return Redirect::to('/fa');
+    return Redirect::to('/en');
 })->name('home');
 
 // Route::get('/test', function () {

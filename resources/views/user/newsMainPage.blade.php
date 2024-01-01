@@ -3,9 +3,9 @@
 
 @section('head')
     <?php
-    $title = 'اخبار کوچیتا | آخرین و مهمترین اخبار گردشگری، صنایع دستی و میراث فرهنگی ایران و جهان';
-    $meta = 'آخرین اخبار ، دقیقترین تحلیل و تازه ترین ویدئوها را درباره ی گردشگری و صنایع دستی، میراث فرهنگی، حوادث، اقتصاد و توریسم را در کوچیتا ببینیدو بخوانید';
-    $keyword = 'اخبار , اخبار کوچیتا , اخبار گردشگری, ویدئوهای گردشگری, اخبار صنایع دستی, اخبار میراث فرهنگی';
+    $title = 'اخبار درنا | آخرین و مهمترین اخبار گردشگری، صنایع دستی و میراث فرهنگی ایران و جهان';
+    $meta = 'آخرین اخبار ، دقیقترین تحلیل و تازه ترین ویدئوها را درباره ی گردشگری و صنایع دستی، میراث فرهنگی، حوادث، اقتصاد و توریسم را در درنا ببینیدو بخوانید';
+    $keyword = 'اخبار , اخبار درنا , اخبار گردشگری, ویدئوهای گردشگری, اخبار صنایع دستی, اخبار میراث فرهنگی';
     ?>
 
 
@@ -33,7 +33,7 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                padding-left: unset !important; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                padding-left: unset !important; */
             margin-right: unset !important;
             margin-left: unset !important;
             width: 99% !important;
@@ -144,10 +144,18 @@
         <div class="col-md-3 col-xs-12 centerNav">
 
             @foreach ($lastNews2 as $item)
-                <div class="flexDirColumn newNews" style="height:245px;position: relative;padding-bottom: 5px">
+                <div class="flexDirColumn newNews" style="height:225px;position: relative;padding-bottom: 5px">
                     <img data-src="{{ $item->pic }}" alt="{{ $item->keyword }}" class="lazyload resizeImgClass"
                         style="width: 100% !important;height: auto !important">
                     <a href="{{ $item->url }}" class="content">
+                        <div style="display: flex">
+                            <div style="background-color: #6D0606 ;width: 18px;">
+                            </div>
+                            <div
+                                style="background-color: #6D0606;margin-left: 2px;width: fit-content;padding: 0px 10px;color: white ">
+                                {{ $item->category }}
+                            </div>
+                        </div>
                         <p class="title">{{ $item->title }}</p>
                     </a>
                 </div>
@@ -188,15 +196,22 @@
 
                 @foreach ($lastNews as $item)
                     <div class="sideNewsCard lastNewsCard ">
-
-                        <a href="{{ $item->url }}" style="position: relative;"
-                            class="picSec fullyCenterContent newNews {{ $item->video != null ? 'playIcon' : '' }}">
+                        <div class="picSec fullyCenterContent newNews">
                             <img data-src="{{ $item->pic }}" alt="{{ $item->keyword }}" loading="lazy"
                                 class="lazyload resizeImgClass" onload="fitThisImg(this)">
-                            <div href="{{ $item->url }}" class="content">
+                            <a href="{{ $item->url }}"class="content {{ $item->video != null ? 'playIcon' : '' }}"
+                                style="bottom:0px !important">
+                                <div style="display: flex;padding-bottom: 5px;">
+                                    <div style="background-color: #6D0606 ;width: 18px;">
+                                    </div>
+                                    <div
+                                        style="background-color: #6D0606;margin-left: 2px;width: fit-content;padding: 0px 10px;color: white ">
+                                        {{ $item->category }}
+                                    </div>
+                                </div>
                                 <p class="title">{{ $item->title }}</p>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
 
                         <div class="bgColorWhite" style="margin-left: 5px">
                             <a href="{{ $item->url }}" class="colorGray">
@@ -318,7 +333,7 @@
                 } else if (cat.length == 2) {
                     html += '<div style="width:48%;margin-right: 5px;">';
                 } else {
-                    html += '<div style="width:98%;margin-right: 5px;">';
+                    html += '<div style="width:100%">';
                 }
                 html += '<div class="mostViewHeader">';
                 html += '' + mainNewscat[i].nameEn + '';

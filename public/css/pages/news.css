@@ -175,6 +175,7 @@
     text-overflow: ellipsis;
 }
 .newsCat {
+    justify-content: space-between;
     height: unset !important;
     margin-top: 10px;
     float: right;
@@ -432,7 +433,7 @@
     overflow: hidden;
     position: relative;
 }
-.sideNewsCard .picSec .title {
+/* .sideNewsCard .picSec .title {
     position: absolute;
     padding-left: 5px;
     background: linear-gradient(0deg, black, transparent);
@@ -447,7 +448,7 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-}
+} */
 
 .inOneRows {
     padding-right: 10px;

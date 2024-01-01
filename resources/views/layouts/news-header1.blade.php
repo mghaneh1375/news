@@ -42,7 +42,7 @@
 <div class="mainHeader hideOnPhone">
     <div class="headerContainer">
         <a href="{{ route('site.news.main', ['lang' => \App::getLocale()]) }}" class="headerPcLogoDiv">
-            <img src="{{ URL::asset('images/icons/mainLogo.svg') }}" alt="{{ __('کوچیتا') }}" class="headerPcLogo" />
+            <img src="{{ URL::asset('images/icons/mainLogo.svg') }}" alt="{{ __('درنا') }}" class="headerPcLogo" />
         </a>
 
         <div class="headerButtonsSection flexDirColumn">
@@ -68,7 +68,7 @@
 <div class="hideOnScreen mobileHeader">
     <a href="{{ route('site.news.main', ['lang' => \App::getLocale()]) }}" class="global-nav-logo"
         style="height: 100%; display: flex; align-items: center">
-        <img src="{{ URL::asset('images/icons/mainLogo.svg') }}" alt="{{ __('کوچیتا') }}"
+        <img src="{{ URL::asset('images/icons/mainLogo.svg') }}" alt="{{ __('درنا') }}"
             style="height: 80%; width: auto;" />
     </a>
 </div>
@@ -77,16 +77,16 @@
     <div class="headerCampaignModalBody">
         <span class="iconClose closeLanding" onclick="$('#campingHeader').hide();"></span>
         <div class="headerCampingTop" onclick="goToLanding()">
-            <img alt="کوچیتا، سامانه جامع گردشگری ایران" src="{{ URL::asset('images/camping/undp.svg') }}"
+            <img alt="درنا، سامانه جامع خبری ایران" src="{{ URL::asset('images/camping/undp.svg') }}"
                 style="position: absolute; width: 60px; top: 10px; right: 2%;">
-            <img alt="کوچیتا، سامانه جامع گردشگری ایران"
+            <img alt="درنا، سامانه جامع خبری ایران"
                 src="{{ URL::asset('images/camping/' . app()->getLocale() . '/landing.webp') }}" class="resizeImgClass"
                 style="width: 100%;" onload="fitThisImg(this)">
         </div>
         <div class="headerCampingBottom">
 
             <div onclick="$('#campingHeader').hide(); openUploadPost()">
-                <img alt="کوچیتا، سامانه جامع گردشگری ایران"
+                <img alt="درنا، سامانه جامع خبری ایران"
                     src="{{ URL::asset('images/camping/' . app()->getLocale() . '/nAxasi.webp') }}"
                     class="resizeImgClass" onload="fitThisImg(this)">
             </div>
