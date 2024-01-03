@@ -49,7 +49,7 @@
 
             <div style="color: #232323;font-size: 15px;width: 100%;display: flex;justify-content: center;">
                 About-policies-advertisement - <a href=""id="lang"
-                    style="color: #232323;">{{ __('main.lang') }}</a>
+                    style="color: #232323;display: none">{{ __('main.lang') }}</a>
             </div>
             <div class="d-flex">
                 <div style="background-color: #6D0606" class="flexRowRev alignItemCen">
