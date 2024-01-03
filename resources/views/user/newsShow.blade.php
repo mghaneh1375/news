@@ -12,8 +12,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d2ac68">
-    <meta name="msapplication-TileColor" content="#d2ac68">
-    <meta name="theme-color" content="#d2ac68">
+    <meta name="msapplication-TileColor" content=" #e7e0d8">
+    <meta name="theme-color" content=" #e7e0d8">
 
     <link rel="canonical" href="{{ Request::url() }}" />
     <meta name="author" content="{{ $news->username }}" />
@@ -62,9 +62,9 @@
         .eddsSec {}
 
         /* .eddsSec.fixedL {
-                                                                                                                                                                                            position: fixed;
-                                                                                                                                                                                            bottom: 0px;
-                                                                                                                                                                                        } */
+                                                                                                                                                                                                position: fixed;
+                                                                                                                                                                                                bottom: 0px;
+                                                                                                                                                                                            } */
 
         .newsVideo {}
 

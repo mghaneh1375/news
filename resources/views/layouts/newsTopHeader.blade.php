@@ -5,11 +5,11 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="theme-color" content="#30b4a6" />
-<meta name="msapplication-TileColor" content="#30b4a6">
+<meta name="msapplication-TileColor" content=" #e7e0d8">
 <meta name="msapplication-TileImage" content="{{ URL::asset('images/icons/mainIcon.png') }}">
 <meta name="twitter:card" content="summary" />
 <meta property="og:url" content="{{ Request::url() }}" />
-<meta property="og:site_name" content="سایت خبری درنا" />
+<meta property="og:site_name" content="Dornanews" />
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 
 <link rel="icon" href="{{ URL::asset('images/icons/mainLogofav.png') }}" sizes="any" type="image/svg+xml">
@@ -82,30 +82,26 @@
 {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name":"سایت خبری درنا",
-	"alternateName":"Koochita",
-	"url":"https://koochita.com",
+    "name":"Dornanews",
+	"alternateName":"Dorna",
+	"url":"https://dornanews.com",
 	"sameAs": [
-         "https://www.facebook.com/Koochita-115157527076374",
-         "https://twitter.com/Koochita_Com",
-         "https://www.instagram.com/koochita_com/",
-         "https://t.me/koochita",
-         "https://wa.me/989120239315"
+
     ],
 	"address":[
         {
             "@type": "PostalAddress",
             "addressCountry": "IR",
-            "addressRegion": "تهران",
-            "streetAddress": "میدان ونک ، قبل از چهارراه جهان کودک ، ساختمان دانشگاه علامه طبابایی، طبقه سوم ، سیسوتک"
+            "addressRegion": "Tehran",
+            "streetAddress": "vanak"
         }
     ],
-    "email":"info@koochita.com",
+    "email":"info@dornanews.com",
     "logo":"{{URL::asset('images/icons/mainLogofav.png')}}",
 	"founder":[
 		{
 			"@type": "Person",
-			"name": "Soore Vahedzade"
+			"name": ""
         }
     ]
 },
