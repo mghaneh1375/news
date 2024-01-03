@@ -31,7 +31,8 @@
             </div>
 
             @foreach ($newsCategories as $category)
-                <div class="secHeadTabs {{ count($category['sub']) > 0 ? 'arrowAfter' : '' }}">
+                <div
+                    class="secHeadTabs {{ count($category['sub']) > 0 ? 'arrowAfter' : '' }}"data-id="{{ $category['name'] }}">
                     <a href="{{ route('site.news.list', ['kind' => 'category', 'content' => $category['name'], 'lang' => \App::getLocale()]) }}"
                         style="color: white">{{ $category['name'] }}</a>
                     <div class="secHeadTabsSubList">

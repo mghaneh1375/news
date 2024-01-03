@@ -147,7 +147,7 @@ function getAlertItems() {
                         '<div class="alertMsgHeaderContentImgDiv">\n' +
                         '<img src="' +
                         item.pic +
-                        '"  alt="کوچیتا، سامانه جامع گردشگری ایران" class="resizeImgClass" onload="fitThisImg(this)" style="width: 100%">\n' +
+                        '"  alt="Dorna News" class="resizeImgClass" onload="fitThisImg(this)" style="width: 100%">\n' +
                         "</div>\n" +
                         '<div class="alertMsgHeaderContentTextDiv">\n' +
                         '<div class="alertMsgHeaderContentText">' +
@@ -895,7 +895,7 @@ function createFollower(_Id, _follower) {
 
             text += `<div class="peopleRow">
                             <a href="${item.url}" class="pic">
-                                <img alt="کوچیتا، سامانه جامع گردشگری ایران" src="${item.pic}" class="resizeImgClass" style="width: 100%" onload="fitThisImg(this)">
+                                <img alt="Dorna News" src="${item.pic}" class="resizeImgClass" style="width: 100%" onload="fitThisImg(this)">
                             </a>
                             <a href="${item.url}" class="name lessShowText">${item.username}</a>`;
 

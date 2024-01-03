@@ -1,70 +1,82 @@
 var bannerIsLoaded = false;
-var middleBan5Color = ['red', 'green', 'navy'];
+var middleBan5Color = ["red", "green", "navy"];
 var loadSuggestion = false;
 var lastPageForSuggestion = [];
-var divNames = ['newInKoochita', 'topFood', 'topTabiat', 'topRestaurant', 'topTarikhi', 'topSafarnameh']; /*'topKharid'*/
+var divNames = [
+    "newInKoochita",
+    "topFood",
+    "topTabiat",
+    "topRestaurant",
+    "topTarikhi",
+    "topSafarnameh",
+]; /*'topKharid'*/
 var sugg4PlaceHolder = getSuggestionPackPlaceHolder();
-sugg4PlaceHolder += sugg4PlaceHolder+sugg4PlaceHolder+sugg4PlaceHolder;
+sugg4PlaceHolder += sugg4PlaceHolder + sugg4PlaceHolder + sugg4PlaceHolder;
 
-divNames.forEach(item => {
+divNames.forEach((item) => {
     var elem = $(`.${item}`);
     elem.html(sugg4PlaceHolder);
-    elem.find('.suggestionPackDiv').addClass('swiper-slide');
-    elem.css('direction', 'ltr');
+    elem.find(".suggestionPackDiv").addClass("swiper-slide");
+    elem.css("direction", "ltr");
 });
 
-runMainSwiper('mainSuggestion');
+runMainSwiper("mainSuggestion");
 
-if (typeof(Storage) !== "undefined") {
+if (typeof Storage !== "undefined") {
     var lastPages;
-    lastPages = localStorage.getItem('lastPages');
-    if(lastPages != null)
-        lastPageForSuggestion = JSON.parse(lastPages);
-} else
-    console.log('your browser not support localStorage');
+    lastPages = localStorage.getItem("lastPages");
+    if (lastPages != null) lastPageForSuggestion = JSON.parse(lastPages);
+} else console.log("your browser not support localStorage");
 
-function ajaxToFillMainPageSuggestion(){
-    if(!bannerIsLoaded)
-        loadMainPageSliders();
+function ajaxToFillMainPageSuggestion() {
+    if (!bannerIsLoaded) loadMainPageSliders();
 
     var states = [];
-    lastPageForSuggestion.map(item => states.push(item.state));
+    lastPageForSuggestion.map((item) => states.push(item.state));
 
     $.ajax({
-        type: 'GET',
+        type: "GET",
         url: `${getMainPageSuggestionURL}?lastPage=${JSON.stringify(states)}`,
-        success: response => {
+        success: (response) => {
             createMainPageSuggestion(JSON.parse(response));
             // fillCountNumber(response.count);
-        }
-    })
+        },
+    });
 }
 
-function loadMainPageSliders(){
-    var cityMainPageSliderElement = $('.cityMainPageSlider');
-    var text = '';
+function loadMainPageSliders() {
+    var cityMainPageSliderElement = $(".cityMainPageSlider");
+    var text = "";
 
     bannerIsLoaded = true;
-    if(middleBan5.length > 0){
-        cityMainPageSliderElement.parent().removeClass('hidden');
+    if (middleBan5.length > 0) {
+        cityMainPageSliderElement.parent().removeClass("hidden");
         middleBan5.map((item, index) => {
             text += `<div class="swiper-slide position-relative citySliderMainPageItem">
-                           <figure class="snip1091 ${middleBan5Color[index%3]}">
-                               <img src="${item.pic}" alt="کوچیتا، سامانه جامع گردشگری ایران" loading="lazy" class="resizeImgClass" style="width: 100%"/>
+                           <figure class="snip1091 ${
+                               middleBan5Color[index % 3]
+                           }">
+                               <img src="${
+                                   item.pic
+                               }" alt="Dorna News" loading="lazy" class="resizeImgClass" style="width: 100%"/>
                                <figcaption>
                                    <h2>${item.text}</h2>
                                </figcaption>
-                               ${ item.link != '' ? `<a href="${item.link}"></a>` : '' }
+                               ${
+                                   item.link != ""
+                                       ? `<a href="${item.link}"></a>`
+                                       : ""
+                               }
                            </figure>
-                        </div>`
+                        </div>`;
         });
         cityMainPageSliderElement.html(text);
 
-        new Swiper('.threeSlider', {
+        new Swiper(".threeSlider", {
             loop: true,
             breakpoints: {
                 768: {
-                    slidesPerView: 'auto',
+                    slidesPerView: "auto",
                     centeredSlides: true,
                     spaceBetween: 10,
                 },
@@ -72,44 +84,46 @@ function loadMainPageSliders(){
                     loopFillGroupWithBlank: true,
                     slidesPerView: 3,
                     spaceBetween: 20,
-                }
+                },
             },
             navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            }
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
         });
-    }
-    else
-        cityMainPageSliderElement.parent().remove();
+    } else cityMainPageSliderElement.parent().remove();
 
-
-    if(middleBan4.length > 0){
-        var Ban4Text = '';
+    if (middleBan4.length > 0) {
+        var Ban4Text = "";
         Baner4isLoaded = true;
-        middleBan4.map((item, index) => Ban4Text += `<a href="${placeListOfMajaraUrl}" id='slide${index+1}' class='mainBlubSlider ${index == 0 ? 'up1' : ''}' style="background-image: url('${item.pic}'); ">${item.text}</a>`)
-        $('#middleBan4Body').html(Ban4Text);
-    }
-    else
-        $('#middleBan4Body').parent().parent().remove();
-
+        middleBan4.map(
+            (item, index) =>
+                (Ban4Text += `<a href="${placeListOfMajaraUrl}" id='slide${
+                    index + 1
+                }' class='mainBlubSlider ${
+                    index == 0 ? "up1" : ""
+                }' style="background-image: url('${item.pic}'); ">${
+                    item.text
+                }</a>`)
+        );
+        $("#middleBan4Body").html(Ban4Text);
+    } else $("#middleBan4Body").parent().parent().remove();
 }
 
-function fillCountNumber(_counts){
+function fillCountNumber(_counts) {
     // CountMiddleBanner
-    $('.safarnamehCountMiddleBanner').text(_counts.safarnameh);
-    $('.userCountMiddleBanner').text(_counts.userCount);
-    $('.commentCountMiddleBanner').text(_counts.comment);
-    $('.mahaliFoodCountMiddleBanner').text(_counts.mahaliFood);
-    $('.sogatSanaieCountMiddleBanner').text(_counts.sogatSanaie);
-    $('.amakenCountMiddleBanner').text(_counts.amaken);
-    $('.restaurantCountMiddleBanner').text(_counts.restaurant);
-    $('.hotelCountMiddleBanner').text(_counts.hotel);
-    $('.boomgardyCountMiddleBanner').text(_counts.boomgardy);
+    $(".safarnamehCountMiddleBanner").text(_counts.safarnameh);
+    $(".userCountMiddleBanner").text(_counts.userCount);
+    $(".commentCountMiddleBanner").text(_counts.comment);
+    $(".mahaliFoodCountMiddleBanner").text(_counts.mahaliFood);
+    $(".sogatSanaieCountMiddleBanner").text(_counts.sogatSanaie);
+    $(".amakenCountMiddleBanner").text(_counts.amaken);
+    $(".restaurantCountMiddleBanner").text(_counts.restaurant);
+    $(".hotelCountMiddleBanner").text(_counts.hotel);
+    $(".boomgardyCountMiddleBanner").text(_counts.boomgardy);
 }
 
-function createMainPageSuggestion(_result){
-
+function createMainPageSuggestion(_result) {
     var food = _result.topFood;
     var tarikhi = _result.amaken;
     var tabiat = _result.majara;
@@ -118,55 +132,85 @@ function createMainPageSuggestion(_result){
     var safarnameh = _result.safarnameh;
 
     // createSuggestionPack in suggestionPack.blade.php
-    createSuggestionPack('newInKoochita', _result.result, function() {
-        let elem = $('.newInKoochita');
-        elem.find('.suggestionPackDiv').addClass('swiper-slide');
-        elem.css('direction', 'ltr');
-    }, true);
+    createSuggestionPack(
+        "newInKoochita",
+        _result.result,
+        function () {
+            let elem = $(".newInKoochita");
+            elem.find(".suggestionPackDiv").addClass("swiper-slide");
+            elem.css("direction", "ltr");
+        },
+        true
+    );
 
-    createSuggestionPack('topFood', food, function() {
-        let elem = $('.topFood');
-        elem.find('.suggestionPackDiv').addClass('swiper-slide');
-        elem.css('direction', 'ltr');
-    }, true);
+    createSuggestionPack(
+        "topFood",
+        food,
+        function () {
+            let elem = $(".topFood");
+            elem.find(".suggestionPackDiv").addClass("swiper-slide");
+            elem.css("direction", "ltr");
+        },
+        true
+    );
 
-    createSuggestionPack('topTabiat', tabiat, function() {
-        let elem = $('.topTabiat');
-        elem.find('.suggestionPackDiv').addClass('swiper-slide');
-        elem.css('direction', 'ltr');
-    }, true);
+    createSuggestionPack(
+        "topTabiat",
+        tabiat,
+        function () {
+            let elem = $(".topTabiat");
+            elem.find(".suggestionPackDiv").addClass("swiper-slide");
+            elem.css("direction", "ltr");
+        },
+        true
+    );
 
-    createSuggestionPack('topRestaurant', restaurant, function() {
-        let elem = $('.topRestaurant');
-        elem.find('.suggestionPackDiv').addClass('swiper-slide');
-        elem.css('direction', 'ltr');
-    }, true);
+    createSuggestionPack(
+        "topRestaurant",
+        restaurant,
+        function () {
+            let elem = $(".topRestaurant");
+            elem.find(".suggestionPackDiv").addClass("swiper-slide");
+            elem.css("direction", "ltr");
+        },
+        true
+    );
 
-    createSuggestionPack('topTarikhi', tarikhi, function() {
-        let elem = $('.topTarikhi');
-        elem.find('.suggestionPackDiv').addClass('swiper-slide');
-        elem.css('direction', 'ltr');
-    }, true);
+    createSuggestionPack(
+        "topTarikhi",
+        tarikhi,
+        function () {
+            let elem = $(".topTarikhi");
+            elem.find(".suggestionPackDiv").addClass("swiper-slide");
+            elem.css("direction", "ltr");
+        },
+        true
+    );
 
-    createSuggestionPack('topSafarnameh', safarnameh, function() {
-        let elem = $('.topSafarnameh');
-        elem.find('.suggestionPackDiv').addClass('swiper-slide');
-        elem.css('direction', 'ltr');
-        runMainSwiper('mainSuggestion')
-    }, true);
+    createSuggestionPack(
+        "topSafarnameh",
+        safarnameh,
+        function () {
+            let elem = $(".topSafarnameh");
+            elem.find(".suggestionPackDiv").addClass("swiper-slide");
+            elem.css("direction", "ltr");
+            runMainSwiper("mainSuggestion");
+        },
+        true
+    );
 }
 
-function runMainSwiper(_class){
-    new Swiper('.' + _class, {
+function runMainSwiper(_class) {
+    new Swiper("." + _class, {
         loop: true,
         // updateOnWindowResize: true,
         navigation: {
-            prevEl: '.swiper-button-next',
-            nextEl: '.swiper-button-prev',
+            prevEl: ".swiper-button-next",
+            nextEl: ".swiper-button-prev",
         },
         breakpoints: {
             768: {
-                slidesPerView: 'auto',
+                slidesPerView: "auto",
                 spaceBetween: 10,
                 loop: false,
             },
@@ -177,27 +221,30 @@ function runMainSwiper(_class){
             10000: {
                 slidesPerView: 4,
                 spaceBetween: 20,
-            }
-        }
+            },
+        },
     });
 }
 
 // this run function for mainArticlaSwiperMainPage
 // runMainSwiper('mainArticlaSwiperMainPage');
 
-if($(window).width() <= 767 && !bannerIsLoaded)
-    loadMainPageSliders();
+if ($(window).width() <= 767 && !bannerIsLoaded) loadMainPageSliders();
 
 $(window).ready(() => {
-    var loadSuggestionLine = document.getElementById('loadSuggestionLine').getBoundingClientRect().top;
+    var loadSuggestionLine = document
+        .getElementById("loadSuggestionLine")
+        .getBoundingClientRect().top;
     if (loadSuggestionLine - $(window).height() <= 0) {
         loadSuggestion = true;
         ajaxToFillMainPageSuggestion();
     }
 
-    $(window).on('scroll', e =>{
-        if(!loadSuggestion) {
-            var loadSuggestionLine = document.getElementById('loadSuggestionLine').getBoundingClientRect().top;
+    $(window).on("scroll", (e) => {
+        if (!loadSuggestion) {
+            var loadSuggestionLine = document
+                .getElementById("loadSuggestionLine")
+                .getBoundingClientRect().top;
             if (loadSuggestionLine - $(window).height() <= 0) {
                 loadSuggestion = true;
                 ajaxToFillMainPageSuggestion();
@@ -206,8 +253,7 @@ $(window).ready(() => {
     });
 });
 
-
-if(numSlidesMiddleBan4 > 0){
+if (numSlidesMiddleBan4 > 0) {
     var svg = true;
     var click = true;
     var sliding = false;
@@ -224,7 +270,7 @@ if(numSlidesMiddleBan4 > 0){
 
     function leftSlide() {
         if (click && Baner4isLoaded) {
-            if (curpage == 1) curpage = numSlidesMiddleBan4+1;
+            if (curpage == 1) curpage = numSlidesMiddleBan4 + 1;
             sliding = true;
             curpage--;
             svg = true;
@@ -301,13 +347,19 @@ if(numSlidesMiddleBan4 > 0){
                     for (j = 1; j <= 9; j++) {
                         var c = document.getElementById(transitionPrefix + j);
                         c.classList.remove("streak");
-                        c.setAttribute("class", transitionPrefix + j + " steap");
+                        c.setAttribute(
+                            "class",
+                            transitionPrefix + j + " steap"
+                        );
                     }
                 } else {
                     for (j = 10; j <= 18; j++) {
                         var c = document.getElementById(transitionPrefix + j);
                         c.classList.remove("streak");
-                        c.setAttribute("class", transitionPrefix + j + " steap");
+                        c.setAttribute(
+                            "class",
+                            transitionPrefix + j + " steap"
+                        );
                     }
                     sliding = true;
                 }
@@ -318,183 +370,203 @@ if(numSlidesMiddleBan4 > 0){
         }
     }
     leftMiddleBan4.onmousedown = () => leftSlide();
-    rightMiddleBan4.onmousedown = () =>  rightSlide();
+    rightMiddleBan4.onmousedown = () => rightSlide();
     setInterval(() => rightSlide(), 8000);
 }
 
-
-if($(window).width() > 767){
+if ($(window).width() > 767) {
     //START middleBan1
-    if(numSlidesMiddleBan1 > 0) {
-        const $cont = $('.cont');
-        const $slide = $('.slide');
-        const $closeBtn = $('.slide__close');
-        const $text = $('.slide__text');
-        const $iconTwitter = $('.icon-link--twitter');
+    if (numSlidesMiddleBan1 > 0) {
+        const $cont = $(".cont");
+        const $slide = $(".slide");
+        const $closeBtn = $(".slide__close");
+        const $text = $(".slide__text");
+        const $iconTwitter = $(".icon-link--twitter");
         const initialAnimDur = 7131;
         const animDelay = 1000;
 
         var initialAnim = true;
         var clickAnim = false;
 
-        $(document).on('click', '.slide__bg-dark', function () {
+        $(document).on("click", ".slide__bg-dark", function () {
             if (initialAnim || clickAnim) return;
             var _this = $(this).parent();
-            var target = +_this.attr('data-target');
+            var target = +_this.attr("data-target");
             clickAnim = true;
 
             _this.css({
-                'transform': 'translate3d(-100%, 0, 0)',
-                'transition': '750ms',
-                'cursor': 'default'
+                transform: "translate3d(-100%, 0, 0)",
+                transition: "750ms",
+                cursor: "default",
             });
 
-            _this.find('.slide__img-wrapper').css({
-                'transform': 'translate3d(0, 0, 0) scale(.95, .95)',
-                'transition': '2000ms'
+            _this.find(".slide__img-wrapper").css({
+                transform: "translate3d(0, 0, 0) scale(.95, .95)",
+                transition: "2000ms",
             });
 
             for (var i = target, length = $slide.length; i < length; i++) {
-                $('.slide--' + (i + 1)).css({
-                    'transform': 'translate3d(0, 0, 0)',
-                    'transition': '750ms'
+                $(".slide--" + (i + 1)).css({
+                    transform: "translate3d(0, 0, 0)",
+                    transition: "750ms",
                 });
             }
 
             for (var i = target, length = $slide.length; i > 1; i--) {
-                $('.slide--' + (i - 1)).css({
-                    'transform': 'translate3d(-150%, 0, 0)',
-                    'transition': '750ms'
-                })
+                $(".slide--" + (i - 1)).css({
+                    transform: "translate3d(-150%, 0, 0)",
+                    transition: "750ms",
+                });
             }
 
             setTimeout(function () {
-                $slide.not(_this).find('.slide__bg-dark').css({
-                    'opacity': '0'
-                })
-            }, 750)
+                $slide.not(_this).find(".slide__bg-dark").css({
+                    opacity: "0",
+                });
+            }, 750);
 
-            $closeBtn.addClass('show-close');
-            $iconTwitter.addClass('icon-show');
+            $closeBtn.addClass("show-close");
+            $iconTwitter.addClass("icon-show");
 
-            _this.find('.slide__text').css({
-                'transform': 'translate3d(150px, -40%, 0)',
-                'opacity': '1',
-                'transition': '2000ms',
-                '-webkit-transition': '2000ms'
-            })
+            _this.find(".slide__text").css({
+                transform: "translate3d(150px, -40%, 0)",
+                opacity: "1",
+                transition: "2000ms",
+                "-webkit-transition": "2000ms",
+            });
         });
 
-        $(document).on('mousemove', '.slide', function () {
+        $(document).on("mousemove", ".slide", function () {
             if (initialAnim || clickAnim) return;
             var _this = $(this);
-            var target = +_this.attr('data-target');
+            var target = +_this.attr("data-target");
 
             _this.css({
-                'transform': 'translate3d(-' + (((100 / numSlidesMiddleBan1) * (numSlidesMiddleBan1 - (target - 1))) + numSlidesMiddleBan1) + '%, 0, 0)',
-                'transition': '750ms'
-            })
+                transform:
+                    "translate3d(-" +
+                    ((100 / numSlidesMiddleBan1) *
+                        (numSlidesMiddleBan1 - (target - 1)) +
+                        numSlidesMiddleBan1) +
+                    "%, 0, 0)",
+                transition: "750ms",
+            });
 
-            _this.find('.slide__text').css({
-                'transform': 'translate3d(0, -40%, 0) rotate(0.01deg)',
-                '-moz-transform': 'translate3d(0, -40%, 0) rotate(0.01deg)',
-                'opacity': '1',
-                'transition': '750ms',
-                '-webkit-transition': '750ms'
-            })
+            _this.find(".slide__text").css({
+                transform: "translate3d(0, -40%, 0) rotate(0.01deg)",
+                "-moz-transform": "translate3d(0, -40%, 0) rotate(0.01deg)",
+                opacity: "1",
+                transition: "750ms",
+                "-webkit-transition": "750ms",
+            });
 
             for (var i = target, length = $slide.length; i < length; i++) {
-                $('.slide--' + (i + 1)).css({
-                    'transform': 'translate3d(-' + (((100 / numSlidesMiddleBan1) * (numSlidesMiddleBan1 - ((i + 1) - 1))) - numSlidesMiddleBan1) + '%, 0, 0)',
-                    'transition': '750ms'
-                })
+                $(".slide--" + (i + 1)).css({
+                    transform:
+                        "translate3d(-" +
+                        ((100 / numSlidesMiddleBan1) *
+                            (numSlidesMiddleBan1 - (i + 1 - 1)) -
+                            numSlidesMiddleBan1) +
+                        "%, 0, 0)",
+                    transition: "750ms",
+                });
             }
 
             for (var i = target; i > 1; i--) {
-                $('.slide--' + (i - 1)).css({
-                    'transform': 'translate3d(-' + (((100 / numSlidesMiddleBan1) * (numSlidesMiddleBan1 - ((i - 1) - 1))) + numSlidesMiddleBan1) + '%, 0, 0)',
-                    'transition': '750ms'
-                })
+                $(".slide--" + (i - 1)).css({
+                    transform:
+                        "translate3d(-" +
+                        ((100 / numSlidesMiddleBan1) *
+                            (numSlidesMiddleBan1 - (i - 1 - 1)) +
+                            numSlidesMiddleBan1) +
+                        "%, 0, 0)",
+                    transition: "750ms",
+                });
             }
 
-            _this.find('.slide__img-wrapper').css({
-                'transform': 'translate3d(-200px, 0, 0) scale(.85, .85)',
-                'transition': '750ms'
-            })
+            _this.find(".slide__img-wrapper").css({
+                transform: "translate3d(-200px, 0, 0) scale(.85, .85)",
+                transition: "750ms",
+            });
 
-            $slide.not(_this).find('.slide__img-wrapper').css({
-                'transform': 'translate3d(-200px, 0, 0) scale(.90, .90)',
-                'transition': '1000ms'
-            })
+            $slide.not(_this).find(".slide__img-wrapper").css({
+                transform: "translate3d(-200px, 0, 0) scale(.90, .90)",
+                transition: "1000ms",
+            });
 
-            $slide.not(_this).find('.slide__bg-dark').css({
-                'opacity': '.75'
-            })
+            $slide.not(_this).find(".slide__bg-dark").css({
+                opacity: ".75",
+            });
         });
 
-        $(document).on('mouseleave', '.slide', function () {
+        $(document).on("mouseleave", ".slide", function () {
             if (initialAnim || clickAnim) return;
             var _this = $(this);
-            var target = +_this.attr('data-target');
+            var target = +_this.attr("data-target");
 
             for (var i = 1, length = $slide.length; i <= length; i++) {
-
-                $('.slide--' + i).css({
-                    'transform': 'translate3d(-' + (100 / numSlidesMiddleBan1) * (numSlidesMiddleBan1 - (i - 1)) + '%, 0, 0)',
-                    'transition': '1000ms'
-                })
+                $(".slide--" + i).css({
+                    transform:
+                        "translate3d(-" +
+                        (100 / numSlidesMiddleBan1) *
+                            (numSlidesMiddleBan1 - (i - 1)) +
+                        "%, 0, 0)",
+                    transition: "1000ms",
+                });
             }
 
-            $slide.find('.slide__img-wrapper').css({
-                'transform': 'translate3d(-200px, 0, 0) scale(1, 1)',
-                'transition': '750ms'
-            })
+            $slide.find(".slide__img-wrapper").css({
+                transform: "translate3d(-200px, 0, 0) scale(1, 1)",
+                transition: "750ms",
+            });
 
-            $slide.find('.slide__bg-dark').css({
-                'opacity': '0'
-            })
+            $slide.find(".slide__bg-dark").css({
+                opacity: "0",
+            });
 
             $text.css({
-                'transform': 'translate3d(0, -50%, 0) rotate(0.01deg)',
-                'opacity': '0',
-                'transition': '200ms',
-                '-webkit-transition': '200ms'
-            })
+                transform: "translate3d(0, -50%, 0) rotate(0.01deg)",
+                opacity: "0",
+                transition: "200ms",
+                "-webkit-transition": "200ms",
+            });
         });
 
-        $(document).on('click', '.slide__close', function () {
-
+        $(document).on("click", ".slide__close", function () {
             setTimeout(function () {
                 clickAnim = false;
             }, 1000);
 
-            $closeBtn.removeClass('show-close');
-            $iconTwitter.removeClass('icon-show');
+            $closeBtn.removeClass("show-close");
+            $iconTwitter.removeClass("icon-show");
 
             for (var i = 1, length = $slide.length; i <= length; i++) {
-                $('.slide--' + i).css({
-                    'transform': 'translate3d(-' + (100 / numSlidesMiddleBan1) * (numSlidesMiddleBan1 - (i - 1)) + '%, 0, 0)',
-                    'transition': '1000ms',
-                    'cursor': 'pointer'
-                })
+                $(".slide--" + i).css({
+                    transform:
+                        "translate3d(-" +
+                        (100 / numSlidesMiddleBan1) *
+                            (numSlidesMiddleBan1 - (i - 1)) +
+                        "%, 0, 0)",
+                    transition: "1000ms",
+                    cursor: "pointer",
+                });
             }
 
             $text.css({
-                'transform': 'translate3d(150px, -40%, 0)',
-                'opacity': '0',
-                'transition': '200ms',
-                '-webkit-transition': '200ms'
-            })
+                transform: "translate3d(150px, -40%, 0)",
+                opacity: "0",
+                transition: "200ms",
+                "-webkit-transition": "200ms",
+            });
 
             setTimeout(function () {
                 $text.css({
-                    'transform': 'translate3d(0, -50%, 0)'
-                })
+                    transform: "translate3d(0, -50%, 0)",
+                });
             }, 200);
         });
 
         setTimeout(function () {
-            $cont.addClass('active');
+            $cont.addClass("active");
         }, animDelay);
 
         setTimeout(function () {

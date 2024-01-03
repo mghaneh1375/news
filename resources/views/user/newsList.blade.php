@@ -51,6 +51,14 @@
             padding: 6px 5px;
             margin-bottom: 2px
         }
+
+        .active a {
+            color: #6D0606 !important;
+        }
+
+        .active {
+            border-bottom: 1px solid #6D0606;
+        }
     </style>
     <div class="directionSite">
         Home - {{ $header }}
@@ -280,5 +288,17 @@
         });
 
         $(window).ready(getListElemes);
+        var url = window.location.href;
+        $(document).ready(function() {
+
+
+            // passes on every "a" tag 
+            $(".secHeadTabs a").each(function() {
+                // checks if its the same on the address bar
+                if (url == (this.href)) {
+                    $(this).closest(".secHeadTabs").addClass("active");
+                }
+            });
+        });
     </script>
 @endsection
