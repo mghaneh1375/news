@@ -117,7 +117,7 @@ class UserNewsController extends Controller
         //     array_push($topNewsOutput, getNewsMinimal($item));
         // $topNews = $topNewsOutput;
 
-    $lastVideos = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->whereNotNull('video')->orderByDesc('dateAndTime')->select($selectCol)->where('site_id', "4")->take(10)->get();
+    $lastVideos = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->whereNotNull('video')->orderByDesc('dateAndTime')->select($selectCol)->take(10)->get();
 
 
         $lastVideosOutput = [];
@@ -157,7 +157,7 @@ class UserNewsController extends Controller
     }
 
     public function newsListPage($lang, $kind, $content = '',Request $request){
-        $tpNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->where('topNews', 1)->orderByDesc('dateAndTime')->where('site_id', "4")->take(5)->get();
+        $tpNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->where('topNews', 1)->orderByDesc('dateAndTime')->take(5)->get();
         $topNews = NewsDigest::customCollection($tpNews , $lang)->toArray($request);
 
         $header = '';
