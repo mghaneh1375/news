@@ -37,7 +37,9 @@ class NewsDigest extends JsonResource
             'keyword' => getData(self::$locale, $this->keyword, $this->keywordEn),
             'video' => $this->video,
             'category'=> $category,
+            'siteId'=>$this->site_id,
             'author' => isset($this->userId) ? User::find($this->userId)->name : ''
+            
         ];
     }
     

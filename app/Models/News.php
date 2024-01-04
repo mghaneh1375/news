@@ -25,8 +25,7 @@ class News extends Model
         'textEn', 'metaEn', 'keywordEn', 'seoTitleEn', 'site_id'
     ];
 
-    public function scopeYouCanSee($query, $site=4, $lang='fa'){
-
+    public function scopeYouCanSee($query, $site, $lang='fa'){
         date_default_timezone_set('Asia/Tehran');
 
         $time = verta()->format('Y/m/d H:i');

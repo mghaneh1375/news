@@ -28,6 +28,7 @@
     <meta property="og:description" content="{{ $news->meta }}" />
     @if (isset($news->category) && $news->category != null)
         <meta property="article:section" content="{{ $news->category->name }}" />
+        <meta property="article:section" content="{{ $news->category->nameEn }}" />
     @endif
 
     <meta name="keywords" content="{{ $news->keyword }}">
@@ -62,9 +63,9 @@
         .eddsSec {}
 
         /* .eddsSec.fixedL {
-                                                                                                                                                                                                position: fixed;
-                                                                                                                                                                                                bottom: 0px;
-                                                                                                                                                                                            } */
+                                                                                                                                                                                                    position: fixed;
+                                                                                                                                                                                                    bottom: 0px;
+                                                                                                                                                                                                } */
 
         .newsVideo {}
 

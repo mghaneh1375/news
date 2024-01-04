@@ -44,7 +44,6 @@ class NewsResource extends JsonResource
         $otherNewsArr = [];
 
         if($category != null) {
-
             $otherNews = NewsCategoryRelations::join('news', 'news.id', 'news_category_relations.newsId')
                 ->where('site_id', $this->site_id )
                 ->where('news_category_relations.categoryId', $category->id)
@@ -57,9 +56,10 @@ class NewsResource extends JsonResource
                 ])
                 ->get();
         
-            foreach ($otherNews as $item)
+                foreach ($otherNews as $item)
                 array_push($otherNewsArr, getNewsMinimal(News::find($item->id)));
         }
+
         $time =getData(self::$locale,  Verta::createJalali($date[0], $date[1], $date[2], $times[0], $times[1], 0)->format('%d %B %Y  H:i'), date('D M Y H:i', strtotime($this->updated_at)));
 
         return [
@@ -67,6 +67,7 @@ class NewsResource extends JsonResource
             'title' => getData(self::$locale, $this->title, $this->titleEn),
             'slug' => $slug,
             'seen' => $this->seen,
+            'site_id' => $this->site_id,
             'text' => getData(self::$locale, $this->text, $this->textEn),
             'meta' => getData(self::$locale, $this->meta, $this->metaEn),
             'pic' => URL::asset("assets/news/{$this->id}/{$this->pic}"),
@@ -76,6 +77,7 @@ class NewsResource extends JsonResource
             'seoTitle' => getData(self::$locale, $this->seoTitle, $this->seoTitleEn),
             'video' => $video,
             'showTime' => $time,
+            
             'author' => isset($this->userId) ? User::find($this->userId)->name : '',
             'username' => 'koochita',
             'rtl' => $this->rtl,
