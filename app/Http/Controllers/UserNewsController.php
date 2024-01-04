@@ -149,7 +149,7 @@ class UserNewsController extends Controller
     {
         $tpNews = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->where('topNews', 1)->orderByDesc('dateAndTime')->take(5)->get();
         $topNews = NewsDigest::customCollection($tpNews , $lang)->toArray($request);
-        $news = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->where('slug', $slug)->orWhere('slugEn', $slug)->where('site_id', "4")->first();
+        $news = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->where('slug', $slug)->orWhere('slugEn', $slug)->first();
         if($news == null)
             return redirect(route('site.news.main', ['lang' => $lang]));
         $news = NewsResource::customMake($news, $lang);
