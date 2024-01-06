@@ -872,9 +872,7 @@
     .videoConv {
         width: 100%;
     }
-    .leftNavOne {
-        display: none;
-    }
+
     .videoConv {
         display: none;
     }
@@ -1110,7 +1108,7 @@
         margin-top: 5px;
     }
 }
-@media only screen and (min-width: 768px) and (max-width: 989px) {
+@media only screen and (min-width: 768px) and (max-width: 991px) {
     h1 {
         font-size: 25px;
         /* font-weight: 800; */
@@ -1138,5 +1136,8 @@
         margin-bottom: 5px;
         line-height: 30px;
         margin-top: 5px;
+    }
+    .leftNavOne {
+        display: none;
     }
 }
