@@ -78,16 +78,17 @@
     <div class="headerCampaignModalBody">
         <span class="iconClose closeLanding" onclick="$('#campingHeader').hide();"></span>
         <div class="headerCampingTop" onclick="goToLanding()">
-            <img alt="درنا، سامانه جامع خبری ایران" src="{{ URL::asset('images/camping/undp.svg') }}"
+            <img alt="Dorna News | The latest news and article in Economy, Tourism, International, Social, Handicrafts and Heritage, Art and culture and technology"
+                src="{{ URL::asset('images/camping/undp.svg') }}"
                 style="position: absolute; width: 60px; top: 10px; right: 2%;">
-            <img alt="درنا، سامانه جامع خبری ایران"
+            <img alt="Dorna News | The latest news and article in Economy, Tourism, International, Social, Handicrafts and Heritage, Art and culture and technology"
                 src="{{ URL::asset('images/camping/' . app()->getLocale() . '/landing.webp') }}" class="resizeImgClass"
                 style="width: 100%;" onload="fitThisImg(this)">
         </div>
         <div class="headerCampingBottom">
 
             <div onclick="$('#campingHeader').hide(); openUploadPost()">
-                <img alt="درنا، سامانه جامع خبری ایران"
+                <img alt="Dorna News | The latest news and article in Economy, Tourism, International, Social, Handicrafts and Heritage, Art and culture and technology"
                     src="{{ URL::asset('images/camping/' . app()->getLocale() . '/nAxasi.webp') }}"
                     class="resizeImgClass" onload="fitThisImg(this)">
             </div>
