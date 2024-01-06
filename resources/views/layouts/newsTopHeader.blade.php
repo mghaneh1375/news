@@ -11,6 +11,10 @@
 <meta property="og:url" content="{{ Request::url() }}" />
 <meta property="og:site_name" content="Dornanews" />
 <meta name="csrf-token" content="{{ csrf_token() }}" />
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+<link rel="manifest" href="/site.webmanifest">
 
 <link rel="icon" href="{{ URL::asset('images/icons/mainLogofav.png') }}" sizes="any" type="image/svg+xml">
 <link rel="apple-touch-icon-precomposed" href="{{ URL::asset('images/icons/mainLogofav.png') }}" sizes="any"
