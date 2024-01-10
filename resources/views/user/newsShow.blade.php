@@ -60,9 +60,9 @@
         .eddsSec {}
 
         /* .eddsSec.fixedL {
-                                                                                                                                                                                                                    position: fixed;
-                                                                                                                                                                                                                    bottom: 0px;
-                                                                                                                                                                                                                } */
+                                                                                                                                                                                                                                    position: fixed;
+                                                                                                                                                                                                                                    bottom: 0px;
+                                                                                                                                                                                                                                } */
 
         .newsVideo {}
 
@@ -126,8 +126,10 @@
     <div class="row" style="margin-top: 20px;margin-bottom: 40px">
         <div id="pcSideAdSection" class="col-md-3 hideOnPhone">
             <div>
-                <div class="row sideSec">
+                <div class="row sideSec" style="display: flex">
                     <div> {{ $news->showTime }}</div>
+                    <div id="bottomOfText "> , By: {{ $news->author }}</div>
+
                 </div>
                 <div class="row sideSec">
                     <div class="title">{{ __('main.share') }}</div>
@@ -231,7 +233,6 @@
                 <div class="descriptionText ck-content">
                     {!! $news->text !!}
                 </div>
-                <div id="bottomOfText " style="font-weight: 800"> Writer: {{ $news->author }}</div>
 
                 <div class="row sideSec" style="border-bottom: 0;display: none">
                     <div class="title">{{ __('main.tags') }}</div>

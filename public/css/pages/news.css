@@ -223,6 +223,8 @@
     background-color: #e7e0d8;
 }
 .RecommendedVideo .title {
+    font-size: 18px !important;
+    line-height: 20px !important;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -784,9 +786,13 @@
     color: black;
 }
 .directionSite {
+    display: flex;
     padding-top: 5px;
     color: #6d0606;
     font-size: 14px;
+}
+.directionSite a {
+    color: #6d0606;
 }
 .mostViewHeader {
     color: white !important;
@@ -805,6 +811,8 @@
     margin-left: 5px;
 }
 .mostViewDay .title {
+    font-size: 14px !important;
+    line-height: 18px !important;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;

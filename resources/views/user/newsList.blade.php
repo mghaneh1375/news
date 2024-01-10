@@ -61,7 +61,8 @@
         }
     </style>
     <div class="directionSite">
-        Home - {{ $header }}
+        <a href="{{ route('site.news.main', ['lang' => \App::getLocale()]) }}">Home -&nbsp;</a>
+        {{ $header }}
     </div>
     <div class="listHeaderRow">
         <h2 style="font-weight: bold;"> {{ $header }}</h2>
@@ -106,7 +107,7 @@
                         @foreach ($topNews as $item)
                             <li class="Point alignItemCen" style="border-left: solid 3px #6D0606;margin-top: 5px;">
                                 <a class="pdl10" style="color: black !important" href="{{ $item['url'] }}">
-                                    <h6 class="title" style="margin:5px 0 0 0">{{ $item['title'] }}</h6>
+                                    <h2 class="title" style="margin:5px 0 0 0">{{ $item['title'] }}</h2>
                                 </a>
                             </li>
                         @endforeach
@@ -221,8 +222,8 @@
                                                     ${content}
                                                 </div>
                                             </div>
-                                            <h6 class="title bold" style="margin:5px 0 0 0;color: #232323;">
-                                                ${item.title}</h6>
+                                            <h2 class="title bold" style="margin:5px 0 0 0;color: #232323;">
+                                                ${item.title}</h2>
                                             <h6 class="title" style="margin:5px 0 0 0;color: #676767">
                                                 ${item.meta}
                                             </h6>
@@ -265,7 +266,7 @@
                             '" loading="lazy"class="lazyload resizeImgClass" onload="fitThisImg(this)">';
                         html += '</a>';
                         html += '<a href="' + myRes.result[i].url + '" class="colorBlack">';
-                        html += '<h3 class="title" style="color: #232323">' + myRes.result[i].title + '</h3>';
+                        html += '<h2 class="title" style="color: #232323">' + myRes.result[i].title + '</h2>';
                         html += '<p class="summery"style="color: #676767;">' + myRes.result[i].meta + '</p>';
 
                         html += '</a>';
