@@ -46,7 +46,7 @@
     </div>
 
 
-    <div class="container" style="padding: 10px 5%;min-height: 450px">
+    <div class="container" style="padding: 10px 5%;min-height: 450px;max-width: 1140px;">
         @yield('body')
     </div>
 
