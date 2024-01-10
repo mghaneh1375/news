@@ -373,7 +373,7 @@
         no-repeat padding-box;
     position: absolute;
     bottom: 0px;
-    left: 1px;
+    left: 0px;
     padding-left: 5px;
     width: 100%;
 }
@@ -822,6 +822,22 @@
 #lineAds {
     height: fit-content;
     margin: 30px 0px;
+}
+.imgCaption {
+    position: absolute;
+    bottom: 0px;
+    margin: 0;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+    background-color: #343a40;
+    color: white;
+    padding: 5px;
+    overflow: hidden;
+    text-overflow: clip;
+    width: 100%;
 }
 @media (max-width: 889px) {
     .secHeadTabs {

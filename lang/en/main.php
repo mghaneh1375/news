@@ -26,7 +26,7 @@ If you are looking for accurate and up-to-date information on Iranian and world 
     'linkCopied'=>'The link was copied',    
     'RelatedNews'=>'Related News',
     'lang'=>'فارسی',
-    ''=>'',
+    'listTitle'=>'DornaNews | More news and article about',
     ''=>'',
     ''=>'',
     ''=>'',

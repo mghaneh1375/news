@@ -38,7 +38,7 @@ class NewsResource extends JsonResource
         $category = NewsCategory::join('news_category_relations', 'news_category_relations.categoryId', 'news_categories.id')
                         ->where('news_category_relations.isMain', 1)
                         ->where('news_category_relations.newsId', $this->id)
-                        ->select(['news_categories.id', 'news_categories.name'])
+                        ->select(['news_categories.id', 'news_categories.name', 'news_categories.nameEn'])
                         ->first();
                         
         $otherNewsArr = [];
@@ -79,7 +79,7 @@ class NewsResource extends JsonResource
             'showTime' => $time,
             
             'author' => isset($this->userId) ? User::find($this->userId)->name : '',
-            'username' => 'koochita',
+            'username' => 'dorna',
             'rtl' => $this->rtl,
             'tags' => array_filter($this->getTags->pluck(self::$locale == 'fa' ? 'tag' : 'tagEn')->toArray(), function($var) {
                 return !empty($var);

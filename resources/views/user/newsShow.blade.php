@@ -24,8 +24,11 @@
     <meta name="twitter:description" content="{{ $news->meta }}" />
     <meta property="og:description" content="{{ $news->meta }}" />
     @if (isset($news->category) && $news->category != null)
-        <meta property="article:section" content="{{ $news->category->name }}" />
-        <meta property="article:section" content="{{ $news->category->nameEn }}" />
+        @if (\App::getLocale() == 'en')
+            <meta property="article:section" content="{{ $news->category->nameEn }}" />
+        @else
+            <meta property="article:section" content="{{ $news->category->name }}" />
+        @endif
     @endif
 
     <meta name="keywords" content="{{ $news->keyword }}">
@@ -60,9 +63,9 @@
         .eddsSec {}
 
         /* .eddsSec.fixedL {
-                                                                                                                                                                                                                                    position: fixed;
-                                                                                                                                                                                                                                    bottom: 0px;
-                                                                                                                                                                                                                                } */
+                                                                                                                                                                                                                                                                                                                            position: fixed;
+                                                                                                                                                                                                                                                                                                                            bottom: 0px;
+                                                                                                                                                                                                                                                                                                                        } */
 
         .newsVideo {}
 
@@ -105,6 +108,49 @@
         .ck-content .image-style-align-right {
             float: right;
             margin-left: 10px;
+        }
+
+        blockquote {
+            border-left: 5px solid #6D0606 !important;
+        }
+
+        table {
+            border-spacing: 2px;
+            border-collapse: separate;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        thead th {
+            text-align: center;
+            background-color: #000 !important;
+            color: #fff;
+            padding: 16px 0px;
+        }
+
+        thead th td {
+
+            text-align: left;
+            padding: 16px;
+
+        }
+
+        tbody tr th {
+
+            text-align: center;
+            background-color: #000 !important;
+            color: #fff;
+            padding: 16px 0px;
+        }
+
+        tbody td {
+            text-align: left;
+            padding: 16px;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: rgb(224, 224, 224);
         }
     </style>
 
@@ -216,10 +262,12 @@
             <div class="newsTitleShow hideOnScreen">
                 <h1 style="font-weight: bold">{{ $news->title }}</h1>
             </div>
-            <div class="mainPic" style="max-width: 100%; width: 100%; max-height: 500px; overflow: hidden; display: flex">
+            <div class="mainPic"
+                style="max-width: 100%; width: 100%; max-height: 500px; overflow: hidden; display: flex;position: relative;">
                 @if ($news->video == null)
                     <img src="{{ $news->pic }}" alt="{{ $news->keyword }}" onload="fitThisImg(this)"
                         style="width: 100%;object-fit: contain">
+                    <div class="imgCaption">{{ $news->meta }}</div>
                 @else
                     <video src="{{ $news->video }}" poster="{{ $news->pic }}" class="newsVideo" controls
                         style="width: 100%; max-height: 100%;"></video>

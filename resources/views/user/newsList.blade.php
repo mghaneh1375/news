@@ -2,7 +2,25 @@
 
 
 @section('head')
-    <title>درنا | لیست {{ $header }}</title>
+    <title>{{ __('main.listTitle') }} {{ $content }}</title>
+
+    <meta property="og:title" content="{{ $content }}" />
+    <meta property="title" content="{{ $content }}" />
+    <meta name="twitter:title" content="{{ $content }}" />
+    {{-- <meta name="twitter:card" content="{{ }}" />
+    <meta name="description" content="{{ }}" />
+    <meta name="twitter:description" content="{{ }}" />
+    <meta property="og:description" content="{{ }}" /> --}}
+    <meta name="keywords" content="{{ $content }}">
+    <meta property="og:url" content="{{ Request::url() }}" />
+
+    <meta property="og:image" content="{{ URL::asset('images/icons/mainLogofav.png') }}" />
+    <meta property="og:image:secure_url" content="{{ URL::asset('images/icons/mainLogofav.png') }}" />
+    <meta name="twitter:image" content="{{ URL::asset('images/icons/mainLogofav.png') }}" />
+    <meta property="og:image:width" content="550" />
+    <meta property="og:image:height" content="367" />
+
+    <meta property="publisher" content="{{ $content }}" />
 @endsection
 
 
@@ -53,19 +71,19 @@
         }
 
         .active a {
-            color: #6D0606 !important;
+            color: #c71414 !important;
         }
 
         .active {
-            border-bottom: 1px solid #6D0606;
+            border-bottom: 1px solid #c71414;
         }
     </style>
     <div class="directionSite">
         <a href="{{ route('site.news.main', ['lang' => \App::getLocale()]) }}">Home -&nbsp;</a>
-        {{ $header }}
+        {{ $kind }} -{{ $content }}
     </div>
     <div class="listHeaderRow">
-        <h2 style="font-weight: bold;"> {{ $header }}</h2>
+        <h2 style="font-weight: bold;"> {{ $content }}</h2>
     </div>
 
     <div class="">
@@ -126,7 +144,9 @@
         var inTake = false;
 
         var kind = '{{ $kind }}';
+        var header = '{{ $header }}';
         var content = '{{ $content }}';
+
         var page = 0;
         var take = 10;
 
@@ -144,6 +164,10 @@
                     success: response => {
 
                         if (response.status == 'ok') {
+                            for (let i = 0; i < response.result.length; i++) {
+                                $("head").append('<meta property="news:tag" content="' + response.result[i]
+                                    .keyword + '" />');
+                            }
                             console.log(response);
 
                             createListElements(response.result);
