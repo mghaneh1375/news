@@ -4,7 +4,7 @@
 <head>
     @include('layouts.newsTopHeader')
 
-    <link rel="stylesheet" href="{{ URL::asset('css/pages/news.css?v=2.5') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/pages/news.css?v=2.6') }}">
 
     <style>
         .addNewReviewButtonMobileFooter {
