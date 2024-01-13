@@ -23,6 +23,7 @@
 
 
     <div class="container-fluid secHeadMain hideOnPhone">
+
         <div class="container secHeadNavs">
 
             <div class="secHeadTabs">
@@ -50,12 +51,7 @@
         @yield('body')
     </div>
 
-    <div class="mobileFiltersButtonTabs hideOnScreen">
-        <div class="tabs">
-            <div class="tab filterIcon" onclick="openMyModal('newCategoryMobileModal')">دسته بندی</div>
-            {{-- <div class="tab searchIcon" onclick="openMyModal('newsSearchMobile')">جستجو</div> --}}
-        </div>
-    </div>
+
 
     <div id="newCategoryMobileModal" class="modalBlackBack fullCenter hideOnScreen" style="transition: .7s">
         <div class="gombadi">
@@ -71,11 +67,10 @@
                     @foreach ($newsCategories as $cat)
                         <a href="{{ route('site.news.list', ['kind' => 'category', 'content' => $cat['name'], 'lang' => \App::getLocale()]) }}"
                             class="categ">
-                            {{-- <div class="categIcon"
+                            <div class="categIcon"
                                 style="{{ $cat['icon'] == 'sogatsanaie.svg' ? 'margin: 0px;' : '' }}">
-                                <img src="{{ URL::asset('images/mainPics/news/icons/' . $cat['icon']) }}"
-                                    alt="{{ $cat['name'] }}">
-                            </div> --}}
+                                <img src="{{ URL::asset('images/icons/' . $cat['icon']) }}" alt="{{ $cat['name'] }}">
+                            </div>
                             <div class="title">{{ $cat['name'] }}</div>
                         </a>
                     @endforeach

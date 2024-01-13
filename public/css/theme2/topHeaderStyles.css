@@ -206,7 +206,7 @@ input[type="radio"] + label {
     width: 100%;
     height: 100%;
     top: 0px;
-    right: 0px;
+    left: 0px;
     background: #000000b8;
     z-index: 1001;
     display: none;
@@ -495,14 +495,14 @@ input[type="radio"] + label {
 
     .modalBlackBack.fullCenter {
         transition: 0.3s;
-        height: 0;
+        width: 0;
         top: unset;
         bottom: 0px;
         display: flex !important;
         overflow: hidden;
     }
     .modalBlackBack.fullCenter.showModal {
-        height: 100%;
+        width: 100%;
     }
     .modalBlackBack.fullCenter .modalBody {
         position: absolute;

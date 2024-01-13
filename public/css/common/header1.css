@@ -623,6 +623,7 @@ DIV.ppr_rup.ppr_priv_global_nav_action_profile .username::before {
 }
 
 .mobileHeader {
+    position: relative;
     direction: rtl;
     background-color: #e7e0d8;
     height: 12vh !important;

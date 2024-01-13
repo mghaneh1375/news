@@ -422,7 +422,7 @@
     background-color: #ffffff;
     box-shadow: 0px 3px 6px #00000029;
     margin-top: 10px;
-    width: 32%;
+
     border-bottom: 2px solid #6d0606;
     height: 250px;
 }
@@ -852,6 +852,11 @@
     top: 0;
     position: sticky;
 }
+.menuIcon {
+    position: absolute;
+    left: 5px;
+    font-size: 40px;
+}
 @media (max-width: 889px) {
     .secHeadTabs {
         margin-right: 13px;
@@ -947,7 +952,7 @@
         margin: 0px !important;
     }
     .sideCardSec .lastNewsCard {
-        width: 100% !important;
+        width: 100%;
         height: 250px !important;
     }
     .sideNewsCard .picSec {
@@ -1027,6 +1032,8 @@
         flex-direction: column;
     }
     .newsCategoryListMFooter .categ {
+        align-items: center;
+        display: flex;
         color: #333;
         height: fit-content;
         border-bottom: 1px solid black;
@@ -1039,10 +1046,11 @@
         font-size: 25px;
     }
     .newsCategoryListMFooter .categ .categIcon {
-        margin: 5px 0px;
+        /* margin: 5px 0px; */
     }
     .newsCategoryListMFooter .categ .categIcon img {
-        height: 40px;
+        height: 30px;
+        padding: 0px 5px;
     }
     .newsCategoryListMFooter .categ .title {
         font-size: 25px;
@@ -1124,6 +1132,10 @@
     }
 }
 @media (max-width: 991px) {
+    .sideCardSec .lastNewsCard {
+        width: 47%;
+        height: 250px !important;
+    }
     .listBody .newsRow {
         width: 50%;
         padding: 10px 10px 0px 10px !important;
@@ -1190,5 +1202,8 @@
 @media (min-width: 992px) {
     .listBody .newsRow {
         width: 33%;
+    }
+    .sideCardSec .lastNewsCard {
+        width: 32%;
     }
 }

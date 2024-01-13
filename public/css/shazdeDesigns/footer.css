@@ -1929,13 +1929,14 @@ footer .bookMarkSSec .infoSec .state {
     color: gray !important;
 }
 .gombadi {
-    height: 90%;
+    height: 99%;
     overflow: hidden;
-    width: 95%;
+    width: 80%;
     bottom: 0px;
+    left: 0px;
     direction: rtl;
     position: absolute;
-    max-width: 500px;
+    max-width: 350px;
 }
 .gombadi .mobileFooterFilterPic {
     position: relative;
