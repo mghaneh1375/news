@@ -1,0 +1,27 @@
+#enTime {
+    margin-left: 0px !important;
+    margin-right: 5px;
+}
+.topnews {
+    float: right !important;
+}
+.leftNavOne {
+    padding-right: 15px;
+    padding-left: 0px !important;
+}
+
+.mainSwiper {
+    padding-right: 0px !important;
+}
+.mostViewDay li {
+    border-right: solid 3px #6d0606;
+}
+.lastSpecialNew li {
+    border-right: solid 3px #6d0606;
+}
+.lastSpecialNew li > div {
+    padding-right: 10px;
+}
+.textInLastSpecialNew {
+    padding-right: 10px;
+}

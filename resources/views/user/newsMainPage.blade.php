@@ -32,9 +32,9 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            padding-left: unset !important; */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                padding-left: unset !important; */
             /* margin-right: unset !important;
-                                                                margin-left: unset !important; */
+                                                                                                    margin-left: unset !important; */
             width: 99% !important;
         }
 
@@ -171,7 +171,7 @@
 
 @section('body')
     <div class="row topSectionMainPageNews">
-        <div class="col-lg-3 col-md-12 col-xs-12 heightUnset  pdR0 leftNavOne">
+        <div class="col-lg-3 col-md-12 col-xs-12 heightUnset leftNavOne">
             <div id="RecommendedVideo" class="flexDirColumn"
                 style="height:85%;box-shadow: 0px 3px 6px #00000029;;background-color: #e7e0d8;">
                 <div class="mostViewHeader " style="margin: 5px 10px 0px 10px;">
@@ -296,7 +296,7 @@
             <img src="{{ URL::asset('images/shareBoxImg/lineAds.webp') }}"
                 alt=""style="width: 100%;height: 100%;object-fit: fill;box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.7);border: 1px solid gray;">
         </div>
-        <div class="col-lg-9 col-md-12 col-xs-12 topnews" style="height: unset;padding-left: 0px;float: left !important;">
+        <div class="col-lg-9 col-md-12 col-xs-12 topnews">
 
             <div class="col-md-8 col-xs-12  lastNews">
                 <div style="margin-top: 10px">
@@ -305,13 +305,13 @@
                     </div>
                     <ul class="lastSpecialNew">
                         @foreach ($topNews as $item)
-                            <li class="Point alignItemCen" style="border-left: solid 3px #6D0606;margin-top: 5px;">
+                            <li class="Point alignItemCen" style="margin-top: 5px;">
                                 <div class="pdl10 d-flex" style=" box-shadow: 0px 3px 6px #00000029; padding-top: 5px">
                                     <a href="{{ $item['url'] }}" class="topNewsImg"><img
                                             style="width: 100%;height: 100%;object-fit: fill;" src="{{ $item['pic'] }}"
                                             alt="">
                                     </a>
-                                    <div style="padding-left: 10px">
+                                    <div class="textInLastSpecialNew">
                                         <a href="{{ $item['url'] }}">
                                             <div style="display: flex">
 
@@ -428,8 +428,9 @@
                 text += ' <ul class="lastSpecialNew">';
                 for (let j = 0; j < sideNewscat[i].news.length; j++) {
                     text +=
-                        '<li class="Point alignItemCen" style="border-left: solid 3px #6D0606;margin-top: 5px;">';
-                    text += '<a class="pdl10" style="color: black !important" href="' + sideNewscat[i].news[j].url +
+                        '<li class="Point alignItemCen" style="margin-top: 5px;">';
+                    text += '<a class="textInLastSpecialNew" style="color: black !important" href="' + sideNewscat[
+                            i].news[j].url +
                         '">';
                     text += '<h6 class="title" style="margin:5px 0 0 0">' + sideNewscat[i].news[j].title + '</h6>';
                     text += ' </a>';

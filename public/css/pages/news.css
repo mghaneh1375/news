@@ -150,7 +150,6 @@
     flex-direction: column;
 }
 .mainSwiper {
-    padding-left: 0px !important;
     order: 1;
 }
 .lastNews {
@@ -848,7 +847,6 @@
     width: 100%;
 }
 .leftNavOne {
-    padding-right: 0px;
     top: 0;
     position: sticky;
 }
@@ -856,6 +854,13 @@
     position: absolute;
     left: 5px;
     font-size: 40px;
+}
+.topnews {
+    height: unset !important;
+    padding-left: 0px;
+    color: white !important;
+    padding: 6px 5px;
+    margin-bottom: 2px;
 }
 @media (max-width: 889px) {
     .secHeadTabs {

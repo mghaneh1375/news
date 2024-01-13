@@ -35,3 +35,21 @@
 .leftNavOne {
     float: right !important;
 }
+.topnews {
+    float: left !important;
+}
+.leftNavOne {
+    padding-right: 0px;
+}
+.mainSwiper {
+    padding-left: 0px !important;
+}
+.mostViewDay li {
+    border-left: solid 3px #6d0606;
+}
+.lastSpecialNew li {
+    border-left: solid 3px #6d0606;
+}
+.textInLastSpecialNew {
+    padding-left: 10px;
+}

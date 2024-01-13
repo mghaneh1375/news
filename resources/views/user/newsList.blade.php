@@ -7,10 +7,26 @@
     <meta property="og:title" content="{{ $content }}" />
     <meta property="title" content="{{ $content }}" />
     <meta name="twitter:title" content="{{ $content }}" />
-    {{-- <meta name="twitter:card" content="{{ }}" />
-    <meta name="description" content="{{ }}" />
-    <meta name="twitter:description" content="{{ }}" />
-    <meta property="og:description" content="{{ }}" /> --}}
+    @if (\App::getLocale() == 'en')
+        <meta name="twitter:card"
+            content="Stay up-to-date on the latest {{ $content }} news and information. From article to news and ,  you'll find it all in our {{ $content }} section." />
+        <meta name="description"
+            content="Stay up-to-date on the latest {{ $content }} news and information. From article to news and ,  you'll find it all in our {{ $content }} section." />
+        <meta name="twitter:description"
+            content="Stay up-to-date on the latest {{ $content }} news and information. From article to news and ,  you'll find it all in our {{ $content }} section." />
+        <meta property="og:description"
+            content="Stay up-to-date on the latest {{ $content }} news and information. From article to news and ,  you'll find it all in our {{ $content }} section." />
+    @else
+        <meta name="twitter:card"
+            content="آخرین اخبار و اطلاعات {{ $content }} را در دسته بندی «{{ $content }} » بخوانید. از خبر و تحلیل گرفته تا نقد و پیش بینی دسته بندی {{ $content }} همه چیز را پیدا خواهید کرد." />
+        <meta name="description"
+            content="آخرین اخبار و اطلاعات {{ $content }} را در دسته بندی «{{ $content }} » بخوانید. از خبر و تحلیل گرفته تا نقد و پیش بینی دسته بندی {{ $content }} همه چیز را پیدا خواهید کرد." />
+        <meta name="twitter:description"
+            content="آخرین اخبار و اطلاعات {{ $content }} را در دسته بندی «{{ $content }} » بخوانید. از خبر و تحلیل گرفته تا نقد و پیش بینی دسته بندی {{ $content }} همه چیز را پیدا خواهید کرد." />
+        <meta property="og:description"
+            content="آخرین اخبار و اطلاعات {{ $content }} را در دسته بندی «{{ $content }} » بخوانید. از خبر و تحلیل گرفته تا نقد و پیش بینی دسته بندی {{ $content }} همه چیز را پیدا خواهید کرد." />
+    @endif
+
     <meta name="keywords" content="{{ $content }}">
     <meta property="og:url" content="{{ Request::url() }}" />
 
@@ -62,13 +78,6 @@
             margin-bottom: 2px
         }
 
-        .topnews {
-            color: white !important;
-            background-color: #232323;
-            padding: 6px 5px;
-            margin-bottom: 2px
-        }
-
         .active a {
             color: #c71414 !important;
         }
@@ -78,8 +87,8 @@
         }
     </style>
     <div class="directionSite">
-        <a href="{{ route('site.news.main', ['lang' => \App::getLocale()]) }}">Home -&nbsp;</a>
-        {{ $kind }} -{{ $content }}
+        <a href="{{ route('site.news.main', ['lang' => \App::getLocale()]) }}">{{ __('main.mainPage') }} -&nbsp;</a>
+        <div class="kind">{{ $kind }}</div>&nbsp; -&nbsp;{{ $content }}
     </div>
     <div class="listHeaderRow">
         <h2 style="font-weight: bold;"> {{ $content }}</h2>
@@ -122,7 +131,7 @@
                     </div>
                     <ul class="mostViewDay">
                         @foreach ($topNews as $item)
-                            <li class="Point alignItemCen" style="border-left: solid 3px #6D0606;margin-top: 5px;">
+                            <li class="Point alignItemCen" style="margin-top: 5px;">
                                 <a class="pdl10" style="color: black !important" href="{{ $item['url'] }}">
                                     <h2 class="title" style="margin:5px 0 0 0">{{ $item['title'] }}</h2>
                                 </a>
@@ -233,7 +242,7 @@
             text += '<ul class="lastSpecialNew">';
             _news.slice(3, 10).map(item => {
                 text += `                    
-                            <li class="Point alignItemCen" style="border-left: solid 3px #6D0606;margin-top: 5px;">
+                            <li class="Point alignItemCen" style="margin-top: 5px;">
                                 <div class="pdl10 d-flex" style=" box-shadow: 0px 3px 6px #00000029; padding-top: 5px">
                                     <div class="topNewsImg"><img
                                             style="width: 100%;height: 100%;object-fit: cover;"
@@ -329,5 +338,11 @@
                 }
             });
         });
+        if ($('html').is(':lang(en')) {
+
+        } else {
+            kind = 'دسته بندی';
+            $('.kind').empty().append(kind);
+        }
     </script>
 @endsection

@@ -40,6 +40,8 @@
 @if (\App::getLocale() == 'en')
     <link rel="stylesheet" href="{{ URL::asset('css/ltr/mainPageHeader.css?v=1.1') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/ltr/ltrFooter.css?v=1.1') }}">
+@else
+    <link rel="stylesheet" href="{{ URL::asset('css/rtl/rtl.css?v=1.1') }}">
 @endif
 
 <script src="{{ URL::asset('js/jquery-3.4.1.min.js') }}"></script>

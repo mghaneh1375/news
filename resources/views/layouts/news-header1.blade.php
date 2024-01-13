@@ -32,6 +32,8 @@
         }
 
         #enTime {
+            background-color: #6D0606;
+            margin-left: 5px;
             direction: ltr;
             color: white;
         }
@@ -49,13 +51,14 @@
 
             <div style="color: #232323;font-size: 15px;width: 100%;display: flex;justify-content: center;">
                 About-policies-advertisement - <a href=""id="lang"
-                    style="color: #232323;display: none">{{ __('main.lang') }}</a>
+                    style="color: #232323;">{{ __('main.lang') }}</a>
             </div>
             <div class="d-flex">
                 <div style="background-color: #6D0606" class="flexRowRev alignItemCen">
-                    <input type="text" placeholder="Type Here"
+                    <input type="text" placeholder="{{ __('main.TypeHere') }}"
                         style="background-color: #6D0606;border: unset;color:#ffffff ;height: 30px;width: 120px;">
-                    <span class="searchIcon colorWhite" style="font-size: 30px;margin-left: 3px;"></span>
+                    <span class="searchIcon colorWhite"
+                        style="font-size: 30px;margin-left: 3px;margin-right: 3px"></span>
                 </div>
                 <div id="enTime"style="background-color: #6D0606;margin-left:5px;" class="alignItemCen pd10"></div>
             </div>
