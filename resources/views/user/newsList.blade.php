@@ -85,6 +85,14 @@
         .active {
             border-bottom: 1px solid #c71414;
         }
+
+        .topnews {
+            color: white !important;
+            background-color: #232323;
+            padding: 6px 5px;
+            margin-bottom: 2px;
+            width: 100%;
+        }
     </style>
     <div class="directionSite">
         <a href="{{ route('site.news.main', ['lang' => \App::getLocale()]) }}">{{ __('main.mainPage') }} -&nbsp;</a>
