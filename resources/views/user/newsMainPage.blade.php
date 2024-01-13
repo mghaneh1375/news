@@ -32,9 +32,9 @@
     <style>
         .container {
             /* padding-right: unset !important;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                padding-left: unset !important; */
-            margin-right: unset !important;
-            margin-left: unset !important;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        padding-left: unset !important; */
+            /* margin-right: unset !important;
+                                                            margin-left: unset !important; */
             width: 99% !important;
         }
 
@@ -171,8 +171,9 @@
 
 @section('body')
     <div class="row topSectionMainPageNews">
-        <div class="col-lg-3 col-xs-12 heightUnset  pdR0 leftNavOne" style="top: 0;position: sticky;">
-            <div class="flexDirColumn" style="height:85%;box-shadow: 0px 3px 6px #00000029;;background-color: #e7e0d8;">
+        <div class="col-lg-3 col-md-12 col-xs-12 heightUnset  pdR0 leftNavOne">
+            <div id="RecommendedVideo" class="flexDirColumn"
+                style="height:85%;box-shadow: 0px 3px 6px #00000029;;background-color: #e7e0d8;">
                 <div class="mostViewHeader " style="margin: 5px 10px 0px 10px;">
                     <div style="font-size: 18px !important">{{ __('main.suggestedVideos') }}</div>
                 </div>
@@ -181,11 +182,11 @@
                 </div>
 
             </div>
-            <div style="width: 100%;margin-top: 10px">
+            <div id="firstAds">
                 <img src="{{ URL::asset('images/shareBoxImg/tabligh3.png') }}"
                     alt=""style="width: 100%;height:auto;object-fit:fill;border: 1px solid gray;">
             </div>
-            <div style="margin-top: 10px">
+            <div id="MostVisitedToday" style="margin-top: 10px">
                 <div class="MostVisitedToday">
                     <div style="font-size: 18px !important">{{ __('main.MostVisitedToday') }} </div>
                 </div>
@@ -200,16 +201,10 @@
                     @endforeach
                 </ul>
             </div>
-
-            <div style="width: 100%;margin-top: 10px">
+            <div id="secendAds">
                 <img src="{{ URL::asset('images/shareBoxImg/tabligh3.png') }}"
                     alt=""style="width: 100%;height:auto;object-fit: fill;border: 1px solid gray;">
             </div>
-            {{-- <div style="height: 200px ;width: 100%;">
-                <img src="{{ URL::asset('images/shareBoxImg/tabligh2.png') }}"
-                    alt=""style="width: 100%;height: 100%;object-fit: cover;box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.7);border: 1px solid gray;">
-            </div> --}}
-
         </div>
         <div class="col-lg-3 col-md-3 col-xs-12 centerNav">
             @foreach ($lastNews2 as $item)
@@ -231,7 +226,7 @@
                 </div>
             @endforeach
         </div>
-        <div class="col-lg-6 col-md-9 col-xs-12 mainSwiper">
+        <div class="col-lg-6 col-md-12 col-xs-12 mainSwiper">
             <div id="mainSlider" class="swiper-container mainPageSlider">
                 <div class="swiper-wrapper">
                     @foreach ($sliderNews as $item)
@@ -258,7 +253,7 @@
                 <div class="swiper-button-prev"></div>
             </div>
         </div>
-        <div class="col-md-9 col-xs-12  lastNews">
+        <div class="col-lg-9 col-md-12 col-xs-12  lastNews">
             <div class="mostViewHeader  bgColorRed">
                 <div style="font-size: 18px !important">{{ __('main.LatestNews') }}</div>
             </div>
@@ -295,13 +290,13 @@
             </div>
 
         </div>
-        <div id="mainNews" class="col-md-9 col-xs-12  newsCat">
+        <div id="mainNews" class="col-lg-9 col-md-12 col-xs-12  newsCat">
         </div>
-        <div id="lineAds" class="col-md-9 col-xs-9">
+        <div id="lineAds" class="col-lg-9 col-md-12 col-xs-9">
             <img src="{{ URL::asset('images/shareBoxImg/lineAds.webp') }}"
                 alt=""style="width: 100%;height: 100%;object-fit: fill;box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.7);border: 1px solid gray;">
         </div>
-        <div class="col-md-9 col-xs-12 topnews" style="height: unset;padding-left: 0px;float: left !important;">
+        <div class="col-lg-9 col-md-12 col-xs-12 topnews" style="height: unset;padding-left: 0px;float: left !important;">
 
             <div class="col-md-8 col-xs-12  lastNews">
                 <div style="margin-top: 10px">
@@ -347,7 +342,7 @@
             </div>
         </div>
         @if (count($lastVideos) > 0)
-            <div class="col-md-6 col-xs-12  videoBox">
+            <div class="col-lg-9 col-md-12 col-xs-12  videoBox">
                 <div class="mostViewHeader">
                     <div style="font-size: 14px !important">{{ __('main.LatestVideos') }}</div>
                 </div>

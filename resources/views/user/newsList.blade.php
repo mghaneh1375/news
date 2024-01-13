@@ -29,7 +29,6 @@
         .listBody .newsRow {
             float: left;
             height: 200px;
-            width: 33%;
             padding: 10px 0px 0px 10px;
         }
 
@@ -101,7 +100,7 @@
             </div>
             <div id="newsBody" class="listBody"></div>
             <div id="bottomMainList"></div>
-            <div class="col-md-3 col-xs-12 centerNav" style="padding-bottom: 20px">
+            <div class="col-md-4 col-xs-12 centerNav" style="padding-bottom: 20px">
                 <div style="padding-bottom: 20px">
                     <div
                         style="height: 15%;margin-bottom: 10px;box-shadow: 0 5px 8px -1px rgba(0, 0, 0, 0.7);border: 1px solid gray;">
@@ -150,6 +149,11 @@
         var page = 0;
         var take = 10;
 
+        function preloadFunc() {
+            // $("head").append('<meta property="news:tag" content="sina" />');
+
+        }
+
         function getListElemes() {
 
             openLoading();
@@ -168,8 +172,6 @@
                                 $("head").append('<meta property="news:tag" content="' + response.result[i]
                                     .keyword + '" />');
                             }
-                            console.log(response);
-
                             createListElements(response.result);
                         } else
                             getsList();
@@ -181,6 +183,8 @@
                 })
             }
         }
+
+        window.onload = preloadFunc();
 
         function getsList() {
             inTake = false;
@@ -222,7 +226,7 @@
                     </a>
                 </div></div>`;
             });
-            text += '<div class="col-md-9 newsInRow" >';
+            text += '<div class="col-lg-8 col-md-12 newsInRow" >';
             text += '<div class="mostViewHeader  bgColorRed">';
             text += '<div style="font-size: 18px !important">{{ __('main.LatestNews') }}</div>';
             text += '</div>';
@@ -311,8 +315,8 @@
             if (bottomOfList - windowHeight < 0 && !inTake && (!isFinish || mustBeTaken))
                 getListElemes();
         });
-
         $(window).ready(getListElemes);
+
         var url = window.location.href;
         $(document).ready(function() {
 
