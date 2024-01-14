@@ -56,7 +56,7 @@
             <div class="d-flex">
                 <div style="background-color: #6D0606" class="flexRowRev alignItemCen">
                     <input type="text" placeholder="{{ __('main.TypeHere') }}"
-                        style="background-color: #6D0606;border: unset;color:#ffffff ;height: 30px;width: 120px;">
+                        style="background-color: #6D0606;border: unset;color:#ffffff ;height: 30px;width: 120px;"onkeydown="search(this)">
                     <span class="searchIcon colorWhite"
                         style="font-size: 30px;margin-left: 3px;margin-right: 3px"></span>
                 </div>
@@ -110,14 +110,25 @@
     var locked = false;
     var superAccess = false;
     var time = getPersianDate();
+    var lang;
     if ($('html').is(':lang(en')) {
         var enTime = moment().format('D MMMM YYYY');
         $('#enTime').append(enTime);
         $('#lang').prop('href', 'https://dornanews.com/fa');
+        lang = 'en';
     } else {
         $('#enTime').append(time);
         $('#lang').prop('href', 'https://dornanews.com/fa');
         $('#lang').prop('href', 'https://dornanews.com/en');
+        lang = 'fa';
+
+    }
+
+    function search(ele) {
+        if (event.key === 'Enter') {
+            var val = ele.value;
+            location.href = `{{ url('/${lang}/list/content') }}/${val}`;
+        }
     }
 </script>
 

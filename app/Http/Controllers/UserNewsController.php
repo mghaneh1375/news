@@ -201,17 +201,25 @@ class UserNewsController extends Controller
                         ->get();
         }
         else if($kind == 'tag'){
-            $tag = NewsTags::where('tag', $content)->first();
-            $news = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->join('news_tags_relations', 'news_tags_relations.newsId', 'news.id')
-                        ->where('news_tags_relations.tagId', $tag->id)
-                        ->orderByDesc('news.dateAndTime')
-                        ->select($joinSelectCol)
-                        ->skip($page*$take)->take($take)
-                        ->get();
+            $tag = NewsTags::where('tag', $content)->orWhere('tagEn', $content)->pluck('id')->toArray();
+            foreach ($tag as $tg){
+                // dd($tg);
+                $news = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->join('news_tags_relations', 'news_tags_relations.newsId', 'news.id')
+                    ->where('news_tags_relations.tagId', $tg)
+                    ->orderByDesc('news.dateAndTime')
+                    ->select($joinSelectCol)
+                    ->skip($page*$take)->take($take)
+                    ->get();
+            }
+            // $newsExist = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->join('news_tags_relations', 'news_tags_relations.newsId', 'news.id')->where('news_tags_relations.tagId', $tag)->get();
+
+
+
         }
         else if($kind == 'content'){
-            $newsIdInTag = NewsTags::join('news_tags_relations', 'news_tags_relations.tagId', 'newsTags.id')->where('newsTags.tag', 'LIKE', "%$content%")->pluck('news_tags_relations.newsId')->toArray();
-            $newsIdInKeyWord = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->where('keyword', 'LIKE', "%$content%")->pluck('id')->toArray();
+            $newsIdInTag = NewsTags::join('news_tags_relations', 'news_tags_relations.tagId', 'news_tags.id')->where('news_tags.tag', 'LIKE', "%$content%")->orWhere('news_tags.tagEn', 'LIKE', "%$content%")->pluck('news_tags_relations.newsId')->toArray();
+
+            $newsIdInKeyWord = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->where('titleEn', 'LIKE', "%$content%" )->orWhere('textEn', 'LIKE', "%$content%")->orWhere('title', 'LIKE', "%$content%")->orWhere('slug', 'LIKE', "%$content%")->pluck('id')->toArray();
 
             $newsId = array_merge($newsIdInTag, $newsIdInKeyWord);
 
@@ -232,5 +240,9 @@ class UserNewsController extends Controller
         $newsItem = $newsOutput;
 
         return response()->json(['status' => 'ok', 'result' => $newsItem]);
+    }
+     public function search($lang,$content,Request $request)
+    {
+     
     }
 }

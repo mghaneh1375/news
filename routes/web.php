@@ -44,7 +44,7 @@ Route::prefix('{lang}')->middleware(['setLocale'])->group(function() {
         Route::get('/main', [UserNewsController::class, 'newsMainPage'])->name('site.news.main');
 
         Route::get('/list/{kind}/{content?}', [UserNewsController::class, 'newsListPage'])->name('site.news.list');
-
+        Route::get('/list/{content}', [UserNewsController::class, 'search'])->name('site.news.search');
         Route::get('/show/{slug}', [UserNewsController::class, 'newsShow'])->name('site.news.show');
         
     });
