@@ -1212,3 +1212,27 @@
         width: 32%;
     }
 }
+@media (max-width: 700px) {
+    .leftNavOne {
+        flex-direction: column;
+    }
+    #MostVisitedToday {
+        padding-right: 15px;
+        width: 100%;
+    }
+    #firstAds {
+        align-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        height: 400px;
+        width: 100%;
+    }
+    #firstAds img {
+        margin: auto;
+        height: 85% !important;
+        width: auto !important;
+    }
+    .sideCardSec .lastNewsCard {
+        width: 100%;
+    }
+}

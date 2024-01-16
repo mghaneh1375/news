@@ -48,6 +48,29 @@
             padding: 10px 0px 0px 10px;
         }
 
+        .listBody .newsRow img:hover {
+            cursor: pointer;
+            transition-timing-function: linear;
+            transition-duration: 0.3s;
+            transform: scale(1.03);
+            -webkit-transform: scale(1.03);
+            -moz-transform: scale(1.03);
+            -ms-transform: scale(1.03);
+            -o-transform: scale(1.03);
+        }
+
+        .mostViewDay li:hover {
+            background-color: #d5d5d5;
+        }
+
+        .mostViewDay li:hover .title {
+            color: #6D0606 !important;
+        }
+
+        .listBody .newsRow:hover .title {
+            color: #6d0606 !important;
+        }
+
         .listBody .newsRow:nth-child(1) {
             height: 400px;
             width: 66.6%;
@@ -92,6 +115,20 @@
             padding: 6px 5px;
             margin-bottom: 2px;
             width: 100%;
+        }
+
+        .lastSpecialNew li:hover img {
+            transition-timing-function: linear;
+            transition-duration: 0.3s;
+            transform: scale(1.03);
+            -webkit-transform: scale(1.03);
+            -moz-transform: scale(1.03);
+            -ms-transform: scale(1.03);
+            -o-transform: scale(1.03);
+        }
+
+        .lastSpecialNew li:hover .title {
+            color: #6D0606 !important;
         }
     </style>
     <div class="directionSite">
