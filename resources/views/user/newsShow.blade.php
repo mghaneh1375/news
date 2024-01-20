@@ -169,7 +169,6 @@
 
 
 @section('body')
-    {{ dd($news) }}
     <div class="row" style="margin-top: 20px;margin-bottom: 40px">
         <div id="pcSideAdSection" class="col-md-3 hideOnPhone">
             <div>
