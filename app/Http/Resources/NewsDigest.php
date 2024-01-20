@@ -23,7 +23,7 @@ class NewsDigest extends JsonResource
         $date = explode('-', $dateAndTime[0]);
         $times = explode(':', $dateAndTime[1]);
         $slug = getData(self::$locale, $this->slug, $this->slugEn);
-        $time =getData(self::$locale,  Verta::createJalali($date[0], $date[1], $date[2], $times[0], $times[1], 0)->format('%d %B %Y  H:i'), date('d M Y ', strtotime($this->updated_at)));
+        $time =getData(self::$locale,  Verta::createJalali($date[0], $date[1], $date[2], $times[0], $times[1], 0)->format('%d %B %Y  H:i'), date('Y-m-d', strtotime($this->updated_at)));
         $category = $this->catogoryRelations()->main()->first()->category;
         if($category != null)
             $category = getData(self::$locale, $category->name, $category->nameEn);
