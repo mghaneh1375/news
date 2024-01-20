@@ -60,7 +60,7 @@ class NewsResource extends JsonResource
                 array_push($otherNewsArr, getNewsMinimal(News::find($item->id)));
         }
 
-        $time =getData(self::$locale,  Verta::createJalali($date[0], $date[1], $date[2], $times[0], $times[1], 0)->format('%d %B %Y  H:i'), date('D M Y H:i', strtotime($this->updated_at)));
+        $time =getData(self::$locale,  Verta::createJalali($date[0], $date[1], $date[2], $times[0], $times[1], 0)->format('%d %B %Y  H:i'), date('d M Y H:i', strtotime($this->updated_at)));
 
         return [
             'id' => $this->id,
