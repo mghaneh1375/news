@@ -63,9 +63,9 @@
         .eddsSec {}
 
         /* .eddsSec.fixedL {
-                                                                                                                                                                                                                                                                                                                                        position: fixed;
-                                                                                                                                                                                                                                                                                                                                        bottom: 0px;
-                                                                                                                                                                                                                                                                                                                                    } */
+                                                                                                                                                                                                                                                                                                                                                position: fixed;
+                                                                                                                                                                                                                                                                                                                                                bottom: 0px;
+                                                                                                                                                                                                                                                                                                                                            } */
 
         .newsVideo {}
 
@@ -151,6 +151,21 @@
 
         tbody tr:nth-child(odd) {
             background-color: rgb(224, 224, 224);
+        }
+
+        .col-md-1,
+        .col-md-10,
+        .col-md-11,
+        .col-md-12,
+        .col-md-2,
+        .col-md-3,
+        .col-md-4,
+        .col-md-5,
+        .col-md-6,
+        .col-md-7,
+        .col-md-8,
+        .col-md-9 {
+            float: left;
         }
     </style>
 
