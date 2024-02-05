@@ -29,6 +29,7 @@
 @stop
 
 @section('content')
+    {{ dd($news) }}
     <input type="hidden" id="newsId" value="{{ isset($news) ? $news->id : '0' }}">
 
     <div class="col-md-3 leftSection" style="padding-right: 0px;">
