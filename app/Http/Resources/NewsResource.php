@@ -22,7 +22,6 @@ class NewsResource extends JsonResource
      */
     public function toArray($request)
     {
-
         $slug = getData(self::$locale, $this->slug, $this->slugEn);
         
         $dateAndTime = explode(' ', $this->dateAndTime);
@@ -72,7 +71,7 @@ class NewsResource extends JsonResource
             'meta' => getData(self::$locale, $this->meta, $this->metaEn),
             'pic' => URL::asset("assets/news/{$this->id}/{$this->pic}"),
             'url' => route('site.news.show', ['slug' => $slug, 'lang' => self::$locale]),
-            'dateAndTime' => $this->dateAndTime,
+            'dateAndTime' => $this->created_at,
             'keyword' => getData(self::$locale, $this->keyword, $this->keywordEn),
             'seoTitle' => getData(self::$locale, $this->seoTitle, $this->seoTitleEn),
             'video' => $video,

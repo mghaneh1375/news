@@ -12,6 +12,7 @@ use App\Models\NewsTagsRelation;
 use App\Models\User;
 use Carbon\Carbon;
 use Hekmatinasser\Verta\Facades\Verta;
+use Morilog\Jalali\Jalalian;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\NewsDigest;
@@ -152,11 +153,13 @@ class NewsController extends Controller
         $category = NewsCategory::where('parentId', 0)->get();
         foreach ($category as $item)
             $item->sub = NewsCategory::where('parentId', $item->id)->get();
-
-        $dateAndTime = explode(' ', $news->dateAndTime);
+        
+        $dateAndTime = explode(' ', $news->created_at);
         $news->time = $dateAndTime[1];
-        $news->date = str_replace('/', '-', $dateAndTime[0]);
-        $news->date = convertNumber('fa', $news->date);
+        $news->date = str_replace('-', '/', $dateAndTime[0]);
+        $date = $news->date;
+        $jDate = jdate($date)->format('Y-m-d');
+        $news->date = convertNumber('fa', $jDate);
         $sites = SiteResource::collection(Site::all())->toArray($request);
 
         return view('admin.newNews', compact(['news', 'category', 'code', 'sites']));
@@ -285,7 +288,6 @@ class NewsController extends Controller
     }
 
     public function storeNews(Request $request){
-
         $request->validate([
             'id' => 'required',
             'releaseType' => 'required',
@@ -332,6 +334,8 @@ class NewsController extends Controller
         $news->site_id = $request->site;
         if($request->has('createdAt'))
             $news->created_at = date('Y-m-d H:m:s', strtotime(ShamsiToMilady(convertNumber('en', $request['createdAt'])) . " 00:00"));
+
+        
 
 	    $news->rtl = ($request->has('direction') && $request->direction == 'ltr') ? 0 : 1;
 

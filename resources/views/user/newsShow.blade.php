@@ -63,9 +63,9 @@
         .eddsSec {}
 
         /* .eddsSec.fixedL {
-                                                                                                                                                                                                                                                                                                                                                position: fixed;
-                                                                                                                                                                                                                                                                                                                                                bottom: 0px;
-                                                                                                                                                                                                                                                                                                                                            } */
+                                                                                                                                                                                                                                                                                                                                                        position: fixed;
+                                                                                                                                                                                                                                                                                                                                                        bottom: 0px;
+                                                                                                                                                                                                                                                                                                                                                    } */
 
         .newsVideo {}
 
