@@ -825,7 +825,7 @@ class EnSeoController extends Controller {
 
     private function keywordInDataBase($siteId,$keyword, $id)
     {
-        $allKey = DB::table($this->type)->where('site-id',$siteId)->select(['keyword', 'id'])->whereNotNull('keyword')->get();
+        $allKey = DB::table($this->type)->where('site_id',$siteId)->select(['keyword', 'id'])->whereNotNull('keyword')->get();
         $same = 0;
         $similar = array();
         foreach ($allKey as $item){
