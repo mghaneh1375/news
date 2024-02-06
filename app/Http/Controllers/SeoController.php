@@ -517,7 +517,7 @@ class SeoController extends Controller {
                 $badResult .= '<div style="color: red;">طول عبارت کلیدی نامناسب است </div>';
             }
 
-            $keywordSimiralInDataBase = $this->keywordInDataBase($key, $request->id);
+            $keywordSimiralInDataBase = $this->keywordInDataBase($siteId,$key, $request->id);
             if($keywordSimiralInDataBase[1] > 0){
                 $uniqueKey = false;
                 $badResultCount++;
@@ -559,7 +559,7 @@ class SeoController extends Controller {
         }
 
         if($seoTitle != null) {
-            $seoTitleInDataBase = $this->seoInDataBase($seoTitle, $request->id);
+            $seoTitleInDataBase = $this->seoInDataBase($siteId,$seoTitle, $request->id);
             if ($seoTitleInDataBase) {
                 $goodResult .= '<div style="color: green;">عنوان سئو شما یکتاست.</div>';
                 $goodResultCount++;
@@ -662,7 +662,7 @@ class SeoController extends Controller {
         }
 
         if($title != null){
-            $titleInDataBase= $this->titleInDataBase($title, $request->id);
+            $titleInDataBase= $this->titleInDataBase($siteId,$title, $request->id);
             if($titleInDataBase){
                 $goodResultCount++;
                 $goodResult .= '<div style="color: green;">عنوان مقاله شما یکتاست.</div>';
@@ -824,7 +824,7 @@ class SeoController extends Controller {
         return $keyWordDensity;
     }
 
-    private function keywordInDataBase($keyword, $id)
+    private function keywordInDataBase($siteId,$keyword, $id)
     {
         $allKey = DB::table($this->type)->where('site_id',$siteId)->select(['keyword', 'id'])->whereNotNull('keyword')->get();
         $same = 0;
@@ -858,7 +858,7 @@ class SeoController extends Controller {
         return true;
     }
 
-    private function seoInDataBase($seoTitle, $id)
+    private function seoInDataBase($siteId,$seoTitle, $id)
     {
         $seo = DB::table($this->type)->where('site_id',$siteId)->where('seoTitle', $seoTitle)->where('id', '!=', $id)->first();
         return $seo == null;
@@ -1065,7 +1065,7 @@ class SeoController extends Controller {
         return [$imgCount, $haveAlt];
     }
 
-    private function titleInDataBase($title, $id){
+    private function titleInDataBase($siteId,$title, $id){
         $s = DB::table($this->type)->where('site_id',$siteId)->where('title', $title)->where('id', '!=', $id)->first();
         return $s == null;
     }
