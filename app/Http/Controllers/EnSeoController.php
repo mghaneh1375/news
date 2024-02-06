@@ -825,7 +825,7 @@ class EnSeoController extends Controller {
 
     private function keywordInDataBase($siteId,$keyword, $id)
     {
-        $allKey = DB::table($this->type)->where('site_id',$siteId)->select(['keyword', 'id'])->whereNotNull('keyword')->get();
+        $allKey = DB::table($this->type)->where('site_id',$siteId)->select(['keywordEn', 'id'])->whereNotNull('keywordEn')->get();
         $same = 0;
         $similar = array();
         foreach ($allKey as $item){
@@ -859,7 +859,7 @@ class EnSeoController extends Controller {
 
     private function seoInDataBase($siteId,$seoTitle, $id)
     {
-        $seo = DB::table($this->type)->where('site_id',$siteId)->where('seoTitle', $seoTitle)->where('id', '!=', $id)->first();
+        $seo = DB::table($this->type)->where('site_id',$siteId)->where('seoTitleEn', $seoTitle)->where('id', '!=', $id)->first();
         return $seo == null;
     }
 
@@ -880,7 +880,7 @@ class EnSeoController extends Controller {
 
     private function slugInDataBase($slug, $id,$siteId)
     {
-        $s = DB::table($this->type)->where('site_id',$siteId )->where('slug', $slug)->where('id', '!=', $id)->first();
+        $s = DB::table($this->type)->where('site_id',$siteId )->where('slugEN', $slug)->where('id', '!=', $id)->first();
         return $s == null;
     }
 
@@ -1065,7 +1065,7 @@ class EnSeoController extends Controller {
     }
 
     private function titleInDataBase($siteId,$title, $id){
-        $s = DB::table($this->type)->where('site_id',$siteId)->where('title', $title)->where('id', '!=', $id)->first();
+        $s = DB::table($this->type)->where('site_id',$siteId)->where('titleEn', $title)->where('id', '!=', $id)->first();
         return $s == null;
     }
 
