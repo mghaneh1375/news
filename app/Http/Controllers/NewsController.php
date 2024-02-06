@@ -147,9 +147,6 @@ class NewsController extends Controller
         else
             $news->tagsEn =[];
 
-
-
-
         $category = NewsCategory::where('parentId', 0)->get();
         foreach ($category as $item)
             $item->sub = NewsCategory::where('parentId', $item->id)->get();
@@ -157,9 +154,9 @@ class NewsController extends Controller
         $dateAndTime = explode(' ', $news->created_at);
         $news->time = $dateAndTime[1];
         $news->date = str_replace('-', '/', $dateAndTime[0]);
-        $date = $news->date;
-        $jDate = jdate($date)->format('Y-m-d');
-        $news->date = convertNumber('fa', $jDate);
+        $jDate =gregorianToJalali(Carbon::make( $news->date)->format('Y-m-d')); 
+        $date =$jDate[0] . '-' . $jDate[1] . '-' . $jDate[2];  
+        $news->date = convertNumber('fa', $date);
         $sites = SiteResource::collection(Site::all())->toArray($request);
 
         return view('admin.newNews', compact(['news', 'category', 'code', 'sites']));
