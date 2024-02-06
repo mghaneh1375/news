@@ -12,7 +12,6 @@ use App\Models\NewsTagsRelation;
 use App\Models\User;
 use Carbon\Carbon;
 use Hekmatinasser\Verta\Facades\Verta;
-use Morilog\Jalali\Jalalian;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\NewsDigest;
@@ -119,6 +118,7 @@ class NewsController extends Controller
 
     public function editNewsPage($id, Request $request)
     {
+
         $code = rand(10000, 99999);
         $news = News::find($id);
         $news->author= User::find($news->userId)->name;

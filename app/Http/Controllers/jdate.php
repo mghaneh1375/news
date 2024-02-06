@@ -1,216 +1,216 @@
 <?php
 
 
-function jdate($format, $ago = "", $timestamp='',$none='',$time_zone='Asia/Tehran',$tr_num='fa'){
+// function jdate($format, $ago = "", $timestamp='',$none='',$time_zone='Asia/Tehran',$tr_num='fa'){
 
-    $T_sec=0;/* <= رفع خطاي زمان سرور ، با اعداد '+' و '-' بر حسب ثانيه */
+//     $T_sec=0;/* <= رفع خطاي زمان سرور ، با اعداد '+' و '-' بر حسب ثانيه */
 
-    if($time_zone!='local')date_default_timezone_set(($time_zone=='')?'Asia/Tehran':$time_zone);
-    $ts=($timestamp=='' or $timestamp=='now')?time()+$T_sec:tr_num($timestamp)+$T_sec;
+//     if($time_zone!='local')date_default_timezone_set(($time_zone=='')?'Asia/Tehran':$time_zone);
+//     $ts=($timestamp=='' or $timestamp=='now')?time()+$T_sec:tr_num($timestamp)+$T_sec;
 
-    if(!empty($ago))
-        $date=explode('_',date('H_i_j_n_O_P_s_w_Y', strtotime($ago)));
-    else
-        $date=explode('_',date('H_i_j_n_O_P_s_w_Y', $ts));
+//     if(!empty($ago))
+//         $date=explode('_',date('H_i_j_n_O_P_s_w_Y', strtotime($ago)));
+//     else
+//         $date=explode('_',date('H_i_j_n_O_P_s_w_Y', $ts));
 
-    list($j_y,$j_m,$j_d)=gregorian_to_jalali($date[8],$date[3],$date[2]);
-    $doy=($j_m<7)?(($j_m-1)*31)+$j_d-1:(($j_m-7)*30)+$j_d+185;
-    $kab=($j_y%33%4-1==(int)($j_y%33*.05))?1:0;
-    $sl=strlen($format);
-    $out='';
-    for($i=0; $i<$sl; $i++){
-        $sub=substr($format,$i,1);
-        if($sub=='\\'){
-            $out.=substr($format,++$i,1);
-            continue;
-        }
-        switch($sub){
+//     list($j_y,$j_m,$j_d)=gregorian_to_jalali($date[8],$date[3],$date[2]);
+//     $doy=($j_m<7)?(($j_m-1)*31)+$j_d-1:(($j_m-7)*30)+$j_d+185;
+//     $kab=($j_y%33%4-1==(int)($j_y%33*.05))?1:0;
+//     $sl=strlen($format);
+//     $out='';
+//     for($i=0; $i<$sl; $i++){
+//         $sub=substr($format,$i,1);
+//         if($sub=='\\'){
+//             $out.=substr($format,++$i,1);
+//             continue;
+//         }
+//         switch($sub){
 
-            case'C':case'E':case'R':case'x':case'X':
-            $out.='نسخه ی جدید : http://jdf.scr.ir';
-            break;
+//             case'C':case'E':case'R':case'x':case'X':
+//             $out.='نسخه ی جدید : http://jdf.scr.ir';
+//             break;
 
-            case'B':case'e':case'g':
-            case'G':case'h':case'I':
-            case'T':case'u':case'Z':
-            $out.=date($sub,$ts);
-            break;
+//             case'B':case'e':case'g':
+//             case'G':case'h':case'I':
+//             case'T':case'u':case'Z':
+//             $out.=date($sub,$ts);
+//             break;
 
-            case'a':
-                $out.=($date[0]<12)?'ق.ظ':'ب.ظ';
-                break;
+//             case'a':
+//                 $out.=($date[0]<12)?'ق.ظ':'ب.ظ';
+//                 break;
 
-            case'A':
-                $out.=($date[0]<12)?'قبل از ظهر':'بعد از ظهر';
-                break;
+//             case'A':
+//                 $out.=($date[0]<12)?'قبل از ظهر':'بعد از ظهر';
+//                 break;
 
-            case'b':
-                $out.=(int)(1+($j_m/3));
-                break;
+//             case'b':
+//                 $out.=(int)(1+($j_m/3));
+//                 break;
 
-            case'c':
-                $j_m = (strlen($j_m) == 1) ? "0" . $j_m : $j_m;
-                $j_d = (strlen($j_d) == 1) ? "0" . $j_d : $j_d;
-                $date[0] = (strlen($date[0]) == 1) ? "0" . $date[0] : $date[0];
-                $date[1] = (strlen($date[1]) == 1) ? "0" . $date[1] : $date[1];
-                $out.=$j_y.'/'.$j_m.'/'.$j_d.'-'.$date[0].':'.$date[1];
-                break;
+//             case'c':
+//                 $j_m = (strlen($j_m) == 1) ? "0" . $j_m : $j_m;
+//                 $j_d = (strlen($j_d) == 1) ? "0" . $j_d : $j_d;
+//                 $date[0] = (strlen($date[0]) == 1) ? "0" . $date[0] : $date[0];
+//                 $date[1] = (strlen($date[1]) == 1) ? "0" . $date[1] : $date[1];
+//                 $out.=$j_y.'/'.$j_m.'/'.$j_d.'-'.$date[0].':'.$date[1];
+//                 break;
 
-            case'd':
-                $out.=($j_d<10)?'0'.$j_d:$j_d;
-                break;
+//             case'd':
+//                 $out.=($j_d<10)?'0'.$j_d:$j_d;
+//                 break;
 
-            case'D':
-                $out.=jdate_words(array('kh'=>$date[7]),' ');
-                break;
+//             case'D':
+//                 $out.=jdate_words(array('kh'=>$date[7]),' ');
+//                 break;
 
-            case'f':
-                $out.=jdate_words(array('ff'=>$j_m),' ');
-                break;
+//             case'f':
+//                 $out.=jdate_words(array('ff'=>$j_m),' ');
+//                 break;
 
-            case'F':
-                $out.=jdate_words(array('mm'=>$j_m),' ');
-                break;
+//             case'F':
+//                 $out.=jdate_words(array('mm'=>$j_m),' ');
+//                 break;
 
-            case'H':
-                $out.=$date[0];
-                break;
+//             case'H':
+//                 $out.=$date[0];
+//                 break;
 
-            case'i':
-                $out.=$date[1];
-                break;
+//             case'i':
+//                 $out.=$date[1];
+//                 break;
 
-            case'j':
-                $out.=$j_d;
-                break;
+//             case'j':
+//                 $out.=$j_d;
+//                 break;
 
-            case'J':
-                $out.=jdate_words(array('rr'=>$j_d),' ');
-                break;
+//             case'J':
+//                 $out.=jdate_words(array('rr'=>$j_d),' ');
+//                 break;
 
-            case'k';
-                $out.=tr_num(100-(int)($doy/($kab+365)*1000)/10,$tr_num);
-                break;
+//             case'k';
+//                 $out.=tr_num(100-(int)($doy/($kab+365)*1000)/10,$tr_num);
+//                 break;
 
-            case'K':
-                $out.=tr_num((int)($doy/($kab+365)*1000)/10,$tr_num);
-                break;
+//             case'K':
+//                 $out.=tr_num((int)($doy/($kab+365)*1000)/10,$tr_num);
+//                 break;
 
-            case'l':
-                $out.=jdate_words(array('rh'=>$date[7]),' ');
-                break;
+//             case'l':
+//                 $out.=jdate_words(array('rh'=>$date[7]),' ');
+//                 break;
 
-            case'L':
-                $out.=$kab;
-                break;
+//             case'L':
+//                 $out.=$kab;
+//                 break;
 
-            case'm':
-                $out.=($j_m>9)?$j_m:'0'.$j_m;
-                break;
+//             case'm':
+//                 $out.=($j_m>9)?$j_m:'0'.$j_m;
+//                 break;
 
-            case'M':
-                $out.=jdate_words(array('km'=>$j_m),' ');
-                break;
+//             case'M':
+//                 $out.=jdate_words(array('km'=>$j_m),' ');
+//                 break;
 
-            case'n':
-                $out.=$j_m;
-                break;
+//             case'n':
+//                 $out.=$j_m;
+//                 break;
 
-            case'N':
-                $out.=$date[7]+1;
-                break;
+//             case'N':
+//                 $out.=$date[7]+1;
+//                 break;
 
-            case'o':
-                $jdw=($date[7]==6)?0:$date[7]+1;
-                $dny=364+$kab-$doy;
-                $out.=($jdw>($doy+3) and $doy<3)?$j_y-1:(((3-$dny)>$jdw and $dny<3)?$j_y+1:$j_y);
-                break;
+//             case'o':
+//                 $jdw=($date[7]==6)?0:$date[7]+1;
+//                 $dny=364+$kab-$doy;
+//                 $out.=($jdw>($doy+3) and $doy<3)?$j_y-1:(((3-$dny)>$jdw and $dny<3)?$j_y+1:$j_y);
+//                 break;
 
-            case'O':
-                $out.=$date[4];
-                break;
+//             case'O':
+//                 $out.=$date[4];
+//                 break;
 
-            case'p':
-                $out.=jdate_words(array('mb'=>$j_m),' ');
-                break;
+//             case'p':
+//                 $out.=jdate_words(array('mb'=>$j_m),' ');
+//                 break;
 
-            case'P':
-                $out.=$date[5];
-                break;
+//             case'P':
+//                 $out.=$date[5];
+//                 break;
 
-            case'q':
-                $out.=jdate_words(array('sh'=>$j_y),' ');
-                break;
+//             case'q':
+//                 $out.=jdate_words(array('sh'=>$j_y),' ');
+//                 break;
 
-            case'Q':
-                $out.=$kab+364-$doy;
-                break;
+//             case'Q':
+//                 $out.=$kab+364-$doy;
+//                 break;
 
-            case'r':
-                $key=jdate_words(array('rh'=>$date[7],'mm'=>$j_m));
-                $out.=$date[0].':'.$date[1].':'.$date[6].' '.$date[4]
-                    .' '.$key['rh'].'، '.$j_d.' '.$key['mm'].' '.$j_y;
-                break;
+//             case'r':
+//                 $key=jdate_words(array('rh'=>$date[7],'mm'=>$j_m));
+//                 $out.=$date[0].':'.$date[1].':'.$date[6].' '.$date[4]
+//                     .' '.$key['rh'].'، '.$j_d.' '.$key['mm'].' '.$j_y;
+//                 break;
 
-            case's':
-                $out.=$date[6];
-                break;
+//             case's':
+//                 $out.=$date[6];
+//                 break;
 
-            case'S':
-                $out.='ام';
-                break;
+//             case'S':
+//                 $out.='ام';
+//                 break;
 
-            case't':
-                $out.=($j_m!=12)?(31-(int)($j_m/6.5)):($kab+29);
-                break;
+//             case't':
+//                 $out.=($j_m!=12)?(31-(int)($j_m/6.5)):($kab+29);
+//                 break;
 
-            case'U':
-                $out.=$ts;
-                break;
+//             case'U':
+//                 $out.=$ts;
+//                 break;
 
-            case'v':
-                $out.=jdate_words(array('ss'=>substr($j_y,2,2)),' ');
-                break;
+//             case'v':
+//                 $out.=jdate_words(array('ss'=>substr($j_y,2,2)),' ');
+//                 break;
 
-            case'V':
-                $out.=jdate_words(array('ss'=>$j_y),' ');
-                break;
+//             case'V':
+//                 $out.=jdate_words(array('ss'=>$j_y),' ');
+//                 break;
 
-            case'w':
-                $out.=($date[7]==6)?0:$date[7]+1;
-                break;
+//             case'w':
+//                 $out.=($date[7]==6)?0:$date[7]+1;
+//                 break;
 
-            case'W':
-                $avs=(($date[7]==6)?0:$date[7]+1)-($doy%7);
-                if($avs<0)$avs+=7;
-                $num=(int)(($doy+$avs)/7);
-                if($avs<4){
-                    $num++;
-                }elseif($num<1){
-                    $num=($avs==4 or $avs==(($j_y%33%4-2==(int)($j_y%33*.05))?5:4))?53:52;
-                }
-                $aks=$avs+$kab;
-                if($aks==7)$aks=0;
-                $out.=(($kab+363-$doy)<$aks and $aks<3)?'01':(($num<10)?'0'.$num:$num);
-                break;
+//             case'W':
+//                 $avs=(($date[7]==6)?0:$date[7]+1)-($doy%7);
+//                 if($avs<0)$avs+=7;
+//                 $num=(int)(($doy+$avs)/7);
+//                 if($avs<4){
+//                     $num++;
+//                 }elseif($num<1){
+//                     $num=($avs==4 or $avs==(($j_y%33%4-2==(int)($j_y%33*.05))?5:4))?53:52;
+//                 }
+//                 $aks=$avs+$kab;
+//                 if($aks==7)$aks=0;
+//                 $out.=(($kab+363-$doy)<$aks and $aks<3)?'01':(($num<10)?'0'.$num:$num);
+//                 break;
 
-            case'y':
-                $out.=substr($j_y,2,2);
-                break;
+//             case'y':
+//                 $out.=substr($j_y,2,2);
+//                 break;
 
-            case'Y':
-                $out.=$j_y;
-                break;
+//             case'Y':
+//                 $out.=$j_y;
+//                 break;
 
-            case'z':
-                $out.=$doy;
-                break;
+//             case'z':
+//                 $out.=$doy;
+//                 break;
 
-            default:$out.=$sub;
-        }
-    }
-    return($tr_num!='en')?tr_num($out,'fa','.'):$out;
-}
+//             default:$out.=$sub;
+//         }
+//     }
+//     return($tr_num!='en')?tr_num($out,'fa','.'):$out;
+// }
 
 /*	F	*/
 function jstrftime($format,$timestamp='',$none='',$time_zone='Asia/Tehran',$tr_num='fa'){

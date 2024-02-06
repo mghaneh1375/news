@@ -60,6 +60,7 @@ class NewsResource extends JsonResource
         }
 
         $time =getData(self::$locale,  Verta::createJalali($date[0], $date[1], $date[2], $times[0], $times[1], 0)->format('%d %B %Y  H:i'), date('d M Y ', strtotime($this->updated_at)));
+        $createAt=getData(self::$locale,  Verta::createJalali($date[0], $date[1], $date[2], $times[0], $times[1], 0)->format('%d %B %Y  H:i'), date('Y/m/d ', strtotime($this->created_at)));
 
         return [
             'id' => $this->id,
@@ -76,7 +77,7 @@ class NewsResource extends JsonResource
             'seoTitle' => getData(self::$locale, $this->seoTitle, $this->seoTitleEn),
             'video' => $video,
             'showTime' => $time,
-            
+            'createdAt'=> $createAt,
             'author' => isset($this->userId) ? User::find($this->userId)->name : '',
             'username' => 'dorna',
             'rtl' => $this->rtl,

@@ -27,7 +27,7 @@ class NewsDigest extends JsonResource
         $category = $this->catogoryRelations()->main()->first()->category;
         if($category != null)
             $category = getData(self::$locale, $category->name, $category->nameEn);
-
+        $createAt=getData(self::$locale,  Verta::createJalali($date[0], $date[1], $date[2], $times[0], $times[1], 0)->format('%d %B %Y  H:i'), date('Y/m/d ', strtotime($this->created_at)));
         return [
             'id'  => $this->id,
             'slug' => $slug,
@@ -40,6 +40,7 @@ class NewsDigest extends JsonResource
             'video' => $this->video,
             'category'=> $category,
             'dateAndTimeEn' => $time,
+            'createdAt'=> $createAt,
             'siteId'=>$this->site_id,
             'author' => isset($this->userId) ? User::find($this->userId)->name : ''
             
