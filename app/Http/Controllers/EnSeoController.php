@@ -829,7 +829,7 @@ class EnSeoController extends Controller {
         $same = 0;
         $similar = array();
         foreach ($allKey as $item){
-            similar_text($item->keyword, $keyword, $percent);
+            similar_text($item->keywordEn, $keyword, $percent);
             if($percent == 100 && $item->id != $id)
                 $same++;
             else if($percent > 70 && $item->id != $id)
