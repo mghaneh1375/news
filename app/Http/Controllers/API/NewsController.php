@@ -42,6 +42,7 @@ class NewsController extends Controller
             }
             else if($kind == 'category'){
                 $category = NewsCategory::where('name', $content)->first();
+
                 $news = News::youCanSee($siteId, $lang)->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
                             ->where('news_category_relations.categoryId', $category->id)
                             ->orderByDesc('news.dateAndTime')
@@ -83,11 +84,14 @@ class NewsController extends Controller
     {
         if(
              $origin == 'https://www.tourismfinancialgroup.com' || $origin == 'http://localhost:3000' || $origin == 'https://www.tourismbank.co' ||
-                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbank.co'||$origin == 'https://titcompany.com'||$origin == 'tourismFinancialGroup'|| $origin == 'tourismIT'|| $origin == 'tourismBank'|| $origin == 'mahan'|| $origin == 'fouladBaft'|| $origin == 'yas'|| $origin == 'ghadir'
+                $origin == 'https://www.titcompany.com'||$origin == 'https://tourismfinancialgroup.com'||$origin == 'https://tourismbank.co'||
+                $origin == 'https://titcompany.com'||$origin == 'tourismFinancialGroup'|| $origin == 'tourismIT'|| $origin == 'tourismBank'|| 
+                $origin == 'mahan'|| $origin == 'fouladBaft'|| $origin == 'yas'|| $origin == 'ghadir'||
+                $origin == 'https://ghadir.bogenstudio.com'||$origin == 'https://www.ghadir.bogenstudio.com'
         ) {
 
             $siteId = 4;
-            if($origin == 'ghadir')
+            if($origin == 'ghadir'||$origin == 'https://ghadir.bogenstudio.com'||$origin == 'https://www.ghadir.bogenstudio.com')
                 $siteId = 8;
             if($origin == 'https://www.yas-charity.com'||$origin == 'https://yas-charity.com' ||$origin =='yas')
                 $siteId = 7;
