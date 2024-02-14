@@ -215,7 +215,7 @@
                 inTake = true;
                 $.ajax({
                     type: 'GET',
-                    url: `{{ route('site.news.list.getElements', ['lang' => \App::getLocale()]) }}?kind=category&content=${content}&take=${take}&page=${page}`,
+                    url: `{{ route('site.news.list.getElements', ['lang' => \App::getLocale()]) }}?kind=${kind}&content=${content}&take=${take}&page=${page}`,
                     headers: {
                         accept: 'application/json'
                     },

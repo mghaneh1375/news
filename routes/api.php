@@ -18,7 +18,8 @@ use App\Http\Controllers\API\NewsController;
 
 Route::prefix('{lang}')->middleware(['setLocale'])->group(function() {
 
-    Route::get('search', [NewsController::class, 'search']);
+    Route::get('search/{content}', [NewsController::class, 'search']);
+
 
     Route::get('find/{id}', [NewsController::class, 'find']);
 
