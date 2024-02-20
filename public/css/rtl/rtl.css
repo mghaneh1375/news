@@ -16,12 +16,22 @@
 .mostViewDay li {
     border-right: solid 3px #6d0606;
 }
+.mostViewDay li a {
+    margin-right: 10px;
+}
 .lastSpecialNew li {
     border-right: solid 3px #6d0606;
+}
+.lastSpecialNew li a {
+    margin-right: 10px;
 }
 .lastSpecialNew li > div {
     padding-right: 10px;
 }
 .textInLastSpecialNew {
     padding-right: 10px;
+}
+
+#lineAds {
+    float: right !important;
 }

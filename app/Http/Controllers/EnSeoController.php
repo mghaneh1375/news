@@ -833,7 +833,7 @@ class EnSeoController extends Controller {
             if($percent == 100 && $item->id != $id)
                 $same++;
             else if($percent > 70 && $item->id != $id)
-                array_push($similar, $item->keyword);
+                array_push($similar, $item->keywordEn);
         }
 
         return [$similar, $same];

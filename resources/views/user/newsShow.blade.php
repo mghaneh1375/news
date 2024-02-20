@@ -63,9 +63,9 @@
         .eddsSec {}
 
         /* .eddsSec.fixedL {
-                                                                                                                                                                                                                                                                                                                                                            position: fixed;
-                                                                                                                                                                                                                                                                                                                                                            bottom: 0px;
-                                                                                                                                                                                                                                                                                                                                                        } */
+                                                                                                                                                                                                                                                                                                                                                                position: fixed;
+                                                                                                                                                                                                                                                                                                                                                                bottom: 0px;
+                                                                                                                                                                                                                                                                                                                                                            } */
 
         .newsVideo {}
 
@@ -235,7 +235,7 @@
                     </div>
                     <ul class="lastSpecialNew">
                         @foreach ($topNews as $item)
-                            <li class="Point alignItemCen" style="border-left: solid 3px #6D0606;margin-top: 5px;">
+                            <li class="Point alignItemCen" style="  margin-top: 5px;">
                                 <a class="pdl10" style="color: black !important" href="{{ $item['url'] }}">
                                     <h6 class="title" style="margin:5px 0 0 0">{{ $item['title'] }}</h6>
                                 </a>
