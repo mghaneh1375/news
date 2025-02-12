@@ -169,7 +169,6 @@ class UserNewsController extends Controller
             $header = 'Related News  ' . $content;
         else if($kind == 'content')
             $header = 'Related News  ' . $content;
-
         return view('user.newsList', compact(['kind', 'content', 'header','topNews']));
     }
 
@@ -184,6 +183,7 @@ class UserNewsController extends Controller
         $joinSelectCol = ['news.id', 'news.title', 'news.meta', 'news.slug', 'news.dateAndTime', 'news.keyword', 'news.pic', 'news.server', 'news.video','news.titleEn', 'news.metaEn', 'news.slugEn','news.keywordEn',];
         $lang= App::getLocale();
         $kind = $_GET['kind'];
+
         $content = $_GET['content'];
         $take = $_GET['take'];
         $page = $_GET['page'];
@@ -191,7 +191,7 @@ class UserNewsController extends Controller
         if($kind == 'all'){
             $news = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->orderByDesc('dateAndTime')->select($selectCol)->skip($page*$take)->take($take)->get();
         }
-        else if($kind == 'category'){
+        else if($kind == 'category' ||$kind == 'دسته بندی' ){
             $category = NewsCategory::where('name', $content)->orWhere('nameEn', $content)->first();
             $news = News::youCanSee(self::$DEFAULT_SITE_ID, $lang)->join('news_category_relations', 'news_category_relations.newsId', 'news.id')
                         ->where('news_category_relations.categoryId', $category->id)

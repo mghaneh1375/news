@@ -199,6 +199,7 @@
         var kind = '{{ $kind }}';
         var header = '{{ $header }}';
         var content = '{{ $content }}';
+        console.log(kind);
 
         var page = 0;
         var take = 10;
@@ -288,7 +289,7 @@
             _news.slice(3, 10).map(item => {
                 text += `                    
                             <li class="Point alignItemCen" style="margin-top: 5px;">
-                                <div class="pdl10 d-flex" style=" box-shadow: 0px 3px 6px #00000029; padding-top: 5px">
+                                <div class="pdl10 d-flex" style=" box-shadow: 0px 3px 6px #00000029; padding: 5px 5px 8px 0">
                                     <div class="topNewsImg"><img
                                             style="width: 100%;height: 100%;object-fit: cover;"
                                             src="${item.pic}" alt="${item.keyword}"">
@@ -304,9 +305,9 @@
                                                     ${content}
                                                 </div>
                                             </div>
-                                            <h2 class="title bold" style="margin:5px 0 0 0;color: #232323;">
+                                            <h2 class="title bold" style="margin:5px 10px 0 0;color: #232323;">
                                                 ${item.title}</h2>
-                                            <h6 class="title" style="margin:5px 0 0 0;color: #676767">
+                                            <h6 class="title" style="margin:5px 10px 0 0;color: #676767">
                                                 ${item.meta}
                                             </h6>
                                         </a>
